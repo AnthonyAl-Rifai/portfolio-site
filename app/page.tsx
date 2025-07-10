@@ -1,103 +1,85 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
 
-export default function Home() {
+export default function HomePage() {
+  const [navOpen, setNavOpen] = useState(false);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="relative w-full min-h-screen text-black">
+      {/* BACKGROUND GRADIENT */}
+      {/* <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-500 via-gray-400 to-emerald-800" /> */}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Corner Square (Toggle or Logo) */}
+      <button
+        onClick={() => setNavOpen(!navOpen)}
+        className="fixed top-0 left-0 w-[100px] h-[100px] max-md:w-[75px] max-md:h-[75px] z-50 flex items-center border-r justify-center bg-white/10 backdrop-blur-md p-4 transition-colors hover:bg-white/20"
+      >
+        <span className="text-2xl">⠿</span>
+      </button>
+
+      {/* Fixed Sidebar (below the square) */}
+      <div className="fixed top-[100px] max-md:top-[75px] left-0 h-[calc(100vh-100px)] max-md:h-[calc(100vh-75px)] w-[100px] max-md:w-[75px] border-r border-t z-40" />
+
+      {/* Main content offset from sidebar and top nav */}
+      <div className="pl-[100px] pt-[1px] max-md:pl-[75px]">
+        {/* Top Nav */}
+        <header className="h-[100px] max-md:h-[75px] flex items-center justify-between px-6 border-b">
+        <h1 className="text-lg font-bold">Anthony Al-Rifai</h1>
+          <div className="space-x-4">
+            <a href="#" className="text-sm hover:underline">Projects</a>
+            <a href="#" className="text-sm hover:underline">Experience</a>
+            <a href="#" className="text-sm hover:underline">Contact</a>
+          </div>
+        </header>
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-12 gap-4 px-6 py-6">
+          {/* Sidebar Panel inside content area */}
+          <aside className="col-span-12 md:col-span-3">
+            <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/20 shadow-sm">
+              {!navOpen ? (
+                <div>
+                  <h2 className="text-lg font-semibold mb-2">About Me</h2>
+                  <p className="text-sm text-gray-700">
+                    Full Stack Developer and composer passionate about building responsive and thoughtful user interfaces.
+                  </p>
+                </div>
+              ) : (
+                <nav className="space-y-2">
+                  {["About", "Projects", "Experience", "Skills", "Contact"].map((item) => (
+                    <button
+                      key={item}
+                      className="w-full flex justify-between items-center px-4 py-2 text-left bg-white rounded-md border hover:bg-gray-50 transition"
+                    >
+                      <span>{item}</span>
+                      <span className="text-gray-400">{">"}</span>
+                    </button>
+                  ))}
+                </nav>
+              )}
+            </div>
+          </aside>
+
+          {/* Main Content Cards */}
+          <main className="col-span-12 md:col-span-9">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg p-4 flex flex-col space-y-4"
+                >
+                  <div className="aspect-video bg-gray-200 rounded-md" />
+                  <div className="h-4 bg-gray-300 rounded w-3/4" />
+                  <div className="h-4 bg-gray-300 rounded w-2/3" />
+                  <button className="self-start bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+                    View Project
+                  </button>
+                </div>
+              ))}
+            </div>
+          </main>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
