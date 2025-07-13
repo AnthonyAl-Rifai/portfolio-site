@@ -7,7 +7,7 @@ export default function Sidebar() {
       style={{
         top: "var(--layout-size)",
         width: "var(--layout-size)",
-        height: `calc(100vh - var(--layout-size))`,
+        height: `calc(100svh - var(--layout-size))`,
       }}
     />
   );
