@@ -20,7 +20,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         // paddingBottom: "env(safe-area-inset-bottom)",
       }}
     >
-      <GridSection id="nav">
+      <GridSection id="nav" useDvhHeight={true}>
         {/* About */}
         <a
           href="#about"
