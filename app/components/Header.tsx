@@ -3,10 +3,16 @@
 interface HeaderProps {
   menuOpen: boolean;
   onMenuToggle: () => void;
+  onNameClick?: () => void;
 }
 
-export default function Header({ menuOpen, onMenuToggle }: HeaderProps) {
+export default function Header({
+  menuOpen,
+  onMenuToggle,
+  onNameClick,
+}: HeaderProps) {
   function handleNameClick() {
+    if (onNameClick) onNameClick();
     const el = document.getElementById("home");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });

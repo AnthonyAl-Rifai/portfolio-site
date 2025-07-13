@@ -53,6 +53,7 @@ export default function RootLayout({
           <Header
             menuOpen={menuOpen}
             onMenuToggle={() => setMenuOpen(!menuOpen)}
+            onNameClick={() => setMenuOpen(false)}
           />
           <span
             className={`header-animated-border${animateBorder ? " animate" : ""}`}
