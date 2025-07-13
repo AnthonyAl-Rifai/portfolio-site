@@ -7,7 +7,14 @@ interface HeaderProps {
 
 export default function Header({ menuOpen, onMenuToggle }: HeaderProps) {
   function handleNameClick() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const el = document.getElementById("home");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      window.location.hash = "home";
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.location.hash = "home";
+    }
   }
   return (
     <header

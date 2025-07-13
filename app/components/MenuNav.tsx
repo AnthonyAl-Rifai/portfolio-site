@@ -14,7 +14,10 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
       }`}
       style={{
         top: "var(--layout-size)",
-        height: "calc(100vh - var(--layout-size))",
+        //dvh is compatible with all modern browsers so this should be fine
+        height: "calc(100dvh - var(--layout-size))",
+        // i don't know if this is necessary
+        // paddingBottom: "env(safe-area-inset-bottom)",
       }}
     >
       <GridSection id="nav">
