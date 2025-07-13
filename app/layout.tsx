@@ -18,6 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [animateBorder, setAnimateBorder] = useState(false);
+  const [animateVerticalBorder, setAnimateVerticalBorder] = useState(false);
 
   useEffect(() => {
     if (menuOpen) {
@@ -30,27 +32,40 @@ export default function RootLayout({
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    // Wait for layout to stabilize, then trigger animation
+    const timer = setTimeout(() => setAnimateBorder(true), 10);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimateVerticalBorder(true), 10);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="relative w-full min-h-screen text-black">
+        <div className="relative w-full text-black">
           <Sidebar />
           <Header
             menuOpen={menuOpen}
             onMenuToggle={() => setMenuOpen(!menuOpen)}
           />
+          <span
+            className={`header-animated-border${animateBorder ? " animate" : ""}`}
+          />
+          <span
+            className={`vertical-animated-border${animateVerticalBorder ? " animate" : ""}`}
+          />
 
           {/* Main content area, offset by sidebar */}
-          <div
-            className="transition-all duration-500 pl-0 md:pl-[var(--layout-size)]"
-            style={{ marginTop: "var(--layout-size)" }}
-          >
-            {/* Main scrollable grid section container */}
+          <div className="transition-all duration-500 pl-0 md:pl-[var(--layout-size)]">
             <main
-              className={`relative h-screen snap-y ${
-                menuOpen ? "overflow-hidden" : "overflow-y-scroll"
+              className={`relative w-full pt-[var(--layout-size)] ${
+                menuOpen ? "overflow-hidden" : "overflow-y-auto"
               }`}
             >
               {children}

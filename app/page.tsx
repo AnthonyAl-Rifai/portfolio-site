@@ -1,10 +1,10 @@
 import GridSection from "./components/GridSection";
-
+import HeroPage from "./components/HeroPage";
 export default function HomePage() {
   return (
     <>
       <GridSection id="hero">
-        <h1 className="text-6xl font-bold col-start-1">Full Stack Developer</h1>
+        <HeroPage />
       </GridSection>
       <GridSection id="about">
         <h1 className="text-6xl font-bold">About</h1>

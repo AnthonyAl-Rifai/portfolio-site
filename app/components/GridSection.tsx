@@ -16,10 +16,9 @@ export default function GridSection({
         w-full
         min-h-[calc(100vh-var(--layout-size))]
         h-[calc(100vh-var(--layout-size))]
-        grid grid-cols-4 grid-rows-5 gap-4 p-4
+        grid grid-cols-4 grid-rows-10 gap-4 p-4
         md:grid-cols-8 md:grid-rows-6
         lg:grid-cols-16 lg:grid-rows-6
-        snap-start
         ${className}
       `}
       style={{ scrollMarginTop: "var(--layout-size)" }}
