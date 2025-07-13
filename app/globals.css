@@ -60,7 +60,6 @@
 
 html {
   scroll-behavior: smooth;
-  overscroll-behavior: none;
 }
 
 /* Text reveal animations */
@@ -212,7 +211,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans, Arial, Helvetica, sans-serif);
-  overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -221,9 +219,7 @@ body {
   width: 100vw;
 }
 
-/* Prevent overscroll on main content */
 main {
-  overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
   scroll-padding-top: var(--layout-size);
 }
