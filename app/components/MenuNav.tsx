@@ -1,5 +1,5 @@
 import GridSection from "./GridSection";
-import { useState, useEffect } from "react";
+import { useOrientation } from "./OrientationContext";
 
 interface MenuNavProps {
   open: boolean;
@@ -7,21 +7,7 @@ interface MenuNavProps {
 }
 
 export default function MenuNav({ open, onClose }: MenuNavProps) {
-  const [isLandscape, setIsLandscape] = useState(false);
-
-  useEffect(() => {
-    // Set initial state
-    setIsLandscape(window.matchMedia("(orientation: landscape)").matches);
-
-    const mediaQuery = window.matchMedia("(orientation: landscape)");
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setIsLandscape(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  const { isLandscape } = useOrientation();
 
   return (
     <nav
@@ -32,13 +18,10 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
       }`}
       style={{
         top: "var(--layout-size)",
-        //dvh is compatible with all modern browsers so this should be fine
         height: "calc(100dvh - var(--layout-size))",
-        // i don't know if this is necessary
-        // paddingBottom: "env(safe-area-inset-bottom)",
       }}
     >
-      <GridSection id="nav" useDvhHeight={true}>
+      <GridSection id="nav" useDvhHeight={true} isLandscape={isLandscape}>
         {/* About */}
         <a
           href="#about"
