@@ -25,7 +25,7 @@ export default function GridSection({
         }
         grid
         ${isLandscape ? "grid-cols-5" : "grid-cols-4"}
-        grid-rows-10 gap-4 p-4
+        grid-rows-10 gap-4
         md:grid-cols-8 md:grid-rows-12
         lg:grid-cols-16 lg:grid-rows-6
         ${className}

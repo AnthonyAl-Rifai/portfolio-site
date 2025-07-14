@@ -1,25 +1,30 @@
 import GridSection from "./components/GridSection";
-import HeroPage from "./components/HeroPage";
+import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+import WebDevSection from "./components/WebDevSection";
+import MusicSection from "./components/MusicSection";
+import ResumeSection from "./components/ResumeSection";
+import ContactSection from "./components/ContactSection";
 export default function HomePage() {
   return (
     <>
       <GridSection id="hero">
-        <HeroPage />
+        <HeroSection />
       </GridSection>
       <GridSection id="about">
-        <h1 className="text-6xl font-bold">About</h1>
+        <AboutSection />
       </GridSection>
       <GridSection id="webdev">
-        <h1 className="text-6xl font-bold">Web Dev</h1>
+        <WebDevSection />
       </GridSection>
       <GridSection id="music">
-        <h1 className="text-6xl font-bold">Music</h1>
+        <MusicSection />
       </GridSection>
       <GridSection id="resume">
-        <h1 className="text-6xl font-bold">Resume</h1>
+        <ResumeSection />
       </GridSection>
       <GridSection id="contact">
-        <h1 className="text-6xl font-bold">Contact</h1>
+        <ContactSection />
       </GridSection>
     </>
   );
