@@ -11,7 +11,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
 
   return (
     <nav
-      className={`fixed bg-white/10 backdrop-blur-md border-t transition-opacity duration-300 z-40 menu-nav-overlay ${
+      className={`fixed bg-white/10 backdrop-blur-md border-t transition-opacity duration-300 z-40 left-0 w-[100vw] md:left-[var(--layout-size)] md:w-[calc(100vw-var(--layout-size))] ${
         open
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"

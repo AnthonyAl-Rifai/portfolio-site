@@ -88,8 +88,17 @@ export default function RootLayout({
               onMenuToggle={() => setMenuOpen(!menuOpen)}
               onNameClick={() => setMenuOpen(false)}
             />
-            <span
-              className={`header-animated-border${animateBorder ? " animate" : ""}`}
+            {/* Header animated border migrated to Framer Motion */}
+            <motion.span
+              initial={{ width: 0, opacity: 0 }}
+              animate={
+                animateBorder
+                  ? { width: "100%", opacity: 1 }
+                  : { width: 0, opacity: 0 }
+              }
+              transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
+              className="fixed left-0 top-[var(--layout-size)] h-px bg-black z-40"
+              style={{ width: "100%" }}
             />
             {/* Top segment: animates height first, always stays at right border of button */}
             {hasMounted && (
