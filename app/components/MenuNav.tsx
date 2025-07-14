@@ -21,7 +21,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         height: "calc(100dvh - var(--layout-size))",
       }}
     >
-      <GridSection id="nav" useDvhHeight={true} isLandscape={isLandscape}>
+      <GridSection isLandscape={isLandscape} fillParent={false}>
         {/* About */}
         <a
           href="#about"

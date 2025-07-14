@@ -34,12 +34,9 @@ export default function SectionTitle({ name }: { name: string }) {
   }, []);
 
   return (
-    <div className="row-start-1 col-span-full">
+    <div className="h-[var(--layout-size)] w-full flex flex-col justify-center relative">
       {/* heading */}
-      <h1
-        ref={sectionRef}
-        className="text-6xl font-bold md:text-7xl lg:text-9xl mx-4"
-      >
+      <h1 ref={sectionRef} className="text-4xl font-bold mx-4">
         {name}
       </h1>
 
@@ -54,11 +51,12 @@ export default function SectionTitle({ name }: { name: string }) {
           ease: "easeOut",
           delay: 0.5,
         }}
-        className="bg-black self-end"
+        className="bg-black"
         style={{
-          gridColumn: "1 / -1",
-          marginLeft: "0",
-          marginRight: "0",
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
           height: 1,
           transformOrigin: "right",
         }}

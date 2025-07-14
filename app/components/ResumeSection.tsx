@@ -1,5 +1,14 @@
 import SectionTitle from "./SectionTitle";
+import Section from "./Section";
+import GridSection from "./GridSection";
 
 export default function ResumeSection() {
-  return <SectionTitle name="Resume" />;
+  return (
+    <Section id="resume">
+      <SectionTitle name="Resume" />
+      <GridSection>
+        <div>resume</div>
+      </GridSection>
+    </Section>
+  );
 }
