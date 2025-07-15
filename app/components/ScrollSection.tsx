@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, easeOut } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import SectionTitle from "./SectionTitle";
 
@@ -22,33 +22,25 @@ export default function ScrollSection({
     target: sectionRef,
   });
 
-  // Transform scroll progress to x translation (-100% to 0%) with easing
-  const scrollX = useTransform(scrollYProgress, [0, 1], ["-100%", "0%"], {
-    ease: easeOut,
-  });
+  const scrollX = useTransform(scrollYProgress, [0.25, 0.75], ["-100%", "0%"]);
 
   return (
     <>
       <section ref={sectionRef} className={`relative ${sectionHeight}`}>
-        <div className="sticky top-0">
+        <div className="sticky top-0 h-screen overflow-hidden">
           <SectionTitle name={name} />
-          <div className="h-[calc(100vh-var(--layout-size))] overflow-hidden relative">
-            {/* Initial component (always visible) */}
+
+          <div
+            className="relative"
+            style={{ height: `calc(100% - var(--layout-size))` }}
+          >
             <div className="absolute inset-0 z-0">{initialComponent}</div>
 
-            {/* Scroll component (slides in from left) */}
             <motion.div
-              className="absolute top-[var(--layout-size)] left-0 h-[calc(100%-var(--layout-size))] z-10 overflow-hidden"
-              style={{ width: "100%" }}
+              className="absolute top-0 left-0 h-full w-full z-10"
+              style={{ x: scrollX }}
             >
-              <motion.div
-                className="w-full h-full"
-                style={{
-                  x: scrollX,
-                }}
-              >
-                {scrollComponent}
-              </motion.div>
+              {scrollComponent}
             </motion.div>
           </div>
         </div>
