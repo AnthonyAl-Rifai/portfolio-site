@@ -28,7 +28,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           onClick={onClose}
           className={`${
             isLandscape ? "col-span-1 row-span-full" : "col-span-4 row-span-2"
-          } md:row-span-4 md:row-span-8 lg:col-span-4 lg:row-span-6 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
+          } md:row-span-8 lg:col-span-4 lg:row-span-6 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
         >
           About
         </a>

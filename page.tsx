@@ -71,15 +71,17 @@ export default function HomePage() {
                 </div>
               ) : (
                 <nav className="space-y-2">
-                  {["About", "Projects", "Experience", "Skills", "Contact"].map((item) => (
-                    <button
-                      key={item}
-                      className="w-full flex justify-between items-center px-4 py-2 text-left bg-white rounded-md border hover:bg-gray-50 transition"
-                    >
-                      <span>{item}</span>
-                      <span className="text-gray-400">{">"}</span>
-                    </button>
-                  ))}
+                  {["About", "Projects", "Experience", "Skills", "Contact"].map(
+                    item => (
+                      <button
+                        key={item}
+                        className="w-full flex justify-between items-center px-4 py-2 text-left bg-white rounded-md border hover:bg-gray-50 transition"
+                      >
+                        <span>{item}</span>
+                        <span className="text-gray-400">{">"}</span>
+                      </button>
+                    )
+                  )}
                 </nav>
               )}
             </div>
@@ -88,7 +90,7 @@ export default function HomePage() {
           {/* Main Content */}
           <main className="col-span-12 md:col-span-9">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[1, 2].map((i) => (
+              {[1, 2].map(i => (
                 <div
                   key={i}
                   className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg p-4 flex flex-col space-y-4"
