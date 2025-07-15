@@ -6,6 +6,7 @@ interface InitialContentProps {
   className?: string;
   backgroundImage?: string;
   backgroundImageAlt?: string;
+  priority?: boolean;
 }
 
 export default function InitialContent({
@@ -13,6 +14,7 @@ export default function InitialContent({
   className = "",
   backgroundImage,
   backgroundImageAlt = "Background image",
+  priority = false,
 }: InitialContentProps) {
   return (
     <div
@@ -25,6 +27,7 @@ export default function InitialContent({
             src={backgroundImage}
             alt={backgroundImageAlt}
             fill
+            priority={priority}
             className="object-cover"
           />
         </div>

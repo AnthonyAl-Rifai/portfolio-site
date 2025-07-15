@@ -6,6 +6,7 @@ interface ScrollContentProps {
   className?: string;
   backgroundImage?: string;
   backgroundImageAlt?: string;
+  backgroundOpacity?: number;
 }
 
 export default function ScrollContent({
@@ -13,6 +14,7 @@ export default function ScrollContent({
   className = "",
   backgroundImage,
   backgroundImageAlt = "Background image",
+  backgroundOpacity = 1,
 }: ScrollContentProps) {
   return (
     <div
@@ -26,6 +28,7 @@ export default function ScrollContent({
             alt={backgroundImageAlt}
             fill
             className="object-cover"
+            style={{ opacity: backgroundOpacity }}
           />
         </div>
       )}
