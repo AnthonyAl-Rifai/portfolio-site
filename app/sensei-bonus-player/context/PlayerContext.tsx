@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import Player from "../player";
 import LoadingPlayer from "../components/AudioPlayer/LoadingPlayer";
+import playlistConfig from "../configs/one-punch-eraser.json";
 
 const PlayerContext = createContext<Player | undefined>(undefined);
 
@@ -23,6 +24,29 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({ children }) => {
     }
     setPlayer(instance);
   }, []);
+
+  // Load playlist when player is ready
+  useEffect(() => {
+    if (player && isClient) {
+      console.log("Loading playlist...");
+      // Remove artwork URLs to avoid 500 errors, keep the rest of the playlist
+      const fixedPlaylist = playlistConfig.album.map(track => ({
+        ...track,
+        artwork: [], // Remove artwork for now to avoid 500 errors
+      }));
+
+      console.log("Playlist to load:", fixedPlaylist);
+
+      player
+        .load(fixedPlaylist)
+        .then(() => {
+          console.log("Playlist loaded successfully");
+        })
+        .catch(error => {
+          console.error("Failed to load playlist:", error);
+        });
+    }
+  }, [player, isClient]);
 
   // Only render children when player is ready
   return (

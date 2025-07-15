@@ -33,9 +33,7 @@ export default function ScrollContent({
           />
         </div>
       )}
-      <div
-        className={`relative z-10 h-full ${backgroundImage ? "" : "bg-blue-400"}`}
-      >
+      <div className="relative z-10 h-full">
         <GridSection className="h-full">{children}</GridSection>
       </div>
     </div>

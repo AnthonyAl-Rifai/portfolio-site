@@ -188,12 +188,15 @@ class AudioContextManager extends PlayerEventEmitter {
       this.log.info("creating audio context");
       this.audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
+      console.log("AudioContext created:", this.audioContext.state);
       audioAssetFetcher.initialize(this.audioContext);
     }
 
     await this.reset();
 
+    console.log("Fetching assets for:", assets.mp3.forward);
     const processedAssets = await this.fetchAssets(assets);
+    console.log("Assets fetched successfully:", processedAssets);
     this.activeBuffer = processedAssets.buffers.forward;
 
     this.setState(PlayerState.READY);
@@ -434,9 +437,15 @@ class AudioContextManager extends PlayerEventEmitter {
   }
 
   private resumeAudioContext() {
+    console.log("resumeAudioContext called");
+    console.log("AudioContext state before resume:", this.audioContext?.state);
+
     if (!this.audioContext || this.audioContext.state === "running") return;
     this.log.info("resuming audio context");
     this.audioContext.resume();
+
+    console.log("AudioContext state after resume:", this.audioContext.state);
+
     const now = this.audioContext.currentTime;
     this.audioGainNode?.gain.linearRampToValueAtTime(
       1,
@@ -615,6 +624,11 @@ class AudioContextManager extends PlayerEventEmitter {
   }
 
   async play() {
+    console.log("AudioContextManager.play() called");
+    console.log("Current state:", this.currentState);
+    console.log("Active buffer:", !!this.activeBuffer);
+    console.log("AudioContext state:", this.audioContext?.state);
+
     if (!this.activeBuffer) {
       if (this.currentState === PlayerState.LOADING) return;
       // Exit if no buffer has been loaded
@@ -623,11 +637,14 @@ class AudioContextManager extends PlayerEventEmitter {
     this.emit(PLAYER_EVENTS.play);
 
     if (this.isSeeking) {
+      console.log("Currently seeking, waiting for seek to complete...");
       await this.onSeeked();
     } else {
       if (this.audioContext?.state === "suspended") {
+        console.log("AudioContext suspended, resuming...");
         this.resumeAudioContext();
       }
+      console.log("Spinning up...");
       await this.spinUp(this.currentBufferPosition === 0 ? 0.25 : 1);
       if (
         !this.audioBufferSource ||
@@ -638,6 +655,7 @@ class AudioContextManager extends PlayerEventEmitter {
         return;
     }
 
+    console.log("Setting state to PLAYING");
     this.setState(PlayerState.PLAYING);
     this.emit(PLAYER_EVENTS.playing);
   }

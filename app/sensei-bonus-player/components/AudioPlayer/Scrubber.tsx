@@ -58,7 +58,7 @@ const Scrubber: React.FC = () => {
           0,
           Math.PI * 2
         );
-        ctx.fillStyle = "#E9EBE9"; // Adjust shadow color and alpha as needed
+        ctx.fillStyle = "transparent"; // Make shadow transparent
         ctx.filter = "blur(" + bottomShadowBlur + "px)";
         ctx.fill();
         ctx.restore();
@@ -76,7 +76,7 @@ const Scrubber: React.FC = () => {
           0,
           Math.PI * 2
         );
-        ctx.fillStyle = "#949695"; // Adjust shadow color and alpha as needed
+        ctx.fillStyle = "transparent"; // Make shadow transparent
         ctx.filter = "blur(" + topShadowBlur + "px)";
         ctx.fill();
         ctx.restore();
@@ -88,12 +88,12 @@ const Scrubber: React.FC = () => {
           canvas.width,
           canvas.height
         );
-        gradient.addColorStop(0, "rgba(204,204,204,1)");
-        gradient.addColorStop(0.34, "rgba(195,195,194,1)");
-        gradient.addColorStop(0.7, "rgba(186,186,187,1)");
-        gradient.addColorStop(1, "rgba(177,176,176,1)");
+        gradient.addColorStop(0, "rgba(204,204,204,0)");
+        gradient.addColorStop(0.34, "rgba(195,195,194,0)");
+        gradient.addColorStop(0.7, "rgba(186,186,187,0)");
+        gradient.addColorStop(1, "rgba(177,176,176,0)");
 
-        // Draw the circular audio player with gradient fill
+        // Draw the circular audio player with transparent fill
         ctx.beginPath();
         ctx.arc(
           canvas.width / 2,
@@ -102,11 +102,11 @@ const Scrubber: React.FC = () => {
           0,
           Math.PI * 2
         );
-        ctx.fillStyle = gradient;
+        ctx.fillStyle = "transparent";
         ctx.fill();
 
         // Draw the border around the circle
-        ctx.strokeStyle = "#525252";
+        ctx.strokeStyle = "#000000";
         ctx.lineWidth = 1.2; // Set border thickness if desired
         ctx.stroke();
 
@@ -122,8 +122,8 @@ const Scrubber: React.FC = () => {
           canvas.width,
           canvas.height
         );
-        shadowGradient.addColorStop(0, "rgba(231,235,232,1)");
-        shadowGradient.addColorStop(0.34, "rgba(231,235,232,0.6)");
+        shadowGradient.addColorStop(0, "rgba(231,235,232,0)");
+        shadowGradient.addColorStop(0.34, "rgba(231,235,232,0)");
         shadowGradient.addColorStop(0.6, "rgba(231,235,232,0)");
         shadowGradient.addColorStop(1, "rgba(231,235,232,0)");
 
@@ -154,7 +154,7 @@ const Scrubber: React.FC = () => {
         ctx.beginPath();
         ctx.arc(centerX, centerY, innerShadowRadius, 0, Math.PI * 2);
         // Use whatever fill style you want for the inner circle
-        ctx.fillStyle = gradient;
+        ctx.fillStyle = "transparent";
         ctx.fill();
 
         // Draw the center smaller circle
@@ -167,13 +167,13 @@ const Scrubber: React.FC = () => {
           centerX + smallerCircleRadius,
           centerY + smallerCircleRadius
         );
-        innerCircleGradient.addColorStop(0, "#D4D5D4");
-        innerCircleGradient.addColorStop(0.12, "#DDDCDC");
-        innerCircleGradient.addColorStop(0.25, "#CACACA");
-        innerCircleGradient.addColorStop(0.33, "#C4C4C5");
-        innerCircleGradient.addColorStop(0.38, "#828283");
-        innerCircleGradient.addColorStop(0.8, "#6A6B6B");
-        innerCircleGradient.addColorStop(1, "#929292");
+        innerCircleGradient.addColorStop(0, "rgba(212,213,212,0)");
+        innerCircleGradient.addColorStop(0.12, "rgba(221,220,220,0)");
+        innerCircleGradient.addColorStop(0.25, "rgba(202,202,202,0)");
+        innerCircleGradient.addColorStop(0.33, "rgba(196,196,197,0)");
+        innerCircleGradient.addColorStop(0.38, "rgba(130,130,131,0)");
+        innerCircleGradient.addColorStop(0.8, "rgba(106,107,107,0)");
+        innerCircleGradient.addColorStop(1, "rgba(146,146,146,0)");
 
         ctx.beginPath();
         ctx.arc(
@@ -183,11 +183,11 @@ const Scrubber: React.FC = () => {
           0,
           Math.PI * 2
         );
-        ctx.fillStyle = innerCircleGradient; // Adjust this value to change the fill color of the smaller circle
+        ctx.fillStyle = "transparent"; // Make inner circle transparent
         ctx.fill();
 
         // Draw the border around the circle
-        ctx.strokeStyle = "#525252";
+        ctx.strokeStyle = "#000000";
         ctx.lineWidth = 0.5; // Set border thickness if desired
         ctx.stroke();
 
