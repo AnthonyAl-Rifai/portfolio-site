@@ -3,7 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export default function SectionTitle({ name }: { name: string }) {
+export default function SectionTitle({
+  name,
+  isSticky = false,
+}: {
+  name: string;
+  isSticky?: boolean;
+}) {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLHeadingElement>(null);
 
@@ -35,8 +41,10 @@ export default function SectionTitle({ name }: { name: string }) {
 
   return (
     <div
-      className="h-[var(--layout-size)] min-h-[var(--layout-size)] bg-white w-full sticky z-[100] flex items-center"
-      style={{ top: "var(--layout-size)" }}
+      className={`h-[var(--layout-size)] min-h-[var(--layout-size)] bg-white w-full z-[100] flex items-center ${
+        isSticky ? "sticky" : ""
+      }`}
+      style={isSticky ? { top: "var(--layout-size)" } : {}}
     >
       {/* heading */}
       <h1 ref={sectionRef} className="text-4xl font-bold mx-4">
@@ -52,7 +60,7 @@ export default function SectionTitle({ name }: { name: string }) {
         transition={{
           duration: 0.8,
           ease: "easeOut",
-          delay: 0.5,
+          delay: 0.2,
         }}
         className="bg-black"
         style={{

@@ -28,7 +28,7 @@ export default function ScrollSection({
     <>
       <section ref={sectionRef} className={`relative ${sectionHeight}`}>
         <div className="sticky top-0 h-screen overflow-hidden">
-          <SectionTitle name={name} />
+          <SectionTitle name={name} isSticky />
 
           <div
             className="relative"
