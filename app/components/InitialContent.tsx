@@ -28,6 +28,7 @@ export default function InitialContent({
             alt={backgroundImageAlt}
             fill
             priority={priority}
+            sizes="(max-width: 768px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 2rem), calc(100vw - 2rem)"
             className="object-cover"
           />
         </div>
