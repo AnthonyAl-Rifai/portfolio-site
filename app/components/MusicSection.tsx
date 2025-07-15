@@ -43,7 +43,7 @@ export default function MusicSection() {
             alt="Spotify"
             width={60}
             height={60}
-            className="object-contain opacity-80"
+            className="object-contain opacity-85"
           />
         </motion.a>
 
@@ -62,11 +62,11 @@ export default function MusicSection() {
           }}
         >
           <Image
-            src="/bandcamp-button-bc-circle-black-64.png"
+            src="/bandcamp-button-bc-circle-black-256.png"
             alt="Bandcamp"
             width={60}
             height={60}
-            className="object-contain opacity-80"
+            className="object-contain opacity-85"
           />
         </motion.a>
       </div>
@@ -78,17 +78,9 @@ export default function MusicSection() {
       backgroundImage="/sensei-bonus-3.jpeg"
       backgroundImageAlt="abstract red and white album cover"
       backgroundOpacity={0.6}
-      className="border-r"
+      className="border-r backdrop-blur-sm"
     >
-      <div className="col-span-2 row-span-3 bg-purple-200/80 flex items-center justify-center rounded backdrop-blur-sm">
-        Scroll 1
-      </div>
-      <div className="col-span-2 row-span-3 bg-yellow-200/80 flex items-center justify-center rounded backdrop-blur-sm">
-        Scroll 2
-      </div>
-      <div className="row-start-4 col-span-4 row-span-full bg-pink-200/80 flex items-center justify-center rounded backdrop-blur-sm">
-        Scroll 3
-      </div>
+      <div></div>
     </ScrollContent>
   );
 
