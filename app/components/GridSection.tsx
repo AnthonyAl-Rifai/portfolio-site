@@ -17,7 +17,8 @@ export default function GridSection({
     <div
       className={`
         w-full
-        ${fillParent ? "flex-1 h-0 min-h-0" : "h-full"}
+        ${fillParent ? "flex-1 h-full min-h-0" : "h-full"}
+
         ${hasPadding ? "p-4" : ""}
         grid
         ${isLandscape ? "grid-cols-5" : "grid-cols-4"}

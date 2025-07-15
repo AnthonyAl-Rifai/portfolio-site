@@ -1,19 +1,18 @@
 import GridSection from "./GridSection";
 
-interface ScrollContentProps {
-  children?: React.ReactNode;
-  className?: string;
-  useGrid?: boolean;
-}
-
 export default function ScrollContent({
   children,
   className = "",
-  useGrid = true,
-}: ScrollContentProps) {
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className={`w-full h-full ${className}`}>
-      {useGrid ? <GridSection>{children}</GridSection> : children}
+    <div
+      className="w-full"
+      style={{ height: "calc(100vh - 2 * var(--layout-size))" }}
+    >
+      <GridSection className={`h-full ${className}`}>{children}</GridSection>
     </div>
   );
 }
