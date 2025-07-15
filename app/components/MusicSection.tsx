@@ -84,7 +84,7 @@ export default function MusicSection() {
           </motion.a>
 
           <motion.a
-            href="https://music.apple.com/artist/sensei-bonus/1234567890"
+            href="https://music.apple.com/us/artist/sensei-bonus/1725067885"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center hover:scale-110 transition-transform"
