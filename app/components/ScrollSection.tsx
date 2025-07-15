@@ -27,9 +27,14 @@ export default function ScrollSection({
   return (
     <>
       <section ref={sectionRef} className={`relative ${sectionHeight}`}>
-        <div className="sticky top-0 h-screen overflow-hidden">
-          <SectionTitle name={name} isSticky />
+        {/* This container tracks full scroll for animation */}
+        <div className="sticky top-0 h-screen overflow-hidden z-10">
+          {/* SectionTitle sticks to top */}
+          <div className="h-[var(--layout-size)] z-20 bg-white sticky top-[var(--layout-size)]">
+            <SectionTitle name={name} />
+          </div>
 
+          {/* Scrollable content below the sticky title */}
           <div
             className="relative"
             style={{ height: `calc(100% - var(--layout-size))` }}
@@ -37,8 +42,12 @@ export default function ScrollSection({
             <div className="absolute inset-0 z-0">{initialComponent}</div>
 
             <motion.div
-              className="absolute top-0 left-0 h-full w-full z-10"
-              style={{ x: scrollX }}
+              className="absolute left-0 w-full z-10"
+              style={{
+                x: scrollX,
+                top: "var(--layout-size)", // pushes it down below the sticky title
+                height: `calc(100% - var(--layout-size))`,
+              }}
             >
               {scrollComponent}
             </motion.div>
