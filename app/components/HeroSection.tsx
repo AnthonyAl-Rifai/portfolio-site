@@ -26,7 +26,7 @@ export default function HeroSection() {
 
   return (
     <Section id="hero">
-      <GridSection>
+      <GridSection hasPadding={false}>
         <h1
           className="text-6xl mx-4 font-bold overflow-hidden row-start-3 col-span-full md:text-7xl md:row-start-4 pt-4 self-center sm:flex md:block lg:text-9xl"
           style={{ minHeight: "2.5em" }}
