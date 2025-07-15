@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 export default function SectionTitle({
   name,
@@ -10,66 +10,40 @@ export default function SectionTitle({
   name: string;
   isSticky?: boolean;
 }) {
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    const currentRef = sectionRef.current;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        }
-      },
-      {
-        threshold: 0.3, // Trigger when 30% of the section is visible
-        rootMargin: "-50px 0px", // Start animation slightly before the section is fully in view
-      }
-    );
-
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, {
+    margin: "-50px 0px", // similar to your rootMargin
+    amount: 0.3, // similar to threshold
+    once: false, // 👈 allow it to re-trigger every time it enters
+  });
 
   return (
     <div
+      ref={ref}
       className={`relative h-[var(--layout-size)] min-h-[var(--layout-size)] bg-white w-full flex items-center ${
         isSticky ? "sticky" : ""
       }`}
       style={isSticky ? { top: "var(--layout-size)" } : {}}
     >
-      {/* heading */}
-      <h1 ref={sectionRef} className="text-4xl font-bold mx-4">
-        {name}
-      </h1>
+      <h1 className="text-4xl font-bold mx-4">{name}</h1>
 
-      {/* Animated underline - extends to edges */}
       <motion.div
-        initial={{ width: 0, opacity: 0 }}
+        initial={{ scaleX: 0, opacity: 0 }}
         animate={
-          isInView ? { width: "100%", opacity: 1 } : { width: 0, opacity: 0 }
+          isInView ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }
         }
         transition={{
-          duration: 0.8,
+          duration: 0.6,
           ease: "easeOut",
           delay: 0.2,
         }}
-        className="bg-black"
+        className="bg-black origin-left"
         style={{
           position: "absolute",
           left: 0,
           right: 0,
           bottom: 0,
           height: 1,
-          transformOrigin: "right",
         }}
       />
     </div>
