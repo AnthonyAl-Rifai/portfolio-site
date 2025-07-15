@@ -1,3 +1,5 @@
+import { forwardRef } from "react";
+
 interface SectionProps {
   id: string;
   className?: string;
@@ -5,16 +7,13 @@ interface SectionProps {
   useDvhHeight?: boolean;
 }
 
-export default function Section({
-  id,
-  className = "",
-  children,
-  useDvhHeight = false,
-}: SectionProps) {
-  return (
-    <section
-      id={id}
-      className={`
+const Section = forwardRef<HTMLElement, SectionProps>(
+  ({ id, className = "", children, useDvhHeight = false }, ref) => {
+    return (
+      <section
+        ref={ref}
+        id={id}
+        className={`
         w-full flex flex-col
         ${
           useDvhHeight
@@ -23,9 +22,14 @@ export default function Section({
         }
         ${className}
       `}
-      style={{ scrollMarginTop: "var(--layout-size)" }}
-    >
-      {children}
-    </section>
-  );
-}
+        style={{ scrollMarginTop: "var(--layout-size)" }}
+      >
+        {children}
+      </section>
+    );
+  }
+);
+
+Section.displayName = "Section";
+
+export default Section;

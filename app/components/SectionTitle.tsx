@@ -34,7 +34,10 @@ export default function SectionTitle({ name }: { name: string }) {
   }, []);
 
   return (
-    <div className="h-[var(--layout-size)] w-full flex flex-col justify-center relative">
+    <div
+      className="h-[var(--layout-size)] min-h-[var(--layout-size)] w-full sticky z-[100] flex items-center"
+      style={{ top: "var(--layout-size)" }}
+    >
       {/* heading */}
       <h1 ref={sectionRef} className="text-4xl font-bold mx-4">
         {name}

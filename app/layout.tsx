@@ -1,10 +1,12 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MenuNav from "./components/MenuNav";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import AnimatedVerticalLine from "./components/AnimatedVerticalLine";
 import { motion } from "framer-motion";
 import { OrientationProvider } from "./components/OrientationContext";
 
@@ -21,56 +23,40 @@ export default function RootLayout({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [animateBorder, setAnimateBorder] = useState(false);
-
-  // Responsive state for desktop breakpoint
   const [hasMounted, setHasMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [hasRevealed, setHasRevealed] = useState(false);
+  const [topRevealed, setTopRevealed] = useState(false);
+  const [bottomRevealed, setBottomRevealed] = useState(false);
+
+  const TOP_ANIMATION_DURATION = 0.1;
+  const BOTTOM_ANIMATION_DELAY = 0.05;
+  const BOTTOM_ANIMATION_DURATION = 1.2;
+
+  const topTargetLeft = "var(--layout-size)";
+  const bottomTargetLeft = isDesktop ? "var(--layout-size)" : "-5px";
 
   useEffect(() => {
     setHasMounted(true);
-    function handleResize() {
+    const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
-    }
-    handleResize(); // Set initial value on mount
+    };
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
   useEffect(() => {
-    // Wait for layout to stabilize, then trigger animation
     const timer = setTimeout(() => setAnimateBorder(true), 10);
     return () => clearTimeout(timer);
   }, []);
-
-  // Track if initial vertical reveal animation is done
-  const [hasRevealed, setHasRevealed] = useState(false);
-
-  // State for initial animation of both segments
-  const [topRevealed, setTopRevealed] = useState(false);
-  const [bottomRevealed, setBottomRevealed] = useState(false);
-
-  // Timing for staggered animation
-  const TOP_ANIMATION_DURATION = 0.1; // seconds
-  const BOTTOM_ANIMATION_DELAY = 0.05; // seconds, just before top finishes
-  const BOTTOM_ANIMATION_DURATION = 1.2; // seconds
-
-  // After initial animation, use hasRevealed for responsive left animation
-
-  // Top segment left position: always var(--layout-size)
-  const topTargetLeft = "var(--layout-size)";
-  // Bottom segment left position: desktop = var(--layout-size), mobile = 0
-  const bottomTargetLeft = isDesktop ? "var(--layout-size)" : "-5px";
 
   return (
     <html lang="en">
@@ -88,7 +74,8 @@ export default function RootLayout({
               onMenuToggle={() => setMenuOpen(!menuOpen)}
               onNameClick={() => setMenuOpen(false)}
             />
-            {/* Header animated border migrated to Framer Motion */}
+
+            {/* Header animated border */}
             <motion.span
               initial={{ width: 0, opacity: 0 }}
               animate={
@@ -98,9 +85,9 @@ export default function RootLayout({
               }
               transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
               className="fixed left-0 top-[var(--layout-size)] h-px bg-black z-40"
-              style={{ width: "100%" }}
             />
-            {/* Top segment: animates height first, always stays at right border of button */}
+
+            {/* Top segment */}
             {hasMounted && (
               <motion.div
                 initial={{ height: 0, opacity: 0, left: topTargetLeft }}
@@ -118,30 +105,22 @@ export default function RootLayout({
                 }}
                 className="fixed bg-black z-40"
                 style={{
-                  left: undefined,
                   top: 0,
                   width: 1,
                   height: "var(--layout-size)",
                 }}
               />
             )}
-            {/* Bottom segment: animates height after top, then animates left with sidebar */}
+
+            {/* Bottom segment */}
             {hasMounted && (
               <motion.div
                 initial={{ height: 0, opacity: 0, left: bottomTargetLeft }}
-                animate={
-                  bottomRevealed
-                    ? {
-                        height: "calc(100vh - var(--layout-size))",
-                        opacity: 1,
-                        left: bottomTargetLeft,
-                      }
-                    : {
-                        height: "calc(100vh - var(--layout-size))",
-                        opacity: 1,
-                        left: bottomTargetLeft,
-                      }
-                }
+                animate={{
+                  height: "calc(100vh - var(--layout-size))",
+                  opacity: 1,
+                  left: bottomTargetLeft,
+                }}
                 transition={
                   bottomRevealed
                     ? { left: { duration: 0.5, ease: "easeOut" } }
@@ -163,7 +142,6 @@ export default function RootLayout({
                 }}
                 className="fixed bg-black z-40"
                 style={{
-                  left: undefined,
                   top: "var(--layout-size)",
                   width: 1,
                   height: "calc(100vh - var(--layout-size))",
@@ -171,17 +149,16 @@ export default function RootLayout({
               />
             )}
 
-            {/* Main content area, offset by sidebar */}
+            {/* Main content scrolls normally */}
             <div className="transition-all duration-500 pl-0 md:pl-[var(--layout-size)]">
-              <main
-                className={`relative w-full pt-[var(--layout-size)] ${
-                  menuOpen ? "overflow-hidden" : "overflow-y-auto"
-                }`}
-              >
+              <main className={`relative w-full pt-[var(--layout-size)]`}>
                 {children}
               </main>
               <MenuNav open={menuOpen} onClose={() => setMenuOpen(false)} />
             </div>
+
+            {/* Animated vertical line */}
+            <AnimatedVerticalLine />
           </div>
         </OrientationProvider>
       </body>
