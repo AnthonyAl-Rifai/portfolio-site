@@ -6,6 +6,7 @@ import SectionTitle from "./SectionTitle";
 
 interface ScrollSectionProps {
   name: string;
+  id: string;
   sectionHeight?: string;
   initialComponent: React.ReactNode;
   scrollComponent: React.ReactNode;
@@ -13,6 +14,7 @@ interface ScrollSectionProps {
 
 export default function ScrollSection({
   name,
+  id,
   sectionHeight = "h-[300vh]",
   initialComponent,
   scrollComponent,
@@ -26,7 +28,12 @@ export default function ScrollSection({
 
   return (
     <>
-      <section ref={sectionRef} className={`relative ${sectionHeight}`}>
+      <section
+        ref={sectionRef}
+        id={id}
+        className={`relative ${sectionHeight}`}
+        style={{ scrollMarginTop: "var(--layout-size)" }}
+      >
         {/* This container tracks full scroll for animation */}
         <div className="sticky top-0 h-screen overflow-hidden z-10">
           {/* SectionTitle sticks to top */}

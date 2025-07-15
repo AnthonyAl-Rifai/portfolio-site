@@ -32,6 +32,7 @@ export default function AboutSection() {
   return (
     <ScrollSection
       name="About"
+      id="about"
       initialComponent={initialComponent}
       scrollComponent={scrollComponent}
     />
