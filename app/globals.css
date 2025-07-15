@@ -59,7 +59,8 @@
 } */
 
 html {
-  scroll-behavior: smooth;
+  /* Lenis handles smooth scrolling */
+  scroll-behavior: auto;
 }
 
 body {
