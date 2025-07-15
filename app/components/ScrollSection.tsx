@@ -27,40 +27,27 @@ export default function ScrollSection({
   const scrollX = useTransform(scrollYProgress, [0.25, 0.75], ["-100%", "0%"]);
 
   return (
-    <>
-      <section
-        ref={sectionRef}
-        id={id}
-        className={`relative ${sectionHeight}`}
-        style={{ scrollMarginTop: "var(--layout-size)" }}
-      >
-        {/* This container tracks full scroll for animation */}
-        <div className="sticky top-0 h-screen overflow-hidden z-10">
-          {/* SectionTitle sticks to top */}
-          <div className="h-[var(--layout-size)] z-20 bg-white sticky top-[var(--layout-size)]">
-            <SectionTitle name={name} />
-          </div>
+    <section
+      ref={sectionRef}
+      id={id}
+      className={`relative ${sectionHeight}`}
+      style={{ scrollMarginTop: "var(--layout-size)" }}
+    >
+      {/* Sticky container including both title + animated scroll content */}
+      <div className="sticky top-[var(--layout-size)] h-[calc(100vh-var(--layout-size))] overflow-hidden z-10">
+        <SectionTitle name={name} />
 
-          {/* Scrollable content below the sticky title */}
-          <div
-            className="relative"
-            style={{ height: `calc(100% - var(--layout-size))` }}
+        <div className="relative w-full h-full">
+          <div className="absolute inset-0 z-0">{initialComponent}</div>
+
+          <motion.div
+            className="absolute top-0 left-0 h-full w-full z-10"
+            style={{ x: scrollX }}
           >
-            <div className="absolute inset-0 z-0">{initialComponent}</div>
-
-            <motion.div
-              className="absolute left-0 w-full z-10"
-              style={{
-                x: scrollX,
-                top: "var(--layout-size)", // pushes it down below the sticky title
-                height: `calc(100% - var(--layout-size))`,
-              }}
-            >
-              {scrollComponent}
-            </motion.div>
-          </div>
+            {scrollComponent}
+          </motion.div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
