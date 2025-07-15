@@ -5,32 +5,22 @@ import ScrollContent from "./ScrollContent";
 export default function AboutSection() {
   const initialComponent = (
     <InitialContent>
-      <div className="col-span-2 row-span-2 bg-red-200 flex items-center justify-center rounded">
-        Initial 1
-      </div>
-      <div className="col-span-2 row-span-2 bg-blue-200 flex items-center justify-center rounded">
-        Initial 2
-      </div>
-      <div className="col-span-4 row-span-2 bg-green-200 flex items-center justify-center rounded">
-        Initial 3
-      </div>
-      <div className="row-start-5 col-span-4 row-span-full bg-orange-200 flex items-center justify-center rounded">
-        Initial 4
-      </div>
+      <p className="text-4xl font-bold col-span-full row-span-full flex i justify-center rounded p-6 text-center leading-relaxed">
+        My name is Anthony. I&apos;m a human based out of Los Angeles.
+      </p>
     </InitialContent>
   );
 
   const scrollComponent = (
     <ScrollContent className="bg-white border-r">
-      <div className="col-span-2 row-span-3 bg-purple-200 flex items-center justify-center rounded">
-        Scroll 1
-      </div>
-      <div className="col-span-2 row-span-3 bg-yellow-200 flex items-center justify-center rounded">
-        Scroll 2
-      </div>
-      <div className="row-start-4 col-span-4 row-span-full bg-pink-200 flex items-center justify-center rounded">
-        Scroll 3
-      </div>
+      <p className="text-xl font-bold col-span-full row-span-full flex justify-center rounded p-6 text-center leading-relaxed">
+        I&apos;m a full stack software engineer with a frontend focus and a
+        background in music. I&apos;ve worked on large platforms, solving UX
+        challenges and collaborating across teams. Before tech, I composed music
+        for TV and ads. I still write and perform, and occasionally host
+        backyard BBQ popups in LA. I care about craft, clarity, and building
+        things that connect.
+      </p>
     </ScrollContent>
   );
 

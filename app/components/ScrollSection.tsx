@@ -36,9 +36,9 @@ export default function ScrollSection({
       <div className="sticky top-[var(--layout-size)] h-[calc(100vh-var(--layout-size))] overflow-hidden z-10">
         <SectionTitle name={name} />
 
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full ">
           {/* Initial component: base layer */}
-          <div className="absolute inset-0 z-0 h-full w-full">
+          <div className="absolute inset-0 z-0 h-full w-full ">
             {initialComponent}
           </div>
 
