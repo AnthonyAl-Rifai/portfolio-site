@@ -41,7 +41,7 @@ export default function SectionTitle({
 
   return (
     <div
-      className={`h-[var(--layout-size)] min-h-[var(--layout-size)] bg-white w-full flex items-center ${
+      className={`relative h-[var(--layout-size)] min-h-[var(--layout-size)] bg-white w-full flex items-center ${
         isSticky ? "sticky" : ""
       }`}
       style={isSticky ? { top: "var(--layout-size)" } : {}}
