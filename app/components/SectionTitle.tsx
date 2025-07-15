@@ -33,7 +33,7 @@ export default function SectionTitle({
           isInView ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }
         }
         transition={{
-          duration: 0.6,
+          duration: 1.1,
           ease: "easeOut",
           delay: 0.2,
         }}

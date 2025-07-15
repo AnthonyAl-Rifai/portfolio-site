@@ -32,7 +32,7 @@ export default function RootLayout({
 
   const TOP_ANIMATION_DURATION = 0.1;
   const BOTTOM_ANIMATION_DELAY = 0.05;
-  const BOTTOM_ANIMATION_DURATION = 1.2;
+  const BOTTOM_ANIMATION_DURATION = 1.1;
 
   const topTargetLeft = "var(--layout-size)";
   const bottomTargetLeft = isDesktop ? "var(--layout-size)" : "-5px";

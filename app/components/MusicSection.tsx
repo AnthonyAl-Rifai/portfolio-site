@@ -39,7 +39,7 @@ export default function MusicSection() {
             type: "spring",
             stiffness: 300,
             damping: 25,
-            delay: 0.5,
+            delay: 1,
           }}
         >
           <a
