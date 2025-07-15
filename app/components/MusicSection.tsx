@@ -29,94 +29,64 @@ export default function MusicSection() {
     >
       <div
         ref={logoContainerRef}
-        className="col-start-4 row-start-7 flex flex-col items-center justify-center gap-4 rounded backdrop-blur-sm hover:bg-orange-300/80 transition-colors relative"
+        className="col-start-4 row-start-5 flex flex-col items-center justify-center gap-4 rounded relative"
       >
-        <div className="flex flex-col items-center gap-4">
-          <motion.a
+        <motion.div
+          className="flex flex-col items-center gap-4"
+          initial={{ x: 100, opacity: 0 }}
+          animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 25,
+            delay: 0.5,
+          }}
+        >
+          <a
             href="https://www.instagram.com/senseibonus/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center hover:scale-110 transition-transform"
-            initial={{ x: 100, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 25,
-              delay: 0.1,
-            }}
           >
             <InstagramIcon size={40} color="#000" />
-          </motion.a>
+          </a>
 
-          <motion.a
+          <a
             href="https://open.spotify.com/artist/3Jm51SlB9hlhiFcMdSuRjs?si=GWPbjCiMQ1mth2t6bYnvtg"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center hover:scale-110 transition-transform"
-            initial={{ x: 100, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 25,
-              delay: 0.2,
-            }}
           >
             <SpotifyIcon size={40} color="#000" />
-          </motion.a>
+          </a>
 
-          <motion.a
+          <a
             href="https://senseibonus.bandcamp.com/album/one-punch-eraser"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center hover:scale-110 transition-transform"
-            initial={{ x: 100, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 25,
-              delay: 0.3,
-            }}
           >
             <BandcampIcon size={40} color="#000" />
-          </motion.a>
+          </a>
 
-          <motion.a
+          <a
             href="https://music.apple.com/us/artist/sensei-bonus/1725067885"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center hover:scale-110 transition-transform"
-            initial={{ x: 100, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 25,
-              delay: 0.4,
-            }}
           >
             <AppleMusicIcon size={40} color="#000" />
-          </motion.a>
+          </a>
 
-          <motion.a
+          <a
             href="https://www.youtube.com/@senseibonus"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center hover:scale-110 transition-transform"
-            initial={{ x: 100, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 25,
-              delay: 0.5,
-            }}
           >
             <YoutubeIcon size={40} color="#000" />
-          </motion.a>
-        </div>
+          </a>
+        </motion.div>
       </div>
     </InitialContent>
   );
