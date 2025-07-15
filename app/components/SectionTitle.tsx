@@ -35,7 +35,7 @@ export default function SectionTitle({ name }: { name: string }) {
 
   return (
     <div
-      className="h-[var(--layout-size)] min-h-[var(--layout-size)] w-full sticky z-[100] flex items-center"
+      className="h-[var(--layout-size)] min-h-[var(--layout-size)] bg-white w-full sticky z-[100] flex items-center"
       style={{ top: "var(--layout-size)" }}
     >
       {/* heading */}
