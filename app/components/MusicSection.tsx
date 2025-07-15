@@ -3,12 +3,16 @@
 import ScrollSection from "./ScrollSection";
 import InitialContent from "./InitialContent";
 import ScrollContent from "./ScrollContent";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { PlayerProvider } from "../sensei-bonus-player/context/PlayerContext";
 import { ViewportProvider } from "../sensei-bonus-player/context/ViewportContext";
-import AudioPlayer from "../sensei-bonus-player/components/AudioPlayer/AudioPlayer";
+import MinimalAudioPlayer from "../sensei-bonus-player/components/AudioPlayer/MinimalAudioPlayer";
+import InstagramIcon from "../icons/InstagramIcon";
+import SpotifyIcon from "../icons/SpotifyIcon";
+import BandcampIcon from "../icons/BandcampIcon";
+import AppleMusicIcon from "../icons/AppleMusicIcon";
+import YoutubeIcon from "../icons/YoutubeIcon";
 
 export default function MusicSection() {
   const logoContainerRef = useRef(null);
@@ -27,51 +31,92 @@ export default function MusicSection() {
         ref={logoContainerRef}
         className="col-start-4 row-start-7 flex flex-col items-center justify-center gap-4 rounded backdrop-blur-sm hover:bg-orange-300/80 transition-colors relative"
       >
-        <motion.a
-          href="https://open.spotify.com/artist/3Jm51SlB9hlhiFcMdSuRjs?si=GWPbjCiMQ1mth2t6bYnvtg"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center"
-          initial={false}
-          animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 500,
-            damping: 30,
-            delay: 0.1,
-          }}
-        >
-          <Image
-            src="/spotify-logo.png"
-            alt="Spotify"
-            width={60}
-            height={60}
-            className="object-contain opacity-85"
-          />
-        </motion.a>
+        <div className="flex flex-col items-center gap-4">
+          <motion.a
+            href="https://www.instagram.com/senseibonus/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center hover:scale-110 transition-transform"
+            initial={{ x: 100, opacity: 0 }}
+            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              delay: 0.1,
+            }}
+          >
+            <InstagramIcon size={40} color="#000" />
+          </motion.a>
 
-        <motion.a
-          href="https://senseibonus.bandcamp.com/album/one-punch-eraser"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center"
-          initial={false}
-          animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 500,
-            damping: 30,
-            delay: 0.3,
-          }}
-        >
-          <Image
-            src="/bandcamp-button-bc-circle-black-256.png"
-            alt="Bandcamp"
-            width={60}
-            height={60}
-            className="object-contain opacity-85"
-          />
-        </motion.a>
+          <motion.a
+            href="https://open.spotify.com/artist/3Jm51SlB9hlhiFcMdSuRjs?si=GWPbjCiMQ1mth2t6bYnvtg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center hover:scale-110 transition-transform"
+            initial={{ x: 100, opacity: 0 }}
+            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              delay: 0.2,
+            }}
+          >
+            <SpotifyIcon size={40} color="#000" />
+          </motion.a>
+
+          <motion.a
+            href="https://senseibonus.bandcamp.com/album/one-punch-eraser"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center hover:scale-110 transition-transform"
+            initial={{ x: 100, opacity: 0 }}
+            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              delay: 0.3,
+            }}
+          >
+            <BandcampIcon size={40} color="#000" />
+          </motion.a>
+
+          <motion.a
+            href="https://music.apple.com/artist/sensei-bonus/1234567890"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center hover:scale-110 transition-transform"
+            initial={{ x: 100, opacity: 0 }}
+            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              delay: 0.4,
+            }}
+          >
+            <AppleMusicIcon size={40} color="#000" />
+          </motion.a>
+
+          <motion.a
+            href="https://www.youtube.com/@senseibonus"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center hover:scale-110 transition-transform"
+            initial={{ x: 100, opacity: 0 }}
+            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              delay: 0.5,
+            }}
+          >
+            <YoutubeIcon size={40} color="#000" />
+          </motion.a>
+        </div>
       </div>
     </InitialContent>
   );
@@ -83,10 +128,10 @@ export default function MusicSection() {
       backgroundOpacity={0.6}
       className="border-r backdrop-blur-sm"
     >
-      <div className="col-start-2 col-end-7 row-start-3 row-end-9 md:col-start-3 md:col-end-7 md:row-start-4 md:row-end-10 lg:col-start-6 lg:col-end-12 lg:row-start-2 lg:row-end-5 flex items-center justify-center">
+      <div className="col-span-full row-span-full md:col-start-3 md:col-end-7 md:row-start-4 md:row-end-10 lg:col-start-6 lg:col-end-12 lg:row-start-2 lg:row-end-5 flex items-center justify-center">
         <ViewportProvider>
           <PlayerProvider>
-            <AudioPlayer />
+            <MinimalAudioPlayer />
           </PlayerProvider>
         </ViewportProvider>
       </div>
