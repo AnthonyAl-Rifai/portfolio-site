@@ -70,7 +70,7 @@ function LayoutContent({
       <MenuNav open={menuOpen} onClose={() => setMenuOpen(false)} />
 
       <main
-        className={`relative w-full h-full transition-[padding-left] duration-500 ${
+        className={`relative w-full h-full ${
           isMobileLandscape
             ? "pt-0 pr-[var(--layout-size)]"
             : "pt-[var(--layout-size)] pl-0 md:pl-[var(--layout-size)]"

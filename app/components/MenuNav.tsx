@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import GridSection from "./GridSection";
 import { useOrientation } from "./OrientationContext";
 
@@ -8,21 +9,41 @@ interface MenuNavProps {
 
 export default function MenuNav({ open, onClose }: MenuNavProps) {
   const { isMobileLandscape } = useOrientation();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const top = isMobileLandscape ? 0 : "var(--layout-size)";
+  const height = isMobileLandscape
+    ? "100dvh"
+    : "calc(100dvh - var(--layout-size))";
+  const left = isDesktop ? "var(--layout-size)" : 0;
+  const right = isMobileLandscape ? "var(--layout-size)" : 0;
+
+  const baseClass =
+    "bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20";
 
   return (
     <nav
-      className={`fixed bg-white/10 backdrop-blur-md border-t border-l transition-opacity duration-300 z-40 left-0 w-[100vw] md:left-[var(--layout-size)] md:w-[calc(100vw-var(--layout-size))] ${
-        open
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none"
-      }`}
+      className={`fixed bg-white/10 backdrop-blur-md transition-opacity duration-300 z-40 md:border-l
+        ${isMobileLandscape ? "border-r" : "border-t"}
+        ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+      `}
       style={{
-        top: "var(--layout-size)",
-        height: "calc(100dvh - var(--layout-size))",
+        top,
+        height,
+        left,
+        right,
       }}
     >
-      <GridSection isMobileLandscape={isMobileLandscape} fillParent={false}>
-        {/* About */}
+      <GridSection isMobileLandscape={isMobileLandscape} fillParent={true}>
         <a
           href="#about"
           onClick={onClose}
@@ -30,12 +51,11 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
             isMobileLandscape
               ? "col-span-1 row-span-full"
               : "col-span-4 row-span-2"
-          } md:row-span-8 lg:col-span-4 lg:row-span-6 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
+          } md:row-span-8 lg:col-span-4 lg:row-span-6 ${baseClass}`}
         >
           About
         </a>
 
-        {/* Web Dev */}
         <a
           href="#webdev"
           onClick={onClose}
@@ -43,12 +63,11 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
             isMobileLandscape
               ? "col-span-1 row-span-full"
               : "col-span-4 row-span-2"
-          } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
+          } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Web Dev
         </a>
 
-        {/* Music */}
         <a
           href="#music"
           onClick={onClose}
@@ -56,12 +75,11 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
             isMobileLandscape
               ? "col-span-1 row-span-full"
               : "col-span-4 row-span-2"
-          } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
+          } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Music
         </a>
 
-        {/* Resume */}
         <a
           href="#resume"
           onClick={onClose}
@@ -69,12 +87,11 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
             isMobileLandscape
               ? "col-span-1 row-span-full"
               : "col-span-4 row-span-2"
-          } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
+          } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Resume
         </a>
 
-        {/* Contact */}
         <a
           href="#contact"
           onClick={onClose}
@@ -82,7 +99,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
             isMobileLandscape
               ? "col-span-1 row-span-full"
               : "col-span-4 row-span-2"
-          } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
+          } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Contact
         </a>

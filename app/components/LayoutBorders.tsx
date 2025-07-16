@@ -88,39 +88,25 @@ export default function LayoutBorders() {
           {/* Bottom vertical segment */}
           {hasMounted && (
             <motion.div
-              initial={
-                bottomRevealed
-                  ? { left: isDesktop ? "var(--layout-size)" : "-5px" }
-                  : {
-                      height: 0,
-                      opacity: 0,
-                      left: isDesktop ? "var(--layout-size)" : "-5px",
-                    }
-              }
-              animate={
-                bottomRevealed
-                  ? { left: isDesktop ? "var(--layout-size)" : "-5px" }
-                  : {
-                      height: "calc(100vh - var(--layout-size))",
-                      opacity: 1,
-                      left: isDesktop ? "var(--layout-size)" : "-5px",
-                    }
-              }
-              transition={
-                bottomRevealed
-                  ? { left: { duration: 0.5, ease: "easeOut" } }
-                  : {
-                      height: {
-                        duration: 1.1,
-                        ease: "easeOut",
-                        delay: 0.05,
-                      },
-                      opacity: {
-                        duration: 0.4,
-                        delay: 0.05,
-                      },
-                    }
-              }
+              initial={{
+                height: 0,
+                opacity: 0,
+              }}
+              animate={{
+                height: "calc(100vh - var(--layout-size))",
+                opacity: 1,
+              }}
+              transition={{
+                height: {
+                  duration: 1.1,
+                  ease: "easeOut",
+                  delay: 0.05,
+                },
+                opacity: {
+                  duration: 0.4,
+                  delay: 0.05,
+                },
+              }}
               onAnimationComplete={() => {
                 if (!bottomRevealed) setBottomRevealed(true);
                 if (!hasRevealed) setHasRevealed(true);
@@ -129,6 +115,7 @@ export default function LayoutBorders() {
               style={{
                 top: "var(--layout-size)",
                 width: 1,
+                left: isDesktop ? "var(--layout-size)" : "-5px", // instantly switches, no animation
                 height: "calc(100vh - var(--layout-size))",
               }}
             />
