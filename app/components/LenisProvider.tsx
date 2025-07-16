@@ -1,36 +1,52 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, createContext, useContext } from "react";
 import Lenis from "lenis";
 
-interface LenisProviderProps {
-  children: React.ReactNode;
-}
+const LenisContext = createContext<Lenis | null>(null);
+export const useLenis = () => useContext(LenisContext);
 
-export default function LenisProvider({ children }: LenisProviderProps) {
-  const lenisRef = useRef<Lenis | null>(null);
+export default function LenisProvider({
+  children,
+  menuOpen,
+}: {
+  children: React.ReactNode;
+  menuOpen: boolean;
+}) {
+  const [lenis, setLenis] = useState<Lenis | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis
-    lenisRef.current = new Lenis({
+    const instance = new Lenis({
       duration: 1.2,
-      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
-    // RAF loop for Lenis
-    function raf(time: number) {
-      lenisRef.current?.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    const raf = (time: number) => {
+      instance.raf(time);
+      rafRef.current = requestAnimationFrame(raf);
+    };
 
-    // Cleanup
+    rafRef.current = requestAnimationFrame(raf);
+    setLenis(instance);
+
     return () => {
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      instance.destroy();
     };
   }, []);
 
-  return <>{children}</>;
+  // 🔒 Lock scroll when menu is open
+  useEffect(() => {
+    if (!lenis) return;
+    if (menuOpen) {
+      lenis.stop();
+    } else {
+      lenis.start();
+    }
+  }, [menuOpen, lenis]);
+
+  return (
+    <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>
+  );
 }
