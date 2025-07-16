@@ -1,6 +1,6 @@
 "use client";
 
-import { useOrientation } from "./OrientationContext";
+import { useLayout } from "./LayoutContext";
 
 interface HeaderProps {
   menuOpen: boolean;
@@ -13,7 +13,7 @@ export default function Header({
   onMenuToggle,
   onNameClick,
 }: HeaderProps) {
-  const { isMobileLandscape } = useOrientation();
+  const { isMobileLandscape } = useLayout();
 
   function handleNameClick() {
     if (onNameClick) onNameClick();

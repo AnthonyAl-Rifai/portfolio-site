@@ -1,32 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { useOrientation } from "./OrientationContext";
-
+import { useState } from "react";
+import { useLayout } from "./LayoutContext";
+import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 export default function LayoutBorders() {
-  const [hasMounted, setHasMounted] = useState(false);
   const [hasRevealed, setHasRevealed] = useState(false);
   const [topRevealed, setTopRevealed] = useState(false);
   const [bottomRevealed, setBottomRevealed] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const { isMobileLandscape } = useOrientation();
-
-  useEffect(() => {
-    setHasMounted(true);
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { isMobileLandscape } = useLayout();
+  const isLargerThanMobile = useIsLargerThanMobile();
+  const fastHeightTransition = isLargerThanMobile ? 0.1 : 0.6;
+  console.log("isLargerThanMobile:", isLargerThanMobile);
 
   return (
     <>
       {isMobileLandscape && (
         <>
-          {/* Mobile landscape top vertical segment */}
+          {/* Mobile landscape right vertical segment */}
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "100dvh", opacity: 1 }}
@@ -35,18 +26,16 @@ export default function LayoutBorders() {
           />
 
           {/* Mobile landscape top horizontal segment */}
-          {hasMounted && (
-            <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: "var(--layout-size)", opacity: 1 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="fixed bg-black h-px z-40"
-              style={{
-                top: "var(--layout-size)",
-                right: 0,
-              }}
-            />
-          )}
+          <motion.div
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: "var(--layout-size)", opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="fixed bg-black h-px z-40"
+            style={{
+              top: "var(--layout-size)",
+              right: 0,
+            }}
+          />
         </>
       )}
 
@@ -61,32 +50,32 @@ export default function LayoutBorders() {
           />
 
           {/* Top vertical segment */}
-          {hasMounted && (
-            <motion.div
-              initial={{ height: 0, opacity: 0, left: "var(--layout-size)" }}
-              animate={{
-                height: "var(--layout-size)",
-                opacity: 1,
-                left: "var(--layout-size)",
-              }}
-              transition={{
-                height: { duration: isDesktop ? 0.1 : 0.7, ease: "easeOut" },
-                opacity: { duration: 0.4 },
-              }}
-              onAnimationComplete={() => {
-                if (!topRevealed) setTopRevealed(true);
-              }}
-              className="fixed bg-black z-40"
-              style={{
-                top: 0,
-                width: 1,
-                height: "var(--layout-size)",
-              }}
-            />
-          )}
+          <motion.div
+            initial={{ height: 0, opacity: 0, left: "var(--layout-size)" }}
+            animate={{
+              height: "var(--layout-size)",
+              opacity: 1,
+              left: "var(--layout-size)",
+            }}
+            transition={{
+              height: {
+                duration: fastHeightTransition,
+                ease: "easeOut",
+              },
+              opacity: { duration: 0.4 },
+            }}
+            onAnimationComplete={() => {
+              if (!topRevealed) setTopRevealed(true);
+            }}
+            className="fixed bg-black z-40"
+            style={{
+              top: 0,
+              width: 1,
+            }}
+          />
 
           {/* Bottom vertical segment */}
-          {hasMounted && (
+          {isLargerThanMobile && (
             <motion.div
               initial={{
                 height: 0,
@@ -115,8 +104,7 @@ export default function LayoutBorders() {
               style={{
                 top: "var(--layout-size)",
                 width: 1,
-                left: isDesktop ? "var(--layout-size)" : "-5px", // instantly switches, no animation
-                height: "calc(100vh - var(--layout-size))",
+                left: "var(--layout-size)",
               }}
             />
           )}

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 import GridSection from "./GridSection";
-import { useOrientation } from "./OrientationContext";
+import { useLayout } from "./LayoutContext";
 
 interface MenuNavProps {
   open: boolean;
@@ -8,23 +8,14 @@ interface MenuNavProps {
 }
 
 export default function MenuNav({ open, onClose }: MenuNavProps) {
-  const { isMobileLandscape } = useOrientation();
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { isMobileLandscape } = useLayout();
+  const isLargerThanMobile = useIsLargerThanMobile();
 
   const top = isMobileLandscape ? 0 : "var(--layout-size)";
   const height = isMobileLandscape
     ? "100dvh"
     : "calc(100dvh - var(--layout-size))";
-  const left = isDesktop ? "var(--layout-size)" : 0;
+  const left = isLargerThanMobile ? "var(--layout-size)" : 0;
   const right = isMobileLandscape ? "var(--layout-size)" : 0;
 
   const baseClass =
