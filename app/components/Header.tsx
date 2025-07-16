@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useOrientation } from "./OrientationContext";
 
 interface HeaderProps {
@@ -14,7 +13,7 @@ export default function Header({
   onMenuToggle,
   onNameClick,
 }: HeaderProps) {
-  const { isLandscape } = useOrientation();
+  const { isMobileLandscape } = useOrientation();
 
   function handleNameClick() {
     if (onNameClick) onNameClick();
@@ -28,15 +27,15 @@ export default function Header({
     }
   }
 
-  const headerClass = isLandscape
+  const headerClass = isMobileLandscape
     ? "fixed top-0 right-0 w-[var(--layout-size)] h-[100dvh] flex flex-col items-center justify-start bg-white z-40"
     : "fixed top-0 left-0 right-0 h-[var(--layout-size)] flex items-center bg-white z-40";
 
-  const menuButtonClass = isLandscape
+  const menuButtonClass = isMobileLandscape
     ? "w-full h-[var(--layout-size)]"
     : "h-full w-[var(--layout-size)]";
 
-  const nameButtonClass = isLandscape
+  const nameButtonClass = isMobileLandscape
     ? "mt-4 text-vertical text-xl"
     : "ml-4 text-4xl";
 
@@ -62,20 +61,6 @@ export default function Header({
           Anthony Al-Rifai
         </button>
       </header>
-
-      {/* Animated line */}
-      {!isLandscape && (
-        <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "100%", opacity: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="fixed left-0 bg-black z-40"
-          style={{
-            top: "var(--layout-size)",
-            height: 1,
-          }}
-        />
-      )}
     </>
   );
 }

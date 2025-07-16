@@ -2,10 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
-const TOP_ANIMATION_DURATION = 0.1;
-const BOTTOM_ANIMATION_DELAY = 0.05;
-const BOTTOM_ANIMATION_DURATION = 1.1;
+import { useOrientation } from "./OrientationContext";
 
 export default function LayoutBorders() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -13,6 +10,7 @@ export default function LayoutBorders() {
   const [topRevealed, setTopRevealed] = useState(false);
   const [bottomRevealed, setBottomRevealed] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const { isMobileLandscape } = useOrientation();
 
   useEffect(() => {
     setHasMounted(true);
@@ -24,87 +22,118 @@ export default function LayoutBorders() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const topTargetLeft = "var(--layout-size)";
-  const bottomTargetLeft = isDesktop ? "var(--layout-size)" : "-5px";
-
   return (
     <>
-      {/* Header horizontal line */}
-      <motion.span
-        initial={{ width: 0, opacity: 0 }}
-        animate={{ width: "100%", opacity: 1 }}
-        transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
-        className="fixed left-0 top-[var(--layout-size)] h-px bg-black z-40"
-      />
+      {isMobileLandscape && (
+        <>
+          {/* Mobile landscape top vertical segment */}
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "100dvh", opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="fixed right-[var(--layout-size)] top-0 w-px bg-black z-40"
+          />
 
-      {/* Top vertical segment */}
-      {hasMounted && (
-        <motion.div
-          initial={{ height: 0, opacity: 0, left: topTargetLeft }}
-          animate={{
-            height: "var(--layout-size)",
-            opacity: 1,
-            left: topTargetLeft,
-          }}
-          transition={{
-            height: { duration: TOP_ANIMATION_DURATION, ease: "easeOut" },
-            opacity: { duration: 0.4 },
-          }}
-          onAnimationComplete={() => {
-            if (!topRevealed) setTopRevealed(true);
-          }}
-          className="fixed bg-black z-40"
-          style={{
-            top: 0,
-            width: 1,
-            height: "var(--layout-size)",
-          }}
-        />
+          {/* Mobile landscape top horizontal segment */}
+          {hasMounted && (
+            <motion.div
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "var(--layout-size)", opacity: 1 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="fixed bg-black h-px z-40"
+              style={{
+                top: "var(--layout-size)",
+                right: 0,
+              }}
+            />
+          )}
+        </>
       )}
 
-      {/* Bottom vertical segment */}
-      {hasMounted && (
-        <motion.div
-          initial={
-            bottomRevealed
-              ? { left: bottomTargetLeft }
-              : { height: 0, opacity: 0, left: bottomTargetLeft }
-          }
-          animate={
-            bottomRevealed
-              ? { left: bottomTargetLeft }
-              : {
-                  height: "calc(100vh - var(--layout-size))",
-                  opacity: 1,
-                  left: bottomTargetLeft,
-                }
-          }
-          transition={
-            bottomRevealed
-              ? { left: { duration: 0.5, ease: "easeOut" } }
-              : {
-                  height: {
-                    duration: BOTTOM_ANIMATION_DURATION,
-                    ease: "easeOut",
-                    delay: BOTTOM_ANIMATION_DELAY,
-                  },
-                  opacity: {
-                    duration: 0.4,
-                    delay: BOTTOM_ANIMATION_DELAY,
-                  },
-                }
-          }
-          onAnimationComplete={() => {
-            if (!bottomRevealed) setBottomRevealed(true);
-            if (!hasRevealed) setHasRevealed(true);
-          }}
-          className="fixed bg-black z-40"
-          style={{
-            top: "var(--layout-size)",
-            width: 1,
-            height: "calc(100vh - var(--layout-size))",
-          }}
-        />
+      {!isMobileLandscape && (
+        <>
+          {/* Header horizontal line */}
+          <motion.span
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: "100%", opacity: 1 }}
+            transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed left-0 top-[var(--layout-size)] h-px bg-black z-40"
+          />
+
+          {/* Top vertical segment */}
+          {hasMounted && (
+            <motion.div
+              initial={{ height: 0, opacity: 0, left: "var(--layout-size)" }}
+              animate={{
+                height: "var(--layout-size)",
+                opacity: 1,
+                left: "var(--layout-size)",
+              }}
+              transition={{
+                height: { duration: isDesktop ? 0.1 : 0.7, ease: "easeOut" },
+                opacity: { duration: 0.4 },
+              }}
+              onAnimationComplete={() => {
+                if (!topRevealed) setTopRevealed(true);
+              }}
+              className="fixed bg-black z-40"
+              style={{
+                top: 0,
+                width: 1,
+                height: "var(--layout-size)",
+              }}
+            />
+          )}
+
+          {/* Bottom vertical segment */}
+          {hasMounted && (
+            <motion.div
+              initial={
+                bottomRevealed
+                  ? { left: isDesktop ? "var(--layout-size)" : "-5px" }
+                  : {
+                      height: 0,
+                      opacity: 0,
+                      left: isDesktop ? "var(--layout-size)" : "-5px",
+                    }
+              }
+              animate={
+                bottomRevealed
+                  ? { left: isDesktop ? "var(--layout-size)" : "-5px" }
+                  : {
+                      height: "calc(100vh - var(--layout-size))",
+                      opacity: 1,
+                      left: isDesktop ? "var(--layout-size)" : "-5px",
+                    }
+              }
+              transition={
+                bottomRevealed
+                  ? { left: { duration: 0.5, ease: "easeOut" } }
+                  : {
+                      height: {
+                        duration: 1.1,
+                        ease: "easeOut",
+                        delay: 0.05,
+                      },
+                      opacity: {
+                        duration: 0.4,
+                        delay: 0.05,
+                      },
+                    }
+              }
+              onAnimationComplete={() => {
+                if (!bottomRevealed) setBottomRevealed(true);
+                if (!hasRevealed) setHasRevealed(true);
+              }}
+              className="fixed bg-black z-40"
+              style={{
+                top: "var(--layout-size)",
+                width: 1,
+                height: "calc(100vh - var(--layout-size))",
+              }}
+            />
+          )}
+        </>
       )}
     </>
   );

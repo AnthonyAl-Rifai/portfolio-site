@@ -56,7 +56,7 @@ function LayoutContent({
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
 }) {
-  const { isLandscape } = useOrientation();
+  const { isMobileLandscape } = useOrientation();
 
   return (
     <div className="relative w-full">
@@ -70,9 +70,9 @@ function LayoutContent({
 
       <LayoutBorders />
 
-      <div className="pl-0 md:pl-[var(--layout-size)]">
+      <div className="transition-[padding-left] duration-500 pl-0 md:pl-[var(--layout-size)]">
         <main
-          className={`relative w-full ${isLandscape ? "" : "pt-[var(--layout-size)]"}`}
+          className={`relative w-full ${isMobileLandscape ? "" : "pt-[var(--layout-size)]"}`}
         >
           {children}
         </main>

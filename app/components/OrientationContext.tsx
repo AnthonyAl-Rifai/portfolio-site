@@ -7,29 +7,34 @@ import React, {
 } from "react";
 
 interface OrientationContextType {
-  isLandscape: boolean;
+  isMobileLandscape: boolean;
 }
 
 const OrientationContext = createContext<OrientationContextType>({
-  isLandscape: false,
+  isMobileLandscape: false,
 });
 
 export const useOrientation = () => useContext(OrientationContext);
 
 export const OrientationProvider = ({ children }: { children: ReactNode }) => {
-  const [isLandscape, setIsLandscape] = useState(false);
+  const [isMobileLandscape, setIsMobileLandscape] = useState(false);
 
   useEffect(() => {
-    function handleOrientation() {
-      setIsLandscape(window.matchMedia("(orientation: landscape)").matches);
+    function updateOrientation() {
+      const isMobileLandscape = window.matchMedia(
+        "(orientation: landscape)"
+      ).matches;
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      setIsMobileLandscape(isMobileLandscape && isMobile);
     }
-    handleOrientation();
-    window.addEventListener("resize", handleOrientation);
-    return () => window.removeEventListener("resize", handleOrientation);
+
+    updateOrientation();
+    window.addEventListener("resize", updateOrientation);
+    return () => window.removeEventListener("resize", updateOrientation);
   }, []);
 
   return (
-    <OrientationContext.Provider value={{ isLandscape }}>
+    <OrientationContext.Provider value={{ isMobileLandscape }}>
       {children}
     </OrientationContext.Provider>
   );

@@ -1,7 +1,7 @@
 interface GridSectionProps {
   className?: string;
   children: React.ReactNode;
-  isLandscape?: boolean;
+  isMobileLandscape?: boolean;
   fillParent?: boolean;
   hasPadding?: boolean;
 }
@@ -9,7 +9,7 @@ interface GridSectionProps {
 export default function GridSection({
   className = "",
   children,
-  isLandscape = false,
+  isMobileLandscape = false,
   fillParent = true,
   hasPadding = true,
 }: GridSectionProps) {
@@ -21,7 +21,7 @@ export default function GridSection({
 
         ${hasPadding ? "p-4" : ""}
         grid
-        ${isLandscape ? "grid-cols-5" : "grid-cols-4"}
+        ${isMobileLandscape ? "grid-cols-5" : "grid-cols-4"}
         grid-rows-10 gap-4
         md:grid-cols-8 md:grid-rows-12
         lg:grid-cols-16 lg:grid-rows-6

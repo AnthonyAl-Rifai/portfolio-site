@@ -7,7 +7,7 @@ interface MenuNavProps {
 }
 
 export default function MenuNav({ open, onClose }: MenuNavProps) {
-  const { isLandscape } = useOrientation();
+  const { isMobileLandscape } = useOrientation();
 
   return (
     <nav
@@ -21,13 +21,15 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         height: "calc(100dvh - var(--layout-size))",
       }}
     >
-      <GridSection isLandscape={isLandscape} fillParent={false}>
+      <GridSection isMobileLandscape={isMobileLandscape} fillParent={false}>
         {/* About */}
         <a
           href="#about"
           onClick={onClose}
           className={`${
-            isLandscape ? "col-span-1 row-span-full" : "col-span-4 row-span-2"
+            isMobileLandscape
+              ? "col-span-1 row-span-full"
+              : "col-span-4 row-span-2"
           } md:row-span-8 lg:col-span-4 lg:row-span-6 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
         >
           About
@@ -38,7 +40,9 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           href="#webdev"
           onClick={onClose}
           className={`${
-            isLandscape ? "col-span-1 row-span-full" : "col-span-4 row-span-2"
+            isMobileLandscape
+              ? "col-span-1 row-span-full"
+              : "col-span-4 row-span-2"
           } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
         >
           Web Dev
@@ -49,7 +53,9 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           href="#music"
           onClick={onClose}
           className={`${
-            isLandscape ? "col-span-1 row-span-full" : "col-span-4 row-span-2"
+            isMobileLandscape
+              ? "col-span-1 row-span-full"
+              : "col-span-4 row-span-2"
           } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
         >
           Music
@@ -60,7 +66,9 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           href="#resume"
           onClick={onClose}
           className={`${
-            isLandscape ? "col-span-1 row-span-full" : "col-span-4 row-span-2"
+            isMobileLandscape
+              ? "col-span-1 row-span-full"
+              : "col-span-4 row-span-2"
           } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
         >
           Resume
@@ -71,7 +79,9 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           href="#contact"
           onClick={onClose}
           className={`${
-            isLandscape ? "col-span-1 row-span-full" : "col-span-4 row-span-2"
+            isMobileLandscape
+              ? "col-span-1 row-span-full"
+              : "col-span-4 row-span-2"
           } md:row-span-4 lg:col-span-6 lg:row-span-3 bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20`}
         >
           Contact
