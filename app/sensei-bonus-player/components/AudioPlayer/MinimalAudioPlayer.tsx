@@ -73,10 +73,6 @@ const MinimalAudioPlayer: React.FC = () => {
     <>
       <div className="col-start-1 col-end-[-1] row-start-1 flex items-center justify-between border-b px-4 backdrop-blur-md select-none h-[var(--layout-size)]">
         <p className="text-2xl font-bold">Sensei Bonus</p>
-        <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-black" />
-          <div className="w-1.5 h-1.5 rounded-full bg-black" />
-        </div>
         <Display />
       </div>
 
