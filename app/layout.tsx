@@ -3,16 +3,13 @@
 import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import LoadingScreen from "./components/LoadingScreen";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MenuNav from "./components/MenuNav";
 import LayoutBorders from "./components/LayoutBorders";
 import LenisProvider from "./components/LenisProvider";
-import {
-  OrientationProvider,
-  useOrientation,
-} from "./components/OrientationContext";
+import { LayoutProvider, useLayout } from "./components/LayoutContext";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -25,8 +22,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <html lang="en">
       <head>
@@ -35,49 +30,41 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <OrientationProvider>
-          <LenisProvider menuOpen={menuOpen}>
-            <LayoutContent menuOpen={menuOpen} setMenuOpen={setMenuOpen}>
-              {children}
-            </LayoutContent>
-          </LenisProvider>
-        </OrientationProvider>
+        <LayoutProvider>
+          <LayoutWrapper>{children}</LayoutWrapper>
+        </LayoutProvider>
       </body>
     </html>
   );
 }
 
-function LayoutContent({
-  children,
-  menuOpen,
-  setMenuOpen,
-}: {
-  children: React.ReactNode;
-  menuOpen: boolean;
-  setMenuOpen: (open: boolean) => void;
-}) {
-  const { isMobileLandscape } = useOrientation();
+function LayoutWrapper({ children }: { children: React.ReactNode }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { hasMounted, isMobileLandscape } = useLayout();
+
+  if (!hasMounted) return <LoadingScreen />;
 
   return (
-    <div className="relative w-full h-dvh">
-      <Header
-        menuOpen={menuOpen}
-        onMenuToggle={() => setMenuOpen(!menuOpen)}
-        onNameClick={() => setMenuOpen(false)}
-      />
-      <Sidebar />
-      <LayoutBorders />
-      <MenuNav open={menuOpen} onClose={() => setMenuOpen(false)} />
-
-      <main
-        className={`relative w-full h-full ${
-          isMobileLandscape
-            ? "pt-0 pr-[var(--layout-size)]"
-            : "pt-[var(--layout-size)] pl-0 md:pl-[var(--layout-size)]"
-        }`}
-      >
-        {children}
-      </main>
-    </div>
+    <LenisProvider menuOpen={menuOpen}>
+      <div className="relative w-full h-dvh">
+        <Header
+          menuOpen={menuOpen}
+          onMenuToggle={() => setMenuOpen(!menuOpen)}
+          onNameClick={() => setMenuOpen(false)}
+        />
+        <Sidebar />
+        <LayoutBorders />
+        <MenuNav open={menuOpen} onClose={() => setMenuOpen(false)} />
+        <main
+          className={`relative w-full h-full ${
+            isMobileLandscape
+              ? "pt-0 pr-[var(--layout-size)]"
+              : "pt-[var(--layout-size)] pl-0 md:pl-[var(--layout-size)]"
+          }`}
+        >
+          {children}
+        </main>
+      </div>
+    </LenisProvider>
   );
 }
