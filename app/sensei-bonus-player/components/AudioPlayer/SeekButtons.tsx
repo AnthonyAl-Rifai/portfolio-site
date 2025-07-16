@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import usePixelScaler from "../../hooks/usePixelScaler";
+// import usePixelScaler from "../../hooks/usePixelScaler";
 import usePlayerEventSubscriber from "../../hooks/usePlayerEventSubscriber";
 import { PLAYER_EVENTS } from "../../player";
 
@@ -52,8 +52,6 @@ const SeekButton: React.FC<SeekButtonProps> = ({
   active,
 }) => {
   const seekButtonContainerStyles = {
-    fontSize: usePixelScaler(18),
-    letterSpacing: usePixelScaler(-2.5),
     active,
   };
 
@@ -86,11 +84,11 @@ const SeekButtons: React.FC<SeekButtonsProps> = ({
     null
   );
 
-  const seekButtonsContainerStyles = {
-    left: usePixelScaler(-134),
-    top: usePixelScaler(260),
-    width: usePixelScaler(300),
-  };
+  // const seekButtonsContainerStyles = {
+  //   left: usePixelScaler(-134),
+  //   top: usePixelScaler(260),
+  //   width: usePixelScaler(300),
+  // };
 
   const onSeeking = useCallback(
     ({ direction }: { direction: "forward" | "reverse" }) => {
@@ -151,7 +149,7 @@ const SeekButtons: React.FC<SeekButtonsProps> = ({
   };
 
   return (
-    <SeekButtonsContainer {...seekButtonsContainerStyles}>
+    <SeekButtonsContainer>
       <SeekButton
         onClick={handleButtonClick("backward")}
         active={seekDirection === "reverse" && isIndicatorActive}

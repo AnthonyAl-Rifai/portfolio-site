@@ -18,9 +18,9 @@ interface DisplayContainerProps {
 const DisplayContainer = styled.div<DisplayContainerProps>(
   ({
     width = 100,
-    height = 55,
+    height = 65,
     outerSpacing = 15,
-    borderRadius = 10,
+    borderRadius = 0,
     padding = 5,
   }) => ({
     display: "flex",
@@ -30,7 +30,7 @@ const DisplayContainer = styled.div<DisplayContainerProps>(
     height,
     backgroundColor: "#030507",
     borderRadius,
-    position: "absolute",
+    // position: "absolute",
     top: outerSpacing,
     right: outerSpacing,
     textAlign: "left",
@@ -67,13 +67,13 @@ const getScrollTextKeyframes = (position: number) => {
   `;
 };
 
-const MainTextContainer = styled.div(() => ({
+const MainTextContainer = styled.div({
   position: "relative",
   overflow: "hidden",
-  height: 20,
+  height: 25,
   display: "flex",
   alignItems: "center",
-}));
+});
 
 const TextPartContainer = styled.span`
   display: inline-block;
@@ -82,7 +82,7 @@ const TextPartContainer = styled.span`
 const MainText = styled.p<TextProps>(
   ({
     fontSize = 18,
-    marginTop = 2,
+    marginTop = 0,
     scrollTextPosition = 50,
     rightSpacing = 30,
     animate = false,
@@ -111,7 +111,7 @@ const MainText = styled.p<TextProps>(
   }
 );
 
-const SubTextContainer = styled.div(() => ({
+const SubTextContainer = styled.div({
   position: "relative",
   overflow: "hidden",
   textSpanOverlap: "clip",
@@ -120,7 +120,7 @@ const SubTextContainer = styled.div(() => ({
   display: "flex",
   alignItems: "center",
   width: "100%",
-}));
+});
 
 const SubText = styled.p<TextProps>(
   ({
@@ -159,7 +159,7 @@ const HighlightText = styled.p<TextProps>(
     margin: 0,
     padding,
     backgroundColor: "#E6F1F9",
-    borderRadius: 3,
+    borderRadius: 0,
     textAlign: "center",
     maxWidth,
     borderColor: "#030507",
@@ -168,11 +168,11 @@ const HighlightText = styled.p<TextProps>(
   })
 );
 
-const Row = styled.div(() => ({
+const Row = styled.div({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-}));
+});
 
 const Display: React.FC = () => {
   const [mainSpanWidth, setMainSpanWidth] = useState(0);
@@ -181,9 +181,9 @@ const Display: React.FC = () => {
 
   const displayContainerStyles: DisplayContainerProps = {
     width: usePixelScaler(100),
-    height: usePixelScaler(55),
+    height: usePixelScaler(65),
     outerSpacing: usePixelScaler(15),
-    borderRadius: usePixelScaler(10),
+    borderRadius: usePixelScaler(0),
     padding: usePixelScaler(5),
   };
 
@@ -210,7 +210,7 @@ const Display: React.FC = () => {
 
   const mainTextStyles: TextProps = {
     fontSize: usePixelScaler(18),
-    marginTop: usePixelScaler(2),
+    marginTop: usePixelScaler(0),
     scrollTextPosition: mainSpanWidth,
     rightSpacing: mainRightSpacing,
     animate: doesMainTextOverlap,

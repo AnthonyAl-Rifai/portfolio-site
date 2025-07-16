@@ -93,18 +93,20 @@ export default function MusicSection() {
 
   const scrollComponent = (
     <ScrollContent
+      gridHasPadding={false}
       // backgroundImage="/sensei-bonus-3.jpeg"
       // backgroundImageAlt="abstract red and white album cover"
       // backgroundOpacity={0.6}
+      backgroundOverlayClassName="bg-white/40 backdrop-blur-md"
       className="border-r"
     >
-      <div className="col-span-full row-span-full md:col-start-3 md:col-end-7 md:row-start-4 md:row-end-10 lg:col-start-6 lg:col-end-12 lg:row-start-2 lg:row-end-5 flex items-center justify-center">
+      <PlayerProvider>
         <ViewportProvider>
-          <PlayerProvider>
-            <MinimalAudioPlayer />
-          </PlayerProvider>
+          <MinimalAudioPlayer />
         </ViewportProvider>
-      </div>
+      </PlayerProvider>
+
+      {/* <div className="col-span-full row-span-full md:col-start-3 md:col-end-7 md:row-start-4 md:row-end-10 lg:col-start-6 lg:col-end-12 lg:row-start-2 lg:row-end-5 flex items-center justify-center"></div> */}
     </ScrollContent>
   );
 

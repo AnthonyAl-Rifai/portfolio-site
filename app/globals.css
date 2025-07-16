@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+/* Custom Fonts */
+@font-face {
+  font-family: "VCROSD-Mono";
+  src: url("/font/VCR_OSD_MONO_1.001.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UniversTE20-Thin";
+  src:
+    url("/font/UniversTE20-Thin.woff2") format("woff2"),
+    url("/font/UniversTE20-Thin.woff") format("woff"),
+    url("/font/UniversTE20-Thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -81,5 +101,15 @@ main {
   html,
   body {
     height: -webkit-fill-available;
+  }
+}
+
+/* Marquee scrolling animation for Display component */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }

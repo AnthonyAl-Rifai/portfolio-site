@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
 import { useRef, useEffect, useState, useCallback } from "react";
-import usePixelScaler from "../../hooks/usePixelScaler";
 import { PLAYER_EVENTS } from "../../player/types/playerEvents";
 import usePlayerEventSubscriber from "../../hooks/usePlayerEventSubscriber";
 
@@ -8,72 +6,26 @@ interface MeterProps {
   level: number;
 }
 
-interface MetersContainerProps {
-  marginTop?: number;
-}
-
-interface PeakerIndicatorProps {
-  top?: number;
-  left?: number;
-  right?: number;
-  height?: number;
-}
-
-const MetersContainer = styled.div<MetersContainerProps>(
-  ({ marginTop = 5 }) => ({
-    position: "relative",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "start",
-    justifyContent: "center",
-    width: "25%",
-    marginTop,
-  })
-);
-
-const MeterContainer = styled.canvas(() => ({
-  margin: 0,
-}));
-
-const PeakIndicator = styled.span<PeakerIndicatorProps>(
-  ({ top = 24, left = 20, right = 20, height = 0.5 }) => ({
-    position: "absolute",
-    top,
-    left,
-    right,
-    height,
-    backgroundColor: "#7B7B7B",
-  })
-);
-
 const Meter: React.FC<MeterProps> = ({ level = 0 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const totalBars = 14;
-  const barWidth = usePixelScaler(4);
-  const barHeight = usePixelScaler(9);
-  const barSpacing = usePixelScaler(0.5);
-  const meterWidth = usePixelScaler(25);
-  const meterHeight = usePixelScaler(130);
+  const barWidth = 4;
+  const barHeight = 9;
+  const barSpacing = 0.5;
+  const meterWidth = 25;
+  const meterHeight = 130;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
       if (ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawings
-
-        // Determine how many bars to light up based on the level
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         const barsToLight = Math.round(totalBars * level);
 
         for (let i = 0; i <= totalBars; i++) {
-          if (i < barsToLight) {
-            ctx.fillStyle = "#F9F9FC"; // Color when the bar is active/on
-          } else {
-            ctx.fillStyle = "#6F6E6D"; // Color when the bar is inactive/off
-          }
-
-          // Draw the bar. The y position is calculated in a way that bars are drawn from bottom to top
+          ctx.fillStyle = i < barsToLight ? "#F9F9FC" : "#6F6E6D";
           ctx.fillRect(
             (meterWidth - barWidth) / 2,
             canvas.height - i * (barHeight + barSpacing),
@@ -83,10 +35,15 @@ const Meter: React.FC<MeterProps> = ({ level = 0 }) => {
         }
       }
     }
-  }, [level, barHeight, barWidth, barSpacing, meterWidth]);
+  }, [level]);
 
   return (
-    <MeterContainer ref={canvasRef} width={meterWidth} height={meterHeight} />
+    <canvas
+      ref={canvasRef}
+      width={meterWidth}
+      height={meterHeight}
+      className="m-0"
+    />
   );
 };
 
@@ -95,17 +52,6 @@ const Meters: React.FC = () => {
   const [isDecaying, setIsDecaying] = useState(false);
   const [isRateZero, setIsRateZero] = useState(false);
   const decayInterval = useRef<NodeJS.Timeout | null>(null);
-
-  const metersContainerStyles: MetersContainerProps = {
-    marginTop: usePixelScaler(5),
-  };
-
-  const peakIndicatorStyles: PeakerIndicatorProps = {
-    top: usePixelScaler(34),
-    left: usePixelScaler(20),
-    right: usePixelScaler(20),
-    height: usePixelScaler(0.5),
-  };
 
   const onVolumeUpdate = useCallback(
     (amplitude: [number, number]) => {
@@ -163,11 +109,11 @@ const Meters: React.FC = () => {
   }, [isDecaying, decayAmplitude]);
 
   return (
-    <MetersContainer {...metersContainerStyles}>
+    <div className="relative flex flex-row items-start justify-center w-1/4 mt-1.5">
       <Meter level={amplitude[0]} />
       <Meter level={amplitude[1]} />
-      <PeakIndicator {...peakIndicatorStyles} />
-    </MetersContainer>
+      <span className="absolute top-[2.125rem] left-[1.25rem] right-[1.25rem] h-[0.125rem] bg-[#7B7B7B]" />
+    </div>
   );
 };
 
