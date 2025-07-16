@@ -59,25 +59,25 @@ function LayoutContent({
   const { isMobileLandscape } = useOrientation();
 
   return (
-    <div className="relative w-full">
-      <Sidebar />
-
+    <div className="relative w-full h-dvh">
       <Header
         menuOpen={menuOpen}
         onMenuToggle={() => setMenuOpen(!menuOpen)}
         onNameClick={() => setMenuOpen(false)}
       />
-
+      <Sidebar />
       <LayoutBorders />
+      <MenuNav open={menuOpen} onClose={() => setMenuOpen(false)} />
 
-      <div className="transition-[padding-left] duration-500 pl-0 md:pl-[var(--layout-size)]">
-        <main
-          className={`relative w-full ${isMobileLandscape ? "" : "pt-[var(--layout-size)]"}`}
-        >
-          {children}
-        </main>
-        <MenuNav open={menuOpen} onClose={() => setMenuOpen(false)} />
-      </div>
+      <main
+        className={`relative w-full h-full transition-[padding-left] duration-500 ${
+          isMobileLandscape
+            ? "pt-0 pr-[var(--layout-size)]"
+            : "pt-[var(--layout-size)] pl-0 md:pl-[var(--layout-size)]"
+        }`}
+      >
+        {children}
+      </main>
     </div>
   );
 }
