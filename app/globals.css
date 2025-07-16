@@ -95,6 +95,14 @@ main {
   scroll-padding-top: var(--layout-size);
 }
 
+.text-vertical {
+  writing-mode: vertical-lr;
+  transform-origin: center;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
 /* Ensure viewport units work correctly on mobile */
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari specific fixes */
