@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useLayout } from "./LayoutContext";
+import { useLayout } from "../context/LayoutContext";
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 export default function LayoutBorders() {
   const [hasRevealed, setHasRevealed] = useState(false);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayout } from "./LayoutContext";
+import { useLayout } from "../context/LayoutContext";
 
 interface HeaderProps {
   menuOpen: boolean;

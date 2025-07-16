@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLayout } from "../context/LayoutContext"; // adjust path as needed
 
 export default function SectionTitle({
   name,
@@ -10,20 +11,24 @@ export default function SectionTitle({
   name: string;
   isSticky?: boolean;
 }) {
+  const { isMobileLandscape } = useLayout();
   const ref = useRef<HTMLDivElement>(null);
+
   const isInView = useInView(ref, {
-    margin: "-50px 0px", // similar to your rootMargin
-    amount: 0.3, // similar to threshold
-    once: false, // 👈 allow it to re-trigger every time it enters
+    margin: "-50px 0px",
+    amount: 0.3,
+    once: false,
   });
+
+  const topOffset = isMobileLandscape ? "0px" : "var(--layout-size)";
 
   return (
     <div
       ref={ref}
-      className={`relative z-20 h-[var(--layout-size)] min-h-[var(--layout-size)] bg-white w-full flex items-center ${
+      className={`relative z-20 h-[calc(var(--layout-size)+1px)] min-h-[calc(var(--layout-size)+1px)] bg-white w-full flex items-center ${
         isSticky ? "sticky" : ""
       }`}
-      style={isSticky ? { top: "var(--layout-size)" } : {}}
+      style={isSticky ? { top: topOffset } : {}}
     >
       <h1 className="text-4xl font-bold mx-4">{name}</h1>
 
@@ -33,7 +38,7 @@ export default function SectionTitle({
           isInView ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }
         }
         transition={{
-          duration: 1.1,
+          duration: 0.4,
           ease: "easeOut",
           delay: 0.2,
         }}

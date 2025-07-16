@@ -1,6 +1,6 @@
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 import GridSection from "./GridSection";
-import { useLayout } from "./LayoutContext";
+import { useLayout } from "../context/LayoutContext";
 
 interface MenuNavProps {
   open: boolean;

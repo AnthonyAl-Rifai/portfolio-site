@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import SectionTitle from "./SectionTitle";
+import { useLayout } from "../context/LayoutContext"; // adjust path as needed
 
 interface ScrollSectionProps {
   name: string;
@@ -23,6 +24,7 @@ export default function ScrollSection({
   const { scrollYProgress } = useScroll({
     target: sectionRef,
   });
+  const { isMobileLandscape } = useLayout();
 
   const scrollX = useTransform(scrollYProgress, [0.25, 0.75], ["-100%", "0%"]);
 
@@ -31,11 +33,19 @@ export default function ScrollSection({
       ref={sectionRef}
       id={id}
       className={`relative ${sectionHeight}`}
-      style={{ scrollMarginTop: "var(--layout-size)" }}
+      style={{
+        scrollMarginTop: isMobileLandscape ? "0px" : "var(--layout-size)",
+      }}
     >
-      <div className="sticky top-[var(--layout-size)] h-[calc(100vh-var(--layout-size))] overflow-hidden z-10">
+      <div
+        className={`sticky ${
+          isMobileLandscape
+            ? "top-0 h-screen"
+            : "top-[var(--layout-size)] h-[calc(100vh-var(--layout-size))]"
+        } overflow-hidden z-10`}
+      >
+        {" "}
         <SectionTitle name={name} />
-
         <div className="relative w-full h-full ">
           {/* Initial component: base layer */}
           <div className="absolute inset-0 z-0 h-full w-full ">
