@@ -3,23 +3,25 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 // import usePixelScaler from "../../hooks/usePixelScaler";
 import usePlayerEventSubscriber from "../../hooks/usePlayerEventSubscriber";
 import { PLAYER_EVENTS } from "../../player";
+import FastForwardIcon from "../../../icons/FastForwardIcon";
+import FastRewindIcon from "../../../icons/FastRewindIcon";
 
 interface SeekButtonsContainerProps {
   left?: number;
   top?: number;
   width?: number;
+  padding?: number;
 }
 
 const SeekButtonsContainer = styled.div<SeekButtonsContainerProps>(
-  ({ left = -134, top = 260, width = 300 }) => ({
-    position: "absolute",
+  ({ left = -200, top = 260, padding = 12 }) => ({
+    // position: "absolute",
     left,
     top,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    width,
-    transform: "rotate(270deg)",
+    padding,
     WebkitUserSelect: "none",
     msUserSelect: "none",
     useSelect: "none",
@@ -34,9 +36,16 @@ interface SeekButtonContainerProps {
 
 const SeekButtonContainer = styled.button<SeekButtonContainerProps>(
   ({ fontSize = 18, letterSpacing = -2.5, active = false }) => ({
-    color: active ? "rgba(253,83,58,1)" : "#F3F3F2",
+    color: active ? "#000000" : "#000000", // Black for both active and inactive states
     fontSize,
     letterSpacing,
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    padding: "4px",
+    display: "flex",
+    alignItems: "center",
+    gap: "4px",
   })
 );
 
@@ -154,13 +163,15 @@ const SeekButtons: React.FC<SeekButtonsProps> = ({
         onClick={handleButtonClick("backward")}
         active={seekDirection === "reverse" && isIndicatorActive}
       >
-        R▕◀◀
+        <span style={{ fontSize: "14px", color: "#000000" }}>R</span>
+        <FastRewindIcon size={20} color="#000000" />
       </SeekButton>
       <SeekButton
         onClick={handleButtonClick("forward")}
         active={seekDirection === "forward" && isIndicatorActive}
       >
-        ▶▶▏F
+        <FastForwardIcon size={20} color="#000000" />
+        <span style={{ fontSize: "14px", color: "#000000" }}>F</span>
       </SeekButton>
     </SeekButtonsContainer>
   );

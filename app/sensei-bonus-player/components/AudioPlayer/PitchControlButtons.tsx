@@ -80,7 +80,7 @@ const PitchControlButtons: React.FC<PitchControlButtonsProps> = ({
   onIncrease,
 }) => {
   return (
-    <div className="absolute bottom-[189px] right-[3px] rotate-[-45deg] flex items-center justify-center rounded-full">
+    <div className="absolute bottom-[260px] right-[3px] rotate-[-45deg] flex items-center justify-center rounded-full">
       <PitchControlButton
         onClick={onDecrease}
         textSize="text-6xl"

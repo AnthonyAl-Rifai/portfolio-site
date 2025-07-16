@@ -76,7 +76,7 @@ const MinimalAudioPlayer: React.FC = () => {
         <Display />
       </div>
 
-      <div className="col-span-3 row-start-3">
+      <div className="col-span-4 col-start-1 row-start-2">
         <SeekButtons
           onSeekBackward={player.seekBackward}
           onSeekForward={player.seekForward}
@@ -85,14 +85,8 @@ const MinimalAudioPlayer: React.FC = () => {
         />
       </div>
 
-      <div className="col-span-3 row-start-4 flex items-center justify-center min-h-[300px]">
+      <div className="col-span-4 col-start-1 row-start-3 flex items-center justify-center min-h-[300px]">
         <Scrubber />
-      </div>
-
-      <div className="col-start-1 row-start-5">
-        <p className="text-sm font-semibold text-[#AFB2AD] bg-[#E76620] rounded-sm px-[0.125rem]">
-          M
-        </p>
       </div>
 
       <div
@@ -111,7 +105,7 @@ const MinimalAudioPlayer: React.FC = () => {
         />
       </div>
 
-      <div className="col-span-3 row-start-6">
+      <div className="col-span-4 row-start-8">
         <TransportButtons
           onRecord={onReverse}
           onPlay={onTogglePlay}

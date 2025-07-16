@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
-export const PLAYER_WIDTH = 450;
-export const PLAYER_HEIGHT = 650;
+export const PLAYER_WIDTH = 350;
+export const PLAYER_HEIGHT = 350;
 
 interface ViewportContextProps {
   width: number;

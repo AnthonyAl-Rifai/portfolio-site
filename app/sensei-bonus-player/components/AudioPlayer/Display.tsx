@@ -154,13 +154,15 @@ const SubText = styled.p<TextProps>(
 );
 
 const HighlightText = styled.p<TextProps>(
-  ({ fontSize = 10, padding = 2, maxWidth = 10 }) => ({
+  ({ fontSize = 10, maxWidth = 10 }) => ({
     color: "#030507",
     fontSize,
     display: "flex",
     fontFamily: DISPLAY_FONT,
     margin: 0,
-    padding,
+    paddingLeft: 2,
+    paddingRight: 1,
+    paddingBottom: 1,
     backgroundColor: "none",
     borderRadius: 0,
     textAlign: "center",
