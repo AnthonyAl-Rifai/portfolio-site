@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import Section from "./Section";
 import GridSection from "./GridSection";
 import { useLayout } from "../context/LayoutContext";

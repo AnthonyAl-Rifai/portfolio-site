@@ -1,6 +1,6 @@
 "use client";
 import { useLayout } from "../context/LayoutContext";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "motion/react";
 import MenuIconA from "../icons/MenuIconA";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useEffect, useState } from "react";

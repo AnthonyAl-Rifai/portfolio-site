@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { useLayout } from "../context/LayoutContext"; // adjust path as needed
 
 export default function SectionTitle({

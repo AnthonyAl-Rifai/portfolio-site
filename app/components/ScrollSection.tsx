@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import SectionTitle from "./SectionTitle";
 import { useLayout } from "../context/LayoutContext"; // adjust path as needed

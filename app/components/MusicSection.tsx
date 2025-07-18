@@ -3,7 +3,7 @@
 import ScrollSection from "./ScrollSection";
 import InitialContent from "./InitialContent";
 import ScrollContent from "./ScrollContent";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { PlayerProvider } from "../sensei-bonus-player/context/PlayerContext";
 import { ViewportProvider } from "../sensei-bonus-player/context/ViewportContext";

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 import GridSection from "./GridSection";
 import { useLayout } from "../context/LayoutContext";
