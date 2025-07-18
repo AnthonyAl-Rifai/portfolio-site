@@ -94,8 +94,12 @@ export default function Header({
       >
         <div className="flex flex-col items-center justify-center gap-1 relative">
           <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            initial={
+              isMobileLandscape
+                ? { y: -50, opacity: 0 }
+                : { x: -50, opacity: 0 }
+            }
+            animate={{ x: 0, y: 0, opacity: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 16 }}
             className="flex items-center justify-center"
           >
@@ -113,8 +117,12 @@ export default function Header({
           </motion.div>
 
           <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            initial={
+              isMobileLandscape
+                ? { y: -50, opacity: 0 }
+                : { x: -50, opacity: 0 }
+            }
+            animate={{ x: 0, y: 0, opacity: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 16 }}
             className="flex items-center justify-center -mt-1"
           >
@@ -133,14 +141,19 @@ export default function Header({
         </div>
       </button>
 
-      <button
+      <motion.button
+        initial={
+          isMobileLandscape ? { x: 50, opacity: 0 } : { y: -50, opacity: 0 }
+        }
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         onClick={handleNameClick}
         className={`font-bold bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none ${nameButtonClass}`}
         style={{ lineHeight: 1 }}
         aria-label="Scroll to top"
       >
         Anthony Al-Rifai
-      </button>
+      </motion.button>
     </header>
   );
 }

@@ -1,4 +1,6 @@
+"use client";
 import { forwardRef } from "react";
+import { useLayout } from "../context/LayoutContext";
 
 interface SectionProps {
   id: string;
@@ -10,6 +12,7 @@ interface SectionProps {
 
 const Section = forwardRef<HTMLElement, SectionProps>(
   ({ id, className = "", children, useDvhHeight = false }, ref) => {
+    const { isMobileLandscape } = useLayout();
     const usesCustomHeight = className.includes("h-[");
     const heightClass = usesCustomHeight
       ? ""
@@ -22,7 +25,9 @@ const Section = forwardRef<HTMLElement, SectionProps>(
         ref={ref}
         id={id}
         className={`w-full flex flex-col ${heightClass} ${className}`}
-        style={{ scrollMarginTop: "var(--layout-size)" }}
+        style={{
+          scrollMarginTop: isMobileLandscape ? 0 : "var(--layout-size)",
+        }}
       >
         {children}
       </section>
