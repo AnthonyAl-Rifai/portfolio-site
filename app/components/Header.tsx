@@ -3,7 +3,7 @@ import { useLayout } from "../context/LayoutContext";
 import { motion, useAnimation } from "framer-motion";
 import MenuIconA from "../icons/MenuIconA";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   menuOpen: boolean;
@@ -21,34 +21,43 @@ export default function Header({
   const topControls = useAnimation();
   const bottomControls = useAnimation();
 
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
+
+  const handleToggle = () => {
+    setHasUserInteracted(true);
+    onMenuToggle();
+  };
+
   useEffect(() => {
+    if (!hasUserInteracted) return;
+
     const topKeyframes = menuOpen
       ? {
           scale: [1, 1.3, 1],
           rotate: [0, 180, 180],
-          y: [0, -4, 0],
+          y: [0, -2, 0],
         }
       : {
           scale: [1, 1.3, 1],
           rotate: [180, 360, 360],
-          y: [0, -4, 0],
+          y: [0, -2, 0],
         };
 
     const bottomKeyframes = menuOpen
       ? {
           scale: [1, 1.3, 1],
           rotate: [0, -180, -180],
-          y: [0, 4, 0],
+          y: [0, 2, 0],
         }
       : {
           scale: [1, 1.3, 1],
           rotate: [-180, -360, -360],
-          y: [0, 4, 0],
+          y: [0, 2, 0],
         };
 
     topControls.start(topKeyframes);
     bottomControls.start(bottomKeyframes);
-  }, [menuOpen, topControls, bottomControls]);
+  }, [menuOpen, hasUserInteracted, topControls, bottomControls]);
 
   function handleNameClick() {
     if (onNameClick) onNameClick();
@@ -80,32 +89,46 @@ export default function Header({
       style={{ transform: "translateZ(0)", willChange: "transform" }}
     >
       <button
-        onClick={onMenuToggle}
+        onClick={handleToggle}
         className={`z-50 flex items-center justify-center bg-white/10 backdrop-blur-md p-4 transition-colors hover:bg-white/20 ${menuButtonClass}`}
       >
         <div className="flex flex-col items-center justify-center gap-1 relative">
           <motion.div
-            animate={topControls}
-            transition={{
-              duration: 0.6,
-              ease: "easeInOut",
-              times: [0, 0.5, 1],
-            }}
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 120, damping: 16 }}
             className="flex items-center justify-center"
           >
-            <MenuIconA size={20} color="#000" />
+            <motion.div
+              animate={topControls}
+              transition={{
+                duration: 0.6,
+                ease: "easeInOut",
+                times: [0, 0.5, 1],
+              }}
+              className="flex items-center justify-center"
+            >
+              <MenuIconA size={20} color="#000" />
+            </motion.div>
           </motion.div>
 
           <motion.div
-            animate={bottomControls}
-            transition={{
-              duration: 0.6,
-              ease: "easeInOut",
-              times: [0, 0.5, 1],
-            }}
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 120, damping: 16 }}
             className="flex items-center justify-center -mt-1"
           >
-            <MenuIconAUpsideDown size={20} color="#000" />
+            <motion.div
+              animate={bottomControls}
+              transition={{
+                duration: 0.6,
+                ease: "easeInOut",
+                times: [0, 0.5, 1],
+              }}
+              className="flex items-center justify-center"
+            >
+              <MenuIconAUpsideDown size={20} color="#000" />
+            </motion.div>
           </motion.div>
         </div>
       </button>
