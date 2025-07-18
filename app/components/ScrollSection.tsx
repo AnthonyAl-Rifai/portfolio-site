@@ -26,7 +26,7 @@ export default function ScrollSection({
   });
   const { isMobileLandscape } = useLayout();
 
-  const scrollX = useTransform(scrollYProgress, [0.25, 0.75], ["-100%", "0%"]);
+  const scrollX = useTransform(scrollYProgress, [0.3, 0.6], ["-100%", "0%"]);
 
   return (
     <section
