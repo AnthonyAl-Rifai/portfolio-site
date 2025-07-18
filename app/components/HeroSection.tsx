@@ -4,17 +4,20 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "./Section";
 import GridSection from "./GridSection";
+import { useLayout } from "../context/LayoutContext";
 
 export default function HeroSection() {
   const titles = [
     "Full Stack Developer",
     "Frontend Engineer",
+    "Web Designer",
     "Composer",
     "Artist",
     "Pit Master",
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const { isMobileLandscape } = useLayout();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,7 +47,7 @@ export default function HeroSection() {
             </motion.span>
           </AnimatePresence>
         </h1>
-        <p className="text-xl font-bold col-start-2 row-start-6 col-span-full md:text-2xl md:col-start-5 md:row-start-7">
+        <p className="text-xl font-medium col-start-2 row-start-6 col-span-full md:text-2xl md:col-start-5 md:row-start-7">
           <motion.span
             className="block mr-4"
             initial={{ y: 40, opacity: 0 }}
@@ -55,7 +58,10 @@ export default function HeroSection() {
           </motion.span>
           <motion.span
             className="block h-0.25 bg-black my-2"
-            initial={{ x: "100%", opacity: 0 }}
+            initial={{
+              x: isMobileLandscape ? 100 : "100%",
+              opacity: 0,
+            }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.7, ease: "easeOut" }}
           />
