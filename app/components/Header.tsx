@@ -80,7 +80,7 @@ export default function Header({
     : "h-full w-[var(--layout-size)]";
 
   const nameButtonClass = isMobileLandscape
-    ? "mt-4 text-vertical text-xl"
+    ? "mt-4 text-vertical text-2xl"
     : "ml-4 text-4xl";
 
   return (

@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 import GridSection from "./GridSection";
 import { useLayout } from "../context/LayoutContext";
@@ -21,23 +24,29 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
   const baseClass =
     "bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20";
 
+  const getMotionProps = () => ({
+    animate: open ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 },
+    transition: {
+      duration: 0.3,
+      ease: [0.33, 1, 0.68, 1] as [number, number, number, number],
+      opacity: { duration: 0.3 },
+    },
+    style: { originX: 0, originY: 0 },
+  });
+
   return (
     <nav
       className={`fixed bg-white/10 backdrop-blur-md transition-opacity duration-300 z-40 md:border-l
         ${isMobileLandscape ? "border-r" : "border-t"}
         ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
       `}
-      style={{
-        top,
-        height,
-        left,
-        right,
-      }}
+      style={{ top, height, left, right }}
     >
       <GridSection isMobileLandscape={isMobileLandscape} fillParent={true}>
-        <a
+        <motion.a
           href="#about"
           onClick={onClose}
+          {...getMotionProps()}
           className={`${
             isMobileLandscape
               ? "col-span-1 row-span-full"
@@ -45,11 +54,12 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           } md:row-span-8 lg:col-span-4 lg:row-span-6 ${baseClass}`}
         >
           About
-        </a>
+        </motion.a>
 
-        <a
+        <motion.a
           href="#webdev"
           onClick={onClose}
+          {...getMotionProps()}
           className={`${
             isMobileLandscape
               ? "col-span-1 row-span-full"
@@ -57,11 +67,12 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Web Dev
-        </a>
+        </motion.a>
 
-        <a
+        <motion.a
           href="#music"
           onClick={onClose}
+          {...getMotionProps()}
           className={`${
             isMobileLandscape
               ? "col-span-1 row-span-full"
@@ -69,11 +80,12 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Music
-        </a>
+        </motion.a>
 
-        <a
+        <motion.a
           href="#resume"
           onClick={onClose}
+          {...getMotionProps()}
           className={`${
             isMobileLandscape
               ? "col-span-1 row-span-full"
@@ -81,11 +93,12 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Resume
-        </a>
+        </motion.a>
 
-        <a
+        <motion.a
           href="#contact"
           onClick={onClose}
+          {...getMotionProps()}
           className={`${
             isMobileLandscape
               ? "col-span-1 row-span-full"
@@ -93,7 +106,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Contact
-        </a>
+        </motion.a>
       </GridSection>
     </nav>
   );
