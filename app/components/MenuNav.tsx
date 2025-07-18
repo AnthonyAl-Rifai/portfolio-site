@@ -83,7 +83,8 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         </motion.a>
 
         <motion.a
-          href="#resume"
+          href="/anthony-al-rifai-resume.pdf"
+          download="anthony-al-rifai-resume.pdf"
           onClick={onClose}
           {...getMotionProps()}
           className={`${
@@ -92,7 +93,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
               : "col-span-4 row-span-2"
           } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
-          Resume
+          Download Resume
         </motion.a>
 
         <motion.a
