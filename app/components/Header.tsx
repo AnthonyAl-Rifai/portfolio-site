@@ -1,6 +1,9 @@
 "use client";
-
 import { useLayout } from "../context/LayoutContext";
+import { motion, useAnimation } from "framer-motion";
+import MenuIconA from "../icons/MenuIconA";
+import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
+import { useEffect } from "react";
 
 interface HeaderProps {
   menuOpen: boolean;
@@ -14,6 +17,38 @@ export default function Header({
   onNameClick,
 }: HeaderProps) {
   const { isMobileLandscape } = useLayout();
+
+  const topControls = useAnimation();
+  const bottomControls = useAnimation();
+
+  useEffect(() => {
+    const topKeyframes = menuOpen
+      ? {
+          scale: [1, 1.3, 1],
+          rotate: [0, 180, 180],
+          y: [0, -4, 0],
+        }
+      : {
+          scale: [1, 1.3, 1],
+          rotate: [180, 360, 360],
+          y: [0, -4, 0],
+        };
+
+    const bottomKeyframes = menuOpen
+      ? {
+          scale: [1, 1.3, 1],
+          rotate: [0, -180, -180],
+          y: [0, 4, 0],
+        }
+      : {
+          scale: [1, 1.3, 1],
+          rotate: [-180, -360, -360],
+          y: [0, 4, 0],
+        };
+
+    topControls.start(topKeyframes);
+    bottomControls.start(bottomKeyframes);
+  }, [menuOpen, topControls, bottomControls]);
 
   function handleNameClick() {
     if (onNameClick) onNameClick();
@@ -40,27 +75,49 @@ export default function Header({
     : "ml-4 text-4xl";
 
   return (
-    <>
-      <header
-        className={headerClass}
-        style={{ transform: "translateZ(0)", willChange: "transform" }}
+    <header
+      className={headerClass}
+      style={{ transform: "translateZ(0)", willChange: "transform" }}
+    >
+      <button
+        onClick={onMenuToggle}
+        className={`z-50 flex items-center justify-center bg-white/10 backdrop-blur-md p-4 transition-colors hover:bg-white/20 ${menuButtonClass}`}
       >
-        <button
-          onClick={onMenuToggle}
-          className={`z-50 flex items-center justify-center bg-white/10 backdrop-blur-md p-4 transition-colors hover:bg-white/20 ${menuButtonClass}`}
-        >
-          <span className="text-4xl">{menuOpen ? "×" : "⠿"}</span>
-        </button>
+        <div className="flex flex-col items-center justify-center gap-1 relative">
+          <motion.div
+            animate={topControls}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+              times: [0, 0.5, 1],
+            }}
+            className="flex items-center justify-center"
+          >
+            <MenuIconA size={20} color="#000" />
+          </motion.div>
 
-        <button
-          onClick={handleNameClick}
-          className={`font-bold bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none ${nameButtonClass}`}
-          style={{ lineHeight: 1 }}
-          aria-label="Scroll to top"
-        >
-          Anthony Al-Rifai
-        </button>
-      </header>
-    </>
+          <motion.div
+            animate={bottomControls}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+              times: [0, 0.5, 1],
+            }}
+            className="flex items-center justify-center -mt-1"
+          >
+            <MenuIconAUpsideDown size={20} color="#000" />
+          </motion.div>
+        </div>
+      </button>
+
+      <button
+        onClick={handleNameClick}
+        className={`font-bold bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none ${nameButtonClass}`}
+        style={{ lineHeight: 1 }}
+        aria-label="Scroll to top"
+      >
+        Anthony Al-Rifai
+      </button>
+    </header>
   );
 }
