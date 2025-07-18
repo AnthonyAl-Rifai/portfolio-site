@@ -63,10 +63,10 @@ export default function Header({
     if (onNameClick) onNameClick();
     const el = document.getElementById("home");
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      el.scrollIntoView();
       window.location.hash = "home";
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0 });
       window.location.hash = "home";
     }
   }
