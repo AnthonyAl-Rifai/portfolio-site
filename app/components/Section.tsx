@@ -24,7 +24,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
       <section
         ref={ref}
         id={id}
-        className={`w-full flex flex-col ${heightClass} ${className}`}
+        className={`relative w-full flex flex-col ${heightClass} ${className}`}
         style={{
           scrollMarginTop: isMobileLandscape ? 0 : "var(--layout-size)",
         }}
