@@ -64,13 +64,9 @@ export default function WebDevSection() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 bg-white overflow-y-auto border-l"
+            className="fixed inset-0 z-50 bg-white border-l h-dvh"
           >
-            <motion.div
-              // initial={{ borderLeftWidth: 1 }}
-              // animate={{ borderLeftWidth: 0 }}
-              className="min-h-screen flex flex-col"
-            >
+            <motion.div className="h-full flex flex-col overflow-y-auto">
               <div className="sticky top-0 h-[var(--layout-size)] flex justify-between items-center bg-white z-10">
                 <h2 className="text-4xl font-bold mx-4 whitespace-nowrap">
                   {selectedProject}
@@ -131,7 +127,7 @@ export default function WebDevSection() {
                 />
               </div>
 
-              <div className="overflow-y-auto h-auto bg-white">
+              <div className="flex-1 bg-white">
                 {selectedProject === "BudSpot." && (
                   <BudSpotProject onClose={() => setSelectedProject(null)} />
                 )}
