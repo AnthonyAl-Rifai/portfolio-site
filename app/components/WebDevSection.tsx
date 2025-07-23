@@ -7,7 +7,7 @@ import { useLayout } from "../context/LayoutContext";
 import MenuIconA from "../icons/MenuIconA";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { AnimatePresence, motion } from "motion/react";
-import SUAWProject from "./SUAWProject";
+import SuawProject from "./SuawProject";
 import BudSpotProject from "./BudSpotProject";
 import DBSpyProject from "./DBSpyProject";
 import SkillsProject from "./SkillsProject";
@@ -135,7 +135,7 @@ export default function WebDevSection() {
                   <DBSpyProject onClose={() => setSelectedProject(null)} />
                 )}
                 {selectedProject === "Shut Up & Write!" && (
-                  <SUAWProject onClose={() => setSelectedProject(null)} />
+                  <SuawProject onClose={() => setSelectedProject(null)} />
                 )}
                 {selectedProject === "Skills" && (
                   <SkillsProject onClose={() => setSelectedProject(null)} />
