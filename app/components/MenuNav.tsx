@@ -83,6 +83,19 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         </motion.a>
 
         <motion.a
+          href="#contact"
+          onClick={onClose}
+          {...getMotionProps()}
+          className={`${
+            isMobileLandscape
+              ? "col-span-1 row-span-full"
+              : "col-span-4 row-span-2"
+          } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
+        >
+          Contact
+        </motion.a>
+
+        <motion.a
           href="/anthony-al-rifai-resume.pdf"
           download="anthony-al-rifai-resume.pdf"
           onClick={onClose}
@@ -94,19 +107,6 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
           } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
           Download Resume
-        </motion.a>
-
-        <motion.a
-          href="#contact"
-          onClick={onClose}
-          {...getMotionProps()}
-          className={`${
-            isMobileLandscape
-              ? "col-span-1 row-span-full"
-              : "col-span-4 row-span-2"
-          } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
-        >
-          Contact
         </motion.a>
       </GridSection>
     </nav>
