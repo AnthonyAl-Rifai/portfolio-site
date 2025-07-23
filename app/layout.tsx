@@ -7,6 +7,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MenuNav from "./components/MenuNav";
+import Footer from "./components/Footer";
 import LayoutBorders from "./components/LayoutBorders";
 import LenisProvider from "./components/LenisProvider";
 import { LayoutProvider, useLayout } from "./context/LayoutContext";
@@ -63,6 +64,7 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
           }`}
         >
           {children}
+          <Footer />
         </main>
       </div>
     </LenisProvider>
