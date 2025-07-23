@@ -1,15 +1,14 @@
 "use client";
 
 import { motion, useInView, AnimatePresence } from "motion/react";
-import Image from "next/image";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import { useRef } from "react";
 
-interface SuawProjectProps {
+interface SkillsProjectProps {
   onClose: () => void;
 }
 
-export default function SuawProject({ onClose }: SuawProjectProps) {
+export default function SkillsProject({ onClose }: SkillsProjectProps) {
   const overviewRef = useRef(null);
   const isInView = useInView(overviewRef);
   const showChevron = !isInView;
@@ -18,29 +17,22 @@ export default function SuawProject({ onClose }: SuawProjectProps) {
     <div className="min-h-screen flex flex-col gap-16 bg-white p-4 mb-16">
       {/* Hero Section */}
       <div className="relative h-[calc(100vh-3*var(--layout-size))] flex flex-col items-center justify-center text-center gap-16">
-        <motion.div
+        <motion.h1
+          className="text-6xl md:text-8xl font-bold text-black mb-6"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <Image
-            src="/SUAW_Logo_Main_Yellow.png"
-            alt="Shut Up & Write! Logo"
-            width={400}
-            height={200}
-            className="mx-auto"
-            priority
-          />
-        </motion.div>
-
+          Technical Skills
+        </motion.h1>
         <motion.p
           className="text-2xl text-black max-w-3xl"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          A community-driven event platform from one of the world&apos;s largest
-          nonprofit writing groups
+          Full-stack development expertise with modern technologies and best
+          practices for building scalable web applications.
         </motion.p>
 
         <div className="absolute bottom-0">
@@ -78,29 +70,18 @@ export default function SuawProject({ onClose }: SuawProjectProps) {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Project Overview</h2>
-        <div className="border border-black">
-          <Image
-            src="/suaw-hero-section.png"
-            alt="SUAW Hero Section"
-            width={800}
-            height={400}
-            className="w-full"
-            priority
-          />
-        </div>
+        <h2 className="text-4xl font-bold text-black">Skills Overview</h2>
         <p className="text-lg text-black leading-relaxed">
-          Shut Up & Write! is an initiative of Writing Partners, a California
-          based nonprofit organization that helps writers around the world build
-          sustainable writing habits through free, peer-led events. Brought on
-          as the platform&apos;s first in-house software engineer, I helped
-          architect a full frontend rebuild and contributed across the stack to
-          support a growing global user base. My work emphasized accessibility,
-          performance, and thoughtful UX, helping evolve the product from a
-          simple productivity tool into a dynamic community platform.
+          I&apos;m a full stack developer with a strong frontend focus and a
+          sharp product mindset. I specialize in building responsive, accessible
+          web applications and enjoy working across the stack to deliver fast,
+          scalable, and maintainable solutions. I thrive at the intersection of
+          engineering and product, where thoughtful design and real-world
+          usability meet.
         </p>
       </motion.section>
-      {/* Key Highlights Section */}
+
+      {/* Key Strengths Section */}
       <motion.section
         className="flex flex-col gap-8"
         initial={{ y: 100, opacity: 0 }}
@@ -108,28 +89,41 @@ export default function SuawProject({ onClose }: SuawProjectProps) {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Key Highlights</h2>
-        <div className="border border-black">
-          <Image
-            src="/suaw-online-event-section.png"
-            alt="SUAW Online Event Section"
-            width={800}
-            height={400}
-            className="w-full"
-            priority
-          />
-        </div>
+        <h2 className="text-4xl font-bold text-black">Key Strengths</h2>
         <ul className="flex flex-col gap-4">
           {[
-            "Architected the frontend rebuild with Vue.js and GraphQL, owning development of all core pages for 100,000+ users; partnered with the Executive Director on product strategy, accelerating delivery and reducing release cycles by 33%",
-            "Led development of a responsive Vue.js component library with 50+ reusable components; introduced Storybook for faster feedback and configured GitLab CI/CD for versioning, doubling development velocity and eliminating UI inconsistencies",
-            "Modernized the design system, ensured accessibility compliance, and streamlined layouts; used New Relic and DevTools to fix bottlenecks, improving load speed by 60% and reducing CLS/LCP by 80% and 45%",
-            "Reduced GraphQL response times by 35% by extending C# command handlers in a CQRS pattern, optimizing queries and mutations, and improving database efficiency for tighter frontend-backend integration",
-            "Strengthened API reliability and backend stability by engineering robust PostgreSQL migrations and optimizing Hasura meta-data tracking, ensuring consistent schemas and smooth deployments across staging, production, and local environments",
-          ].map((text, i) => (
+            {
+              title: "Product-Focused Engineering",
+              description:
+                "Experienced in translating product goals into scalable, user-centered web applications with a strong eye for usability and accessibility.",
+            },
+            {
+              title: "Frontend Architecture",
+              description:
+                "Skilled in designing modular, reusable component systems and leading UI rebuilds across complex applications.",
+            },
+            {
+              title: "Cross-Stack Collaboration",
+              description:
+                "Adept at bridging frontend and backend concerns, optimizing API performance, database queries, and deployment workflows.",
+            },
+            {
+              title: "Creative Problem Solving",
+              description:
+                "Brings a compositional mindset to code, balancing structure, flow, and maintainability in both interface and infrastructure.",
+            },
+            {
+              title: "Rapid Iteration & Ownership",
+              description:
+                "Thrives in fast-moving environments, driving feature delivery from concept to deployment while maintaining code quality and stability.",
+            },
+          ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span className="w-2 h-2 bg-black rounded-full mt-[0.5em] flex-shrink-0" />
-              <span className="text-black">{text}</span>
+              <span className="text-black">
+                <span className="font-bold">{item.title}: </span>
+                {item.description}
+              </span>
             </li>
           ))}
         </ul>
@@ -150,13 +144,24 @@ export default function SuawProject({ onClose }: SuawProjectProps) {
         {/* Frontend */}
         <div className="w-full">
           <h3 className="text-2xl font-bold text-black mb-4">Frontend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 ">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
+              { name: "JavaScript ES6" },
+              { name: "TypeScript" },
               { name: "Vue.js" },
-              { name: "JavaScript" },
-              { name: "Apollo Client" },
-              { name: "SCSS" },
+              { name: "React" },
+              { name: "React Native" },
+              { name: "Next.js" },
+              { name: "Redux" },
+              { name: "Zustand" },
+              { name: "HTML5" },
+              { name: "CSS3" },
+              { name: "Tailwind CSS" },
+              { name: "RESTful API" },
+              { name: "GraphQL" },
+              { name: "Framer-Motion" },
               { name: "Storybook" },
+              { name: "Figma" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -174,12 +179,16 @@ export default function SuawProject({ onClose }: SuawProjectProps) {
         {/* Backend */}
         <div className="w-full">
           <h3 className="text-2xl font-bold text-black mb-4">Backend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
+              { name: "Node.js" },
+              { name: "Express.js" },
               { name: "C# .NET" },
-              { name: "Hasura" },
-              { name: "GraphQL" },
               { name: "PostgreSQL" },
+              { name: "Prisma" },
+              { name: "SQL" },
+              { name: "NoSQL" },
+              { name: "MongoDB" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -194,21 +203,24 @@ export default function SuawProject({ onClose }: SuawProjectProps) {
           </div>
         </div>
 
-        {/* DevOps & Tooling */}
+        {/* DevOps & Tools */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">
-            DevOps & Tooling
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
+          <h3 className="text-2xl font-bold text-black mb-4">DevOps & Tools</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
-              { name: "Docker" },
-              { name: "GitLab CI/CD" },
               { name: "AWS" },
               { name: "S3" },
               { name: "EC2" },
               { name: "CloudWatch" },
               { name: "Fargate" },
+              { name: "Docker" },
               { name: "New Relic" },
+              { name: "GitLab CI/CD" },
+              { name: "GitHub" },
+              { name: "Google Cloud" },
+              { name: "Microservices" },
+              { name: "Agile" },
+              { name: "Scrum" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -227,7 +239,13 @@ export default function SuawProject({ onClose }: SuawProjectProps) {
         <div className="w-full">
           <h3 className="text-2xl font-bold text-black mb-4">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[{ name: "Jest" }].map((tech, index) => (
+            {[
+              { name: "React Testing Library" },
+              { name: "Jest" },
+              { name: "Cypress" },
+              { name: "Vitest" },
+              { name: "TDD" },
+            ].map((tech, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-black text-center font-semibold"

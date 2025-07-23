@@ -151,9 +151,7 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
               >
                 {tech.name}
               </motion.div>
@@ -177,9 +175,7 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
               >
                 {tech.name}
               </motion.div>
@@ -204,9 +200,7 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
                 className="bg-white border border-black p-6 text-black font-semibold flex justify-center items-center text-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
               >
                 {tech.name}
               </motion.div>
@@ -224,9 +218,7 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
               >
                 {tech.name}
               </motion.div>
@@ -245,12 +237,11 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
       >
         <div className="border border-black bg-white flex flex-col items-center gap-6 p-12 max-w-3xl w-full">
           <h2 className="text-4xl font-bold text-black">
-            Thanks for Taking a Look
+            Ready to Work Together?
           </h2>
           <p className="text-xl text-black">
-            I&apos;m a full stack developer who cares about craft, clarity, and
-            building things that connect with people. Explore more projects and
-            see what else I&apos;ve been working on.
+            Let&apos;s discuss how my skills and experience can help bring your
+            next project to life.
           </p>
           <button
             onClick={onClose}
