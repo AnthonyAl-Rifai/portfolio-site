@@ -9,9 +9,9 @@ import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { AnimatePresence, motion } from "motion/react";
 import SuawProject from "./SuawProject";
 import BudSpotProject from "./BudSpotProject";
-import DBSpyProject from "./DBSpyProject";
+import DbSpyProject from "./DbSpyProject";
 import SkillsProject from "./SkillsProject";
-type ProjectType = "Shut Up & Write!" | "DbSpy" | "BudSpot." | "Skills" | null;
+type ProjectType = "Shut Up & Write!" | "dbSpy" | "BudSpot." | "Skills" | null;
 
 export default function WebDevSection() {
   const { isMobileLandscape } = useLayout();
@@ -44,7 +44,7 @@ export default function WebDevSection() {
             : "h-[calc(100dvh-2*var(--layout-size))]"
         } grid-cols-4 grid-rows-5`}
       >
-        {["Shut Up & Write!", "DbSpy", "BudSpot.", "Skills"].map(project => (
+        {["Shut Up & Write!", "dbSpy", "BudSpot.", "Skills"].map(project => (
           <motion.button
             key={project}
             onClick={() => openDrawer(project as ProjectType)}
@@ -131,8 +131,8 @@ export default function WebDevSection() {
                 {selectedProject === "BudSpot." && (
                   <BudSpotProject onClose={() => setSelectedProject(null)} />
                 )}
-                {selectedProject === "DbSpy" && (
-                  <DBSpyProject onClose={() => setSelectedProject(null)} />
+                {selectedProject === "dbSpy" && (
+                  <DbSpyProject onClose={() => setSelectedProject(null)} />
                 )}
                 {selectedProject === "Shut Up & Write!" && (
                   <SuawProject onClose={() => setSelectedProject(null)} />
