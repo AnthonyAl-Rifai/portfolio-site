@@ -31,12 +31,12 @@ export default function ContactSection() {
   };
 
   return (
-    <Section id="contact">
+    <Section id="contact" className="h-auto">
       <SectionTitle name="Contact" isSticky />
       <GridSection>
         {/* Header Section - spans across multiple columns */}
         <div className="col-span-4 row-span-2 md:col-span-6 md:col-start-2 lg:col-span-8 lg:col-start-5 mt-4">
-          <p className="font-light text-lg">
+          <p className="font-medium text-lg">
             Let&apos;s work together! Drop me a message and I&apos;ll get back
             to you as soon as possible.
           </p>
