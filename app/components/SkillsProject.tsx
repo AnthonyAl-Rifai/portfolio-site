@@ -3,6 +3,7 @@
 import { motion, useInView, AnimatePresence } from "motion/react";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import { useRef } from "react";
+import CallToAction from "./CallToAction";
 
 interface SkillsProjectProps {
   onClose: () => void;
@@ -261,29 +262,7 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
       </motion.section>
 
       {/* Call to Action */}
-      <motion.section
-        className="flex flex-col items-center text-center gap-6"
-        initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="border border-black bg-white flex flex-col items-center gap-6 p-12 max-w-3xl w-full">
-          <h2 className="text-4xl font-bold text-black">
-            Ready to Work Together?
-          </h2>
-          <p className="text-xl text-black">
-            Let&apos;s discuss how my skills and experience can help bring your
-            next project to life.
-          </p>
-          <button
-            onClick={onClose}
-            className="bg-black text-white px-8 py-4 font-semibold hover:bg-gray-800 transition-all duration-300 border border-black"
-          >
-            Return to Portfolio
-          </button>
-        </div>
-      </motion.section>
+      <CallToAction onButtonClick={onClose} />
     </div>
   );
 }
