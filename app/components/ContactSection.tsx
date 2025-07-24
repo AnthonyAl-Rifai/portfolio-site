@@ -2,7 +2,7 @@
 
 import SectionTitle from "./SectionTitle";
 import Section from "./Section";
-import GridSection from "./GridSection";
+// import GridSection from "./GridSection";
 import { useState } from "react";
 
 export default function ContactSection() {
@@ -33,17 +33,17 @@ export default function ContactSection() {
   return (
     <Section id="contact" className="h-auto">
       <SectionTitle name="Contact" isSticky />
-      <GridSection>
+      <div className="grid px-4 py-8 grid-cols-8">
         {/* Header Section - spans across multiple columns */}
-        <div className="col-span-4 row-span-2 md:col-span-6 md:col-start-2 lg:col-span-8 lg:col-start-5 mt-4">
+        {/* <div className="col-span-4 row-span-2 md:col-span-6 md:col-start-2 lg:col-span-8 lg:col-start-5 mt-4">
           <p className="font-medium text-lg">
             Let&apos;s work together! Drop me a message and I&apos;ll get back
             to you as soon as possible.
           </p>
-        </div>
+        </div> */}
 
         {/* Form Container - spans across multiple columns */}
-        <div className="col-span-4 row-span-8 md:col-span-6 md:col-start-2 lg:col-span-8 lg:col-start-5">
+        <div className="col-span-8  md:col-span-5 lg:col-span-4 xl:col-span-3 2xl:col-span-2">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name and Email - side by side on larger screens */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -136,7 +136,7 @@ export default function ContactSection() {
             </div>
           </form>
         </div>
-      </GridSection>
+      </div>
     </Section>
   );
 }
