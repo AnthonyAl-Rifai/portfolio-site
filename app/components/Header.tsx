@@ -90,7 +90,7 @@ export default function Header({
     >
       <button
         onClick={handleToggle}
-        className={`z-50 flex items-center justify-center bg-white/10 backdrop-blur-md p-4 transition-colors hover:bg-white/20 ${menuButtonClass}`}
+        className={`z-50 flex items-center justify-center bg-white/10 backdrop-blur-md p-4 transition-colors cursor-pointer hover:bg-white/20 ${menuButtonClass}`}
       >
         <div className="flex flex-col items-center justify-center gap-1 relative">
           <motion.div
