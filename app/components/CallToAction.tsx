@@ -28,7 +28,7 @@ export default function CallToAction({
         <p className="text-xl text-black">{description}</p>
         <button
           onClick={onButtonClick}
-          className="bg-black text-white px-8 py-4 font-semibold hover:bg-gray-800 transition-all duration-300 border border-black"
+          className="bg-black text-white px-8 py-4 font-semibold hover:bg-gray-800 transition-all duration-300 border border-black rounded-full"
         >
           {buttonText}
         </button>
