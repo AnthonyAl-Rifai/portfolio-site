@@ -40,8 +40,8 @@ export default function WebDevSection() {
       <div
         className={`grid gap-4 p-4 ${
           isMobileLandscape
-            ? "h-[calc(100dvh-var(--layout-size))]"
-            : "h-[calc(100dvh-2*var(--layout-size))]"
+            ? "h-[calc(100vh-var(--layout-size))]"
+            : "h-[calc(100vh-2*var(--layout-size))]"
         } grid-cols-4 grid-rows-5`}
       >
         {["Shut Up & Write!", "dbSpy", "BudSpot.", "Skills"].map(project => (
