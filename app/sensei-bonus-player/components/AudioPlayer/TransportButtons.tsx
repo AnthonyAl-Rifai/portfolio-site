@@ -53,7 +53,7 @@ const TransportButtons: React.FC<TransportButtonsProps> = ({
   onRecord,
 }) => {
   return (
-    <div className="flex h-40">
+    <div className="flex h-30 w-full">
       <div className="flex flex-row h-full w-3/4 border-r border-white">
         <TransportButton onClick={onRecord}>●</TransportButton>
         <TransportButton onClick={onPlay}>▶</TransportButton>

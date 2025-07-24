@@ -14,7 +14,7 @@ const Meter: React.FC<MeterProps> = ({ level = 0 }) => {
   const barHeight = 9;
   const barSpacing = 0.5;
   const meterWidth = 25;
-  const meterHeight = 130;
+  const meterHeight = 120;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -109,7 +109,7 @@ const Meters: React.FC = () => {
   }, [isDecaying, decayAmplitude]);
 
   return (
-    <div className="relative flex flex-row items-start justify-center w-1/4 mt-1.5">
+    <div className="relative flex flex-row items-start justify-center w-1/4">
       <Meter level={amplitude[0]} />
       <Meter level={amplitude[1]} />
       <span className="absolute top-[2.125rem] left-[1.25rem] right-[1.25rem] h-[0.125rem] bg-[#7B7B7B]" />

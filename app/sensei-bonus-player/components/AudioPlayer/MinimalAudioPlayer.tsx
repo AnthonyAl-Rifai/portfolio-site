@@ -9,8 +9,19 @@ import { PLAYER_EVENTS } from "../../player/types/playerEvents";
 import { PlayerState } from "../../player/types/playerStates";
 import OnePunchEraser from "../../configs/one-punch-eraser.json";
 import usePlayerEventSubscriber from "../../hooks/usePlayerEventSubscriber";
+import MenuIconA from "../../../icons/MenuIconA";
+import MenuIconAUpsideDown from "../../../icons/MenuIconAUpsideDown";
+import { motion } from "motion/react";
 
-const MinimalAudioPlayer: React.FC = () => {
+interface MinimalAudioPlayerProps {
+  onClose?: () => void;
+  showCloseAnimation?: boolean;
+}
+
+const MinimalAudioPlayer: React.FC<MinimalAudioPlayerProps> = ({
+  onClose,
+  showCloseAnimation = false,
+}) => {
   const [isBlinking, setIsBlinking] = useState(false);
   const [isScrubbing, setIsScrubbing] = useState(false);
   const [isRevIndicatorActive, setIsRevIndicatorActive] = useState(false);
@@ -70,49 +81,113 @@ const MinimalAudioPlayer: React.FC = () => {
   const onIncreaseRate = useCallback(() => player.increaseRate(), [player]);
 
   return (
-    <>
-      <div className="col-start-1 col-end-[-1] row-start-1 flex items-center justify-between border-b px-4 backdrop-blur-md select-none h-[var(--layout-size)]">
-        <p className="text-4xl font-bold">Sensei Bonus</p>
-        <Display />
+    <div className="flex flex-col h-full max-w-[429px]">
+      {/* Header */}
+      <div className="flex items-center justify-between pl-4 backdrop-blur-md select-none h-[var(--layout-size)] relative">
+        <p className="text-4xl font-bold">SB-1</p>
+        <div className="flex items-center gap-4">
+          <Display />
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="flex items-center justify-center w-[var(--layout-size)] h-[var(--layout-size)] border-l"
+              aria-label="Close modal"
+            >
+              <div className="flex flex-col items-center gap-1">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    rotate: showCloseAnimation ? 180 : 0,
+                    y: [0, -2, 0],
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeInOut",
+                    times: [0, 0.5, 1],
+                  }}
+                >
+                  <MenuIconA size={20} color="#000" />
+                </motion.div>
+                <motion.div
+                  className="-mt-1"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    rotate: showCloseAnimation ? -180 : 0,
+                    y: [0, 2, 0],
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeInOut",
+                    times: [0, 0.5, 1],
+                  }}
+                >
+                  <MenuIconAUpsideDown size={20} color="#000" />
+                </motion.div>
+              </div>
+            </button>
+          )}
+        </div>
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{
+            duration: 0.4,
+            ease: "easeOut",
+            delay: 0.5,
+          }}
+          className="bg-black origin-left"
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 1,
+          }}
+        />
       </div>
 
-      <div className="col-span-4 col-start-1 row-start-2">
+      {/* Content */}
+      <div className="flex flex-col gap-8 border-b border-r">
+        {/* Seek Buttons */}
+
         <SeekButtons
           onSeekBackward={player.seekBackward}
           onSeekForward={player.seekForward}
           onSkipBackward={player.skipBackward}
           onSkipForward={player.skipForward}
         />
-      </div>
 
-      <div className="col-span-4 col-start-1 row-start-3 flex items-center justify-center min-h-[300px]">
-        <Scrubber />
-      </div>
+        {/* Scrubber */}
+        <div className=" flex items-center justify-center min-h-[300px] relative">
+          <Scrubber />
+          {/* Controls Row */}
 
-      <div
-        className="col-start-2 row-start-5 self-center justify-self-center w-9.5 h-9.5 rounded-full"
-        style={{
-          background: isRevIndicatorActive
-            ? "linear-gradient(135deg, rgba(254,9,46,1) 15%, rgba(252,85,67,1) 39%, rgba(253,83,58,1) 65%)"
-            : "linear-gradient(132deg, rgba(127,126,127,1) 0%, rgba(151,151,151,1) 61%)",
-        }}
-      />
+          <div
+            className="absolute w-9.5 h-9.5 rounded-full left-4 bottom-2"
+            style={{
+              background: isRevIndicatorActive
+                ? "linear-gradient(135deg, rgba(254,9,46,1) 15%, rgba(252,85,67,1) 39%, rgba(253,83,58,1) 65%)"
+                : "linear-gradient(132deg, rgba(127,126,127,1) 0%, rgba(151,151,151,1) 61%)",
+            }}
+          />
+          <div className="absolute right-0 bottom-2">
+            <PitchControlButtons
+              onDecrease={!isBlinking ? onDecreaseRate : onIncreaseRate}
+              onIncrease={!isBlinking ? onIncreaseRate : onDecreaseRate}
+            />
+          </div>
+        </div>
 
-      <div className="col-start-3 row-start-5">
-        <PitchControlButtons
-          onDecrease={!isBlinking ? onDecreaseRate : onIncreaseRate}
-          onIncrease={!isBlinking ? onIncreaseRate : onDecreaseRate}
-        />
+        {/* Transport Buttons */}
+        <div className="flex justify-center">
+          <TransportButtons
+            onRecord={onReverse}
+            onPlay={onTogglePlay}
+            onStop={onStop}
+          />
+        </div>
       </div>
-
-      <div className="col-span-4 row-start-8">
-        <TransportButtons
-          onRecord={onReverse}
-          onPlay={onTogglePlay}
-          onStop={onStop}
-        />
-      </div>
-    </>
+    </div>
   );
 };
 

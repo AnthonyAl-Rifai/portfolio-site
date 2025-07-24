@@ -13,20 +13,17 @@ interface SeekButtonsContainerProps {
   padding?: number;
 }
 
-const SeekButtonsContainer = styled.div<SeekButtonsContainerProps>(
-  ({ left = -200, top = 260, padding = 12 }) => ({
-    // position: "absolute",
-    left,
-    top,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding,
-    WebkitUserSelect: "none",
-    msUserSelect: "none",
-    useSelect: "none",
-  })
-);
+const SeekButtonsContainer = styled.div<SeekButtonsContainerProps>(({}) => ({
+  // position: "absolute",
+  width: "100%",
+  padding: 8,
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  WebkitUserSelect: "none",
+  msUserSelect: "none",
+  useSelect: "none",
+}));
 
 interface SeekButtonContainerProps {
   fontSize?: number;
