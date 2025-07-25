@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Section from "./Section";
 import GridSection from "./GridSection";
-import { useLayout } from "../context/LayoutContext";
 
 export default function HeroSection() {
   const titles = [
@@ -17,7 +16,6 @@ export default function HeroSection() {
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-  const { isMobileLandscape } = useLayout();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,12 +55,12 @@ export default function HeroSection() {
             Design-minded, detail-obsessed, always curious.
           </motion.span>
           <motion.span
-            className="block h-0.25 bg-black my-2"
+            className="block h-0.25 bg-black my-2 origin-right"
             initial={{
-              x: isMobileLandscape ? 100 : "100%",
+              scaleX: 0,
               opacity: 0,
             }}
-            animate={{ x: 0, opacity: 1 }}
+            animate={{ scaleX: 1, opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.7, ease: "easeOut" }}
           />
         </p>
