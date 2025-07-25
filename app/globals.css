@@ -79,33 +79,11 @@
 
 @media (min-width: 450px) {
   :root {
-    --layout-size: clamp(5rem, 6vw, 7.8125rem); /* 80–125px from 450–768px */
-  }
-}
-
-@media (min-width: 768px) {
-  :root {
     --layout-size: clamp(
-      3.75rem,
-      4vw + 1rem,
-      5rem
-    ); /* 60–80px from 768–1023px */
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --layout-size: clamp(
-      3rem,
-      5vw + 1rem,
+      5rem,
+      1.25vw + 4.375rem,
       6.25rem
-    ); /* 48–100px from 1024–2159px */
-  }
-}
-
-@media (min-width: 2160px) {
-  :root {
-    --layout-size: 6.25rem; /* Lock at 100px on ultra-wide screens */
+    ); /* 80px to 100px from 450px to 1500px */
   }
 }
 
