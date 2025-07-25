@@ -25,7 +25,7 @@ const Meter: React.FC<MeterProps> = ({ level = 0 }) => {
         const barsToLight = Math.round(totalBars * level);
 
         for (let i = 0; i <= totalBars; i++) {
-          ctx.fillStyle = i < barsToLight ? "#F9F9FC" : "#6F6E6D";
+          ctx.fillStyle = i < barsToLight ? "#e5e7eb" : "#6F6E6D";
           ctx.fillRect(
             (meterWidth - barWidth) / 2,
             canvas.height - i * (barHeight + barSpacing),
@@ -109,10 +109,10 @@ const Meters: React.FC = () => {
   }, [isDecaying, decayAmplitude]);
 
   return (
-    <div className="relative flex flex-row items-start justify-center w-1/4">
+    <div className="relative flex flex-row items-end justify-center p-2 w-1/4">
       <Meter level={amplitude[0]} />
       <Meter level={amplitude[1]} />
-      <span className="absolute top-[2.125rem] left-[1.25rem] right-[1.25rem] h-[0.125rem] bg-[#7B7B7B]" />
+      <span className="absolute top-[1.5rem] left-[1.25rem] right-[1.25rem] h-[1px] bg-gray-400 " />
     </div>
   );
 };

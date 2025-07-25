@@ -36,7 +36,7 @@ export default function LenisProvider({
     };
   }, []);
 
-  // 🔒 Lock scroll when menu is open
+  // Lock scroll when menu is open
   useEffect(() => {
     if (!lenis) return;
     if (menuOpen) {

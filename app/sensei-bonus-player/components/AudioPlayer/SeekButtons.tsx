@@ -16,7 +16,8 @@ interface SeekButtonsContainerProps {
 const SeekButtonsContainer = styled.div<SeekButtonsContainerProps>(({}) => ({
   // position: "absolute",
   width: "100%",
-  padding: 8,
+  padding: 16,
+  paddingBottom: 0,
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",

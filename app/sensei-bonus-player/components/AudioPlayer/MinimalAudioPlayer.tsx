@@ -9,8 +9,8 @@ import { PLAYER_EVENTS } from "../../player/types/playerEvents";
 import { PlayerState } from "../../player/types/playerStates";
 import OnePunchEraser from "../../configs/one-punch-eraser.json";
 import usePlayerEventSubscriber from "../../hooks/usePlayerEventSubscriber";
-import MenuIconA from "../../../icons/MenuIconA";
-import MenuIconAUpsideDown from "../../../icons/MenuIconAUpsideDown";
+// import MenuIconA from "../../../icons/MenuIconA";
+// import MenuIconAUpsideDown from "../../../icons/MenuIconAUpsideDown";
 import { motion } from "motion/react";
 
 interface MinimalAudioPlayerProps {
@@ -18,10 +18,12 @@ interface MinimalAudioPlayerProps {
   showCloseAnimation?: boolean;
 }
 
-const MinimalAudioPlayer: React.FC<MinimalAudioPlayerProps> = ({
-  onClose,
-  showCloseAnimation = false,
-}) => {
+const MinimalAudioPlayer: React.FC<MinimalAudioPlayerProps> = (
+  {
+    // onClose,
+    // showCloseAnimation = false,
+  }
+) => {
   const [isBlinking, setIsBlinking] = useState(false);
   const [isScrubbing, setIsScrubbing] = useState(false);
   const [isRevIndicatorActive, setIsRevIndicatorActive] = useState(false);
@@ -81,13 +83,13 @@ const MinimalAudioPlayer: React.FC<MinimalAudioPlayerProps> = ({
   const onIncreaseRate = useCallback(() => player.increaseRate(), [player]);
 
   return (
-    <div className="flex flex-col h-full max-w-[429px]">
+    <div className="flex flex-col h-auto max-w-[429px] border m-4">
       {/* Header */}
-      <div className="flex items-center justify-between pl-4 backdrop-blur-md select-none h-[var(--layout-size)] relative">
+      <div className="flex items-center justify-between p-4 backdrop-blur-md select-none relative">
         <p className="text-4xl font-bold">SB-1</p>
-        <div className="flex items-center gap-4">
-          <Display />
-          {onClose && (
+        <Display />
+        {/* <div className="flex items-center gap-4"> */}
+        {/* {onClose && (
             <button
               onClick={onClose}
               className="flex items-center justify-center w-[var(--layout-size)] h-[var(--layout-size)] border-l"
@@ -125,8 +127,8 @@ const MinimalAudioPlayer: React.FC<MinimalAudioPlayerProps> = ({
                 </motion.div>
               </div>
             </button>
-          )}
-        </div>
+          )} */}
+        {/* </div> */}
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
@@ -147,7 +149,7 @@ const MinimalAudioPlayer: React.FC<MinimalAudioPlayerProps> = ({
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-8 border-b border-r">
+      <div className="flex flex-col gap-8">
         {/* Seek Buttons */}
 
         <SeekButtons
@@ -170,7 +172,7 @@ const MinimalAudioPlayer: React.FC<MinimalAudioPlayerProps> = ({
                 : "linear-gradient(132deg, rgba(127,126,127,1) 0%, rgba(151,151,151,1) 61%)",
             }}
           />
-          <div className="absolute right-0 bottom-2">
+          <div className="absolute right-2 bottom-2">
             <PitchControlButtons
               onDecrease={!isBlinking ? onDecreaseRate : onIncreaseRate}
               onIncrease={!isBlinking ? onIncreaseRate : onDecreaseRate}

@@ -21,6 +21,8 @@ const PitchControlButton: React.FC<PitchControlButtonProps> = ({
   children,
   onClick,
   textSize = "text-4xl",
+  offsetTop = "",
+  offsetLeft = "",
   marginLeft = "",
   marginRight = "",
 }) => {
@@ -62,11 +64,9 @@ const PitchControlButton: React.FC<PitchControlButtonProps> = ({
       onMouseUp={handleMouseUp}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className={`relative w-10 h-10 rounded-full border border-white flex items-center justify-center transform rotate-45 bg-black ${marginLeft} ${marginRight}`}
+      className={`relative w-10 h-10 rounded-full border flex items-center justify-center transform rotate-45 cursor-pointer ${offsetTop} ${offsetLeft} ${marginLeft} ${marginRight}`}
     >
-      <span className={`transform -rotate-45 ${textSize} text-white`}>
-        {children}
-      </span>
+      <span className={`transform ${textSize}`}>{children}</span>
     </button>
   );
 };
@@ -80,7 +80,7 @@ const PitchControlButtons: React.FC<PitchControlButtonsProps> = ({
       <PitchControlButton
         onClick={onDecrease}
         textSize="text-3xl"
-        offsetTop="-top-6"
+        offsetTop="-top-2"
         offsetLeft="left-2"
         marginRight="mr-2"
       >
