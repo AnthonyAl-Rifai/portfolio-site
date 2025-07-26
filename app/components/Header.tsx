@@ -4,6 +4,7 @@ import { motion, useAnimation } from "motion/react";
 import MenuIconA from "../icons/MenuIconA";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useEffect, useState } from "react";
+import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 
 interface HeaderProps {
   menuOpen: boolean;
@@ -17,6 +18,7 @@ export default function Header({
   onNameClick,
 }: HeaderProps) {
   const { isMobileLandscape } = useLayout();
+  const isLargerThanMobile = useIsLargerThanMobile();
 
   const topControls = useAnimation();
   const bottomControls = useAnimation();
@@ -71,8 +73,16 @@ export default function Header({
     }
   }
 
+  function handleContactClick() {
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      window.location.hash = "contact";
+    }
+  }
+
   const headerClass = isMobileLandscape
-    ? "fixed top-0 right-0 w-[var(--layout-size)] h-[100dvh] flex flex-col items-center justify-start bg-white z-40"
+    ? "fixed top-0 right-0 w-[var(--layout-size)] h-[100dvh] w-full flex flex-col items-center justify-start bg-white z-40"
     : "fixed top-0 left-0 right-0 h-[var(--layout-size)] flex items-center bg-white z-40";
 
   const menuButtonClass = isMobileLandscape
@@ -80,13 +90,13 @@ export default function Header({
     : "h-full w-[var(--layout-size)]";
 
   const nameButtonClass = isMobileLandscape
-    ? "mt-4 text-vertical text-2xl"
-    : "ml-4 text-4xl";
+    ? "text-vertical text-2xl"
+    : "text-4xl";
 
   return (
     <header
       className={headerClass}
-      style={{ transform: "translateZ(0)", willChange: "transform" }}
+      // style={{ transform: "translateZ(0)", willChange: "transform" }}
     >
       <button
         onClick={handleToggle}
@@ -141,19 +151,34 @@ export default function Header({
         </div>
       </button>
 
-      <motion.button
-        initial={
-          isMobileLandscape ? { x: 50, opacity: 0 } : { y: -50, opacity: 0 }
-        }
-        animate={{ x: 0, y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        onClick={handleNameClick}
-        className={`font-bold bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none ${nameButtonClass}`}
-        style={{ lineHeight: 1 }}
-        aria-label="Scroll to top"
-      >
-        Anthony Al-Rifai
-      </motion.button>
+      <div className="flex items-center justify-between flex-1 p-4">
+        <motion.button
+          initial={
+            isMobileLandscape ? { x: 50, opacity: 0 } : { y: -50, opacity: 0 }
+          }
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          onClick={handleNameClick}
+          className={`font-bold bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none ${nameButtonClass}`}
+          style={{ lineHeight: 1 }}
+          aria-label="Scroll to top"
+        >
+          Anthony Al-Rifai
+        </motion.button>
+
+        {isLargerThanMobile && (
+          <motion.button
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+            onClick={handleContactClick}
+            className="px-6 py-2 lg:px-8 lg:py-3 lg:text-xl bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+            aria-label="Contact"
+          >
+            Contact
+          </motion.button>
+        )}
+      </div>
     </header>
   );
 }
