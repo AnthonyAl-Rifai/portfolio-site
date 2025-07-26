@@ -73,6 +73,7 @@
   --color-foreground: var(--foreground);
   --font-sans: "Satoshi", sans-serif;
   --font-mono: var(--font-geist-mono);
+  --breakpoint-3xl: 120rem;
 }
 
 /* Responsive layout size scaling */
