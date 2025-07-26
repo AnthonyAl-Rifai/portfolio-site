@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Section from "./Section";
-import GridSection from "./GridSection";
 
 export default function HeroSection() {
   const titles = [
@@ -27,9 +26,14 @@ export default function HeroSection() {
 
   return (
     <Section id="hero">
-      <GridSection hasPadding={false}>
+      <div className="grid grid-rows-10 grid-cols-4 gap-4 flex-1 h-full min-h-0 md:grid-cols-8 md:grid-rows-8">
         <h1
-          className="text-6xl mx-4 font-bold overflow-hidden row-start-3 col-span-full md:text-7xl md:row-start-4 pt-4 self-center sm:flex md:block lg:text-9xl"
+          className="
+            text-6xl mx-4 font-bold row-start-3 col-span-full pt-4 self-center
+            sm:flex
+            md:text-7xl md:row-start-3 md:pt-16 md:block md:col-span-6
+            lg:row-start-4 lg:mx-8 lg:text-8xl lg:pt-0 lg:col-span-full
+          "
           style={{ minHeight: "2.5em" }}
         >
           <AnimatePresence mode="wait">
@@ -45,7 +49,14 @@ export default function HeroSection() {
             </motion.span>
           </AnimatePresence>
         </h1>
-        <p className="text-xl font-medium col-start-2 row-start-6 col-span-full md:text-2xl md:col-start-5 md:row-start-7">
+        <p
+          className="
+          text-xl font-medium col-start-2 row-start-6 col-span-full
+          md:text-3xl md:col-start-4 md:row-start-6
+          lg:col-start-5 lg:self-center
+          3xl:col-start-6
+        "
+        >
           <motion.span
             className="block mr-4"
             initial={{ y: 40, opacity: 0 }}
@@ -64,7 +75,7 @@ export default function HeroSection() {
             transition={{ delay: 1.8, duration: 0.7, ease: "easeOut" }}
           />
         </p>
-      </GridSection>
+      </div>
     </Section>
   );
 }
