@@ -32,7 +32,8 @@ export default function HeroSection() {
             text-6xl mx-4 font-bold row-start-3 col-span-full pt-4 self-center
             sm:flex
             md:text-7xl md:row-start-3 md:pt-16 md:block md:col-span-6
-            lg:row-start-4 lg:mx-8 lg:text-8xl lg:pt-0 lg:col-span-full
+            lg:row-start-4 lg:mx-8 lg:pt-0 lg:col-span-full
+            xl:text-8xl
           "
           style={{ minHeight: "2.5em" }}
         >
@@ -52,8 +53,9 @@ export default function HeroSection() {
         <p
           className="
           text-xl font-medium col-start-2 row-start-6 col-span-full
-          md:text-3xl md:col-start-4 md:row-start-6
+          md:text-2xl md:col-start-4 md:row-start-6
           lg:col-start-5 lg:self-center
+          xl:text-3xl
           3xl:col-start-6
         "
         >
