@@ -91,7 +91,7 @@ export default function Header({
 
   const nameButtonClass = isMobileLandscape
     ? "text-vertical text-2xl"
-    : "text-4xl";
+    : "text-3xl md:4xl";
 
   return (
     <header
