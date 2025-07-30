@@ -1,5 +1,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import { useLayout } from "../context/LayoutContext";
+import clsx from "clsx";
 
 interface StickyParagraphProps {
   top: string;
@@ -15,6 +17,8 @@ export default function StickyParagraph({
   bottomLineStyle,
 }: StickyParagraphProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const { isMobileLandscape } = useLayout();
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "center center", "end start"],
@@ -22,22 +26,25 @@ export default function StickyParagraph({
 
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.1, 0.45, 0.7], // start fading out around 0.3
-    [0, 1, 1, 0] // fully visible, then fade to 0 by 0.5
+    [0, 0.1, 0.45, 0.7],
+    [0, 1, 1, 0]
   );
 
-  // const y = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.1, 0.3, 0.6], // move up while fading out
-  //   [30, 0, 0, -90]
-  // );
+  const wrapperClasses = clsx(
+    "relative",
+    isMobileLandscape ? "h-[120vh] my-6" : "h-[150vh] my-12"
+  );
+
+  const motionDivClasses = clsx(
+    "sticky z-10 flex flex-col",
+    isMobileLandscape
+      ? "top-[calc(3*var(--layout-size)-1rem)]"
+      : "top-[calc(5*var(--layout-size)+1rem)]"
+  );
 
   return (
-    <div ref={ref} className="relative h-[150vh] my-12">
-      <motion.div
-        style={{ opacity }}
-        className="sticky top-[calc(5*var(--layout-size)+1rem)] z-10 flex flex-col"
-      >
+    <div ref={ref} className={wrapperClasses}>
+      <motion.div style={{ opacity }} className={motionDivClasses}>
         <p className={topLineStyle}>{top}</p>
         {bottom && <p className={bottomLineStyle}>{bottom}</p>}
       </motion.div>

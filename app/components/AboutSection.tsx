@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "motion/react";
-// import Image from "next/image";
+import clsx from "clsx";
 import Section from "./Section";
 import SectionTitle from "./SectionTitle";
 import StickyParagraph from "./StickyParagraph";
+import { useLayout } from "../context/LayoutContext";
 
 export default function AboutSection() {
-  const topLineStyle = "text-3xl font-medium leading-relaxed";
-  const bottomLineStyle = "text-3xl font-light leading-relaxed";
+  const { isMobileLandscape } = useLayout();
 
   const fadeInOut = {
     initial: { opacity: 0 },
@@ -19,10 +19,7 @@ export default function AboutSection() {
   };
 
   const lines = [
-    {
-      top: "",
-      bottom: "",
-    },
+    { top: "", bottom: "" },
     {
       top: "I build web applications",
       bottom: "that are intuitive, accessible, and meaningful to real people.",
@@ -43,19 +40,56 @@ export default function AboutSection() {
     },
   ];
 
+  const gridClasses = clsx(
+    "relative grid grid-cols-1 md:grid-cols-2 gap-4 px-4",
+    isMobileLandscape && ""
+  );
+
+  const stickyIntroWrapper = clsx(
+    "col-span-full sticky z-20",
+    "top-[calc(2*var(--layout-size))]",
+    isMobileLandscape && "top-[var(--layout-size)]"
+  );
+
+  const stickyIntroInner = "relative bg-white";
+
+  const lineClasses = {
+    top: clsx(
+      "text-3xl font-medium leading-relaxed",
+      isMobileLandscape && "text-2xl"
+    ),
+    bottom: clsx(
+      "text-3xl font-light leading-relaxed",
+      isMobileLandscape && "text-xl"
+    ),
+  };
+
+  const connectWrapperClasses = clsx(
+    "relative",
+    isMobileLandscape ? "h-[150vh]" : "h-[175vh]"
+  );
+
+  const connectBlockClasses = clsx(
+    "sticky z-10 flex flex-col bg-white",
+    isMobileLandscape
+      ? "top-[calc(3*var(--layout-size)-1rem)]"
+      : "top-[calc(6*var(--layout-size))]"
+  );
+
   return (
     <Section id="about" className="h-auto">
       <SectionTitle name="About" isSticky />
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-        <div className="col-span-full sticky top-[calc(2*var(--layout-size))] z-20">
-          <div className="relative bg-white">
+
+      <div className={gridClasses}>
+        <div className={stickyIntroWrapper}>
+          <div className={stickyIntroInner}>
             <motion.div
               key="intro"
               {...fadeInOut}
               className="flex flex-col py-4 relative"
             >
-              <p className={topLineStyle}>I&apos;m Anthony,</p>
-              <p className={bottomLineStyle}>
+              <p className={lineClasses.top}>I&apos;m Anthony,</p>
+              <p className={lineClasses.bottom}>
                 a software engineer and composer based in Los Angeles.
               </p>
             </motion.div>
@@ -63,8 +97,9 @@ export default function AboutSection() {
         </div>
 
         <div className="col-span-full">
-          {/* Image block */}
-          {/* <motion.div
+          {/* Image block – will be used later */}
+          {/*
+          <motion.div
             key="image"
             className="flex justify-center mt-8 overflow-hidden rounded-lg"
             initial={{ scaleX: 0 }}
@@ -81,22 +116,22 @@ export default function AboutSection() {
               className="w-full max-w-2xl h-auto"
               priority
             />
-          </motion.div> */}
+          </motion.div>
+          */}
 
-          {/* Scroll‑pin paragraphs */}
           {lines.map((line, idx) => (
             <StickyParagraph
               key={idx}
               top={line.top}
               bottom={line.bottom}
-              topLineStyle={topLineStyle}
-              bottomLineStyle={bottomLineStyle}
+              topLineStyle={lineClasses.top}
+              bottomLineStyle={lineClasses.bottom}
             />
           ))}
-          <div className="relative h-[200vh]">
-            {/* taller container */}
-            <motion.div className="sticky top-[calc(6*var(--layout-size))] z-10 flex flex-col bg-white">
-              <div className={topLineStyle}>
+
+          <div className={connectWrapperClasses}>
+            <motion.div className={connectBlockClasses}>
+              <div className={lineClasses.top}>
                 Let&apos;s{" "}
                 <motion.button
                   onClick={() =>
