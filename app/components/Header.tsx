@@ -82,7 +82,7 @@ export default function Header({
   }
 
   const headerClass = isMobileLandscape
-    ? "fixed top-0 right-0 w-[var(--layout-size)] h-[100dvh] w-full flex flex-col items-center justify-start bg-white z-40"
+    ? "fixed top-0 right-0 w-[var(--layout-size)] h-[100dvh] flex flex-col items-center justify-start bg-white z-40"
     : "fixed top-0 left-0 right-0 h-[var(--layout-size)] flex items-center bg-white z-40";
 
   const menuButtonClass = isMobileLandscape
@@ -94,10 +94,7 @@ export default function Header({
     : "text-3xl md:4xl";
 
   return (
-    <header
-      className={headerClass}
-      // style={{ transform: "translateZ(0)", willChange: "transform" }}
-    >
+    <header className={headerClass}>
       <button
         onClick={handleToggle}
         className={`z-50 flex items-center justify-center bg-white/10 backdrop-blur-md p-4 transition-colors cursor-pointer hover:bg-white/20 ${menuButtonClass}`}
