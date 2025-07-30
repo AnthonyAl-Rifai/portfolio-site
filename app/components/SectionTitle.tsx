@@ -25,7 +25,7 @@ export default function SectionTitle({
   return (
     <div
       ref={ref}
-      className={`relative z-20 h-[calc(var(--layout-size)+1px)] min-h-[calc(var(--layout-size)+1px)] bg-white w-full flex items-center ${
+      className={`relative z-25 h-[calc(var(--layout-size)+1px)] min-h-[calc(var(--layout-size)+1px)] bg-white w-full flex items-center ${
         isSticky ? "sticky" : ""
       }`}
       style={isSticky ? { top: topOffset } : {}}
