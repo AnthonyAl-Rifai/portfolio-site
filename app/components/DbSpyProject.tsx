@@ -2,7 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import ChevronDownIcon from "../icons/ChevronDownIcon";
+import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
 import CallToAction from "./CallToAction";
 
@@ -62,7 +62,7 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
                     ease: "easeInOut",
                   }}
                 >
-                  <ChevronDownIcon className="w-12 h-12 text-black" />
+                  <MenuIconAUpsideDown size={24} color="#000" />
                 </motion.div>
               </motion.div>
             )}
