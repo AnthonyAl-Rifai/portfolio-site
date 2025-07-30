@@ -14,11 +14,16 @@ const Section = forwardRef<HTMLElement, SectionProps>(
   ({ id, className = "", children, useDvhHeight = false }, ref) => {
     const { isMobileLandscape } = useLayout();
     const usesCustomHeight = className.includes("h-[");
+
     const heightClass = usesCustomHeight
       ? ""
-      : useDvhHeight
-        ? "h-[calc(100dvh-var(--layout-size))]"
-        : "h-[calc(100vh-var(--layout-size))]";
+      : isMobileLandscape
+        ? useDvhHeight
+          ? "h-[100dvh]"
+          : "h-[100vh]"
+        : useDvhHeight
+          ? "h-[calc(100dvh-var(--layout-size))]"
+          : "h-[calc(100vh-var(--layout-size))]";
 
     return (
       <section
