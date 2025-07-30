@@ -43,43 +43,55 @@ export default function WebDevSection() {
   };
 
   return (
-    <Section id="webdev" ref={sectionRef}>
+    <Section id="webdev" ref={sectionRef} className="h-auto">
       <SectionTitle name="Web Dev" isSticky />
-      <div
-        className={`grid gap-4 p-4 ${
-          isMobileLandscape
-            ? "h-[calc(100vh-var(--layout-size))]"
-            : "h-[calc(100vh-2*var(--layout-size))]"
-        } grid-cols-4 grid-rows-8`}
-      >
-        {[
-          "Shut Up & Write!",
-          "dbSpy",
-          "BudSpot.",
-          "SB-1 Audio Player",
-          "Skills",
-        ].map((project, index) => (
-          <motion.button
-            key={project}
-            onClick={() => openDrawer(project as ProjectType)}
-            className="flex items-center justify-between p-4 border-y border-l col-span-full"
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.98 }}
+
+      <div className="relative">
+        {/* Sticky container */}
+        <div className="sticky top-[calc(2*var(--layout-size))] z-20 bg-white">
+          <div
+            className={`grid gap-4 p-4 ${
+              isMobileLandscape
+                ? "h-[calc(100vh-var(--layout-size))]"
+                : "h-[calc(100vh-2*var(--layout-size))]"
+            } grid-cols-4 grid-rows-8`}
           >
-            <span className="text-lg font-semibold">{project}</span>
-            <motion.div
-              animate={{ x: [0, 6, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: index * 0.2,
-              }}
-            >
-              <MenuIconARight size={20} color="#000" />
-            </motion.div>
-          </motion.button>
-        ))}
+            {[
+              "Shut Up & Write!",
+              "dbSpy",
+              "BudSpot.",
+              "SB-1 Audio Player",
+              "Skills",
+            ].map((project, index) => (
+              <motion.button
+                key={project}
+                onClick={() => openDrawer(project as ProjectType)}
+                className="flex items-center justify-between p-4 border-y border-l col-span-full cursor-pointer"
+                // className="flex items-center justify-between p-4 border-y border-l col-span-full bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+                whileHover={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="text-lg font-semibold">{project}</span>
+                <motion.div
+                  animate={{ x: [0, 6, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.2,
+                  }}
+                >
+                  <MenuIconARight size={20} color="#000" />
+                </motion.div>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        {/* Scrollable content area */}
+        <div className="relative h-[150vh]">
+          {/* This creates the scroll space while keeping the buttons sticky */}
+        </div>
       </div>
 
       <AnimatePresence mode="wait">
