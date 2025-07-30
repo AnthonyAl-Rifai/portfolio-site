@@ -1,18 +1,21 @@
 "use client";
 
+import { motion } from "motion/react";
+import clsx from "clsx";
 import Section from "./Section";
 import SectionTitle from "./SectionTitle";
-import { useState, useRef } from "react";
 import { useLayout } from "../context/LayoutContext";
+import { useState, useRef } from "react";
 import MenuIconA from "../icons/MenuIconA";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import MenuIconARight from "../icons/MenuIconARight";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import SuawProject from "./SuawProject";
 import BudSpotProject from "./BudSpotProject";
 import DbSpyProject from "./DbSpyProject";
 import SkillsProject from "./SkillsProject";
-import CallToAction from "./CallToAction";
+import SenseiBonusProject from "./SenseiBonusProject";
+
 type ProjectType =
   | "Shut Up & Write!"
   | "dbSpy"
@@ -42,20 +45,29 @@ export default function WebDevSection() {
     sectionRef.current?.scrollIntoView();
   };
 
+  // ✅ Classes
+  const stickyWrapperClasses = clsx(
+    "sticky z-20 bg-white",
+    isMobileLandscape
+      ? "top-[var(--layout-size)]"
+      : "top-[calc(2*var(--layout-size))]"
+  );
+
+  const innerGridClasses = clsx(
+    "grid gap-4 p-4 grid-cols-4 grid-rows-8",
+    isMobileLandscape
+      ? "h-[calc(100vh-var(--layout-size))]"
+      : "h-[calc(100vh-2*var(--layout-size))]"
+  );
+
   return (
     <Section id="webdev" ref={sectionRef} className="h-auto">
       <SectionTitle name="Web Dev" isSticky />
 
       <div className="relative">
         {/* Sticky container */}
-        <div className="sticky top-[calc(2*var(--layout-size))] z-20 bg-white">
-          <div
-            className={`grid gap-4 p-4 ${
-              isMobileLandscape
-                ? "h-[calc(100vh-var(--layout-size))]"
-                : "h-[calc(100vh-2*var(--layout-size))]"
-            } grid-cols-4 grid-rows-8`}
-          >
+        <div className={stickyWrapperClasses}>
+          <div className={innerGridClasses}>
             {[
               "Shut Up & Write!",
               "dbSpy",
@@ -67,7 +79,6 @@ export default function WebDevSection() {
                 key={project}
                 onClick={() => openDrawer(project as ProjectType)}
                 className="flex items-center justify-between p-4 border-y border-l col-span-full cursor-pointer"
-                // className="flex items-center justify-between p-4 border-y border-l col-span-full bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
                 whileHover={{ scale: 0.95 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -88,12 +99,11 @@ export default function WebDevSection() {
           </div>
         </div>
 
-        {/* Scrollable content area */}
-        <div className="relative h-[150vh]">
-          {/* This creates the scroll space while keeping the buttons sticky */}
-        </div>
+        {/* Scrollable content area (creates space for scroll while keeping buttons sticky) */}
+        <div className="relative h-[125vh]" />
       </div>
 
+      {/* Drawer */}
       <AnimatePresence mode="wait">
         {drawerOpen && selectedProject && (
           <motion.div
@@ -153,14 +163,7 @@ export default function WebDevSection() {
                     ease: "easeOut",
                     delay: 0.5,
                   }}
-                  className="bg-black origin-left"
-                  style={{
-                    position: "absolute",
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    height: 1,
-                  }}
+                  className="bg-black origin-left absolute left-0 right-0 bottom-0 h-px"
                 />
               </div>
 
@@ -175,108 +178,9 @@ export default function WebDevSection() {
                   <SuawProject onClose={() => setSelectedProject(null)} />
                 )}
                 {selectedProject === "SB-1 Audio Player" && (
-                  <div className="min-h-screen flex flex-col gap-16 bg-white p-4 mb-16">
-                    <div className="relative h-[calc(100vh-3*var(--layout-size))] flex flex-col items-center justify-center text-center gap-16">
-                      <motion.h1
-                        className="text-6xl md:text-8xl font-bold text-black mb-6"
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        SB-1 Audio Player
-                      </motion.h1>
-                      <motion.p
-                        className="text-2xl text-black max-w-3xl"
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        A custom audio player built for the Sensei Bonus music
-                        project.
-                      </motion.p>
-                    </div>
-                    <motion.section
-                      className="flex flex-col gap-8"
-                      initial={{ y: 100, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8 }}
-                      viewport={{ once: true, amount: 0 }}
-                    >
-                      <h2 className="text-4xl font-bold text-black">
-                        Project Overview
-                      </h2>
-                      <p className="text-lg text-black leading-relaxed">
-                        SB-1 Audio Player is a custom-built audio player
-                        component designed specifically for the Sensei Bonus
-                        music project. Built with modern web technologies, it
-                        features a unique circular scrubber interface, real-time
-                        audio visualization, and smooth animations that enhance
-                        the listening experience.
-                      </p>
-                    </motion.section>
-                    <motion.section
-                      className="flex flex-col gap-8"
-                      initial={{ y: 100, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8 }}
-                      viewport={{ once: true, amount: 0 }}
-                    >
-                      <h2 className="text-4xl font-bold text-black">
-                        Key Features
-                      </h2>
-                      <ul className="flex flex-col gap-4">
-                        {[
-                          "Custom circular scrubber with touch and mouse interaction",
-                          "Real-time audio visualization with Web Audio API",
-                          "Smooth animations and transitions using Motion library",
-                          "Responsive design that works across all devices",
-                          "Custom audio controls with pitch and speed adjustment",
-                        ].map((text, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <span className="w-2 h-2 bg-black rounded-full mt-[0.5em] flex-shrink-0" />
-                            <span className="text-black">{text}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.section>
-                    <motion.section
-                      className="flex flex-col items-center gap-8"
-                      initial={{ y: 100, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8 }}
-                      viewport={{ once: true }}
-                    >
-                      <h2 className="text-4xl font-bold text-black text-left w-full">
-                        Technology Stack
-                      </h2>
-                      <div className="w-full">
-                        <h3 className="text-2xl font-bold text-black mb-4">
-                          Frontend
-                        </h3>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                          {[
-                            { name: "React" },
-                            { name: "TypeScript" },
-                            { name: "Motion" },
-                            { name: "Web Audio API" },
-                          ].map((tech, index) => (
-                            <motion.div
-                              key={index}
-                              className="bg-white border border-black p-6 text-black text-center font-semibold"
-                              initial={{ scale: 0, opacity: 0 }}
-                              whileInView={{ scale: 1, opacity: 1 }}
-                              viewport={{ once: true }}
-                            >
-                              {tech.name}
-                            </motion.div>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.section>
-                    <CallToAction
-                      onButtonClick={() => setSelectedProject(null)}
-                    />
-                  </div>
+                  <SenseiBonusProject
+                    onClose={() => setSelectedProject(null)}
+                  />
                 )}
                 {selectedProject === "Skills" && (
                   <SkillsProject onClose={() => setSelectedProject(null)} />

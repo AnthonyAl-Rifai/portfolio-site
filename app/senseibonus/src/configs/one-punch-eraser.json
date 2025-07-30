@@ -1,0 +1,164 @@
+{
+  "album": [
+    {
+      "id": "1",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/not+found.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/not+found.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/not+found.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/not+found.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "Not Found",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    },
+    {
+      "id": "2",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/one+punch+eraser.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/one+punch+eraser.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/one+punch+eraser.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/one+punch+eraser.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "One Punch Eraser",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    },
+    {
+      "id": "3",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/dust+from+montana.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/dust+from+montana.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/dust+from+montana.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/dust+from+montana.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "Dust From Montana",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    },
+    {
+      "id": "4",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/daughter+products.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/daughter+products.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/daughter+products.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/daughter+products.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "Daughter Products",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    },
+    {
+      "id": "5",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/mutual+impulse.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/mutual+impulse.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/mutual+impulse.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/mutual+impulse.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "Mutual Impulse",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    },
+    {
+      "id": "6",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/body+shock.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/body+shock.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/body+shock.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/body+shock.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "Body Shock",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    },
+    {
+      "id": "7",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/vel.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/vel.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/vel.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/vel.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "Vel",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    },
+    {
+      "id": "8",
+      "assets": {
+        "wav": "https://senseibonus.s3.us-west-1.amazonaws.com/wav/third+place.wav",
+        "mp3": {
+          "forward": "https://senseibonus.s3.us-west-1.amazonaws.com/forward/third+place.mp3",
+          "reversed": "https://senseibonus.s3.us-west-1.amazonaws.com/reversed/third+place.mp3",
+          "silent": "https://senseibonus.s3.us-west-1.amazonaws.com/silent/third+place.mp3"
+        }
+      },
+      "artist": "Sensei Bonus",
+      "title": "Third Place",
+      "album": "One Punch Eraser",
+      "artwork": [
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
+        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
+      ]
+    }
+  ]
+}
