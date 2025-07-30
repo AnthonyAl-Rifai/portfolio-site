@@ -1,65 +1,58 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { useScroll } from "motion/react";
 import { useRef } from "react";
+import { Step } from "./Step";
 import SectionTitle from "./SectionTitle";
-import { useLayout } from "../context/LayoutContext"; // adjust path as needed
 
 interface ScrollSectionProps {
-  name: string;
   id: string;
-  sectionHeight?: string;
-  initialComponent: React.ReactNode;
-  scrollComponent: React.ReactNode;
+  name: string;
+  steps: React.ReactNode[];
+  stepHeight?: number;
+  directions?: ("left" | "right" | "up" | "down" | "none")[];
 }
 
 export default function ScrollSection({
-  name,
   id,
-  sectionHeight = "h-[300vh]",
-  initialComponent,
-  scrollComponent,
+  name,
+  steps,
+  stepHeight = 150,
+  directions = [],
 }: ScrollSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-  });
-  const { isMobileLandscape } = useLayout();
+  const { scrollYProgress } = useScroll({ target: sectionRef });
 
-  const scrollX = useTransform(scrollYProgress, [0.3, 0.6], ["-100%", "0%"]);
+  // Split the first element as the static initial component
+  const [initial, ...animatedSteps] = steps;
 
   return (
     <section
       ref={sectionRef}
       id={id}
-      className={`relative ${sectionHeight}`}
-      style={{
-        scrollMarginTop: isMobileLandscape ? "0px" : "var(--layout-size)",
-      }}
+      style={{ height: `${animatedSteps.length * stepHeight}vh` }}
+      className="relative"
     >
-      <div
-        className={`sticky ${
-          isMobileLandscape
-            ? "top-0 h-screen"
-            : "top-[var(--layout-size)] h-[calc(100vh-var(--layout-size))]"
-        } overflow-hidden z-10`}
-      >
-        {" "}
-        <SectionTitle name={name} />
-        <div className="relative w-full h-full ">
-          {/* Initial component: base layer */}
-          <div className="absolute inset-0 z-0 h-full w-full ">
-            {initialComponent}
-          </div>
+      {/* SectionTitle handles its own sticky behavior */}
+      <SectionTitle name={name} isSticky />
 
-          {/* Scroll component: animates on top */}
-          <motion.div
-            className="absolute top-0 left-0 h-full w-full z-10"
-            style={{ x: scrollX }}
+      {/* Container for steps, offset by the SectionTitle height */}
+      <div className="sticky top-[calc(var(--layout-size)*2)] h-[calc(100vh-var(--layout-size)*2)] overflow-hidden">
+        {/* Static component always in the background */}
+        <div className="absolute inset-0">{initial}</div>
+
+        {/* Animated steps */}
+        {animatedSteps.map((step, index) => (
+          <Step
+            key={index}
+            index={index}
+            totalSteps={animatedSteps.length}
+            scrollYProgress={scrollYProgress}
+            direction={directions[index + 1] || "right"}
           >
-            {scrollComponent}
-          </motion.div>
-        </div>
+            {step}
+          </Step>
+        ))}
       </div>
     </section>
   );

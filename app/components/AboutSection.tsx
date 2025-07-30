@@ -6,9 +6,12 @@ import Section from "./Section";
 import SectionTitle from "./SectionTitle";
 import StickyParagraph from "./StickyParagraph";
 import { useLayout } from "../context/LayoutContext";
+import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
+import Image from "next/image";
 
 export default function AboutSection() {
   const { isMobileLandscape } = useLayout();
+  const isLargerThanMobile = useIsLargerThanMobile();
 
   const fadeInOut = {
     initial: { opacity: 0 },
@@ -48,6 +51,7 @@ export default function AboutSection() {
   const stickyIntroWrapper = clsx(
     "col-span-full sticky z-20",
     "top-[calc(2*var(--layout-size))]",
+    "md:col-span-1",
     isMobileLandscape && "top-[var(--layout-size)]"
   );
 
@@ -76,11 +80,25 @@ export default function AboutSection() {
       : "top-[calc(6*var(--layout-size))]"
   );
 
+  const stickyImageWrapper = clsx(
+    "sticky z-10 flex justify-center overflow-hidden py-4 rounded-lg",
+    "md:col-span-1 md:col-start-2",
+    isMobileLandscape
+      ? "top-[calc(3*var(--layout-size)-1rem)]"
+      : "top-[calc(2*var(--layout-size))]"
+  );
+
+  // const carouselWrapperClasses = clsx(
+  //   "sticky bottom-0 left-0 right-0 w-full z-20 bg-white",
+  //   isLargerThanMobile && "pb-4"
+  // );
+
   return (
     <Section id="about" className="h-auto">
       <SectionTitle name="About" isSticky />
 
       <div className={gridClasses}>
+        {/* Sticky Intro */}
         <div className={stickyIntroWrapper}>
           <div className={stickyIntroInner}>
             <motion.div
@@ -96,29 +114,32 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="col-span-full">
-          {/* Image block – will be used later */}
-          {/*
-          <motion.div
-            key="image"
-            className="flex justify-center mt-8 overflow-hidden rounded-lg"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            exit={{ scaleX: 0 }}
-            viewport={{ amount: 0, once: true }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          >
-            <Image
-              src="/anthony-big-sur.jpg"
-              alt="Anthony in Big Sur"
-              width={800}
-              height={600}
-              className="w-full max-w-2xl h-auto"
-              priority
-            />
-          </motion.div>
-          */}
+        {/* Sticky Image */}
+        {isLargerThanMobile && (
+          <div className={stickyImageWrapper}>
+            <motion.div
+              key="image"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              exit={{ scaleX: 0 }}
+              viewport={{ amount: 0, once: true }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="w-full max-w-2xl"
+            >
+              <Image
+                src="/anthony-big-sur.jpg"
+                alt="Anthony in Big Sur"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
+                priority
+              />
+            </motion.div>
+          </div>
+        )}
 
+        {/* Sticky Paragraphs */}
+        <div className="col-span-full md:col-span-1">
           {lines.map((line, idx) => (
             <StickyParagraph
               key={idx}
