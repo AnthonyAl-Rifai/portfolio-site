@@ -13,6 +13,7 @@ import YoutubeIcon from "../icons/YoutubeIcon";
 import MenuIconA from "../icons/MenuIconA";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import SenseiBonusPlayer from "./SenseiBonusPlayer";
+import clsx from "clsx";
 
 export default function MusicSection() {
   const { isMobileLandscape } = useLayout();
@@ -44,7 +45,15 @@ export default function MusicSection() {
 
       <div className="relative">
         {/* Sticky container */}
-        <div className="sticky top-[calc(2*var(--layout-size))] z-20 bg-white">
+        <div
+          className={clsx(
+            "sticky z-20 bg-white",
+            isMobileLandscape
+              ? "top-[var(--layout-size)]"
+              : "top-[calc(2*var(--layout-size))]"
+          )}
+        >
+          {" "}
           <div
             className={`grid gap-4 p-4 ${
               isMobileLandscape
@@ -59,7 +68,13 @@ export default function MusicSection() {
               dance floors, Sensei Bonus offers a symbiotic chance to revel in
               the malaise and jubilance of the human condition.
             </h3>
-            <div className="row-start-3 col-start-1 col-span-4 row-span-2 flex items-center">
+            <div
+              className={clsx(
+                "col-start-1 col-span-4 row-span-2 flex items-center",
+                isMobileLandscape ? "row-start-4" : "row-start-3"
+              )}
+            >
+              {" "}
               <motion.button
                 onClick={openDrawer}
                 className="row-start-3 row-span-2 h-[58px] w-[200px] bg-black text-white px-8 py-4 font-semibold hover:bg-gray-800 transition-all duration-300 border border-black rounded-full cursor-pointer"
