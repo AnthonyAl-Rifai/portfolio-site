@@ -117,11 +117,10 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Submit Button - centered */}
             <div className="text-center">
               <button
                 type="submit"
-                className="px-8 py-3 bg-gray-800 rounded-4xl hover:bg-purple-950 text-white font-medium  transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+                className="px-8 py-3 bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium  transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
               >
                 Send Message
               </button>
