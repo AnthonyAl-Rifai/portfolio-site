@@ -1,6 +1,8 @@
 "use client";
 
 import { motion, useInView, AnimatePresence } from "motion/react";
+import clsx from "clsx";
+import { useLayout } from "../context/LayoutContext";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
 import CallToAction from "./CallToAction";
@@ -10,22 +12,39 @@ interface SkillsProjectProps {
 }
 
 export default function SkillsProject({ onClose }: SkillsProjectProps) {
+  const { isMobileLandscape } = useLayout();
   const overviewRef = useRef(null);
   const isInView = useInView(overviewRef);
   const showChevron = !isInView;
 
   return (
-    <div className="min-h-screen flex flex-col gap-16 bg-white p-4 mb-16">
+    <div
+      className={clsx(
+        "min-h-screen flex flex-col bg-white",
+        isMobileLandscape ? "px-16 py-8 pb-4 gap-8 mb-4" : "p-4 gap-16 mb-16"
+      )}
+    >
       {/* Hero Section */}
-      <div className="relative h-[calc(100vh-3*var(--layout-size))] flex flex-col items-center justify-center text-center gap-16">
+      <div
+        className={clsx(
+          "relative flex flex-col items-center text-center",
+          isMobileLandscape
+            ? "h-auto min-h-screen gap-8"
+            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16"
+        )}
+      >
         <motion.h1
-          className="text-6xl md:text-8xl font-bold text-black mb-6"
+          className={clsx(
+            "font-bold text-black mb-6",
+            isMobileLandscape ? "text-5xl" : "text-6xl md:text-8xl"
+          )}
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
           Technical Skills
         </motion.h1>
+
         <motion.p
           className="text-2xl text-black max-w-3xl"
           initial={{ y: 50, opacity: 0 }}
@@ -36,7 +55,12 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
           practices for building scalable web applications.
         </motion.p>
 
-        <div className="absolute bottom-0">
+        <div
+          className={clsx(
+            "absolute",
+            isMobileLandscape ? "bottom-16" : "bottom-0"
+          )}
+        >
           <AnimatePresence>
             {showChevron && (
               <motion.div
@@ -147,23 +171,23 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
           <h3 className="text-2xl font-bold text-black mb-4">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
-              { name: "JavaScript ES6" },
-              { name: "TypeScript" },
-              { name: "Vue.js" },
-              { name: "React" },
-              { name: "React Native" },
-              { name: "Next.js" },
-              { name: "Redux" },
-              { name: "Zustand" },
-              { name: "HTML5" },
-              { name: "CSS3" },
-              { name: "Tailwind CSS" },
-              { name: "RESTful API" },
-              { name: "GraphQL" },
-              { name: "Framer-Motion" },
-              { name: "Storybook" },
-              { name: "Figma" },
-            ].map((tech, index) => (
+              "JavaScript ES6",
+              "TypeScript",
+              "Vue.js",
+              "React",
+              "React Native",
+              "Next.js",
+              "Redux",
+              "Zustand",
+              "HTML5",
+              "CSS3",
+              "Tailwind CSS",
+              "RESTful API",
+              "GraphQL",
+              "Framer-Motion",
+              "Storybook",
+              "Figma",
+            ].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
@@ -171,7 +195,7 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {tech.name}
+                {name}
               </motion.div>
             ))}
           </div>
@@ -182,15 +206,15 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
           <h3 className="text-2xl font-bold text-black mb-4">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
-              { name: "Node.js" },
-              { name: "Express.js" },
-              { name: "C# .NET" },
-              { name: "PostgreSQL" },
-              { name: "Prisma" },
-              { name: "SQL" },
-              { name: "NoSQL" },
-              { name: "MongoDB" },
-            ].map((tech, index) => (
+              "Node.js",
+              "Express.js",
+              "C# .NET",
+              "PostgreSQL",
+              "Prisma",
+              "SQL",
+              "NoSQL",
+              "MongoDB",
+            ].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
@@ -198,7 +222,7 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {tech.name}
+                {name}
               </motion.div>
             ))}
           </div>
@@ -209,20 +233,20 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
           <h3 className="text-2xl font-bold text-black mb-4">DevOps & Tools</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
-              { name: "AWS" },
-              { name: "S3" },
-              { name: "EC2" },
-              { name: "CloudWatch" },
-              { name: "Fargate" },
-              { name: "Docker" },
-              { name: "New Relic" },
-              { name: "GitLab CI/CD" },
-              { name: "GitHub" },
-              { name: "Google Cloud" },
-              { name: "Microservices" },
-              { name: "Agile" },
-              { name: "Scrum" },
-            ].map((tech, index) => (
+              "AWS",
+              "S3",
+              "EC2",
+              "CloudWatch",
+              "Fargate",
+              "Docker",
+              "New Relic",
+              "GitLab CI/CD",
+              "GitHub",
+              "Google Cloud",
+              "Microservices",
+              "Agile",
+              "Scrum",
+            ].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
@@ -230,7 +254,7 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {tech.name}
+                {name}
               </motion.div>
             ))}
           </div>
@@ -240,28 +264,23 @@ export default function SkillsProject({ onClose }: SkillsProjectProps) {
         <div className="w-full">
           <h3 className="text-2xl font-bold text-black mb-4">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: "React Testing Library" },
-              { name: "Jest" },
-              { name: "Cypress" },
-              { name: "Vitest" },
-              { name: "TDD" },
-            ].map((tech, index) => (
-              <motion.div
-                key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                {tech.name}
-              </motion.div>
-            ))}
+            {["React Testing Library", "Jest", "Cypress", "Vitest", "TDD"].map(
+              (name, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white border border-black p-6 text-black text-center font-semibold"
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  {name}
+                </motion.div>
+              )
+            )}
           </div>
         </div>
       </motion.section>
 
-      {/* Call to Action */}
       <CallToAction onButtonClick={onClose} />
     </div>
   );

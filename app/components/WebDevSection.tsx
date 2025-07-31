@@ -45,7 +45,6 @@ export default function WebDevSection() {
     sectionRef.current?.scrollIntoView();
   };
 
-  // ✅ Classes
   const stickyWrapperClasses = clsx(
     "sticky z-20 bg-white",
     isMobileLandscape
@@ -54,10 +53,10 @@ export default function WebDevSection() {
   );
 
   const innerGridClasses = clsx(
-    "grid gap-4 p-4 grid-cols-4 grid-rows-8",
+    "grid gap-4 p-4 grid-cols-4",
     isMobileLandscape
-      ? "h-[calc(100vh-var(--layout-size))]"
-      : "h-[calc(100vh-2*var(--layout-size))]"
+      ? "h-[calc(100vh-var(--layout-size))] grid-rows-6"
+      : "h-[calc(100vh-2*var(--layout-size))] grid-rows-6"
   );
 
   return (
@@ -65,7 +64,6 @@ export default function WebDevSection() {
       <SectionTitle name="Web Dev" isSticky />
 
       <div className="relative">
-        {/* Sticky container */}
         <div className={stickyWrapperClasses}>
           <div className={innerGridClasses}>
             {[
@@ -99,11 +97,9 @@ export default function WebDevSection() {
           </div>
         </div>
 
-        {/* Scrollable content area (creates space for scroll while keeping buttons sticky) */}
         <div className="relative h-[125vh]" />
       </div>
 
-      {/* Drawer */}
       <AnimatePresence mode="wait">
         {drawerOpen && selectedProject && (
           <motion.div
@@ -113,14 +109,23 @@ export default function WebDevSection() {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="fixed inset-0 z-50 bg-white border-l h-dvh"
           >
-            <motion.div className="h-full flex flex-col overflow-y-auto">
-              <div className="sticky top-0 h-[var(--layout-size)] flex justify-between items-center bg-white z-10">
-                <h2 className="text-4xl font-bold mx-4 whitespace-nowrap">
-                  {selectedProject}
-                </h2>
+            <motion.div className="h-full flex flex-col overflow-hidden">
+              <div
+                className={clsx(
+                  isMobileLandscape
+                    ? "absolute top-0 right-0 h-full w-[var(--layout-size)] flex flex-col items-center justify-start bg-white z-10"
+                    : "sticky top-0 h-[var(--layout-size)] w-full flex justify-between items-center bg-white z-10"
+                )}
+              >
+                {!isMobileLandscape && (
+                  <h2 className="text-4xl font-bold mx-4 whitespace-nowrap">
+                    {selectedProject}
+                  </h2>
+                )}
+
                 <button
                   onClick={closeDrawer}
-                  className="flex items-center w-[var(--layout-size)] h-[var(--layout-size)] border-l justify-center z-50"
+                  className="flex items-center justify-center w-[var(--layout-size)] h-[var(--layout-size)] border-l z-50"
                   aria-label="Close modal"
                 >
                   <div className="flex flex-col items-center gap-1">
@@ -155,19 +160,52 @@ export default function WebDevSection() {
                     </motion.div>
                   </div>
                 </button>
-                <motion.div
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  animate={{ scaleX: 1, opacity: 1 }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeOut",
-                    delay: 0.5,
-                  }}
-                  className="bg-black origin-left absolute left-0 right-0 bottom-0 h-px"
-                />
+
+                {isMobileLandscape && (
+                  <h2 className="text-vertical text-2xl font-bold mt-6 mb-4 whitespace-nowrap">
+                    {selectedProject}
+                  </h2>
+                )}
+
+                {/* Borders (matching LayoutBorders logic) */}
+                {isMobileLandscape ? (
+                  <>
+                    {/* Right vertical segment */}
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "100%", opacity: 1 }}
+                      transition={{ duration: 1.2, ease: "easeOut" }}
+                      className="absolute left-0 top-0 w-px bg-black"
+                    />
+
+                    {/* Top horizontal segment */}
+                    <motion.div
+                      initial={{ width: 0, opacity: 0 }}
+                      animate={{ width: "var(--layout-size)", opacity: 1 }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
+                      className="absolute bg-black h-px"
+                      style={{
+                        top: "var(--layout-size)",
+                        left: 0,
+                      }}
+                    />
+                  </>
+                ) : (
+                  <motion.div
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ duration: 0.4, ease: "easeOut", delay: 0.5 }}
+                    className="bg-black origin-left absolute left-0 right-0 bottom-0 h-px"
+                  />
+                )}
               </div>
 
-              <div className="flex-1 bg-white">
+              <div
+                className={clsx(
+                  "flex-1 bg-white overflow-y-auto",
+                  isMobileLandscape ? "pr-[var(--layout-size)]" : ""
+                )}
+              >
                 {selectedProject === "BudSpot." && (
                   <BudSpotProject onClose={() => setSelectedProject(null)} />
                 )}

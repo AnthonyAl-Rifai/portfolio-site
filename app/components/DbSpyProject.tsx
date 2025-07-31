@@ -1,6 +1,8 @@
 "use client";
 
 import { motion, useInView, AnimatePresence } from "motion/react";
+import clsx from "clsx";
+import { useLayout } from "../context/LayoutContext";
 import Image from "next/image";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
@@ -11,14 +13,27 @@ interface DbSpyProjectProps {
 }
 
 export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
+  const { isMobileLandscape } = useLayout();
   const overviewRef = useRef(null);
   const isInView = useInView(overviewRef);
   const showChevron = !isInView;
 
   return (
-    <div className="min-h-screen flex flex-col gap-16 bg-white p-4 mb-16">
+    <div
+      className={clsx(
+        "min-h-screen flex flex-col bg-white",
+        isMobileLandscape ? "px-16 py-8 pb-4 gap-8 mb-4" : "p-4 gap-16 mb-16"
+      )}
+    >
       {/* Hero Section */}
-      <div className="relative h-[calc(100vh-3*var(--layout-size))] flex flex-col items-center justify-center text-center gap-16">
+      <div
+        className={clsx(
+          "relative flex flex-col items-center text-center",
+          isMobileLandscape
+            ? "h-auto min-h-screen gap-8"
+            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16"
+        )}
+      >
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -27,8 +42,8 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
           <Image
             src="/dbspy-logo-dark.png"
             alt="DBSpy Logo"
-            width={400}
-            height={200}
+            width={isMobileLandscape ? 300 : 400}
+            height={isMobileLandscape ? 150 : 200}
             className="mx-auto"
             priority
           />
@@ -44,7 +59,12 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
           management
         </motion.p>
 
-        <div className="absolute bottom-0">
+        <div
+          className={clsx(
+            "absolute",
+            isMobileLandscape ? "bottom-16" : "bottom-0"
+          )}
+        >
           <AnimatePresence>
             {showChevron && (
               <motion.div
@@ -100,6 +120,7 @@ export default function DbSpyProject({ onClose }: DbSpyProjectProps) {
           compatibility, and enhance the overall developer experience.
         </p>
       </motion.section>
+
       {/* Key Highlights Section */}
       <motion.section
         className="flex flex-col gap-8"
