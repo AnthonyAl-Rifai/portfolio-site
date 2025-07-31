@@ -224,7 +224,7 @@ export default function MusicSection() {
                 />
               </div>
 
-              <div className="flex-1 bg-white flex justify-center items-center">
+              <div className="flex-1 bg-white flex justify-center items-center p-4">
                 <SenseiBonusPlayer />
               </div>
             </motion.div>
