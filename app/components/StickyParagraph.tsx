@@ -32,7 +32,7 @@ export default function StickyParagraph({
 
   const wrapperClasses = clsx(
     "relative",
-    isMobileLandscape ? "h-[120vh] my-6" : "h-[150vh] my-12"
+    isMobileLandscape ? "h-[120vh] my-6" : "h-[150vh] my-6"
   );
 
   const motionDivClasses = clsx(

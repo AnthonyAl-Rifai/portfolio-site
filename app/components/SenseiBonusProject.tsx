@@ -176,6 +176,7 @@ export default function SenseiBonusProject({
               "TypeScript",
               "Emotion",
               "Web Audio API",
+              "React Context",
               "Custom Hooks",
             ].map((name, index) => (
               <motion.div
@@ -195,7 +196,7 @@ export default function SenseiBonusProject({
         <div className="w-full">
           <h3 className="text-2xl font-bold text-black mb-4">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-            {["Express Server", "Asset Serving"].map((name, index) => (
+            {["Express.js", "PostgreSQL"].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
@@ -215,7 +216,7 @@ export default function SenseiBonusProject({
             DevOps & Tooling
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-            {["Webpack", "AWS S3", "Heroku", "ESLint"].map((name, index) => (
+            {["AWS S3", "Heroku"].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-black text-center font-semibold"
@@ -233,7 +234,7 @@ export default function SenseiBonusProject({
         <div className="w-full">
           <h3 className="text-2xl font-bold text-black mb-4">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {["Jest", "Component Validation"].map((name, index) => (
+            {["Jest"].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-black text-center font-semibold"

@@ -22,7 +22,6 @@ export default function AboutSection() {
   };
 
   const lines = [
-    { top: "", bottom: "" },
     {
       top: "I build web applications",
       bottom: "that are intuitive, accessible, and meaningful to real people.",
@@ -39,7 +38,7 @@ export default function AboutSection() {
     },
     {
       top: "I stay curious",
-      bottom: "and I’m always learning, building, and refining.",
+      bottom: "and I'm always learning, building, and refining.",
     },
   ];
 
