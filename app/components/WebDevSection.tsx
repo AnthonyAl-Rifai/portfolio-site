@@ -32,10 +32,24 @@ export default function WebDevSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   const openDrawer = (project: ProjectType) => {
-    setSelectedProject(project);
-    setDrawerOpen(true);
-    setShowCloseAnimation(false);
-    setTimeout(() => setShowCloseAnimation(true), 50);
+    if (drawerOpen && selectedProject !== project) {
+      // Close current drawer
+      setDrawerOpen(false);
+      setShowCloseAnimation(false);
+
+      // After animation completes, open new project
+      setTimeout(() => {
+        setSelectedProject(project);
+        setDrawerOpen(true);
+        setTimeout(() => setShowCloseAnimation(true), 1000);
+      }, 500); // match your exit animation duration
+    } else {
+      // Normal open behavior
+      setSelectedProject(project);
+      setDrawerOpen(true);
+      setShowCloseAnimation(false);
+      setTimeout(() => setShowCloseAnimation(true), 50);
+    }
   };
 
   const closeDrawer = () => {
@@ -53,11 +67,28 @@ export default function WebDevSection() {
   );
 
   const innerGridClasses = clsx(
-    "grid gap-4 p-4 grid-cols-4",
+    "grid gap-4 p-4 grid-cols-4 md:p-0 md:gap-0",
     isMobileLandscape
       ? "h-[calc(100vh-var(--layout-size))] grid-rows-6"
       : "h-[calc(100vh-2*var(--layout-size))] grid-rows-6"
   );
+
+  const renderProject = () => {
+    switch (selectedProject) {
+      case "BudSpot.":
+        return <BudSpotProject onClose={closeDrawer} />;
+      case "dbSpy":
+        return <DbSpyProject onClose={closeDrawer} />;
+      case "Shut Up & Write!":
+        return <SuawProject onClose={closeDrawer} />;
+      case "SB-1 Audio Player":
+        return <SenseiBonusProject onClose={closeDrawer} />;
+      case "Skills":
+        return <SkillsProject onClose={closeDrawer} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <Section id="webdev" ref={sectionRef} className="h-auto">
@@ -76,7 +107,7 @@ export default function WebDevSection() {
               <motion.button
                 key={project}
                 onClick={() => openDrawer(project as ProjectType)}
-                className="flex items-center justify-between p-4 border-y border-l col-span-full cursor-pointer"
+                className="flex items-center justify-between p-4 border col-span-full md:col-span-1 md:col-start-1 md:border-0 md:border-b md:text-left cursor-pointer"
                 whileHover={{ scale: 0.95 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -94,12 +125,96 @@ export default function WebDevSection() {
                 </motion.div>
               </motion.button>
             ))}
+
+            {/* Placeholder */}
+            <div className="hidden md:flex col-start-2 col-span-3 row-start-1 row-span-5 border-b border-l bg-white items-center justify-center p-8 text-center z-0">
+              <p className="text-lg font-medium w-1/2">
+                Click on the project button to find out more about what
+                I&apos;ve worked on.
+              </p>
+            </div>
+
+            {/* Modal INSIDE grid for tablet+ */}
+            <AnimatePresence mode="wait">
+              {drawerOpen && selectedProject && (
+                <div className="hidden md:flex col-start-2 col-span-3 row-start-1 row-span-5 overflow-x-hidden overflow-y-auto z-10">
+                  <motion.div
+                    key={selectedProject}
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="flex flex-col border-b border-l bg-white w-full overflow-y-auto"
+                  >
+                    <div className="sticky top-0 h-[var(--layout-size)] flex justify-between items-center bg-white z-10">
+                      <h2 className="text-2xl font-bold mx-4">
+                        {selectedProject}
+                      </h2>
+
+                      <button
+                        onClick={closeDrawer}
+                        className="flex items-center justify-center w-[var(--layout-size)] h-[var(--layout-size)] border-l"
+                      >
+                        <div className="flex flex-col items-center gap-1">
+                          <motion.div
+                            animate={{
+                              scale: [1, 1.3, 1],
+                              rotate: showCloseAnimation ? 180 : 0,
+                              y: [0, -2, 0],
+                            }}
+                            transition={{
+                              duration: 0.6,
+                              ease: "easeInOut",
+                              times: [0, 0.5, 1],
+                            }}
+                          >
+                            <MenuIconA size={20} color="#000" />
+                          </motion.div>
+                          <motion.div
+                            className="-mt-1"
+                            animate={{
+                              scale: [1, 1.3, 1],
+                              rotate: showCloseAnimation ? -180 : 0,
+                              y: [0, 2, 0],
+                            }}
+                            transition={{
+                              duration: 0.6,
+                              ease: "easeInOut",
+                              times: [0, 0.5, 1],
+                            }}
+                          >
+                            <MenuIconAUpsideDown size={20} color="#000" />
+                          </motion.div>
+                        </div>
+                      </button>
+
+                      {/* Animated bottom border (TABLET) */}
+                      <motion.div
+                        initial={{ scaleX: 0, opacity: 0 }}
+                        animate={{ scaleX: 1, opacity: 1 }}
+                        transition={{
+                          duration: 0.4,
+                          ease: "easeOut",
+                          delay: 0.5,
+                        }}
+                        className="bg-black origin-left absolute left-0 right-0 bottom-0 h-px"
+                      />
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto">
+                      {renderProject()}
+                    </div>
+                  </motion.div>
+                </div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
         <div className="relative h-[125vh]" />
       </div>
 
+      {/* Full-screen modal for mobile/landscape mobile */}
       <AnimatePresence mode="wait">
         {drawerOpen && selectedProject && (
           <motion.div
@@ -107,14 +222,14 @@ export default function WebDevSection() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 bg-white border-l h-dvh"
+            className="md:hidden fixed inset-0 z-50 bg-white border-l h-dvh"
           >
             <motion.div className="h-full flex flex-col overflow-hidden">
               <div
                 className={clsx(
                   isMobileLandscape
                     ? "absolute top-0 right-0 h-full w-[var(--layout-size)] flex flex-col items-center justify-start bg-white z-10"
-                    : "sticky top-0 h-[var(--layout-size)] w-full flex justify-between items-center bg-white z-10"
+                    : "sticky top-0 h-[var(--layout-size)] w-full flex justify-between items-center bg-white z-10 relative"
                 )}
               >
                 {!isMobileLandscape && (
@@ -122,11 +237,9 @@ export default function WebDevSection() {
                     {selectedProject}
                   </h2>
                 )}
-
                 <button
                   onClick={closeDrawer}
                   className="flex items-center justify-center w-[var(--layout-size)] h-[var(--layout-size)] border-l z-50"
-                  aria-label="Close modal"
                 >
                   <div className="flex flex-col items-center gap-1">
                     <motion.div
@@ -167,37 +280,17 @@ export default function WebDevSection() {
                   </h2>
                 )}
 
-                {/* Borders (matching LayoutBorders logic) */}
-                {isMobileLandscape ? (
-                  <>
-                    {/* Right vertical segment */}
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "100%", opacity: 1 }}
-                      transition={{ duration: 1.2, ease: "easeOut" }}
-                      className="absolute left-0 top-0 w-px bg-black"
-                    />
-
-                    {/* Top horizontal segment */}
-                    <motion.div
-                      initial={{ width: 0, opacity: 0 }}
-                      animate={{ width: "var(--layout-size)", opacity: 1 }}
-                      transition={{ duration: 0.7, ease: "easeOut" }}
-                      className="absolute bg-black h-px"
-                      style={{
-                        top: "var(--layout-size)",
-                        left: 0,
-                      }}
-                    />
-                  </>
-                ) : (
-                  <motion.div
-                    initial={{ scaleX: 0, opacity: 0 }}
-                    animate={{ scaleX: 1, opacity: 1 }}
-                    transition={{ duration: 0.4, ease: "easeOut", delay: 0.5 }}
-                    className="bg-black origin-left absolute left-0 right-0 bottom-0 h-px"
-                  />
-                )}
+                {/* Animated bottom border (MOBILE) */}
+                <motion.div
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: "easeOut",
+                    delay: 0.5,
+                  }}
+                  className="bg-black origin-left absolute left-0 right-0 bottom-0 h-px"
+                />
               </div>
 
               <div
@@ -206,23 +299,7 @@ export default function WebDevSection() {
                   isMobileLandscape ? "pr-[var(--layout-size)]" : ""
                 )}
               >
-                {selectedProject === "BudSpot." && (
-                  <BudSpotProject onClose={() => setSelectedProject(null)} />
-                )}
-                {selectedProject === "dbSpy" && (
-                  <DbSpyProject onClose={() => setSelectedProject(null)} />
-                )}
-                {selectedProject === "Shut Up & Write!" && (
-                  <SuawProject onClose={() => setSelectedProject(null)} />
-                )}
-                {selectedProject === "SB-1 Audio Player" && (
-                  <SenseiBonusProject
-                    onClose={() => setSelectedProject(null)}
-                  />
-                )}
-                {selectedProject === "Skills" && (
-                  <SkillsProject onClose={() => setSelectedProject(null)} />
-                )}
+                {renderProject()}
               </div>
             </motion.div>
           </motion.div>
