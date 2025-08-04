@@ -6,13 +6,13 @@ import { useLayout } from "../context/LayoutContext";
 import Image from "next/image";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-import CallToAction from "./CallToAction";
+// import CallToAction from "./CallToAction";
 
-interface BudSpotProjectProps {
-  onClose: () => void;
-}
+// interface BudSpotProjectProps {
+//   onClose: () => void;
+// }
 
-export default function BudSpotProject({ onClose }: BudSpotProjectProps) {
+export default function BudSpotProject() {
   const { isMobileLandscape } = useLayout();
   const overviewRef = useRef(null);
   const isInView = useInView(overviewRef);
@@ -21,8 +21,8 @@ export default function BudSpotProject({ onClose }: BudSpotProjectProps) {
   return (
     <div
       className={clsx(
-        "min-h-screen flex flex-col bg-white",
-        isMobileLandscape ? "px-16 py-8 pb-4 gap-8 mb-4" : "p-4 gap-16 mb-16"
+        "min-h-screen flex flex-col  bg-white",
+        isMobileLandscape ? "px-16 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
       )}
     >
       {/* Hero Section */}
@@ -30,8 +30,8 @@ export default function BudSpotProject({ onClose }: BudSpotProjectProps) {
         className={clsx(
           "relative flex flex-col items-center text-center",
           isMobileLandscape
-            ? "h-auto min-h-screen gap-8"
-            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16"
+            ? "h-auto min-h-screen gap-8 mt-[var(--layout-size)]"
+            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16 mt-[calc(2*var(--layout-size))]"
         )}
       >
         <motion.div
@@ -231,7 +231,7 @@ export default function BudSpotProject({ onClose }: BudSpotProjectProps) {
       </motion.section>
 
       {/* Call to Action */}
-      <CallToAction onButtonClick={onClose} />
+      {/* <CallToAction onButtonClick={onClose} /> */}
     </div>
   );
 }
