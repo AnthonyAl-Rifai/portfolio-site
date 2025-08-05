@@ -98,8 +98,7 @@
 } */
 
 html {
-  /* Lenis handles smooth scrolling */
-  scroll-behavior: auto;
+  scroll-behavior: smooth; /* fallback smooth scrolling */
 }
 
 body {

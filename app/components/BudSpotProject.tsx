@@ -22,7 +22,7 @@ export default function BudSpotProject() {
     <div
       className={clsx(
         "min-h-screen flex flex-col  bg-white",
-        isMobileLandscape ? "px-16 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
+        isMobileLandscape ? "px-4 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
       )}
     >
       {/* Hero Section */}
@@ -30,7 +30,7 @@ export default function BudSpotProject() {
         className={clsx(
           "relative flex flex-col items-center text-center",
           isMobileLandscape
-            ? "h-auto min-h-screen gap-8 mt-[calc(2*var(--layout-size))]"
+            ? "h-auto min-h-screen gap-8 mt-[calc(1.5*var(--layout-size))]"
             : "h-[calc(100vh-3*var(--layout-size))] gap-8 mt-[calc(2.7*var(--layout-size))]"
         )}
       >
@@ -149,7 +149,7 @@ export default function BudSpotProject() {
         {/* Frontend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[
               { name: "React" },
               { name: "TypeScript" },
@@ -158,7 +158,7 @@ export default function BudSpotProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -172,7 +172,7 @@ export default function BudSpotProject() {
         {/* Backend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[
               { name: "Express.js" },
               { name: "RESTful API" },
@@ -180,7 +180,7 @@ export default function BudSpotProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -196,7 +196,7 @@ export default function BudSpotProject() {
           <h3 className="text-2xl font-medium text-black mb-4">
             DevOps & Tooling
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[{ name: "Google Cloud Platform" }].map((tech, index) => (
               <motion.div
                 key={index}
@@ -214,11 +214,11 @@ export default function BudSpotProject() {
         {/* Testing */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[{ name: "Jest" }, { name: "Cypress" }].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}

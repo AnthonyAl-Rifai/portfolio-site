@@ -22,7 +22,7 @@ export default function SenseiBonusProject() {
     <div
       className={clsx(
         "min-h-screen flex flex-col  bg-white",
-        isMobileLandscape ? "px-16 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
+        isMobileLandscape ? "px-4 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
       )}
     >
       {/* Hero Section */}
@@ -168,7 +168,7 @@ export default function SenseiBonusProject() {
         {/* Frontend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[
               "React",
               "TypeScript",
@@ -179,7 +179,7 @@ export default function SenseiBonusProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -193,11 +193,11 @@ export default function SenseiBonusProject() {
         {/* Backend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {["Express.js", "PostgreSQL"].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -213,11 +213,11 @@ export default function SenseiBonusProject() {
           <h3 className="text-2xl font-medium text-black mb-4">
             DevOps & Tooling
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {["AWS S3", "Heroku"].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -231,11 +231,11 @@ export default function SenseiBonusProject() {
         {/* Testing */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {["Jest"].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}

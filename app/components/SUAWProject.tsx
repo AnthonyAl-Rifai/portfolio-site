@@ -17,8 +17,7 @@ export default function SuawProject() {
     <div
       className={clsx(
         "min-h-screen flex flex-col",
-        isMobileLandscape ? "px-16 pb-8 gap-8 mb-4" : "px-4 gap-16 pb-16",
-        "md:px-16"
+        isMobileLandscape ? "px-4 pb-8 gap-8 mb-4" : "px-4 gap-16 pb-16"
       )}
     >
       {/* Hero Section */}
@@ -169,7 +168,7 @@ export default function SuawProject() {
         {/* Frontend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 ">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 ">
             {[
               { name: "Vue.js" },
               { name: "JavaScript" },
@@ -179,7 +178,7 @@ export default function SuawProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -193,7 +192,7 @@ export default function SuawProject() {
         {/* Backend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 ">
             {[
               { name: "C# .NET" },
               { name: "Hasura" },
@@ -202,7 +201,7 @@ export default function SuawProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -218,7 +217,7 @@ export default function SuawProject() {
           <h3 className="text-2xl font-medium text-black mb-4">
             DevOps & Tooling
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 ">
             {[
               { name: "Docker" },
               { name: "GitLab CI/CD" },
@@ -231,7 +230,7 @@ export default function SuawProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -245,11 +244,11 @@ export default function SuawProject() {
         {/* Testing */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[{ name: "Jest" }].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}

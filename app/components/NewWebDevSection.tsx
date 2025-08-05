@@ -30,21 +30,25 @@ export default function NewWebDevSection() {
   const sectionTitleRef = useRef(null);
   const topNavVisible = useInView(sectionTitleRef, { amount: 1 });
 
-  useEffect(() => {
-    console.log("top nav is in view: ", topNavVisible);
-  }, [topNavVisible]);
-
   const suawRef = useRef(null);
   const dbspyRef = useRef(null);
   const budspotRef = useRef(null);
   const sb1Ref = useRef(null);
   const skillsRef = useRef(null);
 
-  const suawInView = useInView(suawRef, { amount: 0.1 });
-  const dbspyInView = useInView(dbspyRef, { amount: 0.1 });
-  const budspotInView = useInView(budspotRef, { amount: 0.1 });
-  const sb1InView = useInView(sb1Ref, { amount: 0.1 });
-  const skillsInView = useInView(skillsRef, { amount: 0.1 });
+  const suawInView = useInView(suawRef, {
+    amount: isMobileLandscape ? 0 : 0.1,
+  });
+  const dbspyInView = useInView(dbspyRef, {
+    amount: isMobileLandscape ? 0 : 0.1,
+  });
+  const budspotInView = useInView(budspotRef, {
+    amount: isMobileLandscape ? 0 : 0.1,
+  });
+  const sb1InView = useInView(sb1Ref, { amount: isMobileLandscape ? 0 : 0.1 });
+  const skillsInView = useInView(skillsRef, {
+    amount: isMobileLandscape ? 0 : 0.1,
+  });
 
   // Update activeIndex when a new section comes into view
   useEffect(() => {
@@ -80,7 +84,7 @@ export default function NewWebDevSection() {
     <section
       id="webdev"
       className={clsx(
-        "relative grid",
+        "relative grid border-b",
         "grid-cols-1 grid-rows-[var(--layout-size)_var(--layout-size)_1fr]",
         "md:grid-cols-[1fr_4fr] md:grid-rows-[var(--layout-size)_1fr]"
       )}
@@ -110,12 +114,13 @@ export default function NewWebDevSection() {
                 duration: 0.2,
               }}
               className={clsx(
-                "flex items-center justify-between p-4 border-b cursor-pointer text-left font-bold"
+                "flex items-center justify-between p-4 cursor-pointer text-left font-bold",
+                index !== projectIds.length - 1 && "border-b"
               )}
               whileHover={{ scale: 0.95 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl lg:text-4xl font-medium">{label}</span>
+              <span className="text-2xl 2xl:text-4xl font-medium">{label}</span>
               <motion.div
                 animate={{ x: [0, 6, 0] }}
                 transition={{
@@ -166,25 +171,27 @@ export default function NewWebDevSection() {
         </motion.div>
       )}
 
-      <div className="md:col-start-2 border-b flex flex-col gap-16">
-        <div
-          id="suaw"
-          ref={suawRef}
-          className="scroll-mt-[calc(2*var(--layout-size))]"
-        >
-          <SuawProject />
-        </div>
-        <div id="dbspy" ref={dbspyRef}>
-          <DbSpyProject />
-        </div>
-        <div id="budspot" ref={budspotRef}>
-          <BudSpotProject />
-        </div>
-        <div id="sb1" ref={sb1Ref}>
-          <SenseiBonusProject />
-        </div>
-        <div id="skills" ref={skillsRef}>
-          <SkillsProject />
+      <div className="md:col-start-2 flex justify-center">
+        <div className="w-full max-w-[1300px]">
+          <div
+            id="suaw"
+            ref={suawRef}
+            className="scroll-mt-[calc(2*var(--layout-size))]"
+          >
+            <SuawProject />
+          </div>
+          <div id="dbspy" ref={dbspyRef}>
+            <DbSpyProject />
+          </div>
+          <div id="budspot" ref={budspotRef}>
+            <BudSpotProject />
+          </div>
+          <div id="sb1" ref={sb1Ref}>
+            <SenseiBonusProject />
+          </div>
+          <div id="skills" ref={skillsRef}>
+            <SkillsProject />
+          </div>
         </div>
       </div>
     </section>

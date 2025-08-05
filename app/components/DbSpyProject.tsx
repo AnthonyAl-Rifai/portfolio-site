@@ -22,7 +22,7 @@ export default function DbSpyProject() {
     <div
       className={clsx(
         "min-h-screen flex flex-col  bg-white",
-        isMobileLandscape ? "px-16 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
+        isMobileLandscape ? "px-4 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
       )}
     >
       {/* Hero Section */}
@@ -160,7 +160,7 @@ export default function DbSpyProject() {
         {/* Frontend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[
               { name: "React" },
               { name: "React Flow" },
@@ -170,7 +170,7 @@ export default function DbSpyProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -184,7 +184,7 @@ export default function DbSpyProject() {
         {/* Backend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[
               { name: "Node.js" },
               { name: "RESTful API" },
@@ -194,7 +194,7 @@ export default function DbSpyProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -210,7 +210,7 @@ export default function DbSpyProject() {
           <h3 className="text-2xl font-medium text-black mb-4">
             DevOps & Tooling
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[
               { name: "AWS" },
               { name: "Docker" },
@@ -233,11 +233,11 @@ export default function DbSpyProject() {
         {/* Testing */}
         <div className="w-full">
           <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[{ name: "React Testing Library" }].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold"
+                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -248,9 +248,6 @@ export default function DbSpyProject() {
           </div>
         </div>
       </motion.section>
-
-      {/* Call to Action */}
-      {/* <CallToAction onButtonClick={onClose} /> */}
     </div>
   );
 }

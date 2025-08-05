@@ -91,7 +91,7 @@ export default function Header({
 
   const nameButtonClass = isMobileLandscape
     ? "text-vertical text-2xl"
-    : "text-3xl md:4xl";
+    : "text-3xl lg:text-4xl";
 
   return (
     <header className={headerClass}>
@@ -156,7 +156,7 @@ export default function Header({
           animate={{ x: 0, y: 0, opacity: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           onClick={handleNameClick}
-          className={`font-bold bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none ${nameButtonClass}`}
+          className={`font-medium bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none ${nameButtonClass}`}
           style={{ lineHeight: 1 }}
           aria-label="Scroll to top"
         >
