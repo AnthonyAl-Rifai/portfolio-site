@@ -22,22 +22,22 @@ export default function SuawProject() {
       )}
     >
       {/* Hero Section */}
-      <motion.div
+      <div
         className={clsx(
           "relative flex flex-col items-center text-center",
           isMobileLandscape
             ? "h-auto min-h-screen gap-8"
             : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16"
         )}
-        initial={{ y: 200, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0 }}
+        // initial={{ y: 200, opacity: 0 }}
+        // whileInView={{ y: 0, opacity: 1 }}
+        // transition={{ duration: 0.8 }}
+        // viewport={{ once: true, amount: 0 }}
       >
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: false, amount: 0 }}
         >
           <Image
             src="/SUAW_Logo_Main_Yellow.png"
@@ -88,7 +88,7 @@ export default function SuawProject() {
             )}
           </AnimatePresence>
         </div>
-      </motion.div>
+      </div>
       {/* Overview Section */}
       <motion.section
         ref={overviewRef}

@@ -31,19 +31,19 @@ export default function BudSpotProject() {
           "relative flex flex-col items-center text-center",
           isMobileLandscape
             ? "h-auto min-h-screen gap-8 mt-[calc(2*var(--layout-size))]"
-            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16 mt-[calc(2*var(--layout-size))]"
+            : "h-[calc(100vh-3*var(--layout-size))] gap-8 mt-[calc(2.7*var(--layout-size))]"
         )}
       >
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: false, amount: 0 }}
         >
           <Image
             src="/budspot-logo.png"
             alt="BudSpot Logo"
-            width={isMobileLandscape ? 150 : 200}
-            height={isMobileLandscape ? 75 : 100}
+            width={250}
+            height={125}
             className="mx-auto"
             priority
           />
@@ -62,7 +62,7 @@ export default function BudSpotProject() {
         <div
           className={clsx(
             "absolute",
-            isMobileLandscape ? "bottom-16" : "bottom-0"
+            isMobileLandscape ? "bottom-16" : "bottom-14"
           )}
         >
           <AnimatePresence>

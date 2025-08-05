@@ -31,17 +31,17 @@ export default function SenseiBonusProject() {
           "relative flex flex-col items-center text-center",
           isMobileLandscape
             ? "h-auto min-h-screen gap-8 mt-[calc(2*var(--layout-size))]"
-            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16 mt-[calc(2*var(--layout-size))]"
+            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16 mt-[calc(1.5*var(--layout-size))]"
         )}
       >
         <motion.h1
           className={clsx(
             "font-bold text-black mb-6",
-            isMobileLandscape ? "text-5xl" : "text-6xl md:text-8xl"
+            isMobileLandscape ? "text-4xl" : "text-4xl md:text-8xl"
           )}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: false, amount: 0 }}
         >
           SB‑1 Audio Player
         </motion.h1>

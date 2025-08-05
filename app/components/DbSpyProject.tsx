@@ -35,9 +35,9 @@ export default function DbSpyProject() {
         )}
       >
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: false, amount: 0 }}
         >
           <Image
             src="/dbspy-logo-dark.png"
