@@ -86,7 +86,12 @@ export default function NewWebDevSection() {
       />
 
       {isLargerThanMobile ? (
-        <div className="sticky z-10 top-[calc(2*var(--layout-size))] h-[calc(100dvh-2*var(--layout-size))] w-full grid grid-rows-5 border-r bg-white">
+        <motion.div
+          initial={{ x: "-100%" }}
+          animate={topNavVisible ? { x: 0 } : { x: "-100%" }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+          className="sticky z-10 top-[calc(2*var(--layout-size))] h-[calc(100dvh-2*var(--layout-size))] w-full grid grid-rows-5 border-r bg-white"
+        >
           {projectIds.map(({ id, label }, index) => (
             <motion.a
               key={id}
@@ -117,7 +122,7 @@ export default function NewWebDevSection() {
               </motion.div>
             </motion.a>
           ))}
-        </div>
+        </motion.div>
       ) : (
         <motion.div
           initial={{ x: "-100%" }}
