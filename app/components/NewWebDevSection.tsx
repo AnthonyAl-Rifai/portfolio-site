@@ -26,8 +26,8 @@ export default function NewWebDevSection() {
     { id: "skills", label: "Skills", shortLabel: "Skills" },
   ];
 
-  const projectRef = useRef(null);
-  const topNavVisible = useInView(projectRef);
+  const sectionTitleRef = useRef(null);
+  const topNavVisible = useInView(sectionTitleRef, { amount: 1 });
 
   useEffect(() => {
     console.log("top nav is in view: ", topNavVisible);
@@ -63,7 +63,12 @@ export default function NewWebDevSection() {
         "md:grid-cols-[1fr_4fr] md:grid-rows-[var(--layout-size)_1fr]"
       )}
     >
-      <SectionTitle name="Development" isSticky showBottomBorder={false} />
+      <SectionTitle
+        ref={sectionTitleRef}
+        name="Development"
+        isSticky
+        showBottomBorder={false}
+      />
 
       {isLargerThanMobile ? (
         <div className="sticky z-10 top-[calc(2*var(--layout-size))] h-[calc(100dvh-2*var(--layout-size))] w-full grid grid-rows-5 border-r bg-white">
@@ -123,7 +128,7 @@ export default function NewWebDevSection() {
         </motion.div>
       )}
 
-      <div ref={projectRef} className="md:col-start-2 border-b">
+      <div className="md:col-start-2 border-b">
         <div
           id="suaw"
           ref={suawRef}
