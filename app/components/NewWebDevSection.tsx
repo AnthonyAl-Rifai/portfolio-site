@@ -82,7 +82,7 @@ export default function NewWebDevSection() {
         ref={sectionTitleRef}
         name="Development"
         isSticky
-        showBottomBorder={false}
+        showBottomBorder={isLargerThanMobile}
       />
 
       {isLargerThanMobile ? (
@@ -91,14 +91,19 @@ export default function NewWebDevSection() {
             <motion.a
               key={id}
               href={`#${id}`}
+              animate={{
+                backgroundColor: activeIndex === index ? "#e5e7eb" : "#ffffff", // gray-200 or white
+              }}
+              transition={{
+                duration: 0.2,
+              }}
               className={clsx(
-                "flex items-center justify-between p-4 border-b cursor-pointer text-left transition-colors",
-                activeIndex === index ? "bg-gray-200 font-bold" : ""
+                "flex items-center justify-between p-4 border-b cursor-pointer text-left font-bold"
               )}
               whileHover={{ scale: 0.95 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl lg:text-4xl font-bold">{label}</span>
+              <span className="text-2xl lg:text-4xl font-medium">{label}</span>
               <motion.div
                 animate={{ x: [0, 6, 0] }}
                 transition={{
