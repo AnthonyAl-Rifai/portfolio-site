@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useInView } from "motion/react";
 import { motion } from "motion/react";
 import clsx from "clsx";
@@ -17,11 +17,12 @@ import SectionTitle from "./SectionTitle";
 export default function NewWebDevSection() {
   const isLargerThanMobile = useIsLargerThanMobile();
   const { isMobileLandscape } = useLayout();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const projectIds = [
     { id: "suaw", label: "Shut Up & Write!", shortLabel: "SUAW" },
     { id: "dbspy", label: "dbSpy", shortLabel: "dbSpy" },
-    { id: "budspot", label: "BudSpot.", shortLabel: "BudSpot" },
+    { id: "budspot", label: "BudSpot.", shortLabel: "BudSpot." },
     { id: "sb1", label: "SB-1 Audio Player", shortLabel: "SB-1" },
     { id: "skills", label: "Skills", shortLabel: "Skills" },
   ];
@@ -45,14 +46,28 @@ export default function NewWebDevSection() {
   const sb1InView = useInView(sb1Ref);
   const skillsInView = useInView(skillsRef);
 
-  const inViews = [
+  // Update activeIndex when a new section comes into view
+  useEffect(() => {
+    const inViews = [
+      suawInView,
+      dbspyInView,
+      budspotInView,
+      sb1InView,
+      skillsInView,
+    ];
+
+    const newActiveIndex = inViews.findIndex(Boolean);
+    if (newActiveIndex !== -1 && newActiveIndex !== activeIndex) {
+      setActiveIndex(newActiveIndex);
+    }
+  }, [
     suawInView,
     dbspyInView,
     budspotInView,
     sb1InView,
     skillsInView,
-  ];
-  const activeIndex = inViews.findIndex(Boolean);
+    activeIndex,
+  ]);
 
   return (
     <section
@@ -114,10 +129,16 @@ export default function NewWebDevSection() {
             <motion.a
               key={id}
               href={`#${id}`}
+              animate={{
+                backgroundColor: activeIndex === index ? "#e5e7eb" : "#ffffff",
+              }}
+              transition={{
+                duration: 0.2,
+                delay: 0.1,
+              }}
               className={clsx(
-                "flex items-center justify-center px-2 text-sm font-bold transition-colors",
-                index !== projectIds.length - 1 && "border-r",
-                activeIndex === index && "bg-gray-200"
+                "flex items-center justify-center px-2 text-sm font-bold",
+                index !== projectIds.length - 1 && "border-r"
               )}
               whileHover={{ scale: 0.95 }}
               whileTap={{ scale: 0.98 }}
