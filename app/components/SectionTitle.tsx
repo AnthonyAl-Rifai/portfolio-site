@@ -26,7 +26,7 @@ const SectionTitle = forwardRef(function SectionTitle(
     once: false,
   });
 
-  const nameClass = isMobileLandscape ? "text-2xl" : "text-3xl md:text-4xl";
+  const nameClass = isMobileLandscape ? "text-3xl" : "text-3xl md:text-4xl";
   const topOffset = isMobileLandscape ? "0px" : "var(--layout-size)";
 
   return (

@@ -6,11 +6,6 @@ import { useLayout } from "../context/LayoutContext";
 import Image from "next/image";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-// import CallToAction from "./CallToAction";
-
-// interface SuawProjectProps {
-//   onClose: () => void;
-// }
 
 export default function SuawProject() {
   const { isMobileLandscape } = useLayout();
@@ -21,19 +16,23 @@ export default function SuawProject() {
   return (
     <div
       className={clsx(
-        "min-h-screen flex flex-col border-b ",
+        "min-h-screen flex flex-col",
         isMobileLandscape ? "px-16 pb-8 gap-8 mb-4" : "px-4 gap-16 pb-16",
         "md:px-16"
       )}
     >
       {/* Hero Section */}
-      <div
+      <motion.div
         className={clsx(
           "relative flex flex-col items-center text-center",
           isMobileLandscape
             ? "h-auto min-h-screen gap-8"
             : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16"
         )}
+        initial={{ y: 200, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0 }}
       >
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -89,7 +88,7 @@ export default function SuawProject() {
             )}
           </AnimatePresence>
         </div>
-      </div>
+      </motion.div>
       {/* Overview Section */}
       <motion.section
         ref={overviewRef}
@@ -99,7 +98,7 @@ export default function SuawProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Project Overview</h2>
+        <h2 className="text-3xl font-medium text-black">Project Overview</h2>
         <div className="border border-black">
           <Image
             src="/suaw-hero-section.png"
@@ -129,7 +128,7 @@ export default function SuawProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Key Highlights</h2>
+        <h2 className="text-3xl font-medium text-black">Key Highlights</h2>
         <div className="border border-black">
           <Image
             src="/suaw-online-event-section.png"
@@ -163,13 +162,13 @@ export default function SuawProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl font-bold text-black text-left w-full">
+        <h2 className="text-3xl font-medium text-black text-left w-full">
           Technology Stack
         </h2>
 
         {/* Frontend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Frontend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 ">
             {[
               { name: "Vue.js" },
@@ -193,7 +192,7 @@ export default function SuawProject() {
 
         {/* Backend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Backend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
             {[
               { name: "C# .NET" },
@@ -216,7 +215,7 @@ export default function SuawProject() {
 
         {/* DevOps & Tooling */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">
+          <h3 className="text-2xl font-medium text-black mb-4">
             DevOps & Tooling
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
@@ -245,7 +244,7 @@ export default function SuawProject() {
 
         {/* Testing */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Testing</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[{ name: "Jest" }].map((tech, index) => (
               <motion.div
@@ -261,8 +260,6 @@ export default function SuawProject() {
           </div>
         </div>
       </motion.section>
-      {/* Call to Action */}
-      {/* <CallToAction onButtonClick={onClose} /> */}
     </div>
   );
 }

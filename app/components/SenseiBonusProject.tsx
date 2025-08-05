@@ -96,7 +96,7 @@ export default function SenseiBonusProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Project Overview</h2>
+        <h2 className="text-3xl font-medium text-black">Project Overview</h2>
 
         <motion.div
           className="flex justify-center items-center w-full"
@@ -134,7 +134,7 @@ export default function SenseiBonusProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Key Highlights</h2>
+        <h2 className="text-3xl font-medium text-black">Key Highlights</h2>
         <ul className="flex flex-col gap-4">
           {[
             "Designed and implemented advanced audio features including reverse playback and real‑time pitch control",
@@ -161,13 +161,13 @@ export default function SenseiBonusProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl font-bold text-black text-left w-full">
+        <h2 className="text-3xl font-medium text-black text-left w-full">
           Technology Stack
         </h2>
 
         {/* Frontend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Frontend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
               "React",
@@ -192,7 +192,7 @@ export default function SenseiBonusProject() {
 
         {/* Backend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Backend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {["Express.js", "PostgreSQL"].map((name, index) => (
               <motion.div
@@ -210,7 +210,7 @@ export default function SenseiBonusProject() {
 
         {/* DevOps & Tooling */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">
+          <h3 className="text-2xl font-medium text-black mb-4">
             DevOps & Tooling
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
@@ -230,7 +230,7 @@ export default function SenseiBonusProject() {
 
         {/* Testing */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Testing</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {["Jest"].map((name, index) => (
               <motion.div

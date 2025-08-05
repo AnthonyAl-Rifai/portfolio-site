@@ -99,7 +99,7 @@ export default function BudSpotProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Project Overview</h2>
+        <h2 className="text-3xl font-medium text-black">Project Overview</h2>
         <p className="text-lg text-black leading-relaxed">
           BudSpot is a peer-to-peer marketplace for hosting and discovering
           real-world social experiences. As my first startup role after
@@ -119,7 +119,7 @@ export default function BudSpotProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Key Highlights</h2>
+        <h2 className="text-3xl font-medium text-black">Key Highlights</h2>
         <ul className="flex flex-col gap-4">
           {[
             "Engineered frontend architecture for an isomorphic MERN-stack web application; optimized server-side rendering, reducing page load times by 60% and enhancing user experience across all devices",
@@ -142,13 +142,13 @@ export default function BudSpotProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl font-bold text-black text-left w-full">
+        <h2 className="text-3xl font-medium text-black text-left w-full">
           Technology Stack
         </h2>
 
         {/* Frontend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Frontend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
               { name: "React" },
@@ -171,7 +171,7 @@ export default function BudSpotProject() {
 
         {/* Backend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Backend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
               { name: "Express.js" },
@@ -193,7 +193,7 @@ export default function BudSpotProject() {
 
         {/* DevOps & Tooling */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">
+          <h3 className="text-2xl font-medium text-black mb-4">
             DevOps & Tooling
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
@@ -213,7 +213,7 @@ export default function BudSpotProject() {
 
         {/* Testing */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Testing</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[{ name: "Jest" }, { name: "Cypress" }].map((tech, index) => (
               <motion.div

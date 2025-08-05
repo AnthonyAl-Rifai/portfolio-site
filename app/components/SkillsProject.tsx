@@ -90,7 +90,7 @@ export default function SkillsProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Skills Overview</h2>
+        <h2 className="text-3xl font-medium text-black">Skills Overview</h2>
         <p className="text-lg text-black leading-relaxed">
           I&apos;m a full stack developer with a strong frontend focus and a
           sharp product mindset. I specialize in building responsive, accessible
@@ -109,7 +109,7 @@ export default function SkillsProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-4xl font-bold text-black">Key Strengths</h2>
+        <h2 className="text-3xl font-medium text-black">Key Strengths</h2>
         <ul className="flex flex-col gap-4">
           {[
             {
@@ -157,13 +157,13 @@ export default function SkillsProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl font-bold text-black text-left w-full">
+        <h2 className="text-3xl font-medium text-black text-left w-full">
           Technology Stack
         </h2>
 
         {/* Frontend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Frontend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
               "JavaScript ES6",
@@ -198,7 +198,7 @@ export default function SkillsProject() {
 
         {/* Backend */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Backend</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
               "Node.js",
@@ -225,7 +225,9 @@ export default function SkillsProject() {
 
         {/* DevOps & Tools */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">DevOps & Tools</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">
+            DevOps & Tools
+          </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
               "AWS",
@@ -257,7 +259,7 @@ export default function SkillsProject() {
 
         {/* Testing */}
         <div className="w-full">
-          <h3 className="text-2xl font-bold text-black mb-4">Testing</h3>
+          <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {["React Testing Library", "Jest", "Cypress", "Vitest", "TDD"].map(
               (name, index) => (

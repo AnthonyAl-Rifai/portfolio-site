@@ -40,11 +40,11 @@ export default function NewWebDevSection() {
   const sb1Ref = useRef(null);
   const skillsRef = useRef(null);
 
-  const suawInView = useInView(suawRef);
-  const dbspyInView = useInView(dbspyRef);
-  const budspotInView = useInView(budspotRef);
-  const sb1InView = useInView(sb1Ref);
-  const skillsInView = useInView(skillsRef);
+  const suawInView = useInView(suawRef, { amount: 0.1 });
+  const dbspyInView = useInView(dbspyRef, { amount: 0.1 });
+  const budspotInView = useInView(budspotRef, { amount: 0.1 });
+  const sb1InView = useInView(sb1Ref, { amount: 0.1 });
+  const skillsInView = useInView(skillsRef, { amount: 0.1 });
 
   // Update activeIndex when a new section comes into view
   useEffect(() => {
@@ -58,6 +58,13 @@ export default function NewWebDevSection() {
 
     const newActiveIndex = inViews.findIndex(Boolean);
     if (newActiveIndex !== -1 && newActiveIndex !== activeIndex) {
+      console.log(
+        "Active index changing from",
+        activeIndex,
+        "to",
+        newActiveIndex
+      );
+      console.log("In views:", inViews);
       setActiveIndex(newActiveIndex);
     }
   }, [
@@ -159,7 +166,7 @@ export default function NewWebDevSection() {
         </motion.div>
       )}
 
-      <div className="md:col-start-2 border-b">
+      <div className="md:col-start-2 border-b flex flex-col gap-16">
         <div
           id="suaw"
           ref={suawRef}
