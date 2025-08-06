@@ -86,7 +86,7 @@ export default function NewWebDevSection() {
       className={clsx(
         "relative grid border-b",
         "grid-cols-1 grid-rows-[var(--layout-size)_var(--layout-size)_1fr]",
-        "md:grid-cols-[1fr_4fr] md:grid-rows-[var(--layout-size)_1fr]"
+        "md:grid-cols-[1fr_4fr] md:grid-rows-[var(--layout-size)_1fr] 3xl:bg-gray-200"
       )}
     >
       <SectionTitle
@@ -101,23 +101,24 @@ export default function NewWebDevSection() {
           initial={{ x: "-100%" }}
           animate={topNavVisible ? { x: 0 } : { x: "-100%" }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-          className="sticky z-10 top-[calc(2*var(--layout-size))] h-[calc(100dvh-2*var(--layout-size))] w-full grid grid-rows-5 border-r bg-white"
+          className="sticky z-10 top-[calc(2*var(--layout-size))] h-[calc(100dvh-2*var(--layout-size))] w-full grid grid-rows-5  bg-white 3xl:bg-gray-200"
         >
           {projectIds.map(({ id, label }, index) => (
             <motion.a
               key={id}
               href={`#${id}`}
               animate={{
-                backgroundColor: activeIndex === index ? "#e5e7eb" : "#ffffff", // gray-200 or white
+                backgroundColor: activeIndex === index ? "#e5e7eb" : "#ffffff",
               }}
               transition={{
                 duration: 0.2,
               }}
               className={clsx(
-                "flex items-center justify-between p-4 cursor-pointer text-left font-bold",
-                index !== projectIds.length - 1 && "border-b"
+                "flex items-center justify-between p-4 cursor-pointer text-left font-bold border-r",
+                index !== projectIds.length - 1 && "border-b",
+                activeIndex === index && "3xl:border-r-0"
               )}
-              whileHover={{ scale: 0.95 }}
+              // whileHover={{ scale: 0.95 }}
               whileTap={{ scale: 0.98 }}
             >
               <span className="text-2xl 2xl:text-3xl 3xl:text-4xl font-medium">
@@ -173,8 +174,8 @@ export default function NewWebDevSection() {
         </motion.div>
       )}
 
-      <div className="md:col-start-2 flex justify-center">
-        <div className="w-full max-w-[1300px]">
+      <div className="md:col-start-2 flex justify-center 3xl:bg-gray-200">
+        <div className="w-full max-w-[1300px] 3xl:bg-white">
           <div
             id="suaw"
             ref={suawRef}

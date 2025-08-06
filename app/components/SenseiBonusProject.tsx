@@ -18,7 +18,9 @@ export default function SenseiBonusProject() {
     <div
       className={clsx(
         "min-h-screen flex flex-col",
-        isMobileLandscape ? "px-4 pb-8 gap-8 mb-4" : "px-4 gap-16 pb-16 lg:px-8"
+        isMobileLandscape
+          ? "px-4 pb-8 gap-8 mb-4"
+          : "px-4 gap-16 pb-16 lg:px-8 3xl:border-x"
       )}
     >
       {/* Hero Section */}
@@ -110,7 +112,7 @@ export default function SenseiBonusProject() {
             alt="SB-1 Audio Player Screenshot"
             width={800}
             height={600}
-            className="w-full border border-black lg:w-[1200px] lg:mx-auto xl:w-2/3"
+            className="w-full lg:mx-auto md:w-2/3 lg:w-1/2 xl:w-2/5"
             priority
           />
         </motion.div>

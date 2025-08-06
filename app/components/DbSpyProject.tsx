@@ -18,7 +18,9 @@ export default function DbSpyProject() {
     <div
       className={clsx(
         "min-h-screen flex flex-col",
-        isMobileLandscape ? "px-4 pb-8 gap-8 mb-4" : "px-4 gap-16 pb-16 lg:px-8"
+        isMobileLandscape
+          ? "px-4 pb-8 gap-8 mb-4"
+          : "px-4 gap-16 pb-16 lg:px-8 3xl:border-x"
       )}
     >
       {/* Hero Section */}
