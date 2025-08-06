@@ -112,7 +112,7 @@ export default function SenseiBonusProject() {
             alt="SB-1 Audio Player Screenshot"
             width={800}
             height={600}
-            className="w-full lg:mx-auto md:w-2/3 lg:w-1/2 xl:w-2/5"
+            className="w-2/3 lg:w-1/2 xl:w-2/5"
             priority
           />
         </motion.div>
