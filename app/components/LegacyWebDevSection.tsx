@@ -137,14 +137,14 @@ export default function WebDevSection() {
             {/* Modal INSIDE grid for tablet+ */}
             <AnimatePresence mode="wait">
               {drawerOpen && selectedProject && (
-                <div className="hidden md:flex col-start-2 col-span-3 row-start-1 row-span-5 overflow-x-hidden overflow-y-auto z-10">
+                <div className="hidden md:flex col-start-2 col-span-3 row-start-1 row-span-5 overflow-x-hidden z-10">
                   <motion.div
                     key={selectedProject}
                     initial={{ x: "100%" }}
                     animate={{ x: 0 }}
                     exit={{ x: "100%" }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="flex flex-col border-b border-l bg-white w-full overflow-y-auto"
+                    className="flex flex-col border-b border-l bg-white w-full"
                   >
                     <div className="sticky top-0 h-[var(--layout-size)] flex justify-between items-center bg-white z-10">
                       <h2 className="text-2xl font-bold mx-4">
@@ -201,7 +201,10 @@ export default function WebDevSection() {
                       />
                     </div>
 
-                    <div className="flex-1 overflow-y-auto">
+                    <div
+                      className="flex-1 h-full overflow-y-auto"
+                      data-lenis-prevent-wheel
+                    >
                       {renderProject()}
                     </div>
                   </motion.div>
@@ -229,7 +232,7 @@ export default function WebDevSection() {
                 className={clsx(
                   isMobileLandscape
                     ? "absolute top-0 right-0 h-full w-[var(--layout-size)] flex flex-col items-center justify-start bg-white z-10"
-                    : "sticky top-0 h-[var(--layout-size)] w-full flex justify-between items-center bg-white z-10 relative"
+                    : "sticky top-0 h-[var(--layout-size)] w-full flex justify-between items-center bg-white z-10"
                 )}
               >
                 {!isMobileLandscape && (
@@ -298,6 +301,7 @@ export default function WebDevSection() {
                   "flex-1 bg-white overflow-y-auto",
                   isMobileLandscape ? "pr-[var(--layout-size)]" : ""
                 )}
+                data-lenis-prevent-wheel
               >
                 {renderProject()}
               </div>
