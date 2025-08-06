@@ -62,13 +62,6 @@ export default function NewWebDevSection() {
 
     const newActiveIndex = inViews.findIndex(Boolean);
     if (newActiveIndex !== -1 && newActiveIndex !== activeIndex) {
-      console.log(
-        "Active index changing from",
-        activeIndex,
-        "to",
-        newActiveIndex
-      );
-      console.log("In views:", inViews);
       setActiveIndex(newActiveIndex);
     }
   }, [
@@ -118,19 +111,19 @@ export default function NewWebDevSection() {
                 index !== projectIds.length - 1 && "border-b",
                 activeIndex === index && "3xl:border-r-0"
               )}
-              // whileHover={{ scale: 0.95 }}
+              whileHover="hover"
               whileTap={{ scale: 0.98 }}
             >
               <span className="text-2xl 2xl:text-3xl 3xl:text-4xl font-medium">
                 {label}
               </span>
               <motion.div
-                animate={{ x: [0, 6, 0] }}
+                variants={{
+                  hover: { x: 6 },
+                }}
                 transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: index * 0.2,
+                  duration: 0.3,
+                  ease: "easeOut",
                 }}
               >
                 <MenuIconARight size={20} color="#000" />
