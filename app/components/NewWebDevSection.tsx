@@ -120,7 +120,9 @@ export default function NewWebDevSection() {
               whileHover={{ scale: 0.95 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl 2xl:text-4xl font-medium">{label}</span>
+              <span className="text-2xl 2xl:text-3xl 3xl:text-4xl font-medium">
+                {label}
+              </span>
               <motion.div
                 animate={{ x: [0, 6, 0] }}
                 transition={{
