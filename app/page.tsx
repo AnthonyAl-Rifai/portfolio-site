@@ -1,17 +1,15 @@
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
-import WebDevSection from "./components/WebDevSection";
 import MusicSection from "./components/MusicSection";
 import ContactSection from "./components/ContactSection";
-// import TestSection from "./components/TestSection";
+import DevelopmentSection from "./components/DevelopmentSection";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      {/* <TestSection /> */}
       <AboutSection />
-      <WebDevSection />
+      <DevelopmentSection />
       <MusicSection />
       <ContactSection />
     </>
