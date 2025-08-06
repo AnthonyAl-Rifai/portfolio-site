@@ -9,10 +9,14 @@ const SectionTitle = forwardRef(function SectionTitle(
     name,
     isSticky = false,
     showBottomBorder = true,
+    zIndex = 25,
+    removeLeftPadding = false,
   }: {
     name: string;
     isSticky?: boolean;
     showBottomBorder?: boolean;
+    zIndex?: number;
+    removeLeftPadding?: boolean;
   },
   ref: React.Ref<HTMLDivElement>
 ) {
@@ -32,12 +36,19 @@ const SectionTitle = forwardRef(function SectionTitle(
   return (
     <div
       ref={targetRef}
-      className={`relative z-25 h-[calc(var(--layout-size)+1px)] min-h-[calc(var(--layout-size)+1px)] col-span-full bg-white w-full flex items-center ${
+      className={`relative h-[calc(var(--layout-size)+1px)] min-h-[calc(var(--layout-size)+1px)] col-span-full bg-white w-full flex items-center ${
         isSticky ? "sticky" : ""
       }`}
-      style={isSticky ? { top: topOffset } : {}}
+      style={{
+        zIndex,
+        ...(isSticky ? { top: topOffset } : {}),
+      }}
     >
-      <h1 className={`${nameClass} font-medium mx-4`}>{name}</h1>
+      <h1
+        className={`${nameClass} font-medium ${removeLeftPadding ? "mr-4" : "mx-4"}`}
+      >
+        {name}
+      </h1>
 
       {showBottomBorder && (
         <motion.div

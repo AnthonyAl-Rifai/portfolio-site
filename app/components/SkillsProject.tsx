@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { useLayout } from "../context/LayoutContext";
 import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
+import SectionTitle from "./SectionTitle";
 
 export default function SkillsProject() {
   const { isMobileLandscape } = useLayout();
@@ -15,8 +16,8 @@ export default function SkillsProject() {
   return (
     <div
       className={clsx(
-        "min-h-screen flex flex-col  bg-white",
-        isMobileLandscape ? "px-4 py-8 pb-4 gap-8 mb-4" : "px-4 gap-16 mb-16"
+        "min-h-screen flex flex-col",
+        isMobileLandscape ? "px-4 pb-8 gap-8 mb-4" : "px-4 gap-16 pb-16 lg:px-8"
       )}
     >
       {/* Hero Section */}
@@ -24,14 +25,16 @@ export default function SkillsProject() {
         className={clsx(
           "relative flex flex-col items-center text-center",
           isMobileLandscape
-            ? "h-auto min-h-screen gap-8 mt-[calc(2*var(--layout-size))]"
-            : "h-[calc(100vh-3*var(--layout-size))] justify-center gap-16 mt-[calc(1.5*var(--layout-size))]"
+            ? "h-auto min-h-screen gap-8"
+            : "h-[calc(100vh-2*var(--layout-size))] min-h-0 justify-center gap-16 pb-20 md:pb-32"
         )}
       >
         <motion.h1
           className={clsx(
-            "font-bold text-black mb-6",
-            isMobileLandscape ? "text-4xl" : "text-4xl md:text-8xl"
+            "font-bold mb-6",
+            isMobileLandscape
+              ? "text-4xl"
+              : "text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
           )}
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
@@ -41,7 +44,7 @@ export default function SkillsProject() {
         </motion.h1>
 
         <motion.p
-          className="text-2xl text-black max-w-3xl"
+          className="text-2xl md:text-3xl md:px-8 lg:px-24 lg:text-4xl"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -53,7 +56,9 @@ export default function SkillsProject() {
         <div
           className={clsx(
             "absolute",
-            isMobileLandscape ? "bottom-16" : "bottom-0"
+            isMobileLandscape
+              ? "bottom-16"
+              : "bottom-24 md:bottom-32 lg:bottom-16"
           )}
         >
           <AnimatePresence>
@@ -84,14 +89,14 @@ export default function SkillsProject() {
       {/* Overview Section */}
       <motion.section
         ref={overviewRef}
-        className="flex flex-col gap-8"
+        className="flex flex-col gap-8 md:gap-12"
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-3xl font-medium text-black">Skills Overview</h2>
-        <p className="text-lg text-black leading-relaxed">
+        <SectionTitle name="Skills Overview" zIndex={20} removeLeftPadding />
+        <p className="text-lg leading-relaxed md:text-xl lg:text-2xl xl:text-3xl">
           I&apos;m a full stack developer with a strong frontend focus and a
           sharp product mindset. I specialize in building responsive, accessible
           web applications and enjoy working across the stack to deliver fast,
@@ -103,14 +108,14 @@ export default function SkillsProject() {
 
       {/* Key Strengths Section */}
       <motion.section
-        className="flex flex-col gap-8"
+        className="flex flex-col gap-8 md:gap-12"
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <h2 className="text-3xl font-medium text-black">Key Strengths</h2>
-        <ul className="flex flex-col gap-4">
+        <SectionTitle name="Key Strengths" zIndex={20} removeLeftPadding />
+        <ul className="flex flex-col gap-4 text-lg md:gap-6 lg:text-2xl xl:text-3xl">
           {[
             {
               title: "Product-Focused Engineering",
@@ -139,8 +144,8 @@ export default function SkillsProject() {
             },
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-black rounded-full mt-[0.5em] flex-shrink-0" />
-              <span className="text-black">
+              <span className="w-2 h-2 bg-black rounded-full mt-[0.6em] flex-shrink-0 xl:mt-[0.5em]" />
+              <span>
                 <span className="font-bold">{item.title}: </span>
                 {item.description}
               </span>
@@ -151,20 +156,18 @@ export default function SkillsProject() {
 
       {/* Technology Stack */}
       <motion.section
-        className="flex flex-col items-center gap-8"
+        className="flex flex-col items-center gap-8 md:gap-12"
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl font-medium text-black text-left w-full">
-          Technology Stack
-        </h2>
+        <SectionTitle name="Technology Stack" zIndex={20} removeLeftPadding />
 
         {/* Frontend */}
         <div className="w-full">
-          <h3 className="text-2xl font-medium text-black mb-4">Frontend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+          <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Frontend</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
               "JavaScript ES6",
               "TypeScript",
@@ -185,7 +188,7 @@ export default function SkillsProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
+                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -198,8 +201,8 @@ export default function SkillsProject() {
 
         {/* Backend */}
         <div className="w-full">
-          <h3 className="text-2xl font-medium text-black mb-4">Backend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+          <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Backend</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
               "Node.js",
               "Express.js",
@@ -212,7 +215,7 @@ export default function SkillsProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
+                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -225,10 +228,10 @@ export default function SkillsProject() {
 
         {/* DevOps & Tools */}
         <div className="w-full">
-          <h3 className="text-2xl font-medium text-black mb-4">
+          <h3 className="text-2xl font-medium mb-4 lg:text-3xl">
             DevOps & Tools
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
               "AWS",
               "S3",
@@ -246,7 +249,7 @@ export default function SkillsProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
+                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -259,13 +262,13 @@ export default function SkillsProject() {
 
         {/* Testing */}
         <div className="w-full">
-          <h3 className="text-2xl font-medium text-black mb-4">Testing</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Testing</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {["React Testing Library", "Jest", "Cypress", "Vitest", "TDD"].map(
               (name, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white border border-black p-6 text-black text-center font-semibold flex justify-center items-center"
+                  className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}

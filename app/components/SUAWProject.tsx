@@ -40,7 +40,7 @@ export default function SuawProject() {
             alt="Shut Up & Write! Logo"
             width={600}
             height={300}
-            className="mx-auto w-[300px] md:w-[400px] lg:w-[600px] h-auto"
+            className="mx-auto w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600] h-auto"
             priority
           />
         </motion.div>
@@ -126,7 +126,7 @@ export default function SuawProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <SectionTitle name="Key Highlights" zIndex={20} />
+        <SectionTitle name="Key Highlights" zIndex={20} removeLeftPadding />
         <div className="w-full flex justify-center">
           <Image
             src="/suaw-online-event-section.png"

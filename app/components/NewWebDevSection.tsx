@@ -182,16 +182,32 @@ export default function NewWebDevSection() {
           >
             <SuawProject />
           </div>
-          <div id="dbspy" ref={dbspyRef}>
+          <div
+            id="dbspy"
+            ref={dbspyRef}
+            className="scroll-mt-[calc(2*var(--layout-size))]"
+          >
             <DbSpyProject />
           </div>
-          <div id="budspot" ref={budspotRef}>
+          <div
+            id="budspot"
+            ref={budspotRef}
+            className="scroll-mt-[calc(2*var(--layout-size))]"
+          >
             <BudSpotProject />
           </div>
-          <div id="sb1" ref={sb1Ref}>
+          <div
+            id="sb1"
+            ref={sb1Ref}
+            className="scroll-mt-[calc(2*var(--layout-size))]"
+          >
             <SenseiBonusProject />
           </div>
-          <div id="skills" ref={skillsRef}>
+          <div
+            id="skills"
+            ref={skillsRef}
+            className="scroll-mt-[calc(2*var(--layout-size))]"
+          >
             <SkillsProject />
           </div>
         </div>
