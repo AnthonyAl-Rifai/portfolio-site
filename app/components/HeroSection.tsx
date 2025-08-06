@@ -29,20 +29,22 @@ export default function HeroSection() {
     <Section id="hero">
       <div
         className={clsx(
-          "grid grid-rows-10 grid-cols-4 gap-4 flex-1 h-full md:grid-cols-8 md:grid-rows-8",
+          "grid grid-rows-10 grid-cols-4 gap-4 flex-1 h-full md:grid-cols-8 md:grid-rows-8 text-6xl",
           isMobileLandscape && "min-h-[100vh]"
         )}
       >
         <h1
           className={clsx(
-            "text-6xl mx-4 font-bold row-start-3 col-span-full pt-4 self-center",
+            "mx-4 font-medium row-start-3 col-span-full pt-4 self-center",
             "sm:flex",
-            "md:text-7xl md:row-start-3 md:pt-16 md:block md:col-span-6",
-            "lg:row-start-4 lg:mx-8 lg:pt-0 lg:col-span-full",
-            "xl:text-8xl",
+            "md:row-start-3 md:pt-16 md:block md:col-span-6",
+            "lg:row-start-4 lg:mx-8 lg:pt-0 lg:col-span-4",
             isMobileLandscape && "row-start-3"
           )}
-          style={{ minHeight: "2.5em" }}
+          style={{
+            minHeight: "2.5em",
+            fontSize: "clamp(4rem, 8vw, 13rem)",
+          }}
         >
           <AnimatePresence mode="wait">
             <motion.span
