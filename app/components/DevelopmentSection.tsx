@@ -14,7 +14,7 @@ import { useLayout } from "../context/LayoutContext";
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 import SectionTitle from "./SectionTitle";
 
-export default function NewWebDevSection() {
+export default function DevelopmentSection() {
   const isLargerThanMobile = useIsLargerThanMobile();
   const { isMobileLandscape } = useLayout();
   const [activeIndex, setActiveIndex] = useState(0);
