@@ -21,16 +21,67 @@ export default function NewAboutSection() {
     offset: ["end end", "start start"],
   });
 
-  const [showFullText, setShowFullText] = useState(false);
+  const { scrollYProgress: scrollYProgress2 } = useScroll({
+    target: motionRef2,
+    offset: ["end end", "start start"],
+  });
+
+  const { scrollYProgress: scrollYProgress3 } = useScroll({
+    target: motionRef3,
+    offset: ["end end", "start start"],
+  });
+
+  const { scrollYProgress: scrollYProgress4 } = useScroll({
+    target: motionRef4,
+    offset: ["end end", "start start"],
+  });
+
+  const [showFullText1, setShowFullText1] = useState(false);
+  const [showFullText2, setShowFullText2] = useState(false);
+  const [showFullText3, setShowFullText3] = useState(false);
+  const [showFullText4, setShowFullText4] = useState(false);
 
   useMotionValueEvent(scrollYProgress1, "change", v => {
     const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
 
-    if (v > enterThreshold && !showFullText) {
-      setShowFullText(true);
-    } else if (v < exitThreshold && showFullText) {
-      setShowFullText(false);
+    if (v > enterThreshold && !showFullText1) {
+      setShowFullText1(true);
+    } else if (v < exitThreshold && showFullText1) {
+      setShowFullText1(false);
+    }
+  });
+
+  useMotionValueEvent(scrollYProgress2, "change", v => {
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+
+    if (v > enterThreshold && !showFullText2) {
+      setShowFullText2(true);
+    } else if (v < exitThreshold && showFullText2) {
+      setShowFullText2(false);
+    }
+  });
+
+  useMotionValueEvent(scrollYProgress3, "change", v => {
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+
+    if (v > enterThreshold && !showFullText3) {
+      setShowFullText3(true);
+    } else if (v < exitThreshold && showFullText3) {
+      setShowFullText3(false);
+    }
+  });
+
+  useMotionValueEvent(scrollYProgress4, "change", v => {
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+
+    if (v > enterThreshold && !showFullText4) {
+      setShowFullText4(true);
+    } else if (v < exitThreshold && showFullText4) {
+      setShowFullText4(false);
     }
   });
 
@@ -39,7 +90,7 @@ export default function NewAboutSection() {
       <SectionTitle name="About" isSticky />
       <div className="grid grid-cols-1 md:grid-cols-2 h-[200vh]">
         <div className="" />
-        <div className="mt-[30vh] flex flex-col gap-[calc(2*var(--layout-size))]">
+        <div className="mt-[50vh] flex flex-col">
           {isLargerThanMobile ? (
             <motion.div
               ref={motionRef1}
@@ -59,8 +110,8 @@ export default function NewAboutSection() {
                 className="overflow-hidden"
                 initial={false}
                 animate={{
-                  height: showFullText ? "auto" : 0,
-                  opacity: showFullText ? 1 : 0,
+                  height: showFullText1 ? "auto" : 0,
+                  opacity: showFullText1 ? 1 : 0,
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
@@ -90,17 +141,146 @@ export default function NewAboutSection() {
             </div>
           )}
 
-          {[motionRef2, motionRef3, motionRef4].map((ref, i) =>
-            isLargerThanMobile ? (
-              <motion.div
-                key={i}
-                ref={ref}
+          {isLargerThanMobile ? (
+            <motion.div
+              ref={motionRef2}
+              layout
+              className="w-full flex flex-col justify-between py-4"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
                 layout
-                className="border-y w-full origin-bottom bg-black"
+                className="font-medium text-4xl lg:text-5xl pb-4"
+              >
+                Innovation-Aligned
+              </motion.h2>
+
+              <motion.div
+                layout
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText2 ? "auto" : 0,
+                  opacity: showFullText2 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p className="text-xl lg:w-md">
+                  We adopt a forward-thinking mindset to ensure you have the
+                  peace of mind that comes with the most modern representation
+                  of your business.
+                </p>
+              </motion.div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               />
-            ) : (
-              <div key={i} className="w-full h-[300px] border-y bg-black" />
-            )
+            </motion.div>
+          ) : (
+            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
+              <h2 className="text-3xl font-medium">Innovation-Aligned</h2>
+              <p className="text-xl">
+                We adopt a forward-thinking mindset to ensure you have the peace
+                of mind that comes with the most modern representation of your
+                business.
+              </p>
+            </div>
+          )}
+
+          {isLargerThanMobile ? (
+            <motion.div
+              ref={motionRef3}
+              layout
+              className="w-full flex flex-col justify-between py-4"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
+                layout
+                className="font-medium text-4xl lg:text-5xl pb-4"
+              >
+                Quality-First Approach
+              </motion.h2>
+
+              <motion.div
+                layout
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText3 ? "auto" : 0,
+                  opacity: showFullText3 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p className="text-xl lg:w-md">
+                  Every project is crafted with meticulous attention to detail,
+                  ensuring the highest standards of quality and performance in
+                  every deliverable.
+                </p>
+              </motion.div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
+          ) : (
+            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
+              <h2 className="text-3xl font-medium">Quality-First Approach</h2>
+              <p className="text-xl">
+                Every project is crafted with meticulous attention to detail,
+                ensuring the highest standards of quality and performance in
+                every deliverable.
+              </p>
+            </div>
+          )}
+
+          {isLargerThanMobile ? (
+            <motion.div
+              ref={motionRef4}
+              layout
+              className="w-full flex flex-col justify-between py-4"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
+                layout
+                className="font-medium text-4xl lg:text-5xl pb-4"
+              >
+                Results-Driven
+              </motion.h2>
+
+              <motion.div
+                layout
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText4 ? "auto" : 0,
+                  opacity: showFullText4 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p className="text-xl lg:w-md">
+                  We focus on delivering measurable outcomes that drive real
+                  business value and help you achieve your strategic objectives.
+                </p>
+              </motion.div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
+          ) : (
+            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
+              <h2 className="text-3xl font-medium">Results-Driven</h2>
+              <p className="text-xl">
+                We focus on delivering measurable outcomes that drive real
+                business value and help you achieve your strategic objectives.
+              </p>
+            </div>
           )}
         </div>
       </div>
