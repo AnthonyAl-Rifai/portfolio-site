@@ -8,18 +8,32 @@ import SectionTitle from "./SectionTitle";
 export default function NewAboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
+  const divRef2 = useRef<HTMLDivElement>(null);
 
-  // Track scroll progress of the motion.div itself
+  // Track scroll progress of the first motion.div
   const { scrollYProgress } = useScroll({
     target: divRef,
     offset: ["end end", "end start"],
   });
 
-  // Transform scroll progress to height animation (for content div)
-  const height = useTransform(
+  // Track scroll progress of the second motion.div
+  const { scrollYProgress: scrollYProgress2 } = useScroll({
+    target: divRef2,
+    offset: ["end end", "end start"],
+  });
+
+  // Transform scroll progress to height animation (for first content div)
+  const height1 = useTransform(
     scrollYProgress,
     [0.1, 0.3, 1], // scroll progress values
     [75, 300, 300] // height values in pixels
+  );
+
+  // Transform scroll progress to height animation (for second content div)
+  const height2 = useTransform(
+    scrollYProgress2,
+    [0, 0.3, 0.8, 1], // scroll progress values
+    [75, 75, 300, 300] // height values in pixels
   );
 
   // Transform scroll progress to width animation (for border divs)
@@ -29,18 +43,32 @@ export default function NewAboutSection() {
     ["50%", "100%", "100%"] // width values
   );
 
-  // Transform scroll progress to opacity animation (for p tag)
+  // Transform scroll progress to width animation (for second border divs)
+  const width2 = useTransform(
+    scrollYProgress2,
+    [0, 0.3, 0.8, 1], // scroll progress values
+    ["50%", "50%", "100%", "100%"] // width values
+  );
+
+  // Transform scroll progress to opacity animation (for first p tag)
   const opacity = useTransform(
     scrollYProgress,
     [0.15, 0.25, 1], // scroll progress values
     [0, 1, 1] // opacity values
   );
 
+  // Transform scroll progress to opacity animation (for second p tag)
+  const opacity2 = useTransform(
+    scrollYProgress2,
+    [0.1, 0.35, 0.8, 1], // scroll progress values
+    [0, 0, 1, 1] // opacity values
+  );
+
   // Transform scroll progress to y animation (for wrapper div)
   const y = useTransform(
     scrollYProgress,
-    [0.1, 0.3, 1], // scroll progress values
-    ["0%", "22%", "22%"] // y values in percentages
+    [0.1, 1], // scroll progress values
+    ["0%", "60%"] // y values in percentages
   );
 
   return (
@@ -52,12 +80,11 @@ export default function NewAboutSection() {
       >
         {/* Top "border" div with width animation */}
         <motion.div className="bg-black h-[1px]" style={{ width }} />
-
         {/* Content div with height animation */}
         <motion.div
           ref={divRef}
           className="flex flex-col justify-between w-1/2 my-4"
-          style={{ height }}
+          style={{ height: height1 }}
         >
           <h2 className="text-6xl">Top talents as partners</h2>
           <motion.p className="w-xl text-lg" style={{ opacity }}>
@@ -67,9 +94,25 @@ export default function NewAboutSection() {
             expectation.
           </motion.p>
         </motion.div>
-
         {/* Bottom "border" div with width animation */}
         <motion.div className="bg-black h-[1px]" style={{ width }} />
+
+        {/* Content div with height animation */}
+        <motion.div
+          ref={divRef2}
+          className="flex flex-col justify-between w-1/2 my-4"
+          style={{ height: height2 }}
+        >
+          <h2 className="text-6xl">Innovation-aligned</h2>
+          <motion.p className="w-xl text-lg" style={{ opacity: opacity2 }}>
+            We adopt a forward-thinking mindset to ensure you have the peace of
+            mind that comes with the most modern representation of your
+            business.
+          </motion.p>
+        </motion.div>
+
+        {/* Bottom "border" div with width animation */}
+        <motion.div className="bg-black h-[1px]" style={{ width: width2 }} />
       </motion.div>
     </Section>
   );
