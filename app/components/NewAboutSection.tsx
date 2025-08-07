@@ -2,8 +2,8 @@
 
 import Section from "./Section";
 import SectionTitle from "./SectionTitle";
-import { useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useRef, useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useLayout } from "../context/LayoutContext";
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 
@@ -13,71 +13,251 @@ export default function NewAboutSection() {
 
   const motionRef1 = useRef<HTMLDivElement>(null);
   const motionRef2 = useRef<HTMLDivElement>(null);
+  const motionRef3 = useRef<HTMLDivElement>(null);
+  const motionRef4 = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress: scrollYProgress1 } = useScroll({
     target: motionRef1,
     offset: ["end end", "start start"],
   });
 
-  const { scrollYProgress: scrollYProgress2 } = useScroll({
-    target: motionRef2,
-    offset: ["end end", "start start"],
+  const [showFullText, setShowFullText] = useState(false);
+
+  useMotionValueEvent(scrollYProgress1, "change", v => {
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+
+    if (v > enterThreshold && !showFullText) {
+      setShowFullText(true);
+    } else if (v < exitThreshold && showFullText) {
+      setShowFullText(false);
+    }
   });
-
-  const dynamicHeight1 = useTransform(
-    scrollYProgress1,
-    isTabletLandscape ? [0, 0.6] : [0.1, 0.4],
-    [60, 300]
-  );
-
-  const dynamicHeight2 = useTransform(
-    scrollYProgress2,
-    isTabletLandscape ? [0, 0.6] : [0.1, 0.4],
-    [60, 300]
-  );
-
-  useEffect(() => {
-    const unsub1 = scrollYProgress1.on("change", v =>
-      console.log("scrollYProgress 1:", v)
-    );
-    const unsub2 = scrollYProgress2.on("change", v =>
-      console.log("scrollYProgress 2:", v)
-    );
-    return () => {
-      unsub1();
-      unsub2();
-    };
-  }, [scrollYProgress1, scrollYProgress2]);
 
   return (
     <Section id="about" className="h-[300vh]">
       <SectionTitle name="About" isSticky />
       <div className="grid grid-cols-1 md:grid-cols-2 h-[200vh]">
-        <div className=""></div>
+        <div className="" />
         <div className="mt-[30vh] flex flex-col gap-[calc(2*var(--layout-size))]">
           {isLargerThanMobile ? (
             <motion.div
               ref={motionRef1}
-              style={{ height: dynamicHeight1 }}
-              className="border-y w-full origin-bottom bg-black"
-            />
+              layout
+              className="w-full flex flex-col justify-between py-4"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
+                layout
+                className="font-medium text-4xl lg:text-5xl pb-4"
+              >
+                Work with Me
+              </motion.h2>
+
+              <motion.div
+                layout
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText ? "auto" : 0,
+                  opacity: showFullText ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p className="text-xl lg:w-md">
+                  Top talents as partners Work with the industry&apos;s
+                  finest—an experienced senior team that&apos;s grown together
+                  through years of collaboration, united by one goal: making
+                  your project exceed every expectation.
+                </p>
+              </motion.div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
           ) : (
-            <div className="w-full h-[300px] border-y bg-black" />
+            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
+              <h2 className="text-3xl font-medium">Work with Me</h2>
+              <p className="text-xl">
+                Top talents as partners Work with the industry&apos;s finest—an
+                experienced senior team that&apos;s grown together through years
+                of collaboration, united by one goal: making your project exceed
+                every expectation.
+              </p>
+            </div>
           )}
-          {isLargerThanMobile ? (
-            <motion.div
-              ref={motionRef2}
-              style={{ height: dynamicHeight2 }}
-              className="border-y w-full origin-bottom bg-black"
-            />
-          ) : (
-            <div className="w-full h-[300px] border-y bg-black" />
+
+          {[motionRef2, motionRef3, motionRef4].map((ref, i) =>
+            isLargerThanMobile ? (
+              <motion.div
+                key={i}
+                ref={ref}
+                layout
+                className="border-y w-full origin-bottom bg-black"
+              />
+            ) : (
+              <div key={i} className="w-full h-[300px] border-y bg-black" />
+            )
           )}
         </div>
       </div>
     </Section>
   );
 }
+
+// "use client";
+
+// import Section from "./Section";
+// import SectionTitle from "./SectionTitle";
+// import { useRef, useEffect } from "react";
+// import { motion, useScroll, useTransform } from "motion/react";
+// import { useLayout } from "../context/LayoutContext";
+// import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
+
+// export default function NewAboutSection() {
+//   const { isTabletLandscape } = useLayout();
+//   const isLargerThanMobile = useIsLargerThanMobile();
+
+//   const motionRef1 = useRef<HTMLDivElement>(null);
+//   const motionRef2 = useRef<HTMLDivElement>(null);
+//   const motionRef3 = useRef<HTMLDivElement>(null);
+//   const motionRef4 = useRef<HTMLDivElement>(null);
+
+//   const { scrollYProgress: scrollYProgress1 } = useScroll({
+//     target: motionRef1,
+//     offset: ["end end", "start start"],
+//   });
+
+//   const { scrollYProgress: scrollYProgress2 } = useScroll({
+//     target: motionRef2,
+//     offset: ["end end", "start start"],
+//   });
+
+//   const { scrollYProgress: scrollYProgress3 } = useScroll({
+//     target: motionRef3,
+//     offset: ["end end", "start start"],
+//   });
+
+//   const { scrollYProgress: scrollYProgress4 } = useScroll({
+//     target: motionRef4,
+//     offset: ["end end", "start start"],
+//   });
+
+//   const dynamicHeight1 = useTransform(
+//     scrollYProgress1,
+//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
+//     [60, 250]
+//   );
+
+//   const dynamicHeight2 = useTransform(
+//     scrollYProgress2,
+//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
+//     [60, 250]
+//   );
+
+//   const dynamicHeight3 = useTransform(
+//     scrollYProgress3,
+//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
+//     [60, 250]
+//   );
+
+//   const dynamicHeight4 = useTransform(
+//     scrollYProgress4,
+//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
+//     [60, 250]
+//   );
+
+//   const opacity1 = useTransform(
+//     scrollYProgress1,
+//     isTabletLandscape ? [0.33, 0.4] : [0.35, 0.4],
+//     [0, 1] // opacity values
+//   );
+
+//   useEffect(() => {
+//     const unsub1 = scrollYProgress1.on("change", v =>
+//       console.log("scrollYProgress 1:", v)
+//     );
+//     const unsub2 = scrollYProgress2.on("change", v =>
+//       console.log("scrollYProgress 2:", v)
+//     );
+//     return () => {
+//       unsub1();
+//       unsub2();
+//     };
+//   }, [scrollYProgress1, scrollYProgress2]);
+
+//   return (
+//     <Section id="about" className="h-[300vh]">
+//       <SectionTitle name="About" isSticky />
+//       <div className="grid grid-cols-1 md:grid-cols-2 h-[200vh]">
+//         <div className=""></div>
+//         <div className="mt-[30vh] flex flex-col gap-[calc(2*var(--layout-size))]">
+//           {isLargerThanMobile ? (
+//             <motion.div
+//               ref={motionRef1}
+//               style={{ height: dynamicHeight1 }}
+//               className="border-b w-full flex flex-col justify-between py-4"
+//             >
+//               <h2 className="font-medium text-4xl lg:text-5xl pb-4">
+//                 Work with Me
+//               </h2>
+//               <motion.p
+//                 className="text-xl lg:w-md"
+//                 style={{ opacity: opacity1 }}
+//               >
+//                 Top talents as partners Work with the industry&apos;s finest—an
+//                 experienced senior team that&apos;s grown together through years
+//                 of collaboration, united by one goal: making your project exceed
+//                 every expectation.
+//               </motion.p>
+//             </motion.div>
+//           ) : (
+//             // mobile non animated version
+//             <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
+//               <h2 className="text-3xl font-medium">Work with Me</h2>
+//               <p className="text-xl">
+//                 Top talents as partners Work with the industry&apos;s finest—an
+//                 experienced senior team that&apos;s grown together through years
+//                 of collaboration, united by one goal: making your project exceed
+//                 every expectation.
+//               </p>
+//             </div>
+//           )}
+//           {isLargerThanMobile ? (
+//             <motion.div
+//               ref={motionRef2}
+//               style={{ height: dynamicHeight2 }}
+//               className="border-y w-full origin-bottom bg-black"
+//             />
+//           ) : (
+//             <div className="w-full h-[300px] border-y bg-black" />
+//           )}
+//           {isLargerThanMobile ? (
+//             <motion.div
+//               ref={motionRef3}
+//               style={{ height: dynamicHeight3 }}
+//               className="border-y w-full origin-bottom bg-black"
+//             />
+//           ) : (
+//             <div className="w-full h-[300px] border-y bg-black" />
+//           )}
+//           {isLargerThanMobile ? (
+//             <motion.div
+//               ref={motionRef4}
+//               style={{ height: dynamicHeight4 }}
+//               className="border-y w-full origin-bottom bg-black"
+//             />
+//           ) : (
+//             <div className="w-full h-[300px] border-y bg-black" />
+//           )}
+//         </div>
+//       </div>
+//     </Section>
+//   );
+// }
 
 // "use client";
 
