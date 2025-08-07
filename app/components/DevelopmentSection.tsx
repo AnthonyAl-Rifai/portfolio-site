@@ -75,7 +75,7 @@ export default function DevelopmentSection() {
 
   return (
     <section
-      id="webdev"
+      id="development"
       className={clsx(
         "relative grid border-b",
         "grid-cols-1 grid-rows-[var(--layout-size)_var(--layout-size)_1fr]",
