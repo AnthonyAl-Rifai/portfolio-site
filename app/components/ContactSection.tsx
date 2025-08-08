@@ -33,7 +33,7 @@ export default function ContactSection() {
   return (
     <Section id="contact" className="h-auto">
       <SectionTitle name="Contact" isSticky />
-      <div className="grid px-4 py-8 grid-cols-8">
+      <div className="grid px-4 py-8 grid-cols-8 min-h-[calc(100vh-(3*var(--layout-size)))]">
         {/* Form Container - spans across multiple columns */}
         <div className="col-span-8  md:col-span-5 lg:col-span-4 xl:col-span-3 2xl:col-span-2">
           <form onSubmit={handleSubmit} className="space-y-6">
