@@ -42,8 +42,9 @@ export default function NewAboutSection() {
   const [showFullText4, setShowFullText4] = useState(false);
 
   useMotionValueEvent(scrollYProgress1, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+    console.log("scrollYProgress1:", v);
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText1) {
       setShowFullText1(true);
@@ -53,8 +54,9 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress2, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+    console.log("scrollYProgress2:", v);
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText2) {
       setShowFullText2(true);
@@ -64,8 +66,9 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress3, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+    console.log("scrollYProgress3:", v);
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText3) {
       setShowFullText3(true);
@@ -75,8 +78,9 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress4, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.4;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.2;
+    console.log("scrollYProgress4:", v);
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText4) {
       setShowFullText4(true);
@@ -90,149 +94,155 @@ export default function NewAboutSection() {
       <SectionTitle name="About" isSticky />
       <div className="grid grid-cols-1 md:grid-cols-2 h-[200vh]">
         <div className="" />
-        <div className="mt-[50vh] flex flex-col">
+        <div className="mt-[100vh] flex flex-col">
           {isLargerThanMobile ? (
-            <motion.div
-              ref={motionRef1}
-              layout
-              className="w-full flex flex-col justify-between py-4"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <motion.h2
-                layout
-                className="font-medium text-4xl lg:text-5xl pb-4"
-              >
-                Work with Me
-              </motion.h2>
-
+            <div className="h-[calc(4*var(--layout-size))]">
               <motion.div
+                ref={motionRef1}
                 layout
-                className="overflow-hidden"
-                initial={false}
-                animate={{
-                  height: showFullText1 ? "auto" : 0,
-                  opacity: showFullText1 ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="w-full flex flex-col justify-between py-4"
+                transition={{ duration: 0.2, ease: "easeInOut" }}
               >
-                <p className="text-xl lg:w-md">
-                  Top talents as partners Work with the industry&apos;s
-                  finest—an experienced senior team that&apos;s grown together
-                  through years of collaboration, united by one goal: making
-                  your project exceed every expectation.
-                </p>
+                <motion.h2
+                  layout
+                  className="font-medium text-4xl lg:text-5xl pb-4"
+                >
+                  I build web applications
+                </motion.h2>
+
+                <motion.div
+                  layout
+                  className="overflow-hidden"
+                  initial={false}
+                  animate={{
+                    height: showFullText1 ? "auto" : 0,
+                    opacity: showFullText1 ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                >
+                  <p className="text-xl lg:w-md">
+                    From concept to deployment, I design and develop responsive,
+                    accessible, and performant web applications that balance
+                    clean code with thoughtful design.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  layout
+                  className="border-b mt-4"
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                />
               </motion.div>
-
-              <motion.div
-                layout
-                className="border-b mt-4"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              />
-            </motion.div>
+            </div>
           ) : (
             <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
               <h2 className="text-3xl font-medium">Work with Me</h2>
               <p className="text-xl">
-                Top talents as partners Work with the industry&apos;s finest—an
-                experienced senior team that&apos;s grown together through years
-                of collaboration, united by one goal: making your project exceed
-                every expectation.
+                From concept to deployment, I design and develop responsive,
+                accessible, and performant web applications that balance clean
+                code with thoughtful design.
               </p>
             </div>
           )}
 
           {isLargerThanMobile ? (
-            <motion.div
-              ref={motionRef2}
-              layout
-              className="w-full flex flex-col justify-between py-4"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <motion.h2
-                layout
-                className="font-medium text-4xl lg:text-5xl pb-4"
-              >
-                Innovation-Aligned
-              </motion.h2>
-
+            <div className="h-[calc(4*var(--layout-size))]">
               <motion.div
+                ref={motionRef2}
                 layout
-                className="overflow-hidden"
-                initial={false}
-                animate={{
-                  height: showFullText2 ? "auto" : 0,
-                  opacity: showFullText2 ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="w-full flex flex-col justify-between py-4"
+                transition={{ duration: 0.2, ease: "easeInOut" }}
               >
-                <p className="text-xl lg:w-md">
-                  We adopt a forward-thinking mindset to ensure you have the
-                  peace of mind that comes with the most modern representation
-                  of your business.
-                </p>
+                <motion.h2
+                  layout
+                  className="font-medium text-4xl lg:text-5xl pb-4"
+                >
+                  I bring a creative edge
+                </motion.h2>
+
+                <motion.div
+                  layout
+                  className="overflow-hidden"
+                  initial={false}
+                  animate={{
+                    height: showFullText2 ? "auto" : 0,
+                    opacity: showFullText2 ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                >
+                  <p className="text-xl lg:w-md">
+                    With a background in music composition, I approach
+                    problem-solving like arranging a piece, blending structure
+                    and creativity to craft engaging and intuitive user
+                    experiences.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  layout
+                  className="border-b mt-4"
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                />
               </motion.div>
-
-              <motion.div
-                layout
-                className="border-b mt-4"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              />
-            </motion.div>
+            </div>
           ) : (
             <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
               <h2 className="text-3xl font-medium">Innovation-Aligned</h2>
               <p className="text-xl">
-                We adopt a forward-thinking mindset to ensure you have the peace
-                of mind that comes with the most modern representation of your
-                business.
+                With a background in music composition, I approach
+                problem-solving like arranging a piece, blending structure and
+                creativity to craft engaging and intuitive user experiences.
               </p>
             </div>
           )}
 
           {isLargerThanMobile ? (
-            <motion.div
-              ref={motionRef3}
-              layout
-              className="w-full flex flex-col justify-between py-4"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <motion.h2
-                layout
-                className="font-medium text-4xl lg:text-5xl pb-4"
-              >
-                Quality-First Approach
-              </motion.h2>
-
+            <div className="h-[calc(4*var(--layout-size))]">
               <motion.div
+                ref={motionRef3}
                 layout
-                className="overflow-hidden"
-                initial={false}
-                animate={{
-                  height: showFullText3 ? "auto" : 0,
-                  opacity: showFullText3 ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="w-full flex flex-col justify-between py-4"
+                transition={{ duration: 0.2, ease: "easeInOut" }}
               >
-                <p className="text-xl lg:w-md">
-                  Every project is crafted with meticulous attention to detail,
-                  ensuring the highest standards of quality and performance in
-                  every deliverable.
-                </p>
+                <motion.h2
+                  layout
+                  className="font-medium text-4xl lg:text-5xl pb-4"
+                >
+                  I care about the details
+                </motion.h2>
+
+                <motion.div
+                  layout
+                  className="overflow-hidden"
+                  initial={false}
+                  animate={{
+                    height: showFullText3 ? "auto" : 0,
+                    opacity: showFullText3 ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                >
+                  <p className="text-xl lg:w-md">
+                    Every interaction, from a button hover to a complex
+                    animation, is intentional. I focus on usability,
+                    performance, and polish so the final product feels
+                    effortless to use.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  layout
+                  className="border-b mt-4"
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                />
               </motion.div>
-
-              <motion.div
-                layout
-                className="border-b mt-4"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              />
-            </motion.div>
+            </div>
           ) : (
             <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
               <h2 className="text-3xl font-medium">Quality-First Approach</h2>
               <p className="text-xl">
-                Every project is crafted with meticulous attention to detail,
-                ensuring the highest standards of quality and performance in
-                every deliverable.
+                Every interaction, from a button hover to a complex animation,
+                is intentional. I focus on usability, performance, and polish so
+                the final product feels effortless to use.
               </p>
             </div>
           )}
@@ -242,13 +252,13 @@ export default function NewAboutSection() {
               ref={motionRef4}
               layout
               className="w-full flex flex-col justify-between py-4"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
             >
               <motion.h2
                 layout
                 className="font-medium text-4xl lg:text-5xl pb-4"
               >
-                Results-Driven
+                I stay curious
               </motion.h2>
 
               <motion.div
@@ -259,26 +269,28 @@ export default function NewAboutSection() {
                   height: showFullText4 ? "auto" : 0,
                   opacity: showFullText4 ? 1 : 0,
                 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
               >
                 <p className="text-xl lg:w-md">
-                  We focus on delivering measurable outcomes that drive real
-                  business value and help you achieve your strategic objectives.
+                  I am always exploring new tools, patterns, and technologies,
+                  bringing fresh ideas into my work while keeping what is
+                  practical and reliable for each project.
                 </p>
               </motion.div>
 
               <motion.div
                 layout
                 className="border-b mt-4"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
               />
             </motion.div>
           ) : (
             <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
               <h2 className="text-3xl font-medium">Results-Driven</h2>
               <p className="text-xl">
-                We focus on delivering measurable outcomes that drive real
-                business value and help you achieve your strategic objectives.
+                I am always exploring new tools, patterns, and technologies,
+                bringing fresh ideas into my work while keeping what is
+                practical and reliable for each project.
               </p>
             </div>
           )}
@@ -413,7 +425,7 @@ export default function NewAboutSection() {
 //               className="border-y w-full origin-bottom bg-black"
 //             />
 //           ) : (
-//             <div className="w-full h-[300px] border-y bg-black" />
+//             <div className="w-full h-[calc(4*var(--layout-size))] border-y bg-black" />
 //           )}
 //           {isLargerThanMobile ? (
 //             <motion.div
@@ -422,7 +434,7 @@ export default function NewAboutSection() {
 //               className="border-y w-full origin-bottom bg-black"
 //             />
 //           ) : (
-//             <div className="w-full h-[300px] border-y bg-black" />
+//             <div className="w-full h-[calc(4*var(--layout-size))] border-y bg-black" />
 //           )}
 //           {isLargerThanMobile ? (
 //             <motion.div
@@ -431,7 +443,7 @@ export default function NewAboutSection() {
 //               className="border-y w-full origin-bottom bg-black"
 //             />
 //           ) : (
-//             <div className="w-full h-[300px] border-y bg-black" />
+//             <div className="w-full h-[calc(4*var(--layout-size))] border-y bg-black" />
 //           )}
 //         </div>
 //       </div>
