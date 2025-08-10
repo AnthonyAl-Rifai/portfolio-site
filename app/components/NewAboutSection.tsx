@@ -138,7 +138,7 @@ export default function NewAboutSection() {
             >
               <motion.h2
                 layout
-                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
                 I build web applications
               </motion.h2>
@@ -192,7 +192,7 @@ export default function NewAboutSection() {
             >
               <motion.h2
                 layout
-                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
                 I bring a creative edge
               </motion.h2>
@@ -246,7 +246,7 @@ export default function NewAboutSection() {
             >
               <motion.h2
                 layout
-                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
                 I care about the details
               </motion.h2>
@@ -300,7 +300,7 @@ export default function NewAboutSection() {
             >
               <motion.h2
                 layout
-                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
                 I stay curious
               </motion.h2>
