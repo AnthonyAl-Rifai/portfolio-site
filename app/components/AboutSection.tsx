@@ -43,7 +43,6 @@ export default function NewAboutSection() {
   const [showFullText4, setShowFullText4] = useState(false);
 
   useMotionValueEvent(scrollYProgress1, "change", v => {
-    console.log("scrollYProgress1:", v);
     const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
@@ -55,7 +54,6 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress2, "change", v => {
-    console.log("scrollYProgress2:", v);
     const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
@@ -67,7 +65,6 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress3, "change", v => {
-    console.log("scrollYProgress3:", v);
     const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
@@ -79,7 +76,6 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress4, "change", v => {
-    console.log("scrollYProgress4:", v);
     const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
