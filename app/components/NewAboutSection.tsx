@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useLayout } from "../context/LayoutContext";
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
+import Image from "next/image";
 
 export default function NewAboutSection() {
   const { isTabletLandscape } = useLayout();
@@ -43,7 +44,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress1, "change", v => {
     console.log("scrollYProgress1:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText1) {
@@ -55,7 +56,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress2, "change", v => {
     console.log("scrollYProgress2:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText2) {
@@ -67,7 +68,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress3, "change", v => {
     console.log("scrollYProgress3:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText3) {
@@ -79,7 +80,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress4, "change", v => {
     console.log("scrollYProgress4:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.2;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText4) {
@@ -90,13 +91,23 @@ export default function NewAboutSection() {
   });
 
   return (
-    <Section id="about" className="h-[300vh]">
+    <Section id="about" className="h-auto">
       <SectionTitle name="About" isSticky />
-      <div className="grid grid-cols-1 md:grid-cols-2 h-[200vh]">
-        <div className="" />
-        <div className="mt-[100vh] flex flex-col">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(200vh+12*var(--layout-size))]">
+        <div className="sticky top-[calc(2*var(--layout-size))] h-[calc(100vh-(2*var(--layout-size)))] flex justify-center items-center">
+          <div className="h-1/2 w-1/2 border">
+            <Image
+              src="/anthony-big-sur-b-w.png"
+              alt="Anthony Big Sur Black and White"
+              width={800}
+              height={600}
+              className=" h-full object-cover"
+            />
+          </div>
+        </div>
+        <div className="mt-[calc(100vh-(2*var(--layout-size)))] h-[calc(16*var(--layout-size))] flex flex-col">
           {isLargerThanMobile ? (
-            <div className="h-[calc(4*var(--layout-size))]">
+            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
               <motion.div
                 ref={motionRef1}
                 layout
@@ -120,7 +131,7 @@ export default function NewAboutSection() {
                   }}
                   transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                  <p className="text-xl lg:w-md">
+                  <p className="text-xl lg:w-md xl:text-2xl">
                     From concept to deployment, I design and develop responsive,
                     accessible, and performant web applications that balance
                     clean code with thoughtful design.
@@ -146,7 +157,7 @@ export default function NewAboutSection() {
           )}
 
           {isLargerThanMobile ? (
-            <div className="h-[calc(4*var(--layout-size))]">
+            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
               <motion.div
                 ref={motionRef2}
                 layout
@@ -170,7 +181,7 @@ export default function NewAboutSection() {
                   }}
                   transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                  <p className="text-xl lg:w-md">
+                  <p className="text-xl lg:w-md xl:text-2xl">
                     With a background in music composition, I approach
                     problem-solving like arranging a piece, blending structure
                     and creativity to craft engaging and intuitive user
@@ -197,7 +208,7 @@ export default function NewAboutSection() {
           )}
 
           {isLargerThanMobile ? (
-            <div className="h-[calc(4*var(--layout-size))]">
+            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
               <motion.div
                 ref={motionRef3}
                 layout
@@ -221,7 +232,7 @@ export default function NewAboutSection() {
                   }}
                   transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                  <p className="text-xl lg:w-md">
+                  <p className="text-xl lg:w-md xl:text-2xl">
                     Every interaction, from a button hover to a complex
                     animation, is intentional. I focus on usability,
                     performance, and polish so the final product feels
@@ -248,42 +259,44 @@ export default function NewAboutSection() {
           )}
 
           {isLargerThanMobile ? (
-            <motion.div
-              ref={motionRef4}
-              layout
-              className="w-full flex flex-col justify-between py-4"
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-            >
-              <motion.h2
-                layout
-                className="font-medium text-4xl lg:text-5xl pb-4"
-              >
-                I stay curious
-              </motion.h2>
-
+            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
               <motion.div
+                ref={motionRef4}
                 layout
-                className="overflow-hidden"
-                initial={false}
-                animate={{
-                  height: showFullText4 ? "auto" : 0,
-                  opacity: showFullText4 ? 1 : 0,
-                }}
+                className="w-full flex flex-col justify-between py-4"
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
-                <p className="text-xl lg:w-md">
-                  I am always exploring new tools, patterns, and technologies,
-                  bringing fresh ideas into my work while keeping what is
-                  practical and reliable for each project.
-                </p>
+                <motion.h2
+                  layout
+                  className="font-medium text-4xl lg:text-5xl pb-4"
+                >
+                  I stay curious
+                </motion.h2>
+
+                <motion.div
+                  layout
+                  className="overflow-hidden"
+                  initial={false}
+                  animate={{
+                    height: showFullText4 ? "auto" : 0,
+                    opacity: showFullText4 ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                >
+                  <p className="text-xl lg:w-md xl:text-2xl">
+                    I am always exploring new tools, patterns, and technologies,
+                    bringing fresh ideas into my work while keeping what is
+                    practical and reliable for each project.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  layout
+                  className="border-b mt-4"
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                />
               </motion.div>
-
-              <motion.div
-                layout
-                className="border-b mt-4"
-                transition={{ duration: 0.2, ease: "easeInOut" }}
-              />
-            </motion.div>
+            </div>
           ) : (
             <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
               <h2 className="text-3xl font-medium">Results-Driven</h2>
