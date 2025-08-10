@@ -44,7 +44,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress1, "change", v => {
     console.log("scrollYProgress1:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText1) {
@@ -56,7 +56,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress2, "change", v => {
     console.log("scrollYProgress2:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText2) {
@@ -68,7 +68,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress3, "change", v => {
     console.log("scrollYProgress3:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText3) {
@@ -80,7 +80,7 @@ export default function NewAboutSection() {
 
   useMotionValueEvent(scrollYProgress4, "change", v => {
     console.log("scrollYProgress4:", v);
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
+    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
     const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
 
     if (v > enterThreshold && !showFullText4) {
@@ -91,495 +91,256 @@ export default function NewAboutSection() {
   });
 
   return (
-    <Section id="about" className="h-auto">
+    <Section id="about" className="h-auto mt-[25vh]">
       <SectionTitle name="About" isSticky />
-      <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(200vh+12*var(--layout-size))]">
-        <div className="sticky top-[calc(2*var(--layout-size))] h-[calc(100vh-(2*var(--layout-size)))] flex justify-center items-center">
-          <div className="h-1/2 w-1/2 border">
-            <Image
-              src="/anthony-big-sur-b-w.png"
-              alt="Anthony Big Sur Black and White"
-              width={800}
-              height={600}
-              className=" h-full object-cover"
-            />
+      <div className="min-h-[calc(100vh-var(--layout-size))] p-4 grid gap-12 mt-8">
+        <motion.div
+          className="w-auto lg:w-3/4 3xl:w-[1400px] h-full"
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl 3xl:text-5xl">
+            I&apos;m a front end leaning full stack developer with a background
+            in music composition for television. I thrive on small, tight-knit
+            teams where ideas flow and everyone shapes the product. I enjoy
+            collaborating with designers, engineers, and stakeholders to create
+            clean, intuitive interfaces and well-structured features from
+            concept to launch. I live in Los Angeles with my wife, and outside
+            of work I&apos;m usually hosting BBQs, biking with friends, or
+            making music.
+          </h3>
+        </motion.div>
+        <motion.div
+          className="h-full w-full md:w-1/2 xl:w-1/3 md:h-auto"
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <Image
+            src="/anthony-big-sur-b-w.png"
+            alt="Anthony Big Sur Black and White"
+            width={800}
+            height={600}
+            className="h-full object-cover border"
+          />
+        </motion.div>
+        {/* expandable sections */}
+        {isLargerThanMobile ? (
+          <div className="h-[calc(4*var(--layout-size))]">
+            <motion.div
+              ref={motionRef1}
+              layout
+              className="w-full flex flex-col justify-between"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
+                layout
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
+              >
+                I build web applications
+              </motion.h2>
+
+              <motion.div
+                layout
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText1 ? "auto" : 0,
+                  opacity: showFullText1 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
+                  From concept to deployment, I design and develop responsive,
+                  accessible, and performant web applications that balance clean
+                  code with thoughtful design.
+                </p>
+              </motion.div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
           </div>
-        </div>
-        <div className="mt-[calc(100vh-(2*var(--layout-size)))] h-[calc(16*var(--layout-size))] flex flex-col">
-          {isLargerThanMobile ? (
-            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
-              <motion.div
-                ref={motionRef1}
+        ) : (
+          <div className="w-full flex flex-col justify-between gap-8">
+            <SectionTitle
+              name="I build web applications"
+              zIndex={20}
+              removeLeftPadding
+            />
+            <p className="text-2xl">
+              From concept to deployment, I design and develop responsive,
+              accessible, and performant web applications that balance clean
+              code with thoughtful design.
+            </p>
+          </div>
+        )}
+
+        {isLargerThanMobile ? (
+          <div className="h-[calc(4*var(--layout-size))]">
+            <motion.div
+              ref={motionRef2}
+              layout
+              className="w-full flex flex-col justify-between"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
                 layout
-                className="w-full flex flex-col justify-between py-4"
-                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
               >
-                <motion.h2
-                  layout
-                  className="font-medium text-4xl lg:text-5xl pb-4"
-                >
-                  I build web applications
-                </motion.h2>
+                I bring a creative edge
+              </motion.h2>
 
-                <motion.div
-                  layout
-                  className="overflow-hidden"
-                  initial={false}
-                  animate={{
-                    height: showFullText1 ? "auto" : 0,
-                    opacity: showFullText1 ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                >
-                  <p className="text-xl lg:w-md xl:text-2xl">
-                    From concept to deployment, I design and develop responsive,
-                    accessible, and performant web applications that balance
-                    clean code with thoughtful design.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  layout
-                  className="border-b mt-4"
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                />
-              </motion.div>
-            </div>
-          ) : (
-            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
-              <h2 className="text-3xl font-medium">Work with Me</h2>
-              <p className="text-xl">
-                From concept to deployment, I design and develop responsive,
-                accessible, and performant web applications that balance clean
-                code with thoughtful design.
-              </p>
-            </div>
-          )}
-
-          {isLargerThanMobile ? (
-            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
               <motion.div
-                ref={motionRef2}
                 layout
-                className="w-full flex flex-col justify-between py-4"
-                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText2 ? "auto" : 0,
+                  opacity: showFullText2 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <motion.h2
-                  layout
-                  className="font-medium text-4xl lg:text-5xl pb-4"
-                >
-                  I bring a creative edge
-                </motion.h2>
-
-                <motion.div
-                  layout
-                  className="overflow-hidden"
-                  initial={false}
-                  animate={{
-                    height: showFullText2 ? "auto" : 0,
-                    opacity: showFullText2 ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                >
-                  <p className="text-xl lg:w-md xl:text-2xl">
-                    With a background in music composition, I approach
-                    problem-solving like arranging a piece, blending structure
-                    and creativity to craft engaging and intuitive user
-                    experiences.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  layout
-                  className="border-b mt-4"
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                />
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
+                  With a background in music composition, I approach
+                  problem-solving like arranging a piece, blending structure and
+                  creativity to craft engaging and intuitive user experiences.
+                </p>
               </motion.div>
-            </div>
-          ) : (
-            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
-              <h2 className="text-3xl font-medium">Innovation-Aligned</h2>
-              <p className="text-xl">
-                With a background in music composition, I approach
-                problem-solving like arranging a piece, blending structure and
-                creativity to craft engaging and intuitive user experiences.
-              </p>
-            </div>
-          )}
 
-          {isLargerThanMobile ? (
-            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
               <motion.div
-                ref={motionRef3}
                 layout
-                className="w-full flex flex-col justify-between py-4"
-                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </div>
+        ) : (
+          <div className="w-full flex flex-col justify-between gap-8">
+            <SectionTitle
+              name="I bring a creative edge"
+              zIndex={20}
+              removeLeftPadding
+            />
+            <p className="text-2xl">
+              With a background in music composition, I approach problem-solving
+              like arranging a piece, blending structure and creativity to craft
+              engaging and intuitive user experiences.
+            </p>
+          </div>
+        )}
+
+        {isLargerThanMobile ? (
+          <div className="h-[calc(4*var(--layout-size))]">
+            <motion.div
+              ref={motionRef3}
+              layout
+              className="w-full flex flex-col justify-between"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
+                layout
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
               >
-                <motion.h2
-                  layout
-                  className="font-medium text-4xl lg:text-5xl pb-4"
-                >
-                  I care about the details
-                </motion.h2>
+                I care about the details
+              </motion.h2>
 
-                <motion.div
-                  layout
-                  className="overflow-hidden"
-                  initial={false}
-                  animate={{
-                    height: showFullText3 ? "auto" : 0,
-                    opacity: showFullText3 ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                >
-                  <p className="text-xl lg:w-md xl:text-2xl">
-                    Every interaction, from a button hover to a complex
-                    animation, is intentional. I focus on usability,
-                    performance, and polish so the final product feels
-                    effortless to use.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  layout
-                  className="border-b mt-4"
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                />
-              </motion.div>
-            </div>
-          ) : (
-            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
-              <h2 className="text-3xl font-medium">Quality-First Approach</h2>
-              <p className="text-xl">
-                Every interaction, from a button hover to a complex animation,
-                is intentional. I focus on usability, performance, and polish so
-                the final product feels effortless to use.
-              </p>
-            </div>
-          )}
-
-          {isLargerThanMobile ? (
-            <div className="h-[calc((100vh-2*var(--layout-size))/4)]">
               <motion.div
-                ref={motionRef4}
                 layout
-                className="w-full flex flex-col justify-between py-4"
-                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText3 ? "auto" : 0,
+                  opacity: showFullText3 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <motion.h2
-                  layout
-                  className="font-medium text-4xl lg:text-5xl pb-4"
-                >
-                  I stay curious
-                </motion.h2>
-
-                <motion.div
-                  layout
-                  className="overflow-hidden"
-                  initial={false}
-                  animate={{
-                    height: showFullText4 ? "auto" : 0,
-                    opacity: showFullText4 ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                >
-                  <p className="text-xl lg:w-md xl:text-2xl">
-                    I am always exploring new tools, patterns, and technologies,
-                    bringing fresh ideas into my work while keeping what is
-                    practical and reliable for each project.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  layout
-                  className="border-b mt-4"
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                />
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
+                  Every interaction, from a button hover to a complex animation,
+                  is intentional. I focus on usability, performance, and polish
+                  so the final product feels effortless to use.
+                </p>
               </motion.div>
-            </div>
-          ) : (
-            <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
-              <h2 className="text-3xl font-medium">Results-Driven</h2>
-              <p className="text-xl">
-                I am always exploring new tools, patterns, and technologies,
-                bringing fresh ideas into my work while keeping what is
-                practical and reliable for each project.
-              </p>
-            </div>
-          )}
-        </div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </div>
+        ) : (
+          <div className="w-full flex flex-col justify-between gap-8">
+            <SectionTitle
+              name="I care about the details"
+              zIndex={20}
+              removeLeftPadding
+            />
+            <p className="text-2xl">
+              Every interaction, from a button hover to a complex animation, is
+              intentional. I focus on usability, performance, and polish so the
+              final product feels effortless to use.
+            </p>
+          </div>
+        )}
+
+        {isLargerThanMobile ? (
+          <div className="h-[calc(4*var(--layout-size))]">
+            <motion.div
+              ref={motionRef4}
+              layout
+              className="w-full flex flex-col justify-between"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
+                layout
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4"
+              >
+                I stay curious
+              </motion.h2>
+
+              <motion.div
+                layout
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText4 ? "auto" : 0,
+                  opacity: showFullText4 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
+                  I am always exploring new tools, patterns, and technologies,
+                  bringing fresh ideas into my work while keeping what is
+                  practical and reliable for each project.
+                </p>
+              </motion.div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </div>
+        ) : (
+          <div className="w-full flex flex-col justify-between gap-8">
+            <SectionTitle name="I stay curious" zIndex={20} removeLeftPadding />
+
+            <p className="text-2xl">
+              I am always exploring new tools, patterns, and technologies,
+              bringing fresh ideas into my work while keeping what is practical
+              and reliable for each project.
+            </p>
+          </div>
+        )}
       </div>
     </Section>
   );
 }
-
-// "use client";
-
-// import Section from "./Section";
-// import SectionTitle from "./SectionTitle";
-// import { useRef, useEffect } from "react";
-// import { motion, useScroll, useTransform } from "motion/react";
-// import { useLayout } from "../context/LayoutContext";
-// import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
-
-// export default function NewAboutSection() {
-//   const { isTabletLandscape } = useLayout();
-//   const isLargerThanMobile = useIsLargerThanMobile();
-
-//   const motionRef1 = useRef<HTMLDivElement>(null);
-//   const motionRef2 = useRef<HTMLDivElement>(null);
-//   const motionRef3 = useRef<HTMLDivElement>(null);
-//   const motionRef4 = useRef<HTMLDivElement>(null);
-
-//   const { scrollYProgress: scrollYProgress1 } = useScroll({
-//     target: motionRef1,
-//     offset: ["end end", "start start"],
-//   });
-
-//   const { scrollYProgress: scrollYProgress2 } = useScroll({
-//     target: motionRef2,
-//     offset: ["end end", "start start"],
-//   });
-
-//   const { scrollYProgress: scrollYProgress3 } = useScroll({
-//     target: motionRef3,
-//     offset: ["end end", "start start"],
-//   });
-
-//   const { scrollYProgress: scrollYProgress4 } = useScroll({
-//     target: motionRef4,
-//     offset: ["end end", "start start"],
-//   });
-
-//   const dynamicHeight1 = useTransform(
-//     scrollYProgress1,
-//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
-//     [60, 250]
-//   );
-
-//   const dynamicHeight2 = useTransform(
-//     scrollYProgress2,
-//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
-//     [60, 250]
-//   );
-
-//   const dynamicHeight3 = useTransform(
-//     scrollYProgress3,
-//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
-//     [60, 250]
-//   );
-
-//   const dynamicHeight4 = useTransform(
-//     scrollYProgress4,
-//     isTabletLandscape ? [0, 0.4] : [0.1, 0.4],
-//     [60, 250]
-//   );
-
-//   const opacity1 = useTransform(
-//     scrollYProgress1,
-//     isTabletLandscape ? [0.33, 0.4] : [0.35, 0.4],
-//     [0, 1] // opacity values
-//   );
-
-//   useEffect(() => {
-//     const unsub1 = scrollYProgress1.on("change", v =>
-//       console.log("scrollYProgress 1:", v)
-//     );
-//     const unsub2 = scrollYProgress2.on("change", v =>
-//       console.log("scrollYProgress 2:", v)
-//     );
-//     return () => {
-//       unsub1();
-//       unsub2();
-//     };
-//   }, [scrollYProgress1, scrollYProgress2]);
-
-//   return (
-//     <Section id="about" className="h-[300vh]">
-//       <SectionTitle name="About" isSticky />
-//       <div className="grid grid-cols-1 md:grid-cols-2 h-[200vh]">
-//         <div className=""></div>
-//         <div className="mt-[30vh] flex flex-col gap-[calc(2*var(--layout-size))]">
-//           {isLargerThanMobile ? (
-//             <motion.div
-//               ref={motionRef1}
-//               style={{ height: dynamicHeight1 }}
-//               className="border-b w-full flex flex-col justify-between py-4"
-//             >
-//               <h2 className="font-medium text-4xl lg:text-5xl pb-4">
-//                 Work with Me
-//               </h2>
-//               <motion.p
-//                 className="text-xl lg:w-md"
-//                 style={{ opacity: opacity1 }}
-//               >
-//                 Top talents as partners Work with the industry&apos;s finest—an
-//                 experienced senior team that&apos;s grown together through years
-//                 of collaboration, united by one goal: making your project exceed
-//                 every expectation.
-//               </motion.p>
-//             </motion.div>
-//           ) : (
-//             // mobile non animated version
-//             <div className="w-full border-y flex flex-col justify-between p-4 gap-8">
-//               <h2 className="text-3xl font-medium">Work with Me</h2>
-//               <p className="text-xl">
-//                 Top talents as partners Work with the industry&apos;s finest—an
-//                 experienced senior team that&apos;s grown together through years
-//                 of collaboration, united by one goal: making your project exceed
-//                 every expectation.
-//               </p>
-//             </div>
-//           )}
-//           {isLargerThanMobile ? (
-//             <motion.div
-//               ref={motionRef2}
-//               style={{ height: dynamicHeight2 }}
-//               className="border-y w-full origin-bottom bg-black"
-//             />
-//           ) : (
-//             <div className="w-full h-[calc(4*var(--layout-size))] border-y bg-black" />
-//           )}
-//           {isLargerThanMobile ? (
-//             <motion.div
-//               ref={motionRef3}
-//               style={{ height: dynamicHeight3 }}
-//               className="border-y w-full origin-bottom bg-black"
-//             />
-//           ) : (
-//             <div className="w-full h-[calc(4*var(--layout-size))] border-y bg-black" />
-//           )}
-//           {isLargerThanMobile ? (
-//             <motion.div
-//               ref={motionRef4}
-//               style={{ height: dynamicHeight4 }}
-//               className="border-y w-full origin-bottom bg-black"
-//             />
-//           ) : (
-//             <div className="w-full h-[calc(4*var(--layout-size))] border-y bg-black" />
-//           )}
-//         </div>
-//       </div>
-//     </Section>
-//   );
-// }
-
-// "use client";
-
-// import { useRef } from "react";
-// import { motion, useScroll, useTransform } from "motion/react";
-// import Section from "./Section";
-// import SectionTitle from "./SectionTitle";
-
-// export default function NewAboutSection() {
-//   const containerRef = useRef<HTMLDivElement>(null);
-//   const divRef = useRef<HTMLDivElement>(null);
-//   const divRef2 = useRef<HTMLDivElement>(null);
-
-//   // Track scroll progress of the first motion.div
-//   const { scrollYProgress } = useScroll({
-//     target: divRef,
-//     offset: ["end end", "end start"],
-//   });
-
-//   // Track scroll progress of the second motion.div
-//   const { scrollYProgress: scrollYProgress2 } = useScroll({
-//     target: divRef2,
-//     offset: ["end end", "end start"],
-//   });
-
-//   // Transform scroll progress to height animation (for first content div)
-//   const height1 = useTransform(
-//     scrollYProgress,
-//     [0.1, 0.3, 1], // scroll progress values
-//     [75, 300, 300] // height values in pixels
-//   );
-
-//   // Transform scroll progress to height animation (for second content div)
-//   const height2 = useTransform(
-//     scrollYProgress2,
-//     [0, 0.3, 0.8, 1], // scroll progress values
-//     [75, 75, 300, 300] // height values in pixels
-//   );
-
-//   // Transform scroll progress to width animation (for border divs)
-//   const width = useTransform(
-//     scrollYProgress,
-//     [0.1, 0.3, 1], // scroll progress values
-//     ["50%", "100%", "100%"] // width values
-//   );
-
-//   // Transform scroll progress to width animation (for second border divs)
-//   const width2 = useTransform(
-//     scrollYProgress2,
-//     [0, 0.3, 0.8, 1], // scroll progress values
-//     ["50%", "50%", "100%", "100%"] // width values
-//   );
-
-//   // Transform scroll progress to opacity animation (for first p tag)
-//   const opacity = useTransform(
-//     scrollYProgress,
-//     [0.15, 0.25, 1], // scroll progress values
-//     [0, 1, 1] // opacity values
-//   );
-
-//   // Transform scroll progress to opacity animation (for second p tag)
-//   const opacity2 = useTransform(
-//     scrollYProgress2,
-//     [0.1, 0.35, 0.8, 1], // scroll progress values
-//     [0, 0, 1, 1] // opacity values
-//   );
-
-//   // Transform scroll progress to y animation (for wrapper div)
-//   const y = useTransform(
-//     scrollYProgress,
-//     [0.1, 1], // scroll progress values
-//     ["0%", "60%"] // y values in percentages
-//   );
-
-//   return (
-//     <Section id="about" className="h-[200vh]" ref={containerRef}>
-//       <SectionTitle name="About" isSticky />
-//       <motion.div
-//         className="flex flex-col h-[calc(100vh-(2*var(--layout-size)))] items-end justify-end"
-//         style={{ y }}
-//       >
-//         {/* Top "border" div with width animation */}
-//         <motion.div className="bg-black h-[1px]" style={{ width }} />
-//         {/* Content div with height animation */}
-//         <motion.div
-//           ref={divRef}
-//           className="flex flex-col justify-between w-1/2 my-4"
-//           style={{ height: height1 }}
-//         >
-//           <h2 className="text-6xl">Top talents as partners</h2>
-//           <motion.p className="w-xl text-lg" style={{ opacity }}>
-//             Top talents as partners Work with the industry&apos;s finest—an
-//             experienced senior team that&apos;s grown together through years of
-//             collaboration, united by one goal: making your project exceed every
-//             expectation.
-//           </motion.p>
-//         </motion.div>
-//         {/* Bottom "border" div with width animation */}
-//         <motion.div className="bg-black h-[1px]" style={{ width }} />
-
-//         {/* Content div with height animation */}
-//         <motion.div
-//           ref={divRef2}
-//           className="flex flex-col justify-between w-1/2 my-4"
-//           style={{ height: height2 }}
-//         >
-//           <h2 className="text-6xl">Innovation-aligned</h2>
-//           <motion.p className="w-xl text-lg" style={{ opacity: opacity2 }}>
-//             We adopt a forward-thinking mindset to ensure you have the peace of
-//             mind that comes with the most modern representation of your
-//             business.
-//           </motion.p>
-//         </motion.div>
-
-//         {/* Bottom "border" div with width animation */}
-//         <motion.div className="bg-black h-[1px]" style={{ width: width2 }} />
-//       </motion.div>
-//     </Section>
-//   );
-// }
