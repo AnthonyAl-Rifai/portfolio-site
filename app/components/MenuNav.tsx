@@ -57,7 +57,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         </motion.a>
 
         <motion.a
-          href="#webdev"
+          href="#development"
           onClick={onClose}
           {...getMotionProps()}
           className={`${
@@ -66,7 +66,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
               : "col-span-4 row-span-2"
           } md:row-span-4 lg:col-span-6 lg:row-span-3 ${baseClass}`}
         >
-          Web Dev
+          Development
         </motion.a>
 
         <motion.a
