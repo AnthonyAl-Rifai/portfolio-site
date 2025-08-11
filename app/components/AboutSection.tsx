@@ -91,13 +91,13 @@ export default function NewAboutSection() {
       <SectionTitle name="About" isSticky />
       <div className="min-h-[calc(100vh-var(--layout-size))] p-4 grid gap-12 mt-8 md:grid-cols-2">
         <motion.div
-          className="w-auto h-full"
+          className="w-auto h-full flex items-center"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl lg:text-4xl xl:text-5xl 2xl:text-5xl 3xl:text-5xl">
+          <h3 className="text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl 3xl:text-5xl">
             I&apos;m a front end leaning full stack developer with a background
             in music composition for television. I thrive on small, tight-knit
             teams where ideas flow and everyone shapes the product. I enjoy
@@ -109,7 +109,7 @@ export default function NewAboutSection() {
           </h3>
         </motion.div>
         <motion.div
-          className="h-full w-full md:h-auto flex justify-center items-center"
+          className="max-h-[calc(100vh-(2*var(--layout-size))-32px)] w-full flex justify-center items-center"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
