@@ -89,7 +89,7 @@ export default function NewAboutSection() {
   return (
     <Section id="about" className="h-auto mt-[25vh]">
       <SectionTitle name="About" isSticky />
-      <div className="min-h-[calc(100vh-var(--layout-size))] p-4 grid gap-12 mt-8 md:grid-cols-2">
+      <div className="min-h-[calc(100vh-var(--layout-size))] p-4 grid gap-12 md:grid-cols-2">
         <motion.div
           className="w-auto h-full flex items-center"
           initial={{ y: 100, opacity: 0 }}
@@ -97,19 +97,18 @@ export default function NewAboutSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl 3xl:text-5xl">
-            I&apos;m a front end leaning full stack developer with a background
-            in music composition for television. I thrive on small, tight-knit
-            teams where ideas flow and everyone shapes the product. I enjoy
-            collaborating with designers, engineers, and stakeholders to create
-            clean, intuitive interfaces and well-structured features from
-            concept to launch. I live in Los Angeles with my wife, and outside
-            of work I&apos;m usually hosting BBQs, biking with friends, or
-            making music.
+          <h3 className="text-2xl md:text-[clamp(1rem,2vw+0.5rem,3rem)] max-w-[1300px]">
+            I&apos;m a frontend-focused full stack developer with a background
+            in music composition for television. I like to be involved from
+            concept to launch, working closely with designers, engineers, and
+            stakeholders to create clean, intuitive interfaces and
+            well-structured features that deliver real value. I live in LA with
+            my wife, and when I&apos;m not coding I enjoy hosting BBQs, biking
+            with friends, and making music.
           </h3>
         </motion.div>
         <motion.div
-          className="max-h-[calc(100vh-(2*var(--layout-size))-32px)] w-full flex justify-center items-center"
+          className="md:max-h-[calc(100dvh-(2*var(--layout-size))-32px)] w-full flex justify-center items-center"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -125,7 +124,7 @@ export default function NewAboutSection() {
         </motion.div>
         {/* expandable sections */}
         {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))] col-span-full md:mt-12">
+          <div className="h-[calc(3*var(--layout-size))] col-span-full md:mt-12">
             <motion.div
               ref={motionRef1}
               layout
@@ -136,7 +135,7 @@ export default function NewAboutSection() {
                 layout
                 className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
-                I build web applications
+                I build holistically
               </motion.h2>
 
               <motion.div
@@ -149,10 +148,10 @@ export default function NewAboutSection() {
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
-                  From concept to deployment, I design and develop responsive,
-                  accessible, and performant web applications that balance clean
-                  code with thoughtful design.
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl pb-1">
+                  I consider the entire product, from user experience and visual
+                  design to performance and maintainability, making sure every
+                  piece works together.
                 </p>
               </motion.div>
 
@@ -166,22 +165,76 @@ export default function NewAboutSection() {
         ) : (
           <div className="w-full flex flex-col justify-between gap-8">
             <SectionTitle
-              name="I build web applications"
+              name="I build holistically"
               zIndex={20}
               removeLeftPadding
             />
             <p className="text-2xl">
-              From concept to deployment, I design and develop responsive,
-              accessible, and performant web applications that balance clean
-              code with thoughtful design.
+              I consider the entire product, from user experience and visual
+              design to performance and maintainability, making sure every piece
+              works together.
             </p>
           </div>
         )}
 
         {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))] col-span-full">
+          <div className="h-[calc(3*var(--layout-size))] col-span-full">
             <motion.div
               ref={motionRef2}
+              layout
+              className="w-full flex flex-col justify-between"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <motion.h2
+                layout
+                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
+              >
+                I solve with purpose
+              </motion.h2>
+
+              <motion.div
+                layout
+                className="overflow-hidden"
+                initial={false}
+                animate={{
+                  height: showFullText2 ? "auto" : 0,
+                  opacity: showFullText2 ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl pb-1">
+                  I focus on understanding the goals behind what I build, so
+                  every decision moves the product closer to delivering real
+                  value for its users.
+                </p>
+              </motion.div>
+
+              <motion.div
+                layout
+                className="border-b mt-4"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </div>
+        ) : (
+          <div className="w-full flex flex-col justify-between gap-8">
+            <SectionTitle
+              name="I solve with purpose"
+              zIndex={20}
+              removeLeftPadding
+            />
+            <p className="text-2xl">
+              I focus on understanding the goals behind what I build, so every
+              decision moves the product closer to delivering real value for its
+              users.
+            </p>
+          </div>
+        )}
+
+        {isLargerThanMobile ? (
+          <div className="h-[calc(3*var(--layout-size))] col-span-full">
+            <motion.div
+              ref={motionRef3}
               layout
               className="w-full flex flex-col justify-between"
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -198,15 +251,15 @@ export default function NewAboutSection() {
                 className="overflow-hidden"
                 initial={false}
                 animate={{
-                  height: showFullText2 ? "auto" : 0,
-                  opacity: showFullText2 ? 1 : 0,
+                  height: showFullText3 ? "auto" : 0,
+                  opacity: showFullText3 ? 1 : 0,
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
-                  With a background in music composition, I approach
-                  problem-solving like arranging a piece, blending structure and
-                  creativity to craft engaging and intuitive user experiences.
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl pb-1">
+                  My background in music composition taught me how to blend
+                  structure and imagination, and I bring that same mindset to
+                  solving engineering challenges.
                 </p>
               </motion.div>
 
@@ -225,17 +278,17 @@ export default function NewAboutSection() {
               removeLeftPadding
             />
             <p className="text-2xl">
-              With a background in music composition, I approach problem-solving
-              like arranging a piece, blending structure and creativity to craft
-              engaging and intuitive user experiences.
+              My background in music composition taught me how to blend
+              structure and imagination, and I bring that same mindset to
+              solving engineering challenges.
             </p>
           </div>
         )}
 
         {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))] col-span-full">
+          <div className="h-[calc(3*var(--layout-size))] col-span-full">
             <motion.div
-              ref={motionRef3}
+              ref={motionRef4}
               layout
               className="w-full flex flex-col justify-between"
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -244,7 +297,7 @@ export default function NewAboutSection() {
                 layout
                 className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
-                I care about the details
+                I am a collaborator
               </motion.h2>
 
               <motion.div
@@ -252,15 +305,15 @@ export default function NewAboutSection() {
                 className="overflow-hidden"
                 initial={false}
                 animate={{
-                  height: showFullText3 ? "auto" : 0,
-                  opacity: showFullText3 ? 1 : 0,
+                  height: showFullText4 ? "auto" : 0,
+                  opacity: showFullText4 ? 1 : 0,
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
-                  Every interaction, from a button hover to a complex animation,
-                  is intentional. I focus on usability, performance, and polish
-                  so the final product feels effortless to use.
+                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl pb-1">
+                  I work best on small, tight-knit teams where feedback is open,
+                  ideas flow freely, and everyone contributes to creating
+                  something meaningful.
                 </p>
               </motion.div>
 
@@ -274,65 +327,15 @@ export default function NewAboutSection() {
         ) : (
           <div className="w-full flex flex-col justify-between gap-8">
             <SectionTitle
-              name="I care about the details"
+              name="I am a collaborator"
               zIndex={20}
               removeLeftPadding
             />
-            <p className="text-2xl">
-              Every interaction, from a button hover to a complex animation, is
-              intentional. I focus on usability, performance, and polish so the
-              final product feels effortless to use.
-            </p>
-          </div>
-        )}
-
-        {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))] col-span-full">
-            <motion.div
-              ref={motionRef4}
-              layout
-              className="w-full flex flex-col justify-between"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <motion.h2
-                layout
-                className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
-              >
-                I stay curious
-              </motion.h2>
-
-              <motion.div
-                layout
-                className="overflow-hidden"
-                initial={false}
-                animate={{
-                  height: showFullText4 ? "auto" : 0,
-                  opacity: showFullText4 ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <p className="text-xl md:text-2xl lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] 3xl:w-[1200px] xl:text-3xl 3xl:text-4xl">
-                  I am always exploring new tools, patterns, and technologies,
-                  bringing fresh ideas into my work while keeping what is
-                  practical and reliable for each project.
-                </p>
-              </motion.div>
-
-              <motion.div
-                layout
-                className="border-b mt-4"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              />
-            </motion.div>
-          </div>
-        ) : (
-          <div className="w-full flex flex-col justify-between gap-8">
-            <SectionTitle name="I stay curious" zIndex={20} removeLeftPadding />
 
             <p className="text-2xl">
-              I am always exploring new tools, patterns, and technologies,
-              bringing fresh ideas into my work while keeping what is practical
-              and reliable for each project.
+              I work best on small, tight-knit teams where feedback is open,
+              ideas flow freely, and everyone contributes to creating something
+              meaningful.
             </p>
           </div>
         )}
