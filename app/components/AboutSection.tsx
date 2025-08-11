@@ -89,15 +89,15 @@ export default function NewAboutSection() {
   return (
     <Section id="about" className="h-auto mt-[25vh]">
       <SectionTitle name="About" isSticky />
-      <div className="min-h-[calc(100vh-var(--layout-size))] p-4 grid gap-12 mt-8">
+      <div className="min-h-[calc(100vh-var(--layout-size))] p-4 grid gap-12 mt-8 md:grid-cols-2">
         <motion.div
-          className="w-auto lg:w-3/4 3xl:w-[1400px] h-full"
+          className="w-auto h-full"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl 3xl:text-5xl">
+          <h3 className="text-2xl lg:text-4xl xl:text-5xl 2xl:text-5xl 3xl:text-5xl">
             I&apos;m a front end leaning full stack developer with a background
             in music composition for television. I thrive on small, tight-knit
             teams where ideas flow and everyone shapes the product. I enjoy
@@ -109,7 +109,7 @@ export default function NewAboutSection() {
           </h3>
         </motion.div>
         <motion.div
-          className="h-full w-full md:w-1/2 xl:w-1/3 md:h-auto"
+          className="h-full w-full md:h-auto flex justify-center items-center"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -125,7 +125,7 @@ export default function NewAboutSection() {
         </motion.div>
         {/* expandable sections */}
         {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))]">
+          <div className="h-[calc(4*var(--layout-size))] col-span-full md:mt-12">
             <motion.div
               ref={motionRef1}
               layout
@@ -179,7 +179,7 @@ export default function NewAboutSection() {
         )}
 
         {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))]">
+          <div className="h-[calc(4*var(--layout-size))] col-span-full">
             <motion.div
               ref={motionRef2}
               layout
@@ -233,7 +233,7 @@ export default function NewAboutSection() {
         )}
 
         {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))]">
+          <div className="h-[calc(4*var(--layout-size))] col-span-full">
             <motion.div
               ref={motionRef3}
               layout
@@ -287,7 +287,7 @@ export default function NewAboutSection() {
         )}
 
         {isLargerThanMobile ? (
-          <div className="h-[calc(4*var(--layout-size))]">
+          <div className="h-[calc(4*var(--layout-size))] col-span-full">
             <motion.div
               ref={motionRef4}
               layout
