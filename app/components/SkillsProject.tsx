@@ -99,12 +99,12 @@ export default function SkillsProject() {
       >
         <SectionTitle name="Skills Overview" zIndex={20} removeLeftPadding />
         <p className="text-lg leading-relaxed md:text-xl lg:text-2xl xl:text-3xl">
-          I&apos;m a full stack developer with a strong frontend focus and a
-          sharp product mindset. I specialize in building responsive, accessible
-          web applications and enjoy working across the stack to deliver fast,
-          scalable, and maintainable solutions. I thrive at the intersection of
-          engineering and product, where thoughtful design and real-world
-          usability meet.
+          I&apos;m a frontend-focused full stack developer who thrives at the
+          intersection of engineering and product. I build scalable,
+          maintainable applications with an emphasis on usability, performance,
+          and clean architecture. I&apos;m equally comfortable designing
+          component systems, optimizing APIs, and refining deployment workflows
+          to support efficient, reliable releases.
         </p>
       </motion.section>
 
@@ -122,27 +122,27 @@ export default function SkillsProject() {
             {
               title: "Product-Focused Engineering",
               description:
-                "Experienced in translating product goals into scalable, user-centered web applications with a strong eye for usability and accessibility.",
+                "Translate product goals into user-centered applications with a strong emphasis on usability and accessibility.",
             },
             {
               title: "Frontend Architecture",
               description:
-                "Skilled in designing modular, reusable component systems and leading UI rebuilds across complex applications.",
+                "Design modular, reusable component systems and lead UI rebuilds for complex applications.",
             },
             {
               title: "Cross-Stack Collaboration",
               description:
-                "Adept at bridging frontend and backend concerns, optimizing API performance, database queries, and deployment workflows.",
+                "Bridge frontend and backend concerns to optimize APIs, database queries, and deployment workflows.",
             },
             {
               title: "Creative Problem Solving",
               description:
-                "Brings a compositional mindset to code, balancing structure, flow, and maintainability in both interface and infrastructure.",
+                "Apply a structured, creative approach to code, balancing flow, maintainability, and performance.",
             },
             {
               title: "Rapid Iteration & Ownership",
               description:
-                "Thrives in fast-moving environments, driving feature delivery from concept to deployment while maintaining code quality and stability.",
+                "Deliver features from concept to deployment in fast-moving environments while maintaining code quality.",
             },
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
