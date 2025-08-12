@@ -8,8 +8,8 @@ import { useLayout } from "../context/LayoutContext";
 import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
 import Image from "next/image";
 
-export default function NewAboutSection() {
-  const { isTabletLandscape } = useLayout();
+export default function AboutSection() {
+  const { isTabletLandscape, isNavigating } = useLayout();
   const isLargerThanMobile = useIsLargerThanMobile();
 
   const motionRef1 = useRef<HTMLDivElement>(null);
@@ -42,11 +42,18 @@ export default function NewAboutSection() {
   const [showFullText3, setShowFullText3] = useState(false);
   const [showFullText4, setShowFullText4] = useState(false);
 
-  useMotionValueEvent(scrollYProgress1, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
+  // thresholds (added exitHighThreshold)
+  const enterThreshold = isTabletLandscape ? 0.3 : 0.25;
+  const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
+  const exitHighThreshold = 0.95; // close as block nears the top
 
-    if (v > enterThreshold && !showFullText1) {
+  useMotionValueEvent(scrollYProgress1, "change", v => {
+    if (isNavigating) return;
+    if (v >= exitHighThreshold && showFullText1) {
+      setShowFullText1(false);
+      return;
+    }
+    if (v > enterThreshold && v < exitHighThreshold && !showFullText1) {
       setShowFullText1(true);
     } else if (v < exitThreshold && showFullText1) {
       setShowFullText1(false);
@@ -54,10 +61,12 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress2, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
-
-    if (v > enterThreshold && !showFullText2) {
+    if (isNavigating) return;
+    if (v >= exitHighThreshold && showFullText2) {
+      setShowFullText2(false);
+      return;
+    }
+    if (v > enterThreshold && v < exitHighThreshold && !showFullText2) {
       setShowFullText2(true);
     } else if (v < exitThreshold && showFullText2) {
       setShowFullText2(false);
@@ -65,10 +74,12 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress3, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
-
-    if (v > enterThreshold && !showFullText3) {
+    if (isNavigating) return;
+    if (v >= exitHighThreshold && showFullText3) {
+      setShowFullText3(false);
+      return;
+    }
+    if (v > enterThreshold && v < exitHighThreshold && !showFullText3) {
       setShowFullText3(true);
     } else if (v < exitThreshold && showFullText3) {
       setShowFullText3(false);
@@ -76,10 +87,12 @@ export default function NewAboutSection() {
   });
 
   useMotionValueEvent(scrollYProgress4, "change", v => {
-    const enterThreshold = isTabletLandscape ? 0.3 : 0.3;
-    const exitThreshold = isTabletLandscape ? 0.2 : 0.1;
-
-    if (v > enterThreshold && !showFullText4) {
+    if (isNavigating) return;
+    if (v >= exitHighThreshold && showFullText4) {
+      setShowFullText4(false);
+      return;
+    }
+    if (v > enterThreshold && v < exitHighThreshold && !showFullText4) {
       setShowFullText4(true);
     } else if (v < exitThreshold && showFullText4) {
       setShowFullText4(false);
@@ -122,6 +135,7 @@ export default function NewAboutSection() {
             className="h-full object-cover border"
           />
         </motion.div>
+
         {/* expandable sections */}
         {isLargerThanMobile ? (
           <div className="h-[calc(3*var(--layout-size))] col-span-full md:mt-12">
@@ -331,7 +345,6 @@ export default function NewAboutSection() {
               zIndex={20}
               removeLeftPadding
             />
-
             <p className="text-2xl">
               I work best on small, tight-knit teams where feedback is open,
               ideas flow freely, and everyone contributes to creating something

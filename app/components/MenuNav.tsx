@@ -11,7 +11,7 @@ interface MenuNavProps {
 }
 
 export default function MenuNav({ open, onClose }: MenuNavProps) {
-  const { isMobileLandscape } = useLayout();
+  const { isMobileLandscape, setIsNavigating } = useLayout();
   const isLargerThanMobile = useIsLargerThanMobile();
 
   const top = isMobileLandscape ? 0 : "var(--layout-size)";
@@ -34,6 +34,11 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
     style: { originX: 0, originY: 0 },
   });
 
+  const handleNavClick: React.MouseEventHandler<HTMLAnchorElement> = () => {
+    setIsNavigating(true);
+    onClose();
+  };
+
   return (
     <nav
       className={`fixed bg-white/10 backdrop-blur-md transition-opacity duration-300 z-40 md:border-l
@@ -45,7 +50,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
       <GridSection isMobileLandscape={isMobileLandscape} fillParent={true}>
         <motion.a
           href="#about"
-          onClick={onClose}
+          onClick={handleNavClick}
           {...getMotionProps()}
           className={`${
             isMobileLandscape
@@ -58,7 +63,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
 
         <motion.a
           href="#development"
-          onClick={onClose}
+          onClick={handleNavClick}
           {...getMotionProps()}
           className={`${
             isMobileLandscape
@@ -71,7 +76,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
 
         <motion.a
           href="#music"
-          onClick={onClose}
+          onClick={handleNavClick}
           {...getMotionProps()}
           className={`${
             isMobileLandscape
@@ -84,7 +89,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
 
         <motion.a
           href="#contact"
-          onClick={onClose}
+          onClick={handleNavClick}
           {...getMotionProps()}
           className={`${
             isMobileLandscape
@@ -98,7 +103,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         <motion.a
           href="/anthony-al-rifai-resume.pdf"
           download="anthony-al-rifai-resume.pdf"
-          onClick={onClose}
+          onClick={handleNavClick}
           {...getMotionProps()}
           className={`${
             isMobileLandscape
