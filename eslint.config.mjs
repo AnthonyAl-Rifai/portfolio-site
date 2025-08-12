@@ -10,6 +10,9 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: ["app/senseibonus/**/*"],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
