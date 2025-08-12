@@ -2,13 +2,12 @@
 
 import { motion, useInView, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import { useLayout } from "../context/LayoutContext";
-import Image from "next/image";
-import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
+import { useLayout } from "../../context/LayoutContext";
+import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 
-export default function SuawProject() {
+export default function SkillsProject() {
   const { isMobileLandscape } = useLayout();
   const overviewRef = useRef(null);
   const isInView = useInView(overviewRef);
@@ -32,20 +31,19 @@ export default function SuawProject() {
             : "h-[calc(100vh-2*var(--layout-size))] min-h-0 justify-center gap-16 pb-20 md:pb-32"
         )}
       >
-        <motion.div
+        <motion.h1
+          className={clsx(
+            "font-bold mb-6",
+            isMobileLandscape
+              ? "text-4xl"
+              : "text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
+          )}
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: false, amount: 0 }}
         >
-          <Image
-            src="/SUAW_Logo_Main_Yellow.png"
-            alt="Shut Up & Write! Logo"
-            width={600}
-            height={300}
-            className="mx-auto w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600] h-auto"
-            priority
-          />
-        </motion.div>
+          Technical Skills
+        </motion.h1>
 
         <motion.p
           className="text-2xl md:text-3xl md:px-8 lg:px-24 lg:text-4xl"
@@ -53,8 +51,8 @@ export default function SuawProject() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          A community-driven event platform from one of the world&apos;s largest
-          nonprofit writing groups
+          Full-stack development expertise with modern technologies and best
+          practices for building scalable web applications.
         </motion.p>
 
         <div
@@ -89,6 +87,7 @@ export default function SuawProject() {
           </AnimatePresence>
         </div>
       </div>
+
       {/* Overview Section */}
       <motion.section
         ref={overviewRef}
@@ -98,29 +97,18 @@ export default function SuawProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <SectionTitle name="Project Overview" zIndex={20} removeLeftPadding />
-        <div className="w-full flex justify-center">
-          <Image
-            src="/suaw-hero-section.png"
-            alt="SUAW Hero Section"
-            width={800}
-            height={400}
-            className="w-full border border-black lg:w-[1200px] lg:mx-auto xl:w-2/3"
-            priority
-          />
-        </div>
+        <SectionTitle name="Skills Overview" zIndex={20} removeLeftPadding />
         <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
-          Shut Up & Write! is an initiative of Writing Partners, a California
-          based nonprofit organization that helps writers around the world build
-          sustainable writing habits through free, peer-led events. Brought on
-          as the platform&apos;s first in-house software engineer, I helped
-          architect a full frontend rebuild and contributed across the stack to
-          support a growing global user base. My work emphasized accessibility,
-          performance, and thoughtful UX, helping evolve the product from a
-          simple productivity tool into a dynamic community platform.
+          I&apos;m a frontend-focused full stack developer who thrives at the
+          intersection of engineering and product. I build scalable,
+          maintainable applications with an emphasis on usability, performance,
+          and clean architecture. I&apos;m equally comfortable designing
+          component systems, optimizing APIs, and refining deployment workflows
+          to support efficient, reliable releases.
         </p>
       </motion.section>
-      {/* Key Highlights Section */}
+
+      {/* Key Strengths Section */}
       <motion.section
         className="flex flex-col gap-8 md:gap-12"
         initial={{ y: 100, opacity: 0 }}
@@ -128,32 +116,46 @@ export default function SuawProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <SectionTitle name="Key Highlights" zIndex={20} removeLeftPadding />
-        <div className="w-full flex justify-center">
-          <Image
-            src="/suaw-online-event-section.png"
-            alt="SUAW Online Event Section"
-            width={800}
-            height={400}
-            className="w-full border border-black lg:w-[1200px] lg:mx-auto xl:w-2/3"
-            priority
-          />
-        </div>
+        <SectionTitle name="Key Strengths" zIndex={20} removeLeftPadding />
         <ul className="flex flex-col gap-4 text-lg md:gap-6 lg:text-2xl xl:text-3xl">
           {[
-            "Architected the frontend rebuild with Vue.js and GraphQL, owning development of all core pages for 100,000+ users; partnered with the Executive Director on product strategy, accelerating delivery and reducing release cycles by 33%",
-            "Led development of a responsive Vue.js component library with 50+ reusable components; introduced Storybook for faster feedback and configured GitLab CI/CD for versioning, doubling development velocity and eliminating UI inconsistencies",
-            "Modernized the design system, ensured accessibility compliance, and streamlined layouts; used New Relic and DevTools to fix bottlenecks, improving load speed by 60% and reducing CLS/LCP by 80% and 45%",
-            "Reduced GraphQL response times by 35% by extending C# command handlers in a CQRS pattern, optimizing queries and mutations, and improving database efficiency for tighter frontend-backend integration",
-            "Strengthened API reliability and backend stability by engineering robust PostgreSQL migrations and optimizing Hasura meta-data tracking, ensuring consistent schemas and smooth deployments across staging, production, and local environments",
-          ].map((text, i) => (
+            {
+              title: "Product-Focused Engineering",
+              description:
+                "Translate product goals into user-centered applications with a strong emphasis on usability and accessibility.",
+            },
+            {
+              title: "Frontend Architecture",
+              description:
+                "Design modular, reusable component systems and lead UI rebuilds for complex applications.",
+            },
+            {
+              title: "Cross-Stack Collaboration",
+              description:
+                "Bridge frontend and backend concerns to optimize APIs, database queries, and deployment workflows.",
+            },
+            {
+              title: "Creative Problem Solving",
+              description:
+                "Apply a structured, creative approach to code, balancing flow, maintainability, and performance.",
+            },
+            {
+              title: "Rapid Iteration & Ownership",
+              description:
+                "Deliver features from concept to deployment in fast-moving environments while maintaining code quality.",
+            },
+          ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span className="w-2 h-2 bg-black rounded-full mt-[0.6em] flex-shrink-0 xl:mt-[0.5em]" />
-              <span>{text}</span>
+              <span>
+                <span className="font-bold">{item.title}: </span>
+                {item.description}
+              </span>
             </li>
           ))}
         </ul>
       </motion.section>
+
       {/* Technology Stack */}
       <motion.section
         className="flex flex-col items-center gap-8 md:gap-12"
@@ -163,17 +165,29 @@ export default function SuawProject() {
         viewport={{ once: true }}
       >
         <SectionTitle name="Technology Stack" zIndex={20} removeLeftPadding />
+
         {/* Frontend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              { name: "Vue.js" },
-              { name: "JavaScript" },
-              { name: "Apollo Client" },
-              { name: "SCSS" },
-              { name: "Storybook" },
-            ].map((tech, index) => (
+              "JavaScript ES6",
+              "TypeScript",
+              "Vue.js",
+              "React",
+              "React Native",
+              "Next.js",
+              "Redux",
+              "Zustand",
+              "HTML5",
+              "CSS3",
+              "Tailwind CSS",
+              "RESTful API",
+              "GraphQL",
+              "Framer-Motion",
+              "Storybook",
+              "Figma",
+            ].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
@@ -181,7 +195,7 @@ export default function SuawProject() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {tech.name}
+                {name}
               </motion.div>
             ))}
           </div>
@@ -192,11 +206,15 @@ export default function SuawProject() {
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              { name: "C# .NET" },
-              { name: "Hasura" },
-              { name: "GraphQL" },
-              { name: "PostgreSQL" },
-            ].map((tech, index) => (
+              "Node.js",
+              "Express.js",
+              "C# .NET",
+              "PostgreSQL",
+              "Prisma",
+              "SQL",
+              "NoSQL",
+              "MongoDB",
+            ].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
@@ -204,28 +222,33 @@ export default function SuawProject() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {tech.name}
+                {name}
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* DevOps & Tooling */}
+        {/* DevOps & Tools */}
         <div className="w-full">
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">
-            DevOps & Tooling
+            DevOps & Tools
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              { name: "Docker" },
-              { name: "GitLab CI/CD" },
-              { name: "AWS" },
-              { name: "S3" },
-              { name: "EC2" },
-              { name: "CloudWatch" },
-              { name: "Fargate" },
-              { name: "New Relic" },
-            ].map((tech, index) => (
+              "AWS",
+              "S3",
+              "EC2",
+              "CloudWatch",
+              "Fargate",
+              "Docker",
+              "New Relic",
+              "GitLab CI/CD",
+              "GitHub",
+              "Google Cloud",
+              "Microservices",
+              "Agile",
+              "Scrum",
+            ].map((name, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
@@ -233,7 +256,7 @@ export default function SuawProject() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {tech.name}
+                {name}
               </motion.div>
             ))}
           </div>
@@ -243,17 +266,19 @@ export default function SuawProject() {
         <div className="w-full">
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
-            {[{ name: "Jest" }].map((tech, index) => (
-              <motion.div
-                key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                {tech.name}
-              </motion.div>
-            ))}
+            {["React Testing Library", "Jest", "Cypress", "Vitest", "TDD"].map(
+              (name, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  {name}
+                </motion.div>
+              )
+            )}
           </div>
         </div>
       </motion.section>

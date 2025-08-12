@@ -2,12 +2,13 @@
 
 import { motion, useInView, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import { useLayout } from "../context/LayoutContext";
-import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
+import { useLayout } from "../../context/LayoutContext";
+import Image from "next/image";
+import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 
-export default function SkillsProject() {
+export default function DbSpyProject() {
   const { isMobileLandscape } = useLayout();
   const overviewRef = useRef(null);
   const isInView = useInView(overviewRef);
@@ -31,19 +32,20 @@ export default function SkillsProject() {
             : "h-[calc(100vh-2*var(--layout-size))] min-h-0 justify-center gap-16 pb-20 md:pb-32"
         )}
       >
-        <motion.h1
-          className={clsx(
-            "font-bold mb-6",
-            isMobileLandscape
-              ? "text-4xl"
-              : "text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
-          )}
+        <motion.div
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: false, amount: 0 }}
         >
-          Technical Skills
-        </motion.h1>
+          <Image
+            src="/dbspy-logo-dark.png"
+            alt="DBSpy Logo"
+            width={600}
+            height={300}
+            className="mx-auto w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600] h-auto"
+            priority
+          />
+        </motion.div>
 
         <motion.p
           className="text-2xl md:text-3xl md:px-8 lg:px-24 lg:text-4xl"
@@ -51,8 +53,8 @@ export default function SkillsProject() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Full-stack development expertise with modern technologies and best
-          practices for building scalable web applications.
+          A visual SQL dev tool built to streamline database design and schema
+          management
         </motion.p>
 
         <div
@@ -87,7 +89,6 @@ export default function SkillsProject() {
           </AnimatePresence>
         </div>
       </div>
-
       {/* Overview Section */}
       <motion.section
         ref={overviewRef}
@@ -97,18 +98,28 @@ export default function SkillsProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <SectionTitle name="Skills Overview" zIndex={20} removeLeftPadding />
+        <SectionTitle name="Project Overview" zIndex={20} removeLeftPadding />
+        <div className="w-full flex justify-center">
+          <Image
+            src="/dbspy-demo-resize.gif"
+            alt="DBSpy Demo gif"
+            width={800}
+            height={400}
+            className="w-full border border-black lg:w-[1200px] lg:mx-auto xl:w-2/3"
+            priority
+          />
+        </div>
         <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
-          I&apos;m a frontend-focused full stack developer who thrives at the
-          intersection of engineering and product. I build scalable,
-          maintainable applications with an emphasis on usability, performance,
-          and clean architecture. I&apos;m equally comfortable designing
-          component systems, optimizing APIs, and refining deployment workflows
-          to support efficient, reliable releases.
+          dbSpy is a developer tool built through the OSLabs tech accelerator
+          that helps developers visualize and manage relational databases with
+          ER diagrams, schema editing, and query testing. I worked on both the
+          frontend and backend as part of a five-person team, contributing to
+          major architectural improvements and performance optimizations. My
+          work helped simplify the codebase, improve cross-database
+          compatibility, and enhance the overall developer experience.
         </p>
       </motion.section>
-
-      {/* Key Strengths Section */}
+      {/* Key Highlights Section */}
       <motion.section
         className="flex flex-col gap-8 md:gap-12"
         initial={{ y: 100, opacity: 0 }}
@@ -116,46 +127,21 @@ export default function SkillsProject() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0 }}
       >
-        <SectionTitle name="Key Strengths" zIndex={20} removeLeftPadding />
+        <SectionTitle name="Key Highlights" zIndex={20} removeLeftPadding />
         <ul className="flex flex-col gap-4 text-lg md:gap-6 lg:text-2xl xl:text-3xl">
           {[
-            {
-              title: "Product-Focused Engineering",
-              description:
-                "Translate product goals into user-centered applications with a strong emphasis on usability and accessibility.",
-            },
-            {
-              title: "Frontend Architecture",
-              description:
-                "Design modular, reusable component systems and lead UI rebuilds for complex applications.",
-            },
-            {
-              title: "Cross-Stack Collaboration",
-              description:
-                "Bridge frontend and backend concerns to optimize APIs, database queries, and deployment workflows.",
-            },
-            {
-              title: "Creative Problem Solving",
-              description:
-                "Apply a structured, creative approach to code, balancing flow, maintainability, and performance.",
-            },
-            {
-              title: "Rapid Iteration & Ownership",
-              description:
-                "Deliver features from concept to deployment in fast-moving environments while maintaining code quality.",
-            },
-          ].map((item, i) => (
+            "Proposed and led migration to React Flow for ERD visualization, cutting code by 50%, reducing bundle size by 20%, and resolving UI bugs with a more modular, scalable architecture still used today",
+            "Overhauled the Node.js backend architecture to enable compatibility with both PostgreSQL and MySQL databases, reducing data retrieval latency by 30% and improving API speeds",
+            "Introduced Zustand for modular state management, improving reactivity and state isolation across components; reduced state-related bugs by 40% and improved long-term maintainability of the front-end codebase",
+            "Reduced infrastructure costs by deploying the app on AWS with Docker, EC2, and Elastic Beanstalk, optimizing resource allocation, automating scaling, and increasing platform availability",
+          ].map((text, i) => (
             <li key={i} className="flex items-start gap-3">
               <span className="w-2 h-2 bg-black rounded-full mt-[0.6em] flex-shrink-0 xl:mt-[0.5em]" />
-              <span>
-                <span className="font-bold">{item.title}: </span>
-                {item.description}
-              </span>
+              <span>{text}</span>
             </li>
           ))}
         </ul>
       </motion.section>
-
       {/* Technology Stack */}
       <motion.section
         className="flex flex-col items-center gap-8 md:gap-12"
@@ -165,29 +151,17 @@ export default function SkillsProject() {
         viewport={{ once: true }}
       >
         <SectionTitle name="Technology Stack" zIndex={20} removeLeftPadding />
-
         {/* Frontend */}
         <div className="w-full">
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              "JavaScript ES6",
-              "TypeScript",
-              "Vue.js",
-              "React",
-              "React Native",
-              "Next.js",
-              "Redux",
-              "Zustand",
-              "HTML5",
-              "CSS3",
-              "Tailwind CSS",
-              "RESTful API",
-              "GraphQL",
-              "Framer-Motion",
-              "Storybook",
-              "Figma",
-            ].map((name, index) => (
+              { name: "React" },
+              { name: "React Flow" },
+              { name: "TypeScript" },
+              { name: "Zustand" },
+              { name: "Tailwind CSS" },
+            ].map((tech, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
@@ -195,7 +169,7 @@ export default function SkillsProject() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {name}
+                {tech.name}
               </motion.div>
             ))}
           </div>
@@ -206,15 +180,12 @@ export default function SkillsProject() {
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              "Node.js",
-              "Express.js",
-              "C# .NET",
-              "PostgreSQL",
-              "Prisma",
-              "SQL",
-              "NoSQL",
-              "MongoDB",
-            ].map((name, index) => (
+              { name: "Node.js" },
+              { name: "RESTful API" },
+              { name: "SQL" },
+              { name: "PostgreSQL" },
+              { name: "MySQL" },
+            ].map((tech, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
@@ -222,33 +193,24 @@ export default function SkillsProject() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {name}
+                {tech.name}
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* DevOps & Tools */}
+        {/* DevOps & Tooling */}
         <div className="w-full">
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">
-            DevOps & Tools
+            DevOps & Tooling
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              "AWS",
-              "S3",
-              "EC2",
-              "CloudWatch",
-              "Fargate",
-              "Docker",
-              "New Relic",
-              "GitLab CI/CD",
-              "GitHub",
-              "Google Cloud",
-              "Microservices",
-              "Agile",
-              "Scrum",
-            ].map((name, index) => (
+              { name: "AWS" },
+              { name: "Docker" },
+              { name: "EC2" },
+              { name: "Elastic Beanstalk" },
+            ].map((tech, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
@@ -256,7 +218,7 @@ export default function SkillsProject() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
               >
-                {name}
+                {tech.name}
               </motion.div>
             ))}
           </div>
@@ -266,19 +228,17 @@ export default function SkillsProject() {
         <div className="w-full">
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
-            {["React Testing Library", "Jest", "Cypress", "Vitest", "TDD"].map(
-              (name, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                >
-                  {name}
-                </motion.div>
-              )
-            )}
+            {[{ name: "React Testing Library" }].map((tech, index) => (
+              <motion.div
+                key={index}
+                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                {tech.name}
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.section>

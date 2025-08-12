@@ -2,13 +2,13 @@
 
 import { motion, useInView, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import { useLayout } from "../context/LayoutContext";
+import { useLayout } from "../../context/LayoutContext";
 import Image from "next/image";
-import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
+import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 
-export default function DbSpyProject() {
+export default function SuawProject() {
   const { isMobileLandscape } = useLayout();
   const overviewRef = useRef(null);
   const isInView = useInView(overviewRef);
@@ -38,8 +38,8 @@ export default function DbSpyProject() {
           viewport={{ once: false, amount: 0 }}
         >
           <Image
-            src="/dbspy-logo-dark.png"
-            alt="DBSpy Logo"
+            src="/SUAW_Logo_Main_Yellow.png"
+            alt="Shut Up & Write! Logo"
             width={600}
             height={300}
             className="mx-auto w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600] h-auto"
@@ -53,8 +53,8 @@ export default function DbSpyProject() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          A visual SQL dev tool built to streamline database design and schema
-          management
+          A community-driven event platform from one of the world&apos;s largest
+          nonprofit writing groups
         </motion.p>
 
         <div
@@ -101,8 +101,8 @@ export default function DbSpyProject() {
         <SectionTitle name="Project Overview" zIndex={20} removeLeftPadding />
         <div className="w-full flex justify-center">
           <Image
-            src="/dbspy-demo-resize.gif"
-            alt="DBSpy Demo gif"
+            src="/suaw-hero-section.png"
+            alt="SUAW Hero Section"
             width={800}
             height={400}
             className="w-full border border-black lg:w-[1200px] lg:mx-auto xl:w-2/3"
@@ -110,13 +110,14 @@ export default function DbSpyProject() {
           />
         </div>
         <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
-          dbSpy is a developer tool built through the OSLabs tech accelerator
-          that helps developers visualize and manage relational databases with
-          ER diagrams, schema editing, and query testing. I worked on both the
-          frontend and backend as part of a five-person team, contributing to
-          major architectural improvements and performance optimizations. My
-          work helped simplify the codebase, improve cross-database
-          compatibility, and enhance the overall developer experience.
+          Shut Up & Write! is an initiative of Writing Partners, a California
+          based nonprofit organization that helps writers around the world build
+          sustainable writing habits through free, peer-led events. Brought on
+          as the platform&apos;s first in-house software engineer, I helped
+          architect a full frontend rebuild and contributed across the stack to
+          support a growing global user base. My work emphasized accessibility,
+          performance, and thoughtful UX, helping evolve the product from a
+          simple productivity tool into a dynamic community platform.
         </p>
       </motion.section>
       {/* Key Highlights Section */}
@@ -128,12 +129,23 @@ export default function DbSpyProject() {
         viewport={{ once: true, amount: 0 }}
       >
         <SectionTitle name="Key Highlights" zIndex={20} removeLeftPadding />
+        <div className="w-full flex justify-center">
+          <Image
+            src="/suaw-online-event-section.png"
+            alt="SUAW Online Event Section"
+            width={800}
+            height={400}
+            className="w-full border border-black lg:w-[1200px] lg:mx-auto xl:w-2/3"
+            priority
+          />
+        </div>
         <ul className="flex flex-col gap-4 text-lg md:gap-6 lg:text-2xl xl:text-3xl">
           {[
-            "Proposed and led migration to React Flow for ERD visualization, cutting code by 50%, reducing bundle size by 20%, and resolving UI bugs with a more modular, scalable architecture still used today",
-            "Overhauled the Node.js backend architecture to enable compatibility with both PostgreSQL and MySQL databases, reducing data retrieval latency by 30% and improving API speeds",
-            "Introduced Zustand for modular state management, improving reactivity and state isolation across components; reduced state-related bugs by 40% and improved long-term maintainability of the front-end codebase",
-            "Reduced infrastructure costs by deploying the app on AWS with Docker, EC2, and Elastic Beanstalk, optimizing resource allocation, automating scaling, and increasing platform availability",
+            "Architected the frontend rebuild with Vue.js and GraphQL, owning development of all core pages for 100,000+ users; partnered with the Executive Director on product strategy, accelerating delivery and reducing release cycles by 33%",
+            "Led development of a responsive Vue.js component library with 50+ reusable components; introduced Storybook for faster feedback and configured GitLab CI/CD for versioning, doubling development velocity and eliminating UI inconsistencies",
+            "Modernized the design system, ensured accessibility compliance, and streamlined layouts; used New Relic and DevTools to fix bottlenecks, improving load speed by 60% and reducing CLS/LCP by 80% and 45%",
+            "Reduced GraphQL response times by 35% by extending C# command handlers in a CQRS pattern, optimizing queries and mutations, and improving database efficiency for tighter frontend-backend integration",
+            "Strengthened API reliability and backend stability by engineering robust PostgreSQL migrations and optimizing Hasura meta-data tracking, ensuring consistent schemas and smooth deployments across staging, production, and local environments",
           ].map((text, i) => (
             <li key={i} className="flex items-start gap-3">
               <span className="w-2 h-2 bg-black rounded-full mt-[0.6em] flex-shrink-0 xl:mt-[0.5em]" />
@@ -156,11 +168,11 @@ export default function DbSpyProject() {
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Frontend</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              { name: "React" },
-              { name: "React Flow" },
-              { name: "TypeScript" },
-              { name: "Zustand" },
-              { name: "Tailwind CSS" },
+              { name: "Vue.js" },
+              { name: "JavaScript" },
+              { name: "Apollo Client" },
+              { name: "SCSS" },
+              { name: "Storybook" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -180,11 +192,10 @@ export default function DbSpyProject() {
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Backend</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              { name: "Node.js" },
-              { name: "RESTful API" },
-              { name: "SQL" },
+              { name: "C# .NET" },
+              { name: "Hasura" },
+              { name: "GraphQL" },
               { name: "PostgreSQL" },
-              { name: "MySQL" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -206,10 +217,14 @@ export default function DbSpyProject() {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
             {[
-              { name: "AWS" },
               { name: "Docker" },
+              { name: "GitLab CI/CD" },
+              { name: "AWS" },
+              { name: "S3" },
               { name: "EC2" },
-              { name: "Elastic Beanstalk" },
+              { name: "CloudWatch" },
+              { name: "Fargate" },
+              { name: "New Relic" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -228,7 +243,7 @@ export default function DbSpyProject() {
         <div className="w-full">
           <h3 className="text-2xl font-medium mb-4 lg:text-3xl">Testing</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
-            {[{ name: "React Testing Library" }].map((tech, index) => (
+            {[{ name: "Jest" }].map((tech, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"

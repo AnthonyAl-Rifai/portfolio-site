@@ -2,11 +2,11 @@
 
 import { motion, useInView, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import { useLayout } from "../context/LayoutContext";
+import { useLayout } from "../../context/LayoutContext";
 import Image from "next/image";
-import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
+import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 
 export default function SenseiBonusProject() {
   const { isMobileLandscape } = useLayout();
