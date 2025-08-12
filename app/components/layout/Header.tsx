@@ -1,11 +1,11 @@
 // components/Header.tsx
 "use client";
-import { useLayout } from "../context/LayoutContext";
+import { useLayout } from "../../context/LayoutContext";
 import { motion, useAnimation } from "motion/react";
-import MenuIconA from "../icons/MenuIconA";
-import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
+import MenuIconA from "../../icons/MenuIconA";
+import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useEffect, useState } from "react";
-import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
+import { useIsLargerThanMobile } from "../../hooks/useIsLargerThanMobile";
 
 interface HeaderProps {
   menuOpen: boolean;

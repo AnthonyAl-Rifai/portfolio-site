@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
-import GridSection from "./GridSection";
-import { useLayout } from "../context/LayoutContext";
+import { useIsLargerThanMobile } from "../../hooks/useIsLargerThanMobile";
+import GridSection from "../GridSection";
+import { useLayout } from "../../context/LayoutContext";
 
 interface MenuNavProps {
   open: boolean;

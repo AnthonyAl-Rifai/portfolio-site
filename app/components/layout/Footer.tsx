@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useLayout } from "../context/LayoutContext";
-import GitHubIcon from "../icons/GitHubIcon";
+import { useLayout } from "../../context/LayoutContext";
+import GitHubIcon from "../../icons/GitHubIcon";
 import Image from "next/image";
 
 export default function Footer() {

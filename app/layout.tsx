@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import LoadingScreen from "./components/LoadingScreen";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import MenuNav from "./components/MenuNav";
-import Footer from "./components/Footer";
-import LayoutBorders from "./components/LayoutBorders";
+import LoadingScreen from "./components/layout/LoadingScreen";
+import Header from "./components/layout/Header";
+import Sidebar from "./components/layout/Sidebar";
+import MenuNav from "./components/layout/MenuNav";
+import Footer from "./components/layout/Footer";
+import LayoutBorders from "./components/layout/LayoutBorders";
 import LenisProvider from "./components/LenisProvider";
 import { LayoutProvider, useLayout } from "./context/LayoutContext";
 

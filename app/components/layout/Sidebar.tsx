@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useScroll, motion, useTransform } from "motion/react";
-import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
+import { useIsLargerThanMobile } from "../../hooks/useIsLargerThanMobile";
 
 export default function Sidebar() {
   const { scrollYProgress } = useScroll();
