@@ -53,7 +53,7 @@ export default function Footer() {
           aria-label="LinkedIn"
         >
           <Image
-            src="/InBug-Black.png"
+            src="/assets/images/social/InBug-Black.png"
             alt="LinkedIn"
             width={24}
             height={24}

@@ -128,7 +128,7 @@ export default function AboutSection() {
           viewport={{ once: true }}
         >
           <Image
-            src="/anthony-big-sur-b-w.png"
+            src="/assets/images/hero/anthony-big-sur-b-w.png"
             alt="Anthony Big Sur Black and White"
             width={800}
             height={600}

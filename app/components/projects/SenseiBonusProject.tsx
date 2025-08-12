@@ -108,7 +108,7 @@ export default function SenseiBonusProject() {
           viewport={{ once: true }}
         >
           <Image
-            src="/sb-1-screenshot.png"
+            src="/assets/images/projects/senseibonus/sb-1-screenshot.png"
             alt="SB-1 Audio Player Screenshot"
             width={800}
             height={600}

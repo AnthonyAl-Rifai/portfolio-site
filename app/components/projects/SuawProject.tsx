@@ -38,7 +38,7 @@ export default function SuawProject() {
           viewport={{ once: false, amount: 0 }}
         >
           <Image
-            src="/SUAW_Logo_Main_Yellow.png"
+            src="/assets/images/projects/suaw/SUAW_Logo_Main_Yellow.png"
             alt="Shut Up & Write! Logo"
             width={600}
             height={300}
@@ -101,7 +101,7 @@ export default function SuawProject() {
         <SectionTitle name="Project Overview" zIndex={20} removeLeftPadding />
         <div className="w-full flex justify-center">
           <Image
-            src="/suaw-hero-section.png"
+            src="/assets/images/projects/suaw/suaw-hero-section.png"
             alt="SUAW Hero Section"
             width={800}
             height={400}
@@ -131,7 +131,7 @@ export default function SuawProject() {
         <SectionTitle name="Key Highlights" zIndex={20} removeLeftPadding />
         <div className="w-full flex justify-center">
           <Image
-            src="/suaw-online-event-section.png"
+            src="/assets/images/projects/suaw/suaw-online-event-section.png"
             alt="SUAW Online Event Section"
             width={800}
             height={400}

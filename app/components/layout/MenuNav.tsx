@@ -101,7 +101,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
         </motion.a>
 
         <motion.a
-          href="/anthony-al-rifai-resume.pdf"
+          href="/documents/anthony-al-rifai-resume.pdf"
           download="anthony-al-rifai-resume.pdf"
           onClick={handleNavClick}
           {...getMotionProps()}

@@ -38,7 +38,7 @@ export default function DbSpyProject() {
           viewport={{ once: false, amount: 0 }}
         >
           <Image
-            src="/dbspy-logo-dark.png"
+            src="/assets/images/projects/dbspy/dbspy-logo-dark.png"
             alt="DBSpy Logo"
             width={600}
             height={300}
@@ -101,7 +101,7 @@ export default function DbSpyProject() {
         <SectionTitle name="Project Overview" zIndex={20} removeLeftPadding />
         <div className="w-full flex justify-center">
           <Image
-            src="/dbspy-demo-resize.gif"
+            src="/assets/images/projects/dbspy/dbspy-demo-resize.gif"
             alt="DBSpy Demo gif"
             width={800}
             height={400}

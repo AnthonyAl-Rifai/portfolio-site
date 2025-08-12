@@ -38,7 +38,7 @@ export default function BudSpotProject() {
           viewport={{ once: false, amount: 0 }}
         >
           <Image
-            src="/budspot-logo.png"
+            src="/assets/images/projects/budspot/budspot-logo.png"
             alt="BudSpot Logo"
             width={375}
             height={375}
