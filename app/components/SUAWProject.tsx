@@ -109,7 +109,7 @@ export default function SuawProject() {
             priority
           />
         </div>
-        <p className="text-lg leading-relaxed md:text-xl lg:text-2xl xl:text-3xl">
+        <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
           Shut Up & Write! is an initiative of Writing Partners, a California
           based nonprofit organization that helps writers around the world build
           sustainable writing habits through free, peer-led events. Brought on

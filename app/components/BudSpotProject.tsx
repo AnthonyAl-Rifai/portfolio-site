@@ -99,7 +99,7 @@ export default function BudSpotProject() {
         viewport={{ once: true, amount: 0 }}
       >
         <SectionTitle name="Project Overview" zIndex={20} removeLeftPadding />
-        <p className="text-lg leading-relaxed md:text-xl lg:text-2xl xl:text-3xl">
+        <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
           BudSpot is a peer-to-peer marketplace for hosting and discovering
           real-world social experiences. As my first startup role after
           transitioning from the music industry, I joined the founding team to

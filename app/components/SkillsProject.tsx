@@ -98,7 +98,7 @@ export default function SkillsProject() {
         viewport={{ once: true, amount: 0 }}
       >
         <SectionTitle name="Skills Overview" zIndex={20} removeLeftPadding />
-        <p className="text-lg leading-relaxed md:text-xl lg:text-2xl xl:text-3xl">
+        <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
           I&apos;m a frontend-focused full stack developer who thrives at the
           intersection of engineering and product. I build scalable,
           maintainable applications with an emphasis on usability, performance,

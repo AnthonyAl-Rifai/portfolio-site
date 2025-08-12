@@ -109,7 +109,7 @@ export default function DbSpyProject() {
             priority
           />
         </div>
-        <p className="text-lg leading-relaxed md:text-xl lg:text-2xl xl:text-3xl">
+        <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
           dbSpy is a developer tool built through the OSLabs tech accelerator
           that helps developers visualize and manage relational databases with
           ER diagrams, schema editing, and query testing. I worked on both the
