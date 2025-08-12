@@ -3,8 +3,6 @@
 import { motion, AnimatePresence } from "motion/react";
 
 export default function LoadingScreen() {
-  console.log("Loading screen rendered!");
-
   return (
     <AnimatePresence>
       <motion.div

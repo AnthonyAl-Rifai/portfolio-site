@@ -11,7 +11,6 @@ export default function LayoutBorders() {
   const { isMobileLandscape } = useLayout();
   const isLargerThanMobile = useIsLargerThanMobile();
   const fastHeightTransition = isLargerThanMobile ? 0.1 : 0.6;
-  console.log("isLargerThanMobile:", isLargerThanMobile);
 
   return (
     <>
