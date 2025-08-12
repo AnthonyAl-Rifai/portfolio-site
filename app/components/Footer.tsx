@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <motion.div
-      className={`flex items-center justify-between md:justify-start md: gap-16 p-4 ${footerHeight} font-light relative`}
+      className={`flex items-center justify-between md: gap-16 p-4 ${footerHeight} font-light relative`}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
