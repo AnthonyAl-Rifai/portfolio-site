@@ -1,20 +1,20 @@
 "use client";
 
-import Section from "./Section";
-import SectionTitle from "./SectionTitle";
+import Section from "../Section";
+import SectionTitle from "../SectionTitle";
 import { useState, useRef } from "react";
-import { useLayout } from "../context/LayoutContext";
+import { useLayout } from "../../context/LayoutContext";
 import { AnimatePresence, motion, useInView } from "motion/react";
-import InstagramIcon from "../icons/InstagramIcon";
-import SpotifyIcon from "../icons/SpotifyIcon";
-import BandcampIcon from "../icons/BandcampIcon";
-import AppleMusicIcon from "../icons/AppleMusicIcon";
-import YoutubeIcon from "../icons/YoutubeIcon";
-import MenuIconA from "../icons/MenuIconA";
-import MenuIconAUpsideDown from "../icons/MenuIconAUpsideDown";
-import SenseiBonusPlayer from "./SenseiBonusPlayer";
+import InstagramIcon from "../../icons/InstagramIcon";
+import SpotifyIcon from "../../icons/SpotifyIcon";
+import BandcampIcon from "../../icons/BandcampIcon";
+import AppleMusicIcon from "../../icons/AppleMusicIcon";
+import YoutubeIcon from "../../icons/YoutubeIcon";
+import MenuIconA from "../../icons/MenuIconA";
+import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
+import SenseiBonusPlayer from "../SenseiBonusPlayer";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
 import clsx from "clsx";
-import { useIsDesktop } from "../hooks/useIsDesktop";
 
 export default function MusicSection() {
   const { isMobileLandscape } = useLayout();

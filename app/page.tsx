@@ -1,8 +1,8 @@
-import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
-import MusicSection from "./components/MusicSection";
-import ContactSection from "./components/ContactSection";
-import DevelopmentSection from "./components/DevelopmentSection";
+import HeroSection from "./components/sections/HeroSection";
+import AboutSection from "./components/sections/AboutSection";
+import MusicSection from "./components/sections/MusicSection";
+import ContactSection from "./components/sections/ContactSection";
+import DevelopmentSection from "./components/sections/DevelopmentSection";
 
 export default function HomePage() {
   return (

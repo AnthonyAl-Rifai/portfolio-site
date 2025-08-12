@@ -4,15 +4,15 @@ import { useRef, useEffect, useState } from "react";
 import { useInView } from "motion/react";
 import { motion } from "motion/react";
 import clsx from "clsx";
-import SuawProject from "./SuawProject";
-import DbSpyProject from "./DbSpyProject";
-import BudSpotProject from "./BudSpotProject";
-import SenseiBonusProject from "./SenseiBonusProject";
-import SkillsProject from "./SkillsProject";
-import MenuIconARight from "../icons/MenuIconARight";
-import { useLayout } from "../context/LayoutContext";
-import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
-import SectionTitle from "./SectionTitle";
+import SuawProject from "../SuawProject";
+import DbSpyProject from "../DbSpyProject";
+import BudSpotProject from "../BudSpotProject";
+import SenseiBonusProject from "../SenseiBonusProject";
+import SkillsProject from "../SkillsProject";
+import MenuIconARight from "../../icons/MenuIconARight";
+import { useLayout } from "../../context/LayoutContext";
+import { useIsLargerThanMobile } from "../../hooks/useIsLargerThanMobile";
+import SectionTitle from "../SectionTitle";
 
 export default function DevelopmentSection() {
   const isLargerThanMobile = useIsLargerThanMobile();

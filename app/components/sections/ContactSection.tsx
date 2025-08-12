@@ -3,8 +3,8 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import SectionTitle from "./SectionTitle";
-import Section from "./Section";
+import SectionTitle from "../SectionTitle";
+import Section from "../Section";
 
 const schema = z.object({
   fullName: z

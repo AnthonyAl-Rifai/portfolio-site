@@ -1,11 +1,11 @@
 "use client";
 
-import Section from "./Section";
-import SectionTitle from "./SectionTitle";
+import Section from "../Section";
+import SectionTitle from "../SectionTitle";
 import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
-import { useLayout } from "../context/LayoutContext";
-import { useIsLargerThanMobile } from "../hooks/useIsLargerThanMobile";
+import { useLayout } from "../../context/LayoutContext";
+import { useIsLargerThanMobile } from "../../hooks/useIsLargerThanMobile";
 import Image from "next/image";
 
 export default function AboutSection() {

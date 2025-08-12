@@ -1,9 +1,9 @@
 "use client";
-import { useLayout } from "../context/LayoutContext";
+import { useLayout } from "../../context/LayoutContext";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import Section from "./Section";
+import Section from "../Section";
 
 export default function HeroSection() {
   const titles = [
