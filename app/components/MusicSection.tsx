@@ -73,7 +73,9 @@ export default function MusicSection() {
             electronic body music, finding truth in the controlled chaos of punk
             and techno. Born from the instinctual yearn for dark, crowded dance
             floors, Sensei Bonus offers a symbiotic chance to revel in the
-            malaise and jubilance of the human condition.
+            malaise and jubilance of the human condition. Fire up the SB-1
+            player to immerse yourself in the sound, manipulate it in real time,
+            and make it your own.
           </h3>
         </motion.div>
         <motion.div
