@@ -28,6 +28,8 @@ const schema = z.object({
     .trim()
     .min(20, "Message must be at least 20 characters.")
     .max(2000, "Message must be at most 2000 characters."),
+  // Honeypot: bots often fill hidden fields
+  website: z.string().max(0).optional(),
 });
 
 type ContactForm = z.infer<typeof schema>;
@@ -38,6 +40,7 @@ export default function ContactSection() {
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
+    setError,
   } = useForm<ContactForm>({
     resolver: zodResolver(schema),
     mode: "onBlur",
@@ -46,13 +49,41 @@ export default function ContactSection() {
       email: "",
       company: "",
       message: "",
+      website: "",
     },
   });
 
-  const onSubmit = (data: ContactForm) => {
-    console.log("Form submitted:", data);
-    // do your submit work here
-    reset(); // remove if you prefer to keep values after submit
+  const onSubmit = async (data: ContactForm) => {
+    // If honeypot has value, silently act like it worked
+    if (data.website) {
+      reset();
+      return;
+    }
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      try {
+        const payload = await res.json();
+        const msg =
+          payload?.error ||
+          payload?.issues?.formErrors?.join?.(" ") ||
+          "Failed to send message.";
+        setError("root", { type: "server", message: msg });
+      } catch {
+        setError("root", {
+          type: "server",
+          message: "Failed to send message.",
+        });
+      }
+      return;
+    }
+
+    reset({ fullName: "", email: "", company: "", message: "", website: "" });
   };
 
   return (
@@ -65,6 +96,30 @@ export default function ContactSection() {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-4 h-full pt-4 pb-8 lg:border-x md:p-4 xl:p-8 xl:gap-6"
           >
+            {/* Root server error */}
+            {errors.root?.message && (
+              <p role="alert" className="text-sm text-red-600">
+                {errors.root.message}
+              </p>
+            )}
+
+            {/* Success notice */}
+            {isSubmitSuccessful && !errors.root?.message && (
+              <p role="status" className="text-sm text-green-700">
+                Message sent. I will get back to you soon.
+              </p>
+            )}
+
+            {/* Honeypot (hidden from users) */}
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+              {...register("website")}
+            />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
@@ -156,6 +211,7 @@ export default function ContactSection() {
                 placeholder="Your company (optional)"
                 {...register("company")}
               />
+
               {errors.company && (
                 <p
                   id="company-error"
@@ -186,7 +242,8 @@ export default function ContactSection() {
                   errors.message
                     ? "border-red-500 focus:ring-red-500"
                     : "border-gray-300 focus:ring-blue-500"
-                } focus:ring-2 focus:border-transparent bg-white text-gray-900 transition-colors`}
+                } focus:ring-2 focus:border-transparent bg-white text-gray-900 transition-colors resize-vertical
+                min-h-[6rem] max-h-[50vh]`}
                 placeholder="Tell me about your project or how I can help you..."
                 {...register("message")}
               />
@@ -205,7 +262,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-6 py-2 lg:px-8 lg:py-3 lg:text-xl bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+                className="px-6 py-2 lg:px-8 lg:py-3 lg:text-xl bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer disabled:opacity-60"
               >
                 {isSubmitting
                   ? "Sending..."
