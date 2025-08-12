@@ -1,3 +1,4 @@
+// components/Header.tsx
 "use client";
 import { useLayout } from "../context/LayoutContext";
 import { motion, useAnimation } from "motion/react";
@@ -17,7 +18,7 @@ export default function Header({
   onMenuToggle,
   onNameClick,
 }: HeaderProps) {
-  const { isMobileLandscape } = useLayout();
+  const { isMobileLandscape, setIsNavigating } = useLayout();
   const isLargerThanMobile = useIsLargerThanMobile();
 
   const topControls = useAnimation();
@@ -62,6 +63,7 @@ export default function Header({
   }, [menuOpen, hasUserInteracted, topControls, bottomControls]);
 
   function handleNameClick() {
+    setIsNavigating(true); // <-- added
     if (onNameClick) onNameClick();
     const el = document.getElementById("home");
     if (el) {
@@ -74,6 +76,7 @@ export default function Header({
   }
 
   function handleContactClick() {
+    setIsNavigating(true); // <-- added
     const el = document.getElementById("contact");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
