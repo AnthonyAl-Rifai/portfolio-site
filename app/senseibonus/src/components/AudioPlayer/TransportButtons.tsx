@@ -35,18 +35,16 @@ const ButtonsAndMeterContainer = styled.div<TransportButtonsContainerProps>(
   })
 );
 
-const TransportButtonsContainer = styled.div<TransportButtonsContainerProps>(
-  () => ({
-    display: "flex",
-    flexDirection: "row",
-    height: "100%",
-    width: "75%",
-    boxShadow: "0px -2px 0px 0px #7A7C7E,1px 0px 2px 0px #EDEDED",
-    borderRightStyle: "solid",
-    borderRightWidth: 1,
-    borderColor: "#131516",
-  })
-);
+const TransportButtonsContainer = styled.div<TransportButtonsContainerProps>({
+  display: "flex",
+  flexDirection: "row",
+  height: "100%",
+  width: "75%",
+  boxShadow: "0px -2px 0px 0px #7A7C7E,1px 0px 2px 0px #EDEDED",
+  borderRightStyle: "solid",
+  borderRightWidth: 1,
+  borderColor: "#131516",
+});
 
 const TransportButtonContainer = styled.button<TransportButtonsContainerProps>(
   ({ borderTopWidth = 2, borderBottomLeftRadius, isPressed = false }) => ({

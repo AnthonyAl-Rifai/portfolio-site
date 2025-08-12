@@ -67,13 +67,13 @@ const getScrollTextKeyframes = (position: number) => {
   `;
 };
 
-const MainTextContainer = styled.div(() => ({
+const MainTextContainer = styled.div({
   position: "relative",
   overflow: "hidden",
   height: 23,
   display: "flex",
   alignItems: "center",
-}));
+});
 
 const TextPartContainer = styled.span`
   display: inline-block;
@@ -111,7 +111,7 @@ const MainText = styled.p<TextProps>(
   }
 );
 
-const SubTextContainer = styled.div(() => ({
+const SubTextContainer = styled.div({
   position: "relative",
   overflow: "hidden",
   textSpanOverlap: "clip",
@@ -120,7 +120,7 @@ const SubTextContainer = styled.div(() => ({
   display: "flex",
   alignItems: "center",
   width: "100%",
-}));
+});
 
 const SubText = styled.p<TextProps>(
   ({
@@ -168,11 +168,11 @@ const HighlightText = styled.p<TextProps>(
   })
 );
 
-const Row = styled.div(() => ({
+const Row = styled.div({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-}));
+});
 
 const Display: React.FC = () => {
   const [mainSpanWidth, setMainSpanWidth] = useState(0);
