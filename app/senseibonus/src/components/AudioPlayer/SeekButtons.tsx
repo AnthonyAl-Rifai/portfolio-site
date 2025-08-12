@@ -37,6 +37,7 @@ const SeekButtonContainer = styled.button<SeekButtonContainerProps>(
     color: active ? "rgba(253,83,58,1)" : "#F3F3F2",
     fontSize,
     letterSpacing,
+    cursor: "pointer",
   })
 );
 

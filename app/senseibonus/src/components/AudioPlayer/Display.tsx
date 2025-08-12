@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
-import usePixelScaler from '../../hooks/usePixelScaler';
-import { useEffect, useState } from 'react';
-import { keyframes } from '@emotion/react';
-import { DISPLAY_FONT } from '../../configs/constants';
-import { measureTextWidth } from '../../utils/measureTextWidth';
-import useDisplayManager from '../../hooks/useDisplayManager';
-import { convertHighlight } from '../../utils/convertHighlight';
+import styled from "@emotion/styled";
+import usePixelScaler from "../../hooks/usePixelScaler";
+import { useEffect, useState } from "react";
+import { keyframes } from "@emotion/react";
+import { DISPLAY_FONT } from "../../configs/constants";
+import { measureTextWidth } from "../../utils/measureTextWidth";
+import useDisplayManager from "../../hooks/useDisplayManager";
+import { convertHighlight } from "../../utils/convertHighlight";
 
 interface DisplayContainerProps {
   width?: number;
@@ -15,30 +15,32 @@ interface DisplayContainerProps {
   padding?: number;
 }
 
-const DisplayContainer = styled.div<DisplayContainerProps>(({
-  width = 100,
-  height = 55,
-  outerSpacing = 15,
-  borderRadius = 10,
-  padding = 5,
-}) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  width,
-  height,
-  backgroundColor: '#030507',
-  borderRadius,
-  position: 'absolute',
-  top: outerSpacing,
-  right: outerSpacing,
-  textAlign: 'left',
-  padding,
-  boxSizing: 'border-box',
-  WebkitUserSelect: 'none',
-  msUserSelect: 'none',
-  useSelect: 'none',
-}));
+const DisplayContainer = styled.div<DisplayContainerProps>(
+  ({
+    width = 100,
+    height = 55,
+    outerSpacing = 15,
+    borderRadius = 10,
+    padding = 5,
+  }) => ({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    width,
+    height,
+    backgroundColor: "#030507",
+    borderRadius,
+    position: "absolute",
+    top: outerSpacing,
+    right: outerSpacing,
+    textAlign: "left",
+    padding,
+    boxSizing: "border-box",
+    WebkitUserSelect: "none",
+    msUserSelect: "none",
+    useSelect: "none",
+  })
+);
 
 interface TextProps {
   fontSize?: number;
@@ -66,108 +68,110 @@ const getScrollTextKeyframes = (position: number) => {
 };
 
 const MainTextContainer = styled.div(() => ({
-  position: 'relative',
-  overflow: 'hidden',
-  height: 20,
-  display: 'flex',
-  alignItems: 'center',
+  position: "relative",
+  overflow: "hidden",
+  height: 23,
+  display: "flex",
+  alignItems: "center",
 }));
 
 const TextPartContainer = styled.span`
   display: inline-block;
 `;
 
-const MainText = styled.p<TextProps>(({
-  fontSize = 18,
-  marginTop = 2,
-  scrollTextPosition = 50,
-  rightSpacing = 30,
-  animate = false,
-}) => {
-  return {
-    color: '#E6F1F9',
+const MainText = styled.p<TextProps>(
+  ({
+    fontSize = 18,
+    marginTop = 2,
+    scrollTextPosition = 50,
+    rightSpacing = 30,
+    animate = false,
+  }) => {
+    return {
+      color: "#E6F1F9",
+      fontSize,
+      fontFamily: DISPLAY_FONT,
+      margin: 0,
+      marginTop,
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textSpanOverlap: "clip",
+      textTransform: "uppercase",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      ...(animate && {
+        animation: `${getScrollTextKeyframes(scrollTextPosition + rightSpacing)} 10s linear infinite`,
+        animationDelay: "3s",
+        "& span:first-of-type": {
+          marginRight: rightSpacing,
+        },
+      }),
+    };
+  }
+);
+
+const SubTextContainer = styled.div(() => ({
+  position: "relative",
+  overflow: "hidden",
+  textSpanOverlap: "clip",
+  textTransform: "uppercase",
+  height: 15,
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+}));
+
+const SubText = styled.p<TextProps>(
+  ({
+    fontSize = 12,
+    marginBottom = 2,
+    scrollTextPosition = 50,
+    rightSpacing = 30,
+    animate = false,
+  }) => ({
+    color: "#E6F1F9",
     fontSize,
     fontFamily: DISPLAY_FONT,
     margin: 0,
-    marginTop,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textSpanOverlap: 'clip',
-    textTransform: 'uppercase',
-    position: 'absolute',
+    marginBottom,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textSpanOverlap: "clip",
+    position: "absolute",
     top: 0,
     left: 0,
     ...(animate && {
       animation: `${getScrollTextKeyframes(scrollTextPosition + rightSpacing)} 10s linear infinite`,
-      animationDelay: '3s',
-      '& span:first-of-type': {
+      animationDelay: "3s",
+      "& span:first-of-type": {
         marginRight: rightSpacing,
       },
-    })
-  };
-});
+    }),
+  })
+);
 
-const SubTextContainer = styled.div(() => ({
-  position: 'relative',
-  overflow: 'hidden',
-  textSpanOverlap: 'clip',
-  textTransform: 'uppercase',
-  height: 15,
-  display: 'flex',
-  alignItems: 'center',
-  width: '100%',
-}));
-
-const SubText = styled.p<TextProps>(({
-  fontSize = 12,
-  marginBottom = 2,
-  scrollTextPosition = 50,
-  rightSpacing = 30,
-  animate = false,
-}) => ({
-  color: '#E6F1F9',
-  fontSize,
-  fontFamily: DISPLAY_FONT,
-  margin: 0,
-  marginBottom,
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textSpanOverlap: 'clip',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  ...(animate && {
-    animation: `${getScrollTextKeyframes(scrollTextPosition + rightSpacing)} 10s linear infinite`,
-    animationDelay: '3s',
-    '& span:first-of-type': {
-      marginRight: rightSpacing,
-    },
-  }),
-}));
-
-const HighlightText = styled.p<TextProps>(({
-  fontSize = 10,
-  padding = 2,
-  maxWidth = 10,
-}) => ({
-  color: '#030507',
-  fontSize,
-  fontFamily: DISPLAY_FONT,
-  margin: 0,
-  padding,
-  backgroundColor: '#E6F1F9',
-  borderRadius: 3,
-  textAlign: 'center',
-  maxWidth,
-  borderColor: '#030507',
-  borderWidth: 2,
-  borderStyle: 'solid' 
-}));
+const HighlightText = styled.p<TextProps>(
+  ({ fontSize = 10, padding = 2, maxWidth = 10 }) => ({
+    color: "#030507",
+    fontSize,
+    fontFamily: DISPLAY_FONT,
+    margin: 0,
+    padding,
+    backgroundColor: "#E6F1F9",
+    borderRadius: 3,
+    textAlign: "center",
+    maxWidth,
+    borderColor: "#030507",
+    borderWidth: 2,
+    borderStyle: "solid",
+  })
+);
 
 const Row = styled.div(() => ({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
 }));
 
 const Display: React.FC = () => {
@@ -183,12 +187,26 @@ const Display: React.FC = () => {
     padding: usePixelScaler(5),
   };
 
-  const doesMainTextOverlap = !(displayContainerStyles.width && displayContainerStyles.padding && mainSpanWidth < displayContainerStyles.width - (displayContainerStyles.padding * 2));
+  const doesMainTextOverlap = !(
+    displayContainerStyles.width &&
+    displayContainerStyles.padding &&
+    mainSpanWidth <
+      displayContainerStyles.width - displayContainerStyles.padding * 2
+  );
 
-  const doesSubTextOverlap = !(displayContainerStyles.width && displayContainerStyles.padding && subSpanWidth + 20 < displayContainerStyles.width - (displayContainerStyles.padding * 2));
+  const doesSubTextOverlap = !(
+    displayContainerStyles.width &&
+    displayContainerStyles.padding &&
+    subSpanWidth + 20 <
+      displayContainerStyles.width - displayContainerStyles.padding * 2
+  );
 
-  const mainRightSpacing = !doesMainTextOverlap ? displayContainerStyles.width! - mainSpanWidth : 30;
-  const subRightSpacing = !doesSubTextOverlap ? displayContainerStyles.width! - subSpanWidth : 30;
+  const mainRightSpacing = !doesMainTextOverlap
+    ? displayContainerStyles.width! - mainSpanWidth
+    : 30;
+  const subRightSpacing = !doesSubTextOverlap
+    ? displayContainerStyles.width! - subSpanWidth
+    : 30;
 
   const mainTextStyles: TextProps = {
     fontSize: usePixelScaler(18),
@@ -214,36 +232,52 @@ const Display: React.FC = () => {
 
   useEffect(() => {
     if (mainText) {
-      setMainSpanWidth(measureTextWidth(mainText, `${(mainTextStyles.fontSize || 0)}px ${DISPLAY_FONT}`));
+      setMainSpanWidth(
+        measureTextWidth(
+          mainText,
+          `${mainTextStyles.fontSize || 0}px ${DISPLAY_FONT}`
+        )
+      );
     }
     if (subText) {
-      setSubSpanWidth(measureTextWidth(subText, `${(subTextStyles.fontSize || 0)}px ${DISPLAY_FONT}`));
+      setSubSpanWidth(
+        measureTextWidth(
+          subText,
+          `${subTextStyles.fontSize || 0}px ${DISPLAY_FONT}`
+        )
+      );
     }
-  }, [mainText, subText, mainTextStyles.fontSize, subTextStyles.fontSize])
+  }, [mainText, subText, mainTextStyles.fontSize, subTextStyles.fontSize]);
 
   return (
     <DisplayContainer {...displayContainerStyles}>
       <MainTextContainer>
         <MainText {...mainTextStyles}>
           <TextPartContainer>{mainText}</TextPartContainer>
-          {doesMainTextOverlap ? <TextPartContainer>{mainText}</TextPartContainer> : null}
+          {doesMainTextOverlap ? (
+            <TextPartContainer>{mainText}</TextPartContainer>
+          ) : null}
         </MainText>
       </MainTextContainer>
       <Row>
         <SubTextContainer>
           {subText ? (
-          <SubText {...subTextStyles}>
-            <TextPartContainer>{subText}</TextPartContainer>
-            {doesSubTextOverlap ? <TextPartContainer>{subText}</TextPartContainer> : null}
-          </SubText>
+            <SubText {...subTextStyles}>
+              <TextPartContainer>{subText}</TextPartContainer>
+              {doesSubTextOverlap ? (
+                <TextPartContainer>{subText}</TextPartContainer>
+              ) : null}
+            </SubText>
           ) : null}
         </SubTextContainer>
         {highlightText ? (
-          <HighlightText {...highlightTextStyles}>{convertHighlight(highlightText)}</HighlightText>
+          <HighlightText {...highlightTextStyles}>
+            {convertHighlight(highlightText)}
+          </HighlightText>
         ) : null}
       </Row>
     </DisplayContainer>
-  )
-}
+  );
+};
 
 export default Display;

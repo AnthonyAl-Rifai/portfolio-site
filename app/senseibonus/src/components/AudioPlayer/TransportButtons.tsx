@@ -67,6 +67,7 @@ const TransportButtonContainer = styled.button<TransportButtonsContainerProps>(
     borderTopColor: "#010202",
     borderRightStyle: "solid",
     borderRightWidth: 1,
+    cursor: "pointer",
     borderRightColor: "#010202",
     boxSizing: "border-box",
     background:

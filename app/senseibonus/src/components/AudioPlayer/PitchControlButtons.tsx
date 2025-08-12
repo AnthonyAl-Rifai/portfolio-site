@@ -67,6 +67,7 @@ const PitchControlButtonContainer = styled.button<PitchControlButtonProps>(
     appearance: "none",
     WebkitUserSelect: "none",
     borderWidth: 1,
+    cursor: "pointer",
     transform: "rotate(45deg)",
     background:
       "linear-gradient(132deg, rgba(175,173,172,1) 0%, rgba(169,168,168,1) 98%)",
