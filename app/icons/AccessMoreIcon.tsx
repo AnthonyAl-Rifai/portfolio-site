@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from "react";
 
 interface AccessMoreIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -8,7 +8,7 @@ interface AccessMoreIconProps extends SVGProps<SVGSVGElement> {
 
 const AccessMoreIcon: React.FC<AccessMoreIconProps> = ({
   size = 48,
-  color = '#000',
+  color = "#000",
   strokeWidth = 2,
   ...props
 }) => (

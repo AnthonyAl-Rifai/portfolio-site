@@ -1,14 +1,12 @@
-import { SVGProps } from 'react';
+import { SVGProps } from "react";
 
 interface SpotifyIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
-  color?: string;
   strokeWidth?: number;
 }
 
 const SpotifyIcon: React.FC<SpotifyIconProps> = ({
   size = 48,
-  color = '#000',
   strokeWidth = 2,
   ...props
 }) => (
@@ -31,5 +29,5 @@ const SpotifyIcon: React.FC<SpotifyIconProps> = ({
       className="c"
     />
   </svg>
-)
-export default SpotifyIcon
+);
+export default SpotifyIcon;

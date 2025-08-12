@@ -1,14 +1,12 @@
-import { SVGProps } from 'react';
+import { SVGProps } from "react";
 
 interface BandcampIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
-  color?: string;
   strokeWidth?: number;
 }
 
 const BandcampIcon: React.FC<BandcampIconProps> = ({
   size = 48,
-  color = '#000',
   strokeWidth = 2,
   ...props
 }) => (
@@ -31,5 +29,5 @@ const BandcampIcon: React.FC<BandcampIconProps> = ({
       }}
     />
   </svg>
-)
-export default BandcampIcon
+);
+export default BandcampIcon;

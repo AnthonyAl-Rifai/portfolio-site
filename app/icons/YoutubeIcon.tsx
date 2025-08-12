@@ -1,14 +1,12 @@
-import { SVGProps } from 'react';
+import { SVGProps } from "react";
 
 interface YoutubeIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
-  color?: string;
   strokeWidth?: number;
 }
 
 const YoutubeIcon: React.FC<YoutubeIconProps> = ({
   size = 48,
-  color = '#000',
   strokeWidth = 2,
   ...props
 }) => (
@@ -30,5 +28,5 @@ const YoutubeIcon: React.FC<YoutubeIconProps> = ({
     />
     <path d="M30.567 23.995 20.12 18.004v11.982Z" className="a" />
   </svg>
-)
-export default YoutubeIcon
+);
+export default YoutubeIcon;

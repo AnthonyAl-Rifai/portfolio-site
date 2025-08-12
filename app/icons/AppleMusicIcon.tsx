@@ -1,14 +1,12 @@
-import { SVGProps } from 'react';
+import { SVGProps } from "react";
 
 interface AppleMusicIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
-  color?: string;
   strokeWidth?: number;
 }
 
 const AppleMusicIcon: React.FC<AppleMusicIconProps> = ({
   size = 48,
-  color = '#000',
   strokeWidth = 2,
   ...props
 }) => (
@@ -35,5 +33,5 @@ const AppleMusicIcon: React.FC<AppleMusicIconProps> = ({
     <circle cx={12.27} cy={38.68} r={4.82} className="a" />
     <circle cx={35.73} cy={32.21} r={4.82} className="a" />
   </svg>
-)
-export default AppleMusicIcon
+);
+export default AppleMusicIcon;
