@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useIsLargerThanMobile } from "../../hooks/useIsLargerThanMobile";
-import GridSection from "../GridSection";
+import GridSection from "../common/GridSection";
 import { useLayout } from "../../context/LayoutContext";
 
 interface MenuNavProps {

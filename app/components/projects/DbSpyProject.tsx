@@ -6,7 +6,7 @@ import { useLayout } from "../../context/LayoutContext";
 import Image from "next/image";
 import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../common/SectionTitle";
 
 export default function DbSpyProject() {
   const { isMobileLandscape } = useLayout();

@@ -2,7 +2,7 @@
 
 import { forwardRef, useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { useLayout } from "../context/LayoutContext";
+import { useLayout } from "../../context/LayoutContext";
 
 const SectionTitle = forwardRef(function SectionTitle(
   {

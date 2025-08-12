@@ -1,7 +1,7 @@
 "use client";
 
-import Section from "../Section";
-import SectionTitle from "../SectionTitle";
+import Section from "../common/Section";
+import SectionTitle from "../common/SectionTitle";
 import { useState, useRef } from "react";
 import { useLayout } from "../../context/LayoutContext";
 import { AnimatePresence, motion, useInView } from "motion/react";
@@ -12,7 +12,7 @@ import AppleMusicIcon from "../../icons/AppleMusicIcon";
 import YoutubeIcon from "../../icons/YoutubeIcon";
 import MenuIconA from "../../icons/MenuIconA";
 import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
-import SenseiBonusPlayer from "../SenseiBonusPlayer";
+import SenseiBonusPlayer from "../projects/SenseiBonusPlayer";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
 import clsx from "clsx";
 

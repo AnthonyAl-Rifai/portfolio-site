@@ -1,7 +1,7 @@
 "use client";
 
-import Section from "../Section";
-import SectionTitle from "../SectionTitle";
+import Section from "../common/Section";
+import SectionTitle from "../common/SectionTitle";
 import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useLayout } from "../../context/LayoutContext";

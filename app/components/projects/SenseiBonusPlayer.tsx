@@ -1,8 +1,8 @@
 "use client";
 
-import { PlayerProvider } from "../senseibonus/src/context/PlayerContext";
-import { ViewportProvider } from "../senseibonus/src/context/ViewportContext";
-import AudioPlayer from "../senseibonus/src/components/AudioPlayer/AudioPlayer";
+import { PlayerProvider } from "../../senseibonus/src/context/PlayerContext";
+import { ViewportProvider } from "../../senseibonus/src/context/ViewportContext";
+import AudioPlayer from "../../senseibonus/src/components/AudioPlayer/AudioPlayer";
 
 export default function SenseiBonusPlayer() {
   return (

@@ -12,7 +12,7 @@ import SkillsProject from "../projects/SkillsProject";
 import MenuIconARight from "../../icons/MenuIconARight";
 import { useLayout } from "../../context/LayoutContext";
 import { useIsLargerThanMobile } from "../../hooks/useIsLargerThanMobile";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../common/SectionTitle";
 
 export default function DevelopmentSection() {
   const isLargerThanMobile = useIsLargerThanMobile();

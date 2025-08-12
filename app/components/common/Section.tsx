@@ -1,6 +1,6 @@
 "use client";
 import { forwardRef } from "react";
-import { useLayout } from "../context/LayoutContext";
+import { useLayout } from "../../context/LayoutContext";
 
 interface SectionProps {
   id: string;

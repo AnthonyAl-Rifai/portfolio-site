@@ -3,7 +3,7 @@ import { useLayout } from "../../context/LayoutContext";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import Section from "../Section";
+import Section from "../common/Section";
 
 export default function HeroSection() {
   const titles = [

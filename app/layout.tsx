@@ -9,7 +9,7 @@ import Sidebar from "./components/layout/Sidebar";
 import MenuNav from "./components/layout/MenuNav";
 import Footer from "./components/layout/Footer";
 import LayoutBorders from "./components/layout/LayoutBorders";
-import LenisProvider from "./components/LenisProvider";
+import LenisProvider from "./components/layout/LenisProvider";
 import { LayoutProvider, useLayout } from "./context/LayoutContext";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });

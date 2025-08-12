@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { useLayout } from "../../context/LayoutContext";
 import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useRef } from "react";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../common/SectionTitle";
 
 export default function SkillsProject() {
   const { isMobileLandscape } = useLayout();
