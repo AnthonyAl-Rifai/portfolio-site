@@ -117,7 +117,7 @@ export default function SenseiBonusProject() {
           />
         </motion.div>
 
-        <p className="text-lg leading-relaxed md:text-xl lg:text-2xl xl:text-3xl">
+        <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
           SB‑1 Audio Player is a web‑based audio player built for my music
           project Sensei Bonus that merges the tactile charm of vintage cassette
           decks with modern web technologies. Built with React and TypeScript,
