@@ -8,11 +8,11 @@ export default function SenseiBonusPlayer() {
   return (
     <PlayerProvider>
       <ViewportProvider>
-        <div className="flex justify-center items-center w-full flex-1 overflow-hidden">
+        <AudioPlayer />
+        {/* <div className="flex justify-center items-center w-full flex-1 overflow-hidden">
           <div className="w-full max-w-full flex justify-center">
-            <AudioPlayer />
           </div>
-        </div>
+        </div> */}
       </ViewportProvider>
     </PlayerProvider>
   );
