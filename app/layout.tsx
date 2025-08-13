@@ -33,6 +33,51 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
         <link rel="shortcut icon" href="/favicon.ico?v=1" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.anthonyalrifai.com/" />
+        <meta
+          property="og:title"
+          content="Anthony Al-Rifai | Full Stack Developer - Frontend Focused"
+        />
+        <meta
+          property="og:description"
+          content="Full Stack Developer specializing in frontend development, React, and modern web technologies. View my portfolio and projects."
+        />
+        <meta
+          property="og:image"
+          content="/assets/images/ui/anthonyalrifai-website-logo-rectangle.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://your-domain.com" />
+        <meta
+          property="twitter:title"
+          content="Anthony Al-Rifai | Full Stack Developer - Frontend Focused"
+        />
+        <meta
+          property="twitter:description"
+          content="Full Stack Developer specializing in frontend development, React, and modern web technologies. View my portfolio and projects."
+        />
+        <meta
+          property="twitter:image"
+          content="/assets/images/ui/anthonyalrifai-website-logo-rectangle.png"
+        />
+
+        {/* Additional meta tags */}
+        <meta
+          name="description"
+          content="Full Stack Developer specializing in frontend development, React, and modern web technologies. View my portfolio and projects."
+        />
+        <meta
+          name="keywords"
+          content="Full Stack Developer, Frontend Developer, React, Next.js, TypeScript, Web Development"
+        />
+        <meta name="author" content="Anthony Al-Rifai" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
