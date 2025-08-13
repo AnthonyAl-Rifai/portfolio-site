@@ -43,25 +43,28 @@ export default function RootLayout({
         />
         <meta
           property="og:description"
-          content="Full Stack Developer specializing in frontend development, React, and modern web technologies. View my portfolio and projects."
+          content="Frontend-focused Full Stack Developer skilled in React, Vue, and TypeScript, with a creative background in music composition for television."
         />
         <meta
           property="og:image"
           content="/assets/images/ui/anthonyalrifai-website-logo-rectangle.png"
         />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="1201" />
+        <meta property="og:image:height" content="631" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://your-domain.com" />
+        <meta
+          property="twitter:url"
+          content="https://www.anthonyalrifai.com/"
+        />
         <meta
           property="twitter:title"
           content="Anthony Al-Rifai | Full Stack Developer - Frontend Focused"
         />
         <meta
           property="twitter:description"
-          content="Full Stack Developer specializing in frontend development, React, and modern web technologies. View my portfolio and projects."
+          content="Frontend-focused Full Stack Developer skilled in React, Vue, and TypeScript, with a creative background in music composition for television."
         />
         <meta
           property="twitter:image"
@@ -71,11 +74,11 @@ export default function RootLayout({
         {/* Additional meta tags */}
         <meta
           name="description"
-          content="Full Stack Developer specializing in frontend development, React, and modern web technologies. View my portfolio and projects."
+          content="Frontend-focused Full Stack Developer skilled in React, Vue, and TypeScript, with a creative background in music composition for television."
         />
         <meta
           name="keywords"
-          content="Full Stack Developer, Frontend Developer, React, Next.js, TypeScript, Web Development"
+          content="Full Stack Developer, Frontend Developer, React, Vue.js, Next.js, TypeScript, Web Development"
         />
         <meta name="author" content="Anthony Al-Rifai" />
       </head>
