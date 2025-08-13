@@ -27,6 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico?v=1" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
