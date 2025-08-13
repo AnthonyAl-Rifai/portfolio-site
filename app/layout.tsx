@@ -20,14 +20,12 @@ export const metadata: Metadata = {
     title: "Anthony Al-Rifai | Full Stack Developer - Frontend Focused",
     description:
       "Frontend-focused Full Stack Developer skilled in React, Vue, and TypeScript, with a creative background in music composition for television.",
-    // Image comes from app/opengraph-image.png via file convention
   },
   twitter: {
     card: "summary_large_image",
     title: "Anthony Al-Rifai | Full Stack Developer - Frontend Focused",
     description:
       "Frontend-focused Full Stack Developer skilled in React, Vue, and TypeScript, with a creative background in music composition for television.",
-    // Image comes from app/twitter-image.png if present, else OG image
   },
   icons: { icon: "/favicon.ico?v=1", shortcut: "/favicon.ico?v=1" },
 };
