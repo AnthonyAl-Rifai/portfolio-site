@@ -1,7 +1,13 @@
 // components/Header.tsx
 "use client";
 import { useLayout } from "../../context/LayoutContext";
-import { motion, useAnimation } from "motion/react";
+import {
+  motion,
+  useAnimation,
+  useMotionValue,
+  animate,
+  AnimatePresence,
+} from "motion/react";
 import MenuIconA from "../../icons/MenuIconA";
 import MenuIconAUpsideDown from "../../icons/MenuIconAUpsideDown";
 import { useEffect, useState } from "react";
@@ -23,12 +29,30 @@ export default function Header({
 
   const topControls = useAnimation();
   const bottomControls = useAnimation();
+  const topIconY = useMotionValue(0);
+  const bottomIconY = useMotionValue(0);
+  const menuTextOpacity = useMotionValue(0);
+  const menuTextScale = useMotionValue(0.8);
 
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
 
   const handleToggle = () => {
     setHasUserInteracted(true);
     onMenuToggle();
+  };
+
+  const handleButtonHover = () => {
+    animate(topIconY, -15, { duration: 0.2 });
+    animate(bottomIconY, 15, { duration: 0.2 });
+    animate(menuTextOpacity, 1, { duration: 0.2, delay: 0.1 });
+    animate(menuTextScale, 1, { duration: 0.2 });
+  };
+
+  const handleButtonLeave = () => {
+    animate(topIconY, 0, { duration: 0.2, ease: "easeOut" });
+    animate(bottomIconY, 0, { duration: 0.2, ease: "easeOut" });
+    animate(menuTextOpacity, 0, { duration: 0.1, ease: "easeOut" });
+    animate(menuTextScale, 0.8, { duration: 0.1, ease: "easeOut" });
   };
 
   useEffect(() => {
@@ -85,8 +109,8 @@ export default function Header({
   }
 
   const headerClass = isMobileLandscape
-    ? "fixed top-0 right-0 w-[var(--layout-size)] h-[100dvh] flex flex-col items-center justify-start bg-white z-40"
-    : "fixed top-0 left-0 right-0 h-[var(--layout-size)] flex items-center bg-white z-40";
+    ? "fixed top-0 right-0 w-[var(--layout-size)] h-[100dvh] flex flex-col items-center justify-start bg-[var(--background)] z-40"
+    : "fixed top-0 left-0 right-0 h-[var(--layout-size)] flex items-center bg-[var(--background)] z-40";
 
   const menuButtonClass = isMobileLandscape
     ? "w-full h-[var(--layout-size)]"
@@ -98,9 +122,11 @@ export default function Header({
 
   return (
     <header className={headerClass}>
-      <button
+      <motion.button
         onClick={handleToggle}
-        className={`z-50 flex items-center justify-center bg-white/10 backdrop-blur-md p-4 transition-colors cursor-pointer hover:bg-white/20 ${menuButtonClass}`}
+        onHoverStart={handleButtonHover}
+        onHoverEnd={handleButtonLeave}
+        className={`z-50 flex items-center justify-center bg-[var(--background)]/10 backdrop-blur-md p-4 transition-colors cursor-pointer hover:bg-[var(--background)]/20 ${menuButtonClass}`}
       >
         <div className="flex flex-col items-center justify-center gap-1 relative">
           <motion.div
@@ -110,7 +136,12 @@ export default function Header({
                 : { x: -50, opacity: 0 }
             }
             animate={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 120, damping: 16 }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 16,
+            }}
+            style={{ y: topIconY }}
             className="flex items-center justify-center"
           >
             <motion.div
@@ -126,6 +157,30 @@ export default function Header({
             </motion.div>
           </motion.div>
 
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={menuOpen ? "close" : "menu"}
+              style={{
+                opacity: menuTextOpacity,
+                scale: menuTextScale,
+                position: "absolute",
+                top: "10%",
+                right: menuOpen ? "-47%" : "-55%",
+                zIndex: 10,
+              }}
+              className="font-medium text-black whitespace-nowrap"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: menuTextOpacity.get(),
+                scale: menuTextScale.get(),
+              }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              {menuOpen ? "close" : "menu"}
+            </motion.div>
+          </AnimatePresence>
+
           <motion.div
             initial={
               isMobileLandscape
@@ -133,7 +188,12 @@ export default function Header({
                 : { x: -50, opacity: 0 }
             }
             animate={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 120, damping: 16 }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 16,
+            }}
+            style={{ y: bottomIconY }}
             className="flex items-center justify-center -mt-1"
           >
             <motion.div
@@ -149,7 +209,7 @@ export default function Header({
             </motion.div>
           </motion.div>
         </div>
-      </button>
+      </motion.button>
 
       <div className="flex items-center justify-between flex-1 p-4">
         <motion.button
@@ -172,7 +232,7 @@ export default function Header({
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             onClick={handleContactClick}
-            className="px-6 py-2 lg:px-8 lg:py-3 lg:text-xl bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+            className="px-6 py-2 lg:px-8 lg:py-3 lg:text-xl bg-[var(--foreground)] rounded-4xl hover:bg-purple-950 text-[var(--background)] font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
             aria-label="Contact"
           >
             Contact
