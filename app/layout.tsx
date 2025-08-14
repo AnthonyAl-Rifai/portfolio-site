@@ -20,12 +20,22 @@ export const metadata: Metadata = {
     title: "Anthony Al-Rifai | Full Stack Developer - Frontend Focused",
     description:
       "Frontend-focused Full Stack Developer skilled in React, Vue, and TypeScript, with a creative background in music composition for television.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Anthony Al-Rifai - Full Stack Developer",
+      },
+    ],
+    siteName: "Anthony Al-Rifai Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Anthony Al-Rifai | Full Stack Developer - Frontend Focused",
     description:
       "Frontend-focused Full Stack Developer skilled in React, Vue, and TypeScript, with a creative background in music composition for television.",
+    images: ["/opengraph-image.png"],
   },
   icons: { icon: "/favicon.ico?v=1", shortcut: "/favicon.ico?v=1" },
 };
