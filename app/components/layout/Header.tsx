@@ -31,8 +31,7 @@ export default function Header({
   const bottomControls = useAnimation();
   const topIconY = useMotionValue(0);
   const bottomIconY = useMotionValue(0);
-  const menuTextOpacity = useMotionValue(0);
-  const menuTextScale = useMotionValue(0.8);
+  const [isHovered, setIsHovered] = useState(false);
 
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
 
@@ -44,15 +43,13 @@ export default function Header({
   const handleButtonHover = () => {
     animate(topIconY, -15, { duration: 0.2 });
     animate(bottomIconY, 15, { duration: 0.2 });
-    animate(menuTextOpacity, 1, { duration: 0.2, delay: 0.1 });
-    animate(menuTextScale, 1, { duration: 0.2 });
+    setIsHovered(true);
   };
 
   const handleButtonLeave = () => {
     animate(topIconY, 0, { duration: 0.2, ease: "easeOut" });
     animate(bottomIconY, 0, { duration: 0.2, ease: "easeOut" });
-    animate(menuTextOpacity, 0, { duration: 0.1, ease: "easeOut" });
-    animate(menuTextScale, 0.8, { duration: 0.1, ease: "easeOut" });
+    setIsHovered(false);
   };
 
   useEffect(() => {
@@ -158,27 +155,24 @@ export default function Header({
           </motion.div>
 
           <AnimatePresence mode="wait">
-            <motion.div
-              key={menuOpen ? "close" : "menu"}
-              style={{
-                opacity: menuTextOpacity,
-                scale: menuTextScale,
-                position: "absolute",
-                top: "10%",
-                right: menuOpen ? "-47%" : "-55%",
-                zIndex: 10,
-              }}
-              className="font-medium text-black whitespace-nowrap"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: menuTextOpacity.get(),
-                scale: menuTextScale.get(),
-              }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              {menuOpen ? "close" : "menu"}
-            </motion.div>
+            {isHovered && (
+              <motion.div
+                key={menuOpen ? "close" : "menu"}
+                style={{
+                  position: "absolute",
+                  top: "10%",
+                  right: menuOpen ? "-47%" : "-55%",
+                  zIndex: 10,
+                }}
+                className="font-medium text-black whitespace-nowrap"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+              >
+                {menuOpen ? "close" : "menu"}
+              </motion.div>
+            )}
           </AnimatePresence>
 
           <motion.div
