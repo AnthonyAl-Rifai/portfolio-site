@@ -149,7 +149,7 @@ export default function AboutSection() {
                 layout
                 className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
-                I build holistically
+                Holistic builds
               </motion.h2>
 
               <motion.div
@@ -179,7 +179,7 @@ export default function AboutSection() {
         ) : (
           <div className="w-full flex flex-col justify-between gap-8">
             <SectionTitle
-              name="I build holistically"
+              name="Holistic builds"
               zIndex={20}
               removeLeftPadding
             />
@@ -203,7 +203,7 @@ export default function AboutSection() {
                 layout
                 className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
-                I solve with purpose
+                Solutions with purpose
               </motion.h2>
 
               <motion.div
@@ -233,7 +233,7 @@ export default function AboutSection() {
         ) : (
           <div className="w-full flex flex-col justify-between gap-8">
             <SectionTitle
-              name="I solve with purpose"
+              name="Solutions with purpose"
               zIndex={20}
               removeLeftPadding
             />
@@ -257,7 +257,7 @@ export default function AboutSection() {
                 layout
                 className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
-                I bring a creative edge
+                A creative edge
               </motion.h2>
 
               <motion.div
@@ -287,7 +287,7 @@ export default function AboutSection() {
         ) : (
           <div className="w-full flex flex-col justify-between gap-8">
             <SectionTitle
-              name="I bring a creative edge"
+              name="A creative edge"
               zIndex={20}
               removeLeftPadding
             />
@@ -311,7 +311,7 @@ export default function AboutSection() {
                 layout
                 className="font-medium text-3xl lg:text-4xl xl:text-5xl 3xl:text-6xl pb-4 3xl:pb-6"
               >
-                I am a collaborator
+                Collaboration first
               </motion.h2>
 
               <motion.div
@@ -341,7 +341,7 @@ export default function AboutSection() {
         ) : (
           <div className="w-full flex flex-col justify-between gap-8">
             <SectionTitle
-              name="I am a collaborator"
+              name="Collaboration first"
               zIndex={20}
               removeLeftPadding
             />
