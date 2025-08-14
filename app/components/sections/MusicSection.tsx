@@ -175,8 +175,7 @@ export default function MusicSection() {
                 "h-[58px] w-[200px]",
                 "px-8 py-4",
                 "font-semibold",
-                "bg-black text-white border-black",
-                "hover:bg-gray-800 transition-all duration-300",
+                "bg-[var(--foreground)] text-[var(--background)]",
                 "border rounded-full",
                 "cursor-pointer"
               )}
@@ -192,10 +191,10 @@ export default function MusicSection() {
                   animate={{ x: 0 }}
                   exit={{ x: "100%" }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="fixed inset-0 z-50 bg-white border-l h-dvh"
+                  className="fixed inset-0 z-50 bg-[var(--background)] border-l h-dvh"
                 >
                   <motion.div className="h-full flex flex-col overflow-y-auto">
-                    <div className="sticky top-0 h-[var(--layout-size)] flex items-center bg-white z-10">
+                    <div className="sticky top-0 h-[var(--layout-size)] flex items-center bg-[var(--background)] z-10">
                       <button
                         onClick={closeDrawer}
                         className="flex items-center w-[var(--layout-size)] h-[var(--layout-size)] border-r justify-center z-50"
@@ -255,7 +254,7 @@ export default function MusicSection() {
                       />
                     </div>
 
-                    <div className="flex-1 bg-white flex justify-center items-center p-4">
+                    <div className="flex-1 bg-[var(--background)] flex justify-center items-center p-4">
                       <SenseiBonusPlayer />
                     </div>
                   </motion.div>

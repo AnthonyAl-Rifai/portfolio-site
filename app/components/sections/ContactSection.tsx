@@ -139,8 +139,8 @@ export default function ContactSection() {
                   className={`w-full px-4 py-3 border ${
                     errors.fullName
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-gray-300 focus:ring-blue-500"
-                  } focus:ring-2 focus:border-transparent bg-white text-gray-900 transition-colors`}
+                      : "focus:ring-blue-500"
+                  } focus:ring-2 focus:border-transparent bg-[var(--background)] text-gray-900 transition-colors`}
                   placeholder="Your full name"
                   {...register("fullName")}
                 />
@@ -172,8 +172,8 @@ export default function ContactSection() {
                   className={`w-full px-4 py-3 border ${
                     errors.email
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-gray-300 focus:ring-blue-500"
-                  } focus:ring-2 focus:border-transparent bg-white text-gray-900 transition-colors`}
+                      : "focus:ring-blue-500"
+                  } focus:ring-2 focus:border-transparent bg-[var(--background)] text-gray-900 transition-colors`}
                   placeholder="your.email@example.com"
                   {...register("email")}
                 />
@@ -206,8 +206,8 @@ export default function ContactSection() {
                 className={`w-full px-4 py-3 border ${
                   errors.company
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-gray-300 focus:ring-blue-500"
-                } focus:ring-2 focus:border-transparent bg-white text-gray-900 transition-colors`}
+                    : "focus:ring-blue-500"
+                } focus:ring-2 focus:border-transparent bg-[var(--background)] text-gray-900 transition-colors`}
                 placeholder="Your company (optional)"
                 {...register("company")}
               />
@@ -241,8 +241,8 @@ export default function ContactSection() {
                 className={`w-full flex-1 px-4 py-3 border ${
                   errors.message
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-gray-300 focus:ring-blue-500"
-                } focus:ring-2 focus:border-transparent bg-white text-gray-900 transition-colors resize-vertical
+                    : "focus:ring-blue-500"
+                } focus:ring-2 focus:border-transparent bg-[var(--background)] text-gray-900 transition-colors resize-vertical
                 min-h-[6rem] max-h-[50vh]`}
                 placeholder="Tell me about your project or how I can help you..."
                 {...register("message")}
@@ -262,7 +262,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-6 py-2 lg:px-8 lg:py-3 lg:text-xl bg-gray-900 rounded-4xl hover:bg-purple-950 text-white font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer disabled:opacity-60"
+                className="px-6 py-2 lg:px-8 lg:py-3 lg:text-xl bg-[var(--foreground)] rounded-4xl hover:bg-purple-950 text-[var(--background)] font-medium transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer disabled:opacity-60"
               >
                 {isSubmitting
                   ? "Sending..."

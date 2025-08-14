@@ -107,6 +107,7 @@ export default function DbSpyProject() {
             height={400}
             className="w-full border border-black lg:w-[1200px] lg:mx-auto xl:w-2/3"
             priority
+            unoptimized
           />
         </div>
         <p className="leading-relaxed text-xl lg:text-2xl xl:text-3xl">
@@ -164,7 +165,7 @@ export default function DbSpyProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -188,7 +189,7 @@ export default function DbSpyProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -213,7 +214,7 @@ export default function DbSpyProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -231,7 +232,7 @@ export default function DbSpyProject() {
             {[{ name: "React Testing Library" }].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}

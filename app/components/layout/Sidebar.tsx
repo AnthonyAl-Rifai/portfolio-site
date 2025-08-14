@@ -30,7 +30,7 @@ export default function Sidebar() {
         </div>
       )}
       <div
-        className="fixed left-0 z-30 transition-all duration-500 -translate-x-full md:translate-x-0 bg-white"
+        className="fixed left-0 z-30 transition-all duration-500 -translate-x-full md:translate-x-0 bg-[var(--background)]"
         style={{
           top: "var(--layout-size)",
           width: "var(--layout-size)",

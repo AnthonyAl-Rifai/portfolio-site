@@ -61,8 +61,10 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcfbf6;
+  --background-secondary: #e5e7eb;
+
+  --foreground: #101828;
 
   /* Base size for widths under 450px */
   --layout-size: 5rem; /* 80px */
@@ -71,6 +73,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-background-secondary: var(--background-secondary);
   --font-sans: "Satoshi", sans-serif;
   --font-mono: var(--font-geist-mono);
   --breakpoint-3xl: 120rem;

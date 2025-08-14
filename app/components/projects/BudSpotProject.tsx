@@ -152,7 +152,7 @@ export default function BudSpotProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -174,7 +174,7 @@ export default function BudSpotProject() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -194,7 +194,7 @@ export default function BudSpotProject() {
             {[{ name: "Google Cloud Platform" }].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -212,7 +212,7 @@ export default function BudSpotProject() {
             {[{ name: "Jest" }, { name: "Cypress" }].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}

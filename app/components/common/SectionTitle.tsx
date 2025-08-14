@@ -36,7 +36,7 @@ const SectionTitle = forwardRef(function SectionTitle(
   return (
     <div
       ref={targetRef}
-      className={`relative h-[calc(var(--layout-size)+1px)] min-h-[calc(var(--layout-size)+1px)] col-span-full bg-white w-full flex items-center ${
+      className={`relative h-[calc(var(--layout-size)+1px)] min-h-[calc(var(--layout-size)+1px)] col-span-full bg-[var(--background)] w-full flex items-center ${
         isSticky ? "sticky" : ""
       }`}
       style={{

@@ -79,7 +79,7 @@ export default function DevelopmentSection() {
       className={clsx(
         "relative grid border-b",
         "grid-cols-1 grid-rows-[var(--layout-size)_var(--layout-size)_1fr]",
-        "md:grid-cols-[1fr_4fr] md:grid-rows-[var(--layout-size)_1fr] 3xl:bg-gray-200"
+        "md:grid-cols-[1fr_4fr] md:grid-rows-[var(--layout-size)_1fr] 3xl:bg-[var(--background-secondary)]"
       )}
     >
       <SectionTitle
@@ -94,14 +94,17 @@ export default function DevelopmentSection() {
           initial={{ x: "-100%" }}
           animate={topNavVisible ? { x: 0 } : { x: "-100%" }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-          className="sticky z-10 top-[calc(2*var(--layout-size))] h-[calc(100dvh-2*var(--layout-size))] w-full grid grid-rows-5  bg-white 3xl:bg-gray-200"
+          className="sticky z-10 top-[calc(2*var(--layout-size))] h-[calc(100dvh-2*var(--layout-size))] w-full grid grid-rows-5  bg-[var(--background)]"
         >
           {projectIds.map(({ id, label }, index) => (
             <motion.a
               key={id}
               href={`#${id}`}
               animate={{
-                backgroundColor: activeIndex === index ? "#e5e7eb" : "#ffffff",
+                backgroundColor:
+                  activeIndex === index
+                    ? "var(--background-secondary)"
+                    : "var(--background)",
               }}
               transition={{
                 duration: 0.2,
@@ -136,7 +139,7 @@ export default function DevelopmentSection() {
           initial={{ x: "-100%" }}
           animate={topNavVisible ? { x: 0 } : { x: "-100%" }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-          className="grid grid-cols-5 border-y sticky bg-white z-30 h-[calc(var(--layout-size)/2)]"
+          className="grid grid-cols-5 border-y sticky bg-[var(--background)] z-30 h-[calc(var(--layout-size)/2)]"
           style={{
             top: isMobileLandscape
               ? "var(--layout-size)"
@@ -148,7 +151,10 @@ export default function DevelopmentSection() {
               key={id}
               href={`#${id}`}
               animate={{
-                backgroundColor: activeIndex === index ? "#e5e7eb" : "#ffffff",
+                backgroundColor:
+                  activeIndex === index
+                    ? "var(--background-secondary)"
+                    : "var(--background)",
               }}
               transition={{
                 duration: 0.2,
@@ -167,8 +173,8 @@ export default function DevelopmentSection() {
         </motion.div>
       )}
 
-      <div className="md:col-start-2 flex justify-center 3xl:bg-gray-200">
-        <div className="w-full max-w-[1300px] 3xl:bg-white">
+      <div className="md:col-start-2 flex justify-center 3xl:bg-[var(--background-secondary)]">
+        <div className="w-full max-w-[1300px] 3xl:bg-[var(--background)]">
           <div
             id="suaw"
             ref={suawRef}

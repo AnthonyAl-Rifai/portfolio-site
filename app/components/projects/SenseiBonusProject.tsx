@@ -108,7 +108,7 @@ export default function SenseiBonusProject() {
           viewport={{ once: true }}
         >
           <Image
-            src="/assets/images/projects/senseibonus/sb-1-screenshot.png"
+            src="/assets/images/projects/senseibonus/sb-1-screenshot-crop.png"
             alt="SB-1 Audio Player Screenshot"
             width={800}
             height={600}
@@ -179,7 +179,7 @@ export default function SenseiBonusProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -197,7 +197,7 @@ export default function SenseiBonusProject() {
             {["Express.js", "PostgreSQL"].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -217,7 +217,7 @@ export default function SenseiBonusProject() {
             {["AWS S3", "Heroku"].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -235,7 +235,7 @@ export default function SenseiBonusProject() {
             {["Jest"].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}

@@ -190,7 +190,7 @@ export default function SkillsProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -217,7 +217,7 @@ export default function SkillsProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -251,7 +251,7 @@ export default function SkillsProject() {
             ].map((name, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -270,7 +270,7 @@ export default function SkillsProject() {
               (name, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white border border-black p-6 text-center font-semibold flex justify-center items-center"
+                  className="bg-[var(--background)] border border-black p-6 text-center font-semibold flex justify-center items-center"
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}

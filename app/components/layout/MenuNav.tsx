@@ -22,7 +22,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
   const right = isMobileLandscape ? "var(--layout-size)" : 0;
 
   const baseClass =
-    "bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-white font-bold text-2xl backdrop-blur-md border border-black/20";
+    "bg-black/70 rounded-md flex items-center justify-center hover:bg-black/50 transition-colors text-[var(--background)] font-bold text-2xl backdrop-blur-md border border-black/20";
 
   const getMotionProps = () => ({
     animate: open ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 },
@@ -41,7 +41,7 @@ export default function MenuNav({ open, onClose }: MenuNavProps) {
 
   return (
     <nav
-      className={`fixed bg-white/10 backdrop-blur-md transition-opacity duration-300 z-40 md:border-l
+      className={`fixed bg-[var(--background)]/10 backdrop-blur-md transition-opacity duration-300 z-40 md:border-l
         ${isMobileLandscape ? "border-r" : "border-t"}
         ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
       `}
