@@ -161,11 +161,24 @@ export default function MusicSection() {
         {isDesktop && !isMobileLandscape ? (
           <div
             className={clsx(
-              "col-start-3 col-span-2 row-start-1 row-span-full",
-              "flex justify-center items-center"
+              "col-start-3 col-span-2 row-start-1 row-span-full relative",
+              "flex flex-col justify-center items-center gap-4"
             )}
           >
             <SenseiBonusPlayer />
+            <div className="flex gap-6 ml-[40px]">
+              <motion.div
+                animate={{ y: [3, 12, 3] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <MenuIconA size={24} color="#000" />
+              </motion.div>
+              <span className="text-2xl">play with me</span>
+            </div>
           </div>
         ) : (
           <>
@@ -254,8 +267,21 @@ export default function MusicSection() {
                       />
                     </div>
 
-                    <div className="flex-1 bg-[var(--background)] flex justify-center items-center p-4">
+                    <div className="flex-1 bg-[var(--background)] flex flex-col justify-center items-center p-4 relative gap-4">
                       <SenseiBonusPlayer />
+                      <div className="flex gap-6 ml-[70px]">
+                        <motion.div
+                          animate={{ y: [3, 12, 3] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <MenuIconA size={24} color="#000" />
+                        </motion.div>
+                        <span className="text-2xl">play with me</span>
+                      </div>
                     </div>
                   </motion.div>
                 </motion.div>
