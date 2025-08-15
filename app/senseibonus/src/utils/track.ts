@@ -1,33 +1,24 @@
-import { EventProperties, EventType } from '../types/analytics';
-import createLogger from '../player/utils/logger';
+import createLogger from "../player/utils/logger";
+import { EventType, EventProperties } from "../types/analytics";
 
 interface AnalyticsResponse {
   error?: boolean;
 }
 
-const log = createLogger('Analytics');
+const log = createLogger("Analytics");
 
+// Analytics disabled - function is now a no-op
 async function track<T extends EventType>(
   event: T,
   properties?: EventProperties[T]
 ) {
-  if (process.env.NODE_ENV === 'development') {
+  // Log in development for debugging purposes only
+  if (process.env.NODE_ENV === "development") {
     log.info({ event, properties });
-    return Promise.resolve({});
   }
-  const response = await fetch('/sbat', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify({
-      event,
-      ...(properties ? { properties } : {}),
-    }),
-  });
-  const bodyResponse: AnalyticsResponse = await response.json();
-  return bodyResponse;
+
+  // Return resolved promise immediately without making network requests
+  return Promise.resolve({});
 }
 
 export default track;
