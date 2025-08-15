@@ -2,7 +2,7 @@
 
 import Section from "../common/Section";
 import SectionTitle from "../common/SectionTitle";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLayout } from "../../context/LayoutContext";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import InstagramIcon from "../../icons/InstagramIcon";
@@ -20,6 +20,7 @@ export default function MusicSection() {
   const { isMobileLandscape } = useLayout();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showCloseAnimation, setShowCloseAnimation] = useState(false);
+  const [isPlayerPlaying, setIsPlayerPlaying] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
   const logoContainerRef = useRef(null);
   const isDesktop = useIsDesktop();
@@ -41,6 +42,20 @@ export default function MusicSection() {
     sectionRef.current?.scrollIntoView();
   };
 
+  // Listen for play events from the audio player
+  useEffect(() => {
+    const handlePlayEvent = () => {
+      setIsPlayerPlaying(true);
+    };
+
+    // Listen for custom play event from the audio player
+    window.addEventListener("sb-player-play", handlePlayEvent);
+
+    return () => {
+      window.removeEventListener("sb-player-play", handlePlayEvent);
+    };
+  }, []);
+
   return (
     <Section id="music" ref={sectionRef} className="h-auto">
       <SectionTitle name="Music" isSticky />
@@ -50,7 +65,6 @@ export default function MusicSection() {
           "grid",
           "gap-4 p-4",
           "md:grid-cols-4",
-          // "max-w-[2500px]",
           isMobileLandscape
             ? "min-h-[100vh]"
             : "min-h-[calc(100vh-(2*var(--layout-size)))]"
@@ -166,19 +180,32 @@ export default function MusicSection() {
             )}
           >
             <SenseiBonusPlayer />
-            <div className="flex gap-6 ml-[40px]">
+            <motion.div
+              className="flex gap-6 ml-[40px]"
+              animate={{
+                opacity: isPlayerPlaying ? 0 : 1,
+                scale: isPlayerPlaying ? 0.8 : 1,
+              }}
+              transition={{
+                duration: 0.5,
+                ease: "easeInOut",
+              }}
+            >
               <motion.div
-                animate={{ y: [3, 12, 3] }}
+                animate={{
+                  y: isPlayerPlaying ? 0 : [3, 12, 3],
+                  opacity: isPlayerPlaying ? 0 : 1,
+                }}
                 transition={{
-                  duration: 2,
-                  repeat: Infinity,
+                  duration: isPlayerPlaying ? 0.3 : 2,
+                  repeat: isPlayerPlaying ? 0 : Infinity,
                   ease: "easeInOut",
                 }}
               >
                 <MenuIconA size={24} color="#000" />
               </motion.div>
               <span className="text-2xl">play with me</span>
-            </div>
+            </motion.div>
           </div>
         ) : (
           <>
