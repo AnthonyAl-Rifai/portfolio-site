@@ -12,13 +12,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "Not Found",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     },
     {
       "id": "2",
@@ -32,13 +26,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "One Punch Eraser",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     },
     {
       "id": "3",
@@ -52,13 +40,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "Dust From Montana",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     },
     {
       "id": "4",
@@ -72,13 +54,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "Daughter Products",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     },
     {
       "id": "5",
@@ -92,13 +68,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "Mutual Impulse",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     },
     {
       "id": "6",
@@ -112,13 +82,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "Body Shock",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     },
     {
       "id": "7",
@@ -132,13 +96,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "Vel",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     },
     {
       "id": "8",
@@ -152,13 +110,7 @@
       },
       "artist": "Sensei Bonus",
       "title": "Third Place",
-      "album": "One Punch Eraser",
-      "artwork": [
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.25.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.5x.png", "sizes": "512x512", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front@0.75x.png", "sizes": "768x768", "type": "image/png" },
-        { "src": "%PUBLIC_URL%/ONE_PUNCH_ERASER-Front.png", "sizes": "1024x1024", "type": "image/png" }
-      ]
+      "album": "One Punch Eraser"
     }
   ]
 }
